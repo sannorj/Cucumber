@@ -36,6 +36,9 @@ public class Login_PageObjects {
 
 	@FindBy(xpath = "//div[@data-el='appName']")
 	WebElement header;
+	
+	@FindBy(xpath = "//div[@data-el='appName']")
+	WebElement headerr;
 
 	public void launchURLAndLogin() {
 		String env = configReader.getProp("environment");

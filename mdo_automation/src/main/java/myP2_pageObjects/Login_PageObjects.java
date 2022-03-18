@@ -1,10 +1,6 @@
 package myP2_pageObjects;
 
-import java.io.FileInputStream;
 import java.time.Duration;
-import java.util.Properties;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
 import utils.ConfigReader;
 
 public class Login_PageObjects {

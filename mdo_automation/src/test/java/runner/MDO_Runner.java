@@ -11,7 +11,8 @@ import io.cucumber.junit.CucumberOptions;
 		glue = { "myP2_step_definitions", "hooks" }, 
 		tags = "@myP2_Regression",
 		plugin = { "pretty", 
-				"junit:target/mdoReports/report.xml" },
+				"junit:target/mdoReports/report.xml",
+				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 		monochrome = true
 		)
 public class MDO_Runner {

@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConfigReader;
 
-public class Login_PageObjects {
+public class Login_PageObject {
 	private WebDriver driver;
 	private ConfigReader configReader = new ConfigReader();
 	
-	public Login_PageObjects(WebDriver driver) {
+	public Login_PageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -36,9 +36,6 @@ public class Login_PageObjects {
 
 	@FindBy(xpath = "//div[@data-el='appName']")
 	WebElement header;
-	
-	@FindBy(xpath = "//div[@data-el='appName']")
-	WebElement headerr;
 
 	public void launchURLAndLogin() {
 		String env = configReader.getProp("environment");

@@ -5,11 +5,11 @@ import static org.junit.Assert.assertTrue;
 import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import myP2_pageObjects.Login_PageObjects;
+import myP2_pageObjects.Login_PageObject;
 
 public class Login_StepDefinition {
 
-	private Login_PageObjects loginPO = new Login_PageObjects(DriverFactory.getDriver());
+	private Login_PageObject loginPO = new Login_PageObject(DriverFactory.getDriver());
 	
 	@Given("I am login to the myp2 site")
 	public void i_am_login_to_the_myp2_site() {

@@ -35,27 +35,30 @@ public class PnLYearly_PageObject {
 	WebElement pnlYearlyPage;
 	
 	public void expandPnLStatement() {
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(mainMenuButton));
-		menu.click();
-		
-		WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(reports));
-		reportsEle.click();
-		
-		WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlStatement));
-		pnlStatementEle.click();
+
+		try {
+			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(mainMenuButton));
+			menu.click();
+			/* mandatory pause */
+			Thread.sleep(1500);
+
+			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(reports));
+			reportsEle.click();
+
+			WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(pnlStatement));
+			pnlStatementEle.click();
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 	}
 	
 	public boolean navigatePnLYearlyPage() {
-		WebElement pnlYearlyEle = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(pnlYearly));
+		WebElement pnlYearlyEle = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(pnlYearly));
 		pnlYearlyEle.click();
 		
-		WebElement pnlYearlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlYearlyPage));
+		WebElement pnlYearlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlYearlyPage));
 		return pnlYearlyPageEle.isDisplayed();
 		
 	}

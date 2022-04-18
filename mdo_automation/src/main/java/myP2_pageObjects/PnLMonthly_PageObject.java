@@ -46,6 +46,12 @@ private ConstantsReader configReader = new ConstantsReader();
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
 	
+	@FindBy(xpath = "(//div/button[@title='Go']/span)[2]")
+	WebElement btnGo1;
+	
+	@FindBy(xpath = "//button[@title='Refresh']")
+	WebElement btnRefresh;
+	
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
@@ -57,6 +63,9 @@ private ConstantsReader configReader = new ConstantsReader();
 	
 	@FindBy(xpath = "//tr[@data-el]/td[1]")
 	List <WebElement> listSection;
+	
+	@FindBy(xpath = "//h3[text()='Loading...']")
+	WebElement lblLoading;
 	
 	@FindBy(xpath = "//input[@name='date']")
 	WebElement txtDate;
@@ -97,33 +106,36 @@ private ConstantsReader configReader = new ConstantsReader();
 		pnlMonthEle.click();
 		
 		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
-		
 		return pnlMothlyPageEle.isDisplayed();
 		
 	}
 	
    public void selectParameters() throws InterruptedException {
-		
+
+		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
-			
+
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
 					listDrpValueSize.get(i).click();
 				}
 			}
+		}
 
+		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
-			
+
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
 					listDrpValueSize.get(i).click();
 				}
 			}
+		}
 
 			txtDate.sendKeys(Keys.CONTROL + "a");
 			txtDate.sendKeys(Keys.DELETE);
@@ -132,7 +144,6 @@ private ConstantsReader configReader = new ConstantsReader();
 			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 			drpViewEle.click();
 
-		
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
@@ -151,7 +162,7 @@ private ConstantsReader configReader = new ConstantsReader();
 	}
 		
 	public boolean verifyStaticSection() {
-
+		
 			ExpectedConditions.visibilityOf(listSection.get(1));
 			/* capture/go though the 5 static section */
 			for (int x = 0; x < 5; x++) {
@@ -167,9 +178,10 @@ private ConstantsReader configReader = new ConstantsReader();
 						flag = false;
 					}
 				}
+				
 			}
 		return flag;
-
+		
 	}
 	
 	public void occupancyCalFunc() {
@@ -183,6 +195,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			/* Calculate the Occupancy value */
 			double x = RoomSoldValue / RoomsAvailableValue * 100;
 			roundOffOcc = Math.round(x * 100.0) / 100.0;
+			
 	}
 	
 	public boolean verifyOccCalculationFunc() {
@@ -196,7 +209,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		} else {
 			return false;
 		}
-
 	}
 	
 	public void adrCalFunc() {
@@ -209,7 +221,7 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			double x = TotalRoomsRevenueValue / RoomSoldValue * 100;
 			roundOffAdr = Math.round(x * 100.0) / 100.0;
-
+			
 	}
 
 	public boolean verifyAdrCalculationFunc() {
@@ -222,7 +234,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		} else {
 			return false;
 		}
-
 	}
 	
 	public void revParCalFunc() {
@@ -234,8 +245,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
 			double x = TotalRoomsRevenueValue / RoomsAvailableValue * 100;
-			roundOffrevPar = Math.round(x * 100.0) / 100.0;
-
+			roundOffrevPar = Math.round(x * 100.0) / 100.0;		
 	}
 	
 	public boolean verifyRevParCalculationFunc() {
@@ -245,11 +255,11 @@ private ConstantsReader configReader = new ConstantsReader();
 
 		/* Verify the calculated and captured values are same. */
 		if (roundOffrevPar == revParValue) {
+			System.out.println("End of 666666666666" + roundOffrevPar  +revParValue);
 			return true;
 		} else {
 			return false;
 		}
-
 	}
 	
 	public void totalRevParCalFunc() {
@@ -264,6 +274,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			/* Calculate the Occupancy value */
 			double x = TotalOperatingRevenueValue / RoomsAvailableValue * 100;
 			roundOffTotalRevPar = Math.round(x * 100.0) / 100.0;
+		
 	}
 	
 	
@@ -279,7 +290,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		} else {
 			return false;
 		}
-
 	}
 	
 	public boolean verifyOwnersViewSection() {
@@ -299,7 +309,6 @@ private ConstantsReader configReader = new ConstantsReader();
 				}
 			}
 		return flag;
-
 	}
 
 	public void selectOperatorView() {
@@ -313,8 +322,7 @@ private ConstantsReader configReader = new ConstantsReader();
 				listDrpValueSize.get(i).click();
 			}
 		}
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnGo));
-		btnGO.click();
+		btnGo.click();
 
 	}
 	
@@ -322,15 +330,16 @@ private ConstantsReader configReader = new ConstantsReader();
 		
 		try {
 			/* mandatory pause */
-			Thread.sleep(1500);
-			ExpectedConditions.visibilityOf(listSection.get(1));
+			Thread.sleep(6000);
+			ExpectedConditions.visibilityOf(listStaticValues.get(0));
 			for (int x = 0; x < listStaticValues.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("Operator_Section").split(",");
 				for (int i = 0; i < a.length; i++) {
-					
 					String expected = a[i];
+					System.out.print(expected);
 					String actual = listSection.get(x).getText();
+					System.out.println(expected);
 					if (actual.contains(expected)) {
 						flag = true;
 					} else {
@@ -345,28 +354,24 @@ private ConstantsReader configReader = new ConstantsReader();
 
 }
 	
-	public void selectRooRevenueDetailView() {	
+	public void selectRooRevenueDetailView() throws InterruptedException {	
 		
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		ExpectedConditions.invisibilityOf(lblLoading);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnGo));
-		btnGO.click();
+		btnGo.click();
+		Thread.sleep(6000);
 		
 	}
 	
 	public boolean verifyRoomRevenueDetailSection() {
 		
-		try {
-			/* mandatory pause */
-			Thread.sleep(1500);
-			ExpectedConditions.visibilityOf(listSection.get(1));
 			for (int x = 0; x < listStaticValues.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("RoomRevenueDetail_Section").split(",");
@@ -380,9 +385,7 @@ private ConstantsReader configReader = new ConstantsReader();
 						flag = false;
 					}
 				}
-			}
-		} catch (InterruptedException e) {
-		}
+			} 
 		return flag;
 	}
 	

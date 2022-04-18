@@ -85,7 +85,7 @@ public class PnLMonthly_StepDefinition {
 	}
 	
 	@When("user selects the Room Revenue Detail View")
-	public void user_selects_the_room_revenue_detail_view() {
+	public void user_selects_the_room_revenue_detail_view() throws InterruptedException {
 		pnlMonthly.selectRooRevenueDetailView();
 	}
 

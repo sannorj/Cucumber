@@ -1,8 +1,6 @@
 @myP2_Regression
 Feature: P&L Monthly Report
 
-
-
 Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site
     And System navigate to the home page

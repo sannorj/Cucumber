@@ -20,5 +20,17 @@ public Properties prop;
 		}
 		return result;
 	}
+	
+	
+	public String getLoginProp(String value) {
+		try {
+			prop = new Properties();
+			prop.load(new FileInputStream("./src/test/resources/configurations/env.properties"));
+			result = prop.getProperty(value);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 
 }

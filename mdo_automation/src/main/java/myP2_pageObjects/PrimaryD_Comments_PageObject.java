@@ -74,8 +74,50 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//label[@class='sc-bjUoiL nDYYA']")
 	WebElement lblCommenttxt;
 	
+	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
+	WebElement btnViewAllComment;
 	
-
+	@FindBy(xpath = "(//div[@class='sc-hKMtZM cNmSDD'])[1]")
+	WebElement lblCommentIcon;
+	
+	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
+	WebElement lblLatestComment;
+	
+	@FindBy(xpath = "//h1[text()='Comments']")
+	WebElement lblAllCommentsHeader;
+	
+	@FindBy(xpath = "//div/input[@name='hotelId']")
+	WebElement drpViewAllCommentProperty;
+	
+	@FindBy(xpath = "(//input[@name='reply'])[1]")
+	WebElement txtReplyBox;
+	
+	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+	WebElement lblFirstReplyComment;
+	
+	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")
+	WebElement btnReplySubmint;
+	
+	@FindBy(xpath = "(//label[@class='sc-bjUoiL gyZfAO'])[1]")
+	WebElement lblReplyUser;
+	
+	@FindBy(xpath = "(//label[@class='sc-bjUoiL ebTZpj'])[1]")
+	WebElement lblReplyProperty;
+	
+	@FindBy(xpath = "//div[@id='mui-component-select-commentStatusId']")
+	WebElement drpStatus;
+	
+	@FindBy(xpath = "(//label[@label='Resolve'])[1]")
+	WebElement btnResolve;
+	
+	@FindBy(xpath = "(//label[@label='Mark Active'])[1]")
+	WebElement btnActive;
+	
+	@FindBy(xpath = "(//label[@label='Mark Active'])[1]")
+	WebElement btnMarkActive;
+	
+	
+	
 	public void selectParameters() throws InterruptedException {
 
 		ElementUtils.waitForElementToDisplay(lblGroup, 100);
@@ -169,21 +211,136 @@ public class PrimaryD_Comments_PageObject {
 	
 	
 	public boolean verifyNewlyAddedcommentFunc() throws InterruptedException {
-		
+
 		Thread.sleep(2500);
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
 		btnMainCommentEle.click();
-		
-		/* waiting for Comment title to visible  */
+
+		/* waiting for Comment title to visible */
 		ElementUtils.waitForElementToDisplay(titleComment, 100);
-		String CommentContext =lblCommenttxt.getAttribute("label");
-		
-		if(CommentContext.equals(configReader.getProp("Comment")) ) {
+		String CommentContext = lblCommenttxt.getAttribute("label");
+
+		if (CommentContext.equals(configReader.getProp("Comment"))) {
 			return true;
-		}else {
+		} else {
+			return false;
+		}
+
+	}
+	
+	public boolean clickOnAllCommentsFunc() throws InterruptedException {
+	
+		/* Click on view comment icon next to the searched single property   */
+		Thread.sleep(2500);
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
+		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
+		btnMainCommentEle.click();
+
+		/* Click on view All comment linked-label in Comment model   */
+		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
+		btnViewAllComment.click();
+
+		ElementUtils.waitForElementToDisplay(lblCommentIcon, 100);
+
+		String LatestComment = lblLatestComment.getAttribute("label");
+		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
+		if (LatestComment.equals(configReader.getProp("Comment"))&& drpProperty.equals(configReader.getProp("Propery"))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean AddReplyFunc() throws InterruptedException {
+
+		txtReplyBox.sendKeys(configReader.getProp("Reply_Comment"));
+
+		ExpectedConditions.elementToBeClickable(btnReplySubmint);
+		btnReplySubmint.click();
+
+		Thread.sleep(2000);
+		String drpProperty = lblFirstReplyComment.getText();
+		if (drpProperty.equals(configReader.getProp("Reply_Comment"))) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	
+	public boolean verifyRepliedUserDetailsFunc() throws InterruptedException {
+		
+		String user = lblReplyUser.getAttribute("label");
+		String property = lblReplyProperty.getAttribute("label");
+		if (user.equals(configReader.getLoginProp("dev_userName")) &&  property.equals(configReader.getProp("Propery"))) {
+			return true;
+		} else {
 			return false;
 		}
 		
 	}
+	
+	public boolean MarkAsResolvedFunc() {
 
+		String resolvedStatus = drpStatus.getText();
+		if (resolvedStatus.equals(configReader.getProp("Active_Status"))) {
+			btnResolve.click();
+			ExpectedConditions.invisibilityOf(lblLatestComment);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean verifyResolvedCommentFunc() throws InterruptedException {
+		drpStatus.click();
+		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Resolved_Comments"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+		ElementUtils.waitForElementToDisplay(lblLatestComment, 100);
+		String LatestComment = lblLatestComment.getAttribute("label");
+		if (LatestComment.equals(configReader.getProp("Comment"))) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public boolean MarkAsActivateFunc() {
+
+		String resolvedStatus = drpStatus.getText();
+		if (resolvedStatus.equals(configReader.getProp("Resolved_Comments"))) {
+			btnActive.click();
+			ExpectedConditions.invisibilityOf(lblLatestComment);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean verifyActivatedCommentFunc() throws InterruptedException {
+		drpStatus.click();
+		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Active_Status"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+		ElementUtils.waitForElementToDisplay(lblLatestComment, 100);
+		String LatestComment = lblLatestComment.getAttribute("label");
+		Thread.sleep(2000);
+		if (LatestComment.equals(configReader.getProp("Comment"))) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+   	
+	
 }

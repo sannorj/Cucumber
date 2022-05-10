@@ -140,7 +140,7 @@ public class PrimaryD_Comments_PageObject {
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
-//add
+
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {

@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @jenkin
 Feature: Verify GSS Medalia Functionality
 
   Scenario: Verify GSS Medallia

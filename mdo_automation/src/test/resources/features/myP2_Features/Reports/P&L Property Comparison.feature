@@ -1,8 +1,7 @@
 @myP2_Regression
 Feature: P&L Property Comparison
 
-
-Background: Navigate to P&L Monthly report
+	Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site
     And System navigate to the home page
     And I am expand the P&L Statement option under Reports section in Side Menu

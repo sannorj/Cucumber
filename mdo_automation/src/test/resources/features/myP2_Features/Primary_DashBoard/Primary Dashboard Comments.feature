@@ -16,7 +16,6 @@ Background: Login to MYP2 application
   And User will be able to reply back to the thread
   Then The newly added comments should be added to the appropriate username and property
    
-   
   Scenario: Verify whether the User will be able to activate/deactivate a comment thread
   When Users click “All Replies” for a specific thread, they are redirected to a page where they see all the replies to that thread.
   And User clicks the resolve option

@@ -17,7 +17,7 @@ public class DriverFactory {
 			WebDriverManager.chromedriver().setup();
 			tlDriver.set(new ChromeDriver());
 		} else if (browser.toLowerCase().equals("edge")) {
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.edgedriver().setup();
 			tlDriver.set(new EdgeDriver());
 		} else {
 			System.out.println("Please pass the correct browser name : " + browser);

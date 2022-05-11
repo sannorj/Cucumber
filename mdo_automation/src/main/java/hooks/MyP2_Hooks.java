@@ -36,7 +36,7 @@ public class MyP2_Hooks {
 	public void after() {
 		driver.quit();
 	}
-	
+	/*
 	@After(order=1)
 	public void tearDown(Scenario sc) {
 		if(sc.isFailed()) {
@@ -44,6 +44,6 @@ public class MyP2_Hooks {
 			byte[] sourcePath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 			sc.attach(sourcePath, "image/png", screenshotName);
 		}
-	}
+	}*/
 
 }

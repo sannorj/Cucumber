@@ -1,8 +1,6 @@
-
-@tag
+@myP2_Regression
 Feature: Gss By Month Functionality
  
-  @tag1
   Scenario:  Verify GSS Medallia
     Given I am login to the myp2 site
     And System navigate to the home page

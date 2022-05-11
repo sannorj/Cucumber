@@ -34,7 +34,7 @@ public class MyP2_Hooks {
 	
 	@After(order=0)
 	public void after() {
-		driver.quit();
+		driver.close();
 	}
 	/*
 	@After(order=1)

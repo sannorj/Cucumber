@@ -1,9 +1,7 @@
 @myP2_Regression
 Feature: Dashboard 
 
-@tgDashboard
-
-Scenario: Navigate to Order Column Page and Verify whether the columns are in order
+	Scenario: Navigate to Order Column Page and Verify whether the columns are in order
     Given I am login to the myp2 site
     And System navigate to the home page
     When I select the group "01 West Coast Hotels" , property "Boston Park Plaza" , Date "04/24/2021"

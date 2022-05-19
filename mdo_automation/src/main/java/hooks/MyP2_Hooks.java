@@ -29,7 +29,8 @@ public class MyP2_Hooks {
 	public void setup() {
 		String browserName = prop.getProperty("browser");
 		driverFactory = new DriverFactory();
-		driver = driverFactory.setDriver(browserName);
+		driver = driverFactory.setDriverJenkin(browserName);
+		//driver = driverFactory.setDriverLocal(browserName);
 	}
 	
 	@After(order=0)

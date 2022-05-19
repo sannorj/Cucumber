@@ -15,10 +15,11 @@ public class DriverFactory {
 	public WebDriver setDriver(String browser) {
 		if (browser.toLowerCase().equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-	        options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
-	        options.addArguments("--headless");
-			tlDriver.set(new ChromeDriver(options));
+			//ChromeOptions options = new ChromeOptions();
+	        //options.addArguments("--no-sandbox"); // Bypass OS security model, MUST BE THE VERY FIRST OPTION
+	        //options.addArguments("--headless");
+			//tlDriver.set(new ChromeDriver(options));
+			tlDriver.set(new ChromeDriver());
 		} else if (browser.toLowerCase().equals("edge")) {
 			WebDriverManager.edgedriver().setup();
 			tlDriver.set(new EdgeDriver());

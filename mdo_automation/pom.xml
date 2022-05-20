@@ -139,6 +139,10 @@
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>
 							<perCoreThreadCount>true</perCoreThreadCount>
+							<systemPropertyVariables>
+								<browserName>${browser}</browserName>
+								<environment>${env}</environment>
+							</systemPropertyVariables>
 						</configuration>
 					</execution>
 				</executions>

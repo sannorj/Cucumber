@@ -9,10 +9,13 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = { "src/test/resources/features" }, 
 		glue = { "myP2_step_definitions", "hooks" }, 
-		tags = "@myP2_Smoke",
-		plugin = { "pretty", 
-				"junit:target/mdoReports/report.xml",
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+		tags = "@myP2_Regression",
+		plugin = { "pretty",
+                "json:target/cucumber.json"
+				//"json:target/cucumber.json"
+				//"junit:target/mdoReports/report.xml",
+				//"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+				},
 		monochrome = true
 		)
 public class MDO_Runner {

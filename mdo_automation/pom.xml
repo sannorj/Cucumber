@@ -137,8 +137,8 @@
 								<include>**/MDO_Runner.java</include>
 							</includes>
 							<parallel>methods</parallel>
-							<threadCount>1</threadCount>
-							<perCoreThreadCount>false</perCoreThreadCount>
+							<threadCount>4</threadCount>
+							<perCoreThreadCount>true</perCoreThreadCount>
 						</configuration>
 					</execution>
 				</executions>

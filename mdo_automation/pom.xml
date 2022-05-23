@@ -138,7 +138,7 @@
 							</includes>
 							<parallel>methods</parallel>
 							<threadCount>4</threadCount>
-							<perCoreThreadCount>true</perCoreThreadCount>
+							<perCoreThreadCount>false</perCoreThreadCount>
 							<systemPropertyVariables>
 								<browserName>${browser}</browserName>
 								<environment>${env}</environment>

@@ -1,5 +1,5 @@
 @myP2_Regression
-Feature: Primary Dashboard Comments
+Feature: Primary Dashboard - Comments Feature
 
 Background: Login to MYP2 application 
   Given I am login to the myp2 site

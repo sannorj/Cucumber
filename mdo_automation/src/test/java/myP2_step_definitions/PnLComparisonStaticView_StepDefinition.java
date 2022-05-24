@@ -7,7 +7,7 @@ import io.cucumber.java.en.Given;
 import myP2_pageObjects.PnLComparison_PageObject;
 
 
-public class PnLComparison_StepDefinition {
+public class PnLComparisonStaticView_StepDefinition {
 	
 	private PnLComparison_PageObject pnlComparison = new PnLComparison_PageObject(DriverFactory.getDriver());
 	

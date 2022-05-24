@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import myP2_pageObjects.PnLMonthly_PageObject;
 
 
-public class PnLMonthly_StepDefinition {
+public class PnLMonthlyStaticView_StepDefinition {
 	
 	private PnLMonthly_PageObject pnlMonthly = new PnLMonthly_PageObject(DriverFactory.getDriver());
 	
@@ -75,7 +75,7 @@ public class PnLMonthly_StepDefinition {
 	}
 
 	@When("user selects the Operators View")
-	public void user_selects_the_operators_view() {
+	public void user_selects_the_operators_view() throws InterruptedException {
 		pnlMonthly.selectOperatorView();   
 	}
 

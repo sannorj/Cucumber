@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConstantsReader;
+import utils.ElementUtils;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -97,7 +99,8 @@ private ConstantsReader configReader = new ConstantsReader();
 	@FindBy(xpath = "//tr[@data-el='Total REV-PAR']/td[3]")
 	WebElement cellTotalRevPar;
 	
-	
+	@FindBy(xpath = "//div[text()='Rooms available']")
+	WebElement lblRoomAva;
 	
 	
 	public boolean navigatePnLMonthlyPage() {
@@ -140,11 +143,11 @@ private ConstantsReader configReader = new ConstantsReader();
 			txtDate.sendKeys(Keys.CONTROL + "a");
 			txtDate.sendKeys(Keys.DELETE);
 			txtDate.sendKeys(configReader.getProp("Date"));
+			Thread.sleep(1500);
 
-			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
+			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 			drpViewEle.click();
 
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 					ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
@@ -152,12 +155,12 @@ private ConstantsReader configReader = new ConstantsReader();
 				}
 			}
 		
-			ExpectedConditions.invisibilityOf(listDrpValueSize.get(0));
-			WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnGo));
+			Thread.sleep(1500);
+			WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 			btnGO.click();
 			
 			/* mandatory pause */
-			Thread.sleep(2500);
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 			btnZeroValue.click();
 	}
 		
@@ -219,7 +222,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellCRoomSold));
 			double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
 
-			double x = TotalRoomsRevenueValue / RoomSoldValue * 100;
+			double x = TotalRoomsRevenueValue / RoomSoldValue;
 			roundOffAdr = Math.round(x * 100.0) / 100.0;
 			
 	}
@@ -228,7 +231,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		
 		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellAdr));
 		double adrValue = Double.parseDouble(adr.getText().replace(",", "").replaceAll("\\$", ""));
-
 		if (roundOffAdr == adrValue) {
 			return true;
 		} else {
@@ -244,7 +246,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 			double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
-			double x = TotalRoomsRevenueValue / RoomsAvailableValue * 100;
+			double x = TotalRoomsRevenueValue / RoomsAvailableValue;
 			roundOffrevPar = Math.round(x * 100.0) / 100.0;		
 	}
 	
@@ -254,8 +256,9 @@ private ConstantsReader configReader = new ConstantsReader();
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
+		System.out.println("===== roundOffTotalRevPar=========== "+roundOffTotalRevPar);
+		System.out.println("===== revParValue=========== "+revParValue);
 		if (roundOffrevPar == revParValue) {
-			System.out.println("End of 666666666666" + roundOffrevPar  +revParValue);
 			return true;
 		} else {
 			return false;
@@ -272,7 +275,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
 			/* Calculate the Occupancy value */
-			double x = TotalOperatingRevenueValue / RoomsAvailableValue * 100;
+			double x = TotalOperatingRevenueValue / RoomsAvailableValue;
 			roundOffTotalRevPar = Math.round(x * 100.0) / 100.0;
 		
 	}
@@ -283,7 +286,7 @@ private ConstantsReader configReader = new ConstantsReader();
 		/* Capture the revPar Value from page */
 		WebElement totalRevPar = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellTotalRevPar));
 		double revParValue = Double.parseDouble(totalRevPar.getText().replace(",", "").replaceAll("\\$", ""));
-
+		
 		/* Verify the calculated and captured values are same. */
 		if (roundOffTotalRevPar == revParValue) {
 			return true;
@@ -311,12 +314,12 @@ private ConstantsReader configReader = new ConstantsReader();
 		return flag;
 	}
 
-	public void selectOperatorView() {
+	public void selectOperatorView() throws InterruptedException {
 
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		Thread.sleep(2000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
 				listDrpValueSize.get(i).click();
@@ -337,9 +340,7 @@ private ConstantsReader configReader = new ConstantsReader();
 				String[] a = configReader.getProp("Operator_Section").split(",");
 				for (int i = 0; i < a.length; i++) {
 					String expected = a[i];
-					System.out.print(expected);
 					String actual = listSection.get(x).getText();
-					System.out.println(expected);
 					if (actual.contains(expected)) {
 						flag = true;
 					} else {

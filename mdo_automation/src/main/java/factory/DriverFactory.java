@@ -17,6 +17,7 @@ public class DriverFactory {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--no-sandbox");
+			options.addArguments("--start-fullscreen");
 			options.addArguments("--headless");
 			tlDriver.set(new ChromeDriver(options));
 		} else if (browser.toLowerCase().equals("edge")) {

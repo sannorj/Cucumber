@@ -1,6 +1,6 @@
 @myP2_Regression
 Feature: P&L Yearly Report
-
+@kethees
 	Scenario: Navigate to P&L report Func
     Given I am login to the myp2 site
     And System navigate to the home page

@@ -38,8 +38,16 @@ public class Login_PageObject {
 	WebElement header;
 
 	public void launchURLAndLogin() {
+		String environmentJenkin = System.getProperty("environment");
 		String env = configReader.getProp("environment");
-		if (env.toLowerCase().equals("dev")) {
+		String myEnv = null;
+		if(environmentJenkin != null) {
+			myEnv = environmentJenkin;
+		}else {
+			myEnv = env;
+		}
+		
+		if (myEnv.toLowerCase().equals("dev")) {
 			driver.get(configReader.getProp("dev_myp2URL"));
 
 			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
@@ -51,7 +59,7 @@ public class Login_PageObject {
 			passwordReset.isDisplayed();
 			loginButton.click();
 
-		} else if (env.toLowerCase().equals("uat")) {
+		} else if (myEnv.toLowerCase().equals("uat")) {
 			driver.get(configReader.getProp("uat_myp2URL"));
 
 			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
@@ -64,6 +72,60 @@ public class Login_PageObject {
 			passwordReset.isDisplayed();
 			loginButton.click();
 		}
+		/*
+		if(environmentJenkin != null) {
+			if (environmentJenkin.toLowerCase().equals("dev")) {
+				driver.get(configReader.getProp("dev_myp2URL"));
+
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logo));
+
+				LoginLogo.isDisplayed();
+				username.sendKeys(configReader.getProp("dev_userName"));
+				password.sendKeys(configReader.getProp("dev_password"));
+				passwordReset.isDisplayed();
+				loginButton.click();
+
+			} else if (environmentJenkin.toLowerCase().equals("uat")) {
+				driver.get(configReader.getProp("uat_myp2URL"));
+
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logo));
+
+				LoginLogo.isDisplayed();
+
+				username.sendKeys(configReader.getProp("uat_userName"));
+				password.sendKeys(configReader.getProp("uat_password"));
+				passwordReset.isDisplayed();
+				loginButton.click();
+			}
+		}else {
+			if (env.toLowerCase().equals("dev")) {
+				driver.get(configReader.getProp("dev_myp2URL"));
+
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logo));
+
+				LoginLogo.isDisplayed();
+				username.sendKeys(configReader.getProp("dev_userName"));
+				password.sendKeys(configReader.getProp("dev_password"));
+				passwordReset.isDisplayed();
+				loginButton.click();
+
+			} else if (env.toLowerCase().equals("uat")) {
+				driver.get(configReader.getProp("uat_myp2URL"));
+
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logo));
+
+				LoginLogo.isDisplayed();
+
+				username.sendKeys(configReader.getProp("uat_userName"));
+				password.sendKeys(configReader.getProp("uat_password"));
+				passwordReset.isDisplayed();
+				loginButton.click();
+			}
+		}*/
 	}
 
 	public boolean navigateHomePage() {

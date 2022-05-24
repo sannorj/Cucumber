@@ -17,8 +17,8 @@ public class DriverFactory {
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--no-sandbox");
-			options.addArguments("--start-fullscreen");
-			options.addArguments("start-maximized");
+			//options.addArguments("--start-fullscreen");
+			//options.addArguments("start-maximized");
 			options.addArguments("--headless");
 			tlDriver.set(new ChromeDriver(options));
 		} else if (browser.toLowerCase().equals("edge")) {
@@ -28,7 +28,7 @@ public class DriverFactory {
 			System.out.println("Please pass the correct browser name : " + browser);
 		}
 		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().fullscreen();
+		getDriver().manage().window().maximize();
 		return getDriver();
 	}
 	

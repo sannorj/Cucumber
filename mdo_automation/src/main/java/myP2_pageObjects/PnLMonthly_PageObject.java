@@ -164,9 +164,9 @@ private ConstantsReader configReader = new ConstantsReader();
 			btnZeroValue.click();
 	}
 		
-	public boolean verifyStaticSection() {
+	public boolean verifyStaticSection() throws InterruptedException {
 		
-			ExpectedConditions.visibilityOf(listSection.get(1));
+			Thread.sleep(2500);
 			/* capture/go though the 5 static section */
 			for (int x = 0; x < 5; x++) {
 				/* split and ready the data from property file */
@@ -326,15 +326,14 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 	}
 	
 	public boolean verifyOperatorSection() {
 		
 		try {
 			/* mandatory pause */
-			Thread.sleep(6000);
-			ExpectedConditions.visibilityOf(listStaticValues.get(0));
+			Thread.sleep(1500);
 			for (int x = 0; x < listStaticValues.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("Operator_Section").split(",");
@@ -367,12 +366,13 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-		Thread.sleep(6000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		
 	}
 	
-	public boolean verifyRoomRevenueDetailSection() {
+	public boolean verifyRoomRevenueDetailSection() throws InterruptedException {
 		
+		    Thread.sleep(1500);
 			for (int x = 0; x < listStaticValues.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("RoomRevenueDetail_Section").split(",");

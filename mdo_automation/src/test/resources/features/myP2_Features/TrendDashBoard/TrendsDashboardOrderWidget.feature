@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @TrendOrderwidget
 
 Feature: Trend Dashboard Order Widgets Functionality Validation
 

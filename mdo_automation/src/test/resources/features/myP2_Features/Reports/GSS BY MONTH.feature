@@ -1,4 +1,4 @@
-@myP2_Regression @jenkin
+@myP2_Regression @jenkin1
 Feature: Gss By Month Functionality
  
   Scenario:  Verify GSS Medallia

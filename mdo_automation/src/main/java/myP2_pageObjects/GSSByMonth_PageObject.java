@@ -153,7 +153,7 @@ public class GSSByMonth_PageObject {
 
 			btn.click();
 
-			WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(20))
 					.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 
 			if (gssMedalliaPageCL.isDisplayed()) {

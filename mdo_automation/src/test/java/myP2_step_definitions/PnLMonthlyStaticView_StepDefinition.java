@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import myP2_pageObjects.PnLMonthly_PageObject;
 
 
-public class PnLMonthly_StepDefinition {
+public class PnLMonthlyStaticView_StepDefinition {
 	
 	private PnLMonthly_PageObject pnlMonthly = new PnLMonthly_PageObject(DriverFactory.getDriver());
 	
@@ -25,7 +25,7 @@ public class PnLMonthly_StepDefinition {
 	}
 	
 	@Then("Page should load the defualt static section")
-	public void page_should_load_the_defualt_static_section() {
+	public void page_should_load_the_defualt_static_section() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyStaticSection());
 	}
 	
@@ -75,7 +75,7 @@ public class PnLMonthly_StepDefinition {
 	}
 
 	@When("user selects the Operators View")
-	public void user_selects_the_operators_view() {
+	public void user_selects_the_operators_view() throws InterruptedException {
 		pnlMonthly.selectOperatorView();   
 	}
 
@@ -90,7 +90,7 @@ public class PnLMonthly_StepDefinition {
 	}
 
 	@Then("the P&L should show the relevent sections that belong to the Room Revenue Detail view")
-	public void the_p_l_should_show_the_relevent_sections_that_belong_to_the_room_revenue_detail_view() {
+	public void the_p_l_should_show_the_relevent_sections_that_belong_to_the_room_revenue_detail_view() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyRoomRevenueDetailSection());
 	}
 

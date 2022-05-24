@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConstantsReader;
+import utils.ElementUtils;
 
 
 public class PnLComparison_PageObject {
@@ -52,16 +53,20 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//h3[text()='Loading...']")
 	WebElement lblLoading;
 	
+	@FindBy(xpath = "//div[text()='Rooms available']")
+	WebElement lblRoomAva;
 	
-public boolean navigatePnLComparison() {
-		
+	
+	
+	public boolean navigatePnLComparison() {
+
 		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
 		pnlPropertyComparisonEle.click();
-		
+
 		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
-		
+
 		return pnlComparisonPageEle.isDisplayed();
-		
+
 	}
 
     public void selectParameters() throws InterruptedException {
@@ -82,7 +87,8 @@ public boolean navigatePnLComparison() {
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("Date"));
-
+        Thread.sleep(2000);
+        
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
@@ -96,7 +102,8 @@ public boolean navigatePnLComparison() {
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();	
 			
-		Thread.sleep(6000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(1500);
 	    btnZeroValue.click();
 		
 }

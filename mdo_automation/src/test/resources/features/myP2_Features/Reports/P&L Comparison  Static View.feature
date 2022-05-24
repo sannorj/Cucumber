@@ -1,5 +1,5 @@
-@myP2_Regression
-Feature: P&L Property Comparison
+@myP2_Regression @PnLMSmoke1
+Feature: P&L Property Comparison - View Feature Validation and Static Calculation
 
 	Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site

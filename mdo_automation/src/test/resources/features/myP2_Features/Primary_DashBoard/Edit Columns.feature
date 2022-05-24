@@ -1,5 +1,5 @@
 @myP2_Regression
-Feature: Edit Columns
+Feature: Primary DashBoard - Edit Columns Feature
 
 Background: Login to MYP2 application 
   Given I am login to the myp2 site

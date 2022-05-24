@@ -1,6 +1,5 @@
-#Author: sannorj@mydigitaloffice.ca
 @myP2_Regression 
-Feature: Income Journal Summary
+Feature: Income Journal Summary  - Add New Row Feature
 
 	Background: Navigate to Income Journal Summary
     Given I am login to the myp2 site

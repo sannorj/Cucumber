@@ -127,7 +127,7 @@ private ConstantsReader configReader = new ConstantsReader();
 				}
 			}
 		}
-
+//Fix
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();

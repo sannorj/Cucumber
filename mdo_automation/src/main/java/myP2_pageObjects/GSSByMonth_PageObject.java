@@ -166,7 +166,7 @@ public class GSSByMonth_PageObject {
 			txtSearch.sendKeys(searchText);
 			Thread.sleep(5000);
 
-			propertyNameMedalia = propertyValues.get(0).getText();
+			propertyNameMedalia = "Overall Score";//propertyValues.get(0).getText();
 			benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
 			varianceMedallia = Double.parseDouble(propertyValues.get(15).getText().replaceAll(",", ""));
 

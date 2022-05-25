@@ -85,8 +85,8 @@ public class GSSByMonth_PageObject {
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-	    js.executeScript("window.scrollBy(0,350)", "");
-		
+		js.executeScript("window.scrollBy(0,350)", "");
+
 		for (int i = 0; i < listOfPriorityDropdown.size(); i++) {
 			if (listOfPriorityDropdown.get(i).getText().equals("1")) {
 				listOfPriorityDropdown.get(i).click();
@@ -159,31 +159,28 @@ public class GSSByMonth_PageObject {
 	public void setPriorityOne(String searchText) {
 
 		try {
-			WebElement propertyTable = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(tableProperty));
-			if (propertyTable.isDisplayed()) {
+			ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
-				sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
+			sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
 
-				txtSearch.sendKeys(searchText);
-				Thread.sleep(5000);
+			txtSearch.sendKeys(searchText);
+			Thread.sleep(5000);
 
-				propertyNameMedalia = propertyValues.get(0).getText();
-				benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
-				varianceMedallia = Double.parseDouble(propertyValues.get(15).getText().replaceAll(",", ""));
+			propertyNameMedalia = propertyValues.get(0).getText();
+			benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
+			varianceMedallia = Double.parseDouble(propertyValues.get(15).getText().replaceAll(",", ""));
 
-				for (int i = 0; i < valuesMedallia.length; i++) {
+			for (int i = 0; i < valuesMedallia.length; i++) {
 
-					valuesMedallia[i] = Double.parseDouble(propertyValues.get(i + 1).getText());
-				}
-				Thread.sleep(2000);
-
-				listOfPriorityDropdown.get(0).click();
-				Thread.sleep(2000);
-				lstDropDownValues.get(1).click();
-				Thread.sleep(3000);
-
+				valuesMedallia[i] = Double.parseDouble(propertyValues.get(i + 1).getText());
 			}
+			Thread.sleep(2000);
+
+			listOfPriorityDropdown.get(0).click();
+			Thread.sleep(2000);
+			lstDropDownValues.get(1).click();
+			Thread.sleep(3000);
+
 		} catch (Exception e) {
 
 			e.printStackTrace();

@@ -167,6 +167,8 @@ public class GSSByMonth_PageObject {
 			
 			Thread.sleep(5000);
 			btnGo.click();
+			listOfPriorityDropdown.get(0).click();
+			lstDropDownValues.get(0).click();
 			Thread.sleep(5000);
 			
 			propertyNameMedalia = propertyValues.get(0).getText();
@@ -217,7 +219,7 @@ public class GSSByMonth_PageObject {
 			varianceMonth = Double
 					.parseDouble(propertyValues.get(propertyValues.size() - 1).getText().replaceAll(",", ""));
 
-			System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + " size " + sampleSizeMonth
+			System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + propertyNameMedalia+ " size " + sampleSizeMonth
 					+ " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
 
 			for (int i = 0; i < valuesMonth.length; i++) {

@@ -1,6 +1,6 @@
-@myP2_Regression
+@myP2_Regression @TrendOrderwidget
 
-Feature: Trend Dashboard Order Widgets
+Feature: Trend Dashboard Order Widgets Functionality Validation
 
 Background: Navigate to trend dashboard order widgets
   	Given I am login to the myp2 site

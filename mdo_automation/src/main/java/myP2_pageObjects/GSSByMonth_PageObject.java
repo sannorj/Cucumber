@@ -77,9 +77,13 @@ public class GSSByMonth_PageObject {
 	@FindBy(xpath = "//tbody//tr[@data-el='00000000-0000-0000-0000-000000028d7f']//td")
 	List<WebElement> sampleValues;
 
+	@FindBy(xpath = "//tbody//tr//td//span")
+	List<WebElement> propertyValues1;
+
 	@FindBy(xpath = "//tbody//tr[1]//td")
 	List<WebElement> propertyValues;
 
+	/**/
 	public void setPriorityZero() throws InterruptedException {
 
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
@@ -164,14 +168,10 @@ public class GSSByMonth_PageObject {
 			sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
 
 			txtSearch.sendKeys(searchText);
-			
+
 			Thread.sleep(5000);
-			btnGo.click();
-			listOfPriorityDropdown.get(0).click();
-			lstDropDownValues.get(0).click();
-			Thread.sleep(5000);
-			
-			propertyNameMedalia = propertyValues.get(0).getText();
+
+			propertyNameMedalia = propertyValues1.get(0).getText();
 			benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
 			varianceMedallia = Double.parseDouble(propertyValues.get(15).getText().replaceAll(",", ""));
 
@@ -210,9 +210,7 @@ public class GSSByMonth_PageObject {
 
 		propertyNameMonth = propertyValues.get(1).getText();
 
-		String a= "Overall Score";
-		
-		if (a.equalsIgnoreCase(propertyNameMonth)) {
+		if (propertyNameMedalia.equalsIgnoreCase(propertyNameMonth)) {
 			sampleSizeMonth = Double.parseDouble(propertyValues.get(2).getText().replaceAll(",", ""));
 			totalMonth = Double
 					.parseDouble(propertyValues.get(propertyValues.size() - 3).getText().replaceAll(",", ""));
@@ -221,8 +219,8 @@ public class GSSByMonth_PageObject {
 			varianceMonth = Double
 					.parseDouble(propertyValues.get(propertyValues.size() - 1).getText().replaceAll(",", ""));
 
-			System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + propertyNameMedalia+ " size " + sampleSizeMonth
-					+ " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
+			System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + propertyNameMedalia + " size "
+					+ sampleSizeMonth + " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
 
 			for (int i = 0; i < valuesMonth.length; i++) {
 

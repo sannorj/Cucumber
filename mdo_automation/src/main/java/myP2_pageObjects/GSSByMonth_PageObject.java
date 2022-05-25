@@ -13,6 +13,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ElementUtils;
+
 public class GSSByMonth_PageObject {
 	private WebDriver driver;
 	double sampleSizeMedallia, benchMarkMedallia, varianceMedallia, sampleSizeMonth, totalMonth, varianceMonth,
@@ -29,6 +31,9 @@ public class GSSByMonth_PageObject {
 
 	}
 
+	@FindBy(xpath = "//th[text()='Property']")
+	WebElement lblProperty;
+	
 	@FindBy(xpath = "//th[@index=0]")
 	WebElement tableProperty;
 
@@ -47,7 +52,7 @@ public class GSSByMonth_PageObject {
 	@FindBy(xpath = "//h1[text()='GSS By Month']")
 	WebElement gssMonthPage;
 
-	@FindBy(xpath = "//input[@name='date']") //// div[@data-el='inputDate']
+	@FindBy(xpath = "//input[@name='date']") 
 	WebElement txtDate;
 
 	@FindBy(xpath = "//div[@data-el='inputDate']")
@@ -73,17 +78,6 @@ public class GSSByMonth_PageObject {
 
 	@FindBy(xpath = "//tbody//tr[1]//td")
 	List<WebElement> propertyValues;
-	
-	
-	
-	
-	
-
-////tbody//tr[2]//td[]
-	// tr[@data-el='2']//td[@index='4']
-	// tr[@data-el='0']
-
-	// @FindBy(xpath = "//tr[@data-el='2']//td[@index='4']")
 
 	public void setPriorityZero() throws InterruptedException {
 		WebElement property = new WebDriverWait(driver, Duration.ofSeconds(1))
@@ -153,17 +147,10 @@ public class GSSByMonth_PageObject {
 
 			btn.click();
 
-			WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
+			ElementUtils.waitForElementToDisplay(gssMedalliaPage, 100);
 
-			if (gssMedalliaPageCL.isDisplayed()) {
-				// if (grpName.equals(hotelId.getText().toString())) {
-
-				btnGo.click();
-				Thread.sleep(1500);
-
-				// }
-			}
+			btnGo.click();
+			ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
 		}
 
@@ -178,7 +165,6 @@ public class GSSByMonth_PageObject {
 
 				System.out.println("Done");
 				sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
-				
 
 				txtSearch.sendKeys(searchText);
 				Thread.sleep(2000);
@@ -203,7 +189,7 @@ public class GSSByMonth_PageObject {
 
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 		}
 	}
@@ -238,7 +224,6 @@ public class GSSByMonth_PageObject {
 				varianceMonth = Double
 						.parseDouble(propertyValues.get(propertyValues.size() - 1).getText().replaceAll(",", ""));
 
-				
 				System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + " size " + sampleSizeMonth
 						+ " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
 
@@ -258,22 +243,19 @@ public class GSSByMonth_PageObject {
 	}
 
 	public boolean compareValues() {
-		
-System.out.println(benchMarkMedallia+","+benchMarkMonth+","+varianceMedallia+","+varianceMonth);
-		if (sampleSizeMedallia == sampleSizeMonth && benchMarkMedallia == benchMarkMonth && varianceMedallia == varianceMonth) {
-			for(int i=0; i<valuesMonth.length; i++)
-			{
-				if(valuesMonth[i] == valuesMedallia[i])
-				{
+
+		System.out.println(benchMarkMedallia + "," + benchMarkMonth + "," + varianceMedallia + "," + varianceMonth);
+		if (sampleSizeMedallia == sampleSizeMonth && benchMarkMedallia == benchMarkMonth
+				&& varianceMedallia == varianceMonth) {
+			for (int i = 0; i < valuesMonth.length; i++) {
+				if (valuesMonth[i] == valuesMedallia[i]) {
 					result = true;
-				}
-				else
-				{
+				} else {
 					result = false;
 					break;
 				}
 			}
-			
+
 		} else {
 			result = false;
 		}

@@ -1,5 +1,5 @@
 @myP2_Regression @jenkin1
-Feature: Gss By Month Functionality
+Feature: Gss By Month - Set Priority Feature
  
   Scenario:  Verify GSS Medallia
     Given I am login to the myp2 site

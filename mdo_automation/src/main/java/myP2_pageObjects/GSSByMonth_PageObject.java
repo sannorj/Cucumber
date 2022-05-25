@@ -171,7 +171,7 @@ public class GSSByMonth_PageObject {
 
 			Thread.sleep(5000);
 
-			propertyNameMedalia = propertyValues1.get(0).getText();
+			propertyNameMedalia = propertyValues.get(0).getText();
 			benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
 			varianceMedallia = Double.parseDouble(propertyValues.get(15).getText().replaceAll(",", ""));
 

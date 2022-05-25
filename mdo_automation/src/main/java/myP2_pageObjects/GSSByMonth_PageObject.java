@@ -210,7 +210,7 @@ public class GSSByMonth_PageObject {
 
 		propertyNameMonth = propertyValues.get(1).getText();
 
-		if (propertyNameMedalia.equalsIgnoreCase(propertyNameMonth)) {
+		if (propertyNameMonth.equalsIgnoreCase(propertyNameMedalia)) {
 			sampleSizeMonth = Double.parseDouble(propertyValues.get(2).getText().replaceAll(",", ""));
 			totalMonth = Double
 					.parseDouble(propertyValues.get(propertyValues.size() - 3).getText().replaceAll(",", ""));

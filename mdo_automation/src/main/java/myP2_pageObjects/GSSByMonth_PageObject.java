@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,27 +81,26 @@ public class GSSByMonth_PageObject {
 	List<WebElement> propertyValues;
 
 	public void setPriorityZero() throws InterruptedException {
-		WebElement property = new WebDriverWait(driver, Duration.ofSeconds(1))
-				.until(ExpectedConditions.visibilityOf(tableProperty));
 
-		if (property.isDisplayed()) {
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
-			for (int i = 0; i < listOfPriorityDropdown.size(); i++) {
-				if (listOfPriorityDropdown.get(i).getText().equals("1")) {
-					listOfPriorityDropdown.get(i).click();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("window.scrollBy(0,350)", "");
+		
+		for (int i = 0; i < listOfPriorityDropdown.size(); i++) {
+			if (listOfPriorityDropdown.get(i).getText().equals("1")) {
+				listOfPriorityDropdown.get(i).click();
 
-					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(1))
-							.until(ExpectedConditions.visibilityOf((WebElement) dropDownValues));
+				WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(1))
+						.until(ExpectedConditions.visibilityOf((WebElement) dropDownValues));
 
-					DrpValue.isDisplayed();
+				DrpValue.isDisplayed();
 
-					lstDropDownValues.get(0).click();
+				lstDropDownValues.get(0).click();
 
-					Thread.sleep(1500);
+				Thread.sleep(1500);
 
-				}
 			}
-
 		}
 
 	}
@@ -166,7 +166,7 @@ public class GSSByMonth_PageObject {
 				sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
 
 				txtSearch.sendKeys(searchText);
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 
 				propertyNameMedalia = propertyValues.get(0).getText();
 				benchMarkMedallia = Double.parseDouble(propertyValues.get(14).getText().replaceAll(",", ""));
@@ -179,6 +179,7 @@ public class GSSByMonth_PageObject {
 				Thread.sleep(2000);
 
 				listOfPriorityDropdown.get(0).click();
+				Thread.sleep(2000);
 				lstDropDownValues.get(1).click();
 				Thread.sleep(3000);
 

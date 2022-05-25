@@ -33,7 +33,7 @@ public class GSSByMonth_PageObject {
 
 	@FindBy(xpath = "//th[text()='Property']")
 	WebElement lblProperty;
-	
+
 	@FindBy(xpath = "//th[@index=0]")
 	WebElement tableProperty;
 
@@ -52,7 +52,7 @@ public class GSSByMonth_PageObject {
 	@FindBy(xpath = "//h1[text()='GSS By Month']")
 	WebElement gssMonthPage;
 
-	@FindBy(xpath = "//input[@name='date']") 
+	@FindBy(xpath = "//input[@name='date']")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//div[@data-el='inputDate']")
@@ -163,7 +163,6 @@ public class GSSByMonth_PageObject {
 					.until(ExpectedConditions.visibilityOf(tableProperty));
 			if (propertyTable.isDisplayed()) {
 
-				System.out.println("Done");
 				sampleSizeMedallia = Double.parseDouble(sampleValues.get(13).getText().replaceAll(",", ""));
 
 				txtSearch.sendKeys(searchText);
@@ -177,11 +176,7 @@ public class GSSByMonth_PageObject {
 
 					valuesMedallia[i] = Double.parseDouble(propertyValues.get(i + 1).getText());
 				}
-
-				for (int i = 0; i < valuesMedallia.length; i++) {
-
-					System.out.println(valuesMedallia[i] + ",");
-				}
+				Thread.sleep(2000);
 
 				listOfPriorityDropdown.get(0).click();
 				lstDropDownValues.get(1).click();
@@ -189,7 +184,7 @@ public class GSSByMonth_PageObject {
 
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 	}
@@ -206,36 +201,27 @@ public class GSSByMonth_PageObject {
 
 		btnGo.click();
 
-		Thread.sleep(2000);
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(tableProperty));
-		if (homePage.isDisplayed()) {
-			valuesMonth = new double[propertyValues.size() - 6];
+		valuesMonth = new double[propertyValues.size() - 6];
 
-			propertyNameMonth = propertyValues.get(1).getText();
+		propertyNameMonth = propertyValues.get(1).getText();
 
-			if (propertyNameMedalia.equalsIgnoreCase(propertyNameMonth)) {
-				sampleSizeMonth = Double.parseDouble(propertyValues.get(2).getText().replaceAll(",", ""));
-				totalMonth = Double
-						.parseDouble(propertyValues.get(propertyValues.size() - 3).getText().replaceAll(",", ""));
-				benchMarkMonth = Double
-						.parseDouble(propertyValues.get(propertyValues.size() - 2).getText().replaceAll(",", ""));
-				varianceMonth = Double
-						.parseDouble(propertyValues.get(propertyValues.size() - 1).getText().replaceAll(",", ""));
+		if (propertyNameMedalia.equalsIgnoreCase(propertyNameMonth)) {
+			sampleSizeMonth = Double.parseDouble(propertyValues.get(2).getText().replaceAll(",", ""));
+			totalMonth = Double
+					.parseDouble(propertyValues.get(propertyValues.size() - 3).getText().replaceAll(",", ""));
+			benchMarkMonth = Double
+					.parseDouble(propertyValues.get(propertyValues.size() - 2).getText().replaceAll(",", ""));
+			varianceMonth = Double
+					.parseDouble(propertyValues.get(propertyValues.size() - 1).getText().replaceAll(",", ""));
 
-				System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + " size " + sampleSizeMonth
-						+ " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
+			System.out.println("M " + valuesMonth.length + "," + propertyNameMonth + " size " + sampleSizeMonth
+					+ " total " + totalMonth + " bench " + benchMarkMonth + " vari " + varianceMonth);
 
-				for (int i = 0; i < valuesMonth.length; i++) {
+			for (int i = 0; i < valuesMonth.length; i++) {
 
-					valuesMonth[i] = Double.parseDouble(propertyValues.get(i + 3).getText());
-				}
-
-				for (int i = 0; i < valuesMonth.length; i++) {
-
-					System.out.println("HuHuuuu" + valuesMonth[i] + ",");
-				}
+				valuesMonth[i] = Double.parseDouble(propertyValues.get(i + 3).getText());
 			}
 
 		}
@@ -244,7 +230,6 @@ public class GSSByMonth_PageObject {
 
 	public boolean compareValues() {
 
-		System.out.println(benchMarkMedallia + "," + benchMarkMonth + "," + varianceMedallia + "," + varianceMonth);
 		if (sampleSizeMedallia == sampleSizeMonth && benchMarkMedallia == benchMarkMonth
 				&& varianceMedallia == varianceMonth) {
 			for (int i = 0; i < valuesMonth.length; i++) {

@@ -138,7 +138,7 @@ public class IJ_Summary_PageObject {
 		/* Select the appropriate Property value from the drop-down menu. */
 		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpPeriod));
 		drpPeriodEle.click();
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		Thread.sleep(1500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_Period"))) {
 				listDrpValueSize.get(i).click();

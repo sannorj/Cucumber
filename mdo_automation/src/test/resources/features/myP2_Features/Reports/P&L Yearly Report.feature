@@ -1,4 +1,4 @@
-@myP2_Regression @PnlSmoke2
+@myP2_Regression @PnlSmoke5
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 @kethees
 	Scenario: Navigate to P&L report Func

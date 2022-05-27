@@ -166,7 +166,7 @@ private ConstantsReader configReader = new ConstantsReader();
 		
 	public boolean verifyStaticSection() throws InterruptedException {
 		
-			Thread.sleep(7000);
+			Thread.sleep(12000);
 			/* capture/go though the 5 static section */
 			for (int x = 0; x < 5; x++) {
 				/* split and ready the data from property file */

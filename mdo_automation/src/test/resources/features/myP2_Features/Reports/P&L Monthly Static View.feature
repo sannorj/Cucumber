@@ -1,4 +1,4 @@
-@myP2_Regression @PnlSmoke2
+@myP2_Regression @PnlSmoke7
 Feature:  P&L Monthly Report - View Feature Validation and Static Calculation
 
 Background: Navigate to P&L Monthly report

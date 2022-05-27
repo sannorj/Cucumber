@@ -95,6 +95,9 @@ public class PnLYearly_PageObject {
 
 	@FindBy(xpath = "//tr[@data-el='Total Operating Revenue']//td")
 	List<WebElement> lstTotalOperatingRevenue;
+	
+	@FindBy(xpath = "//div[text()='Rooms available']")
+	WebElement lblRoomAva;
 
 	public void expandPnLStatement() {
 
@@ -175,13 +178,11 @@ public class PnLYearly_PageObject {
 
 		btnGo.click();
 
-		/* mandatory pause */
-		Thread.sleep(10000);
-		//btnZeroValue.click();
-
-	///	ElementUtils.waitForElementToDisplay(btnZeroValue, 100);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
-	//	WebElement btnSwitch = driver.findElement(By.xpath("//span[@data-el='switchDisableNullRecords']"));
+		Thread.sleep(3000);
+	
+
 		
 		
 

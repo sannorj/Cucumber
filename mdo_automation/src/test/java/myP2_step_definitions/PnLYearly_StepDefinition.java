@@ -34,7 +34,7 @@ public class PnLYearly_StepDefinition {
 	}
 
 	@And("I am calulating the values")
-	public void I_am_calulating_the_values() {
+	public void I_am_calulating_the_values() throws InterruptedException {
 		pnlYearly.assignValues();
 	}
 

@@ -190,7 +190,7 @@ public class PnLYearly_PageObject {
 
 	public void assignValues() throws InterruptedException {
 
-		Thread.sleep(2500);
+		Thread.sleep(7500);
 		
 		roomAvailable = new double[lstRoomAvailable.size() - 2];
 		roomSold = new double[lstRoomSold.size() - 2];

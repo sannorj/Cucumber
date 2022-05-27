@@ -1,4 +1,4 @@
-@myP2_Regression 
+@myP2_Regression @IJSmoke
 Feature: Income Journal Summary  - Add New Row Feature
 
 	Background: Navigate to Income Journal Summary

@@ -3,6 +3,7 @@ package myP2_pageObjects;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.ElementUtils;
 
 public class PnLYearly_PageObject {
 
@@ -66,7 +69,7 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnGo;
 
-	@FindBy(xpath = "//input[@name='nullRecords']")
+	@FindBy(xpath = "//label[@data-el='labelswitchDisableNullRecords']")
 	WebElement btnZeroValue;
 
 	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[1]//td")
@@ -173,8 +176,14 @@ public class PnLYearly_PageObject {
 		btnGo.click();
 
 		/* mandatory pause */
-		Thread.sleep(2500);
+		Thread.sleep(10000);
+		//btnZeroValue.click();
+
+	///	ElementUtils.waitForElementToDisplay(btnZeroValue, 100);
 		btnZeroValue.click();
+	//	WebElement btnSwitch = driver.findElement(By.xpath("//span[@data-el='switchDisableNullRecords']"));
+		
+		
 
 	}
 

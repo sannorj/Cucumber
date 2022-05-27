@@ -178,7 +178,7 @@ public class PnLYearly_PageObject {
 
 		btnGo.click();
 
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
 		btnZeroValue.click();
 		Thread.sleep(3000);
 	

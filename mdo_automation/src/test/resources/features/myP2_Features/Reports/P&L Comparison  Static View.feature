@@ -1,4 +1,4 @@
-@myP2_Regression @PnLMSmoke1
+@myP2_Regression @PnlSmoke2
 Feature: P&L Property Comparison - View Feature Validation and Static Calculation
 
 	Background: Navigate to P&L Monthly report

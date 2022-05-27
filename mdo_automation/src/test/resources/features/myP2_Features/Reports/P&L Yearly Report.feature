@@ -1,5 +1,5 @@
-@myP2_Regression @jenkin1
-Feature: P&L Yearly Report
+@myP2_Regression @PnlSmoke2
+Feature: P&L Yearly - View Feature Validation and Static Calculation
 @kethees
 	Scenario: Navigate to P&L report Func
     Given I am login to the myp2 site

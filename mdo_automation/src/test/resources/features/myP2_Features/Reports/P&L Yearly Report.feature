@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @jenkin1
 Feature: P&L Yearly Report
 @kethees
 	Scenario: Navigate to P&L report Func

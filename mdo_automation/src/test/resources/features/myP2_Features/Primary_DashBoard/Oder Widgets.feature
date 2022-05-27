@@ -1,4 +1,4 @@
-@myP2_Regression @JenkinTest
+@myP2_Regression
 Feature: Primary Dashboard - Re arrange the widgets and verify
 
 Scenario: Verify whether Ordered Widgets are in the correct order

@@ -16,19 +16,19 @@ public class Dashboard_AddColumn_StepDefinition {
 		assertTrue(dashboardPo.navigateToAddColumn());
 	}
 
-	@And("I pass the Name {string} , KPI {string}")
-	public void passing_name_and_kpi(String name, String kpi) throws InterruptedException {
-		dashboardPo.setupNameAndKpi(name, kpi);
+	@And("I pass the Name and KPI")
+	public void passing_name_and_kpi() throws InterruptedException {
+		dashboardPo.setupNameAndKpi();
 	}
 
-	@And("I pass the AmountType {string} , Period {string}")
-	public void passing_AmountType_and_Period(String amount, String period) throws InterruptedException {
-		dashboardPo.setupAmountAndPeriod(amount, period);
+	@And("I pass the AmountType and Period")
+	public void passing_AmountType_and_Period() throws InterruptedException {
+		dashboardPo.setupAmountAndPeriod();
 	}
 	
-	@And("I setup the decimal value {string} and PerfomanceIndicator {string}")
-	public void passing_Decimal_and_PerfomanceIndicator(String decimal, String Pi) throws InterruptedException {
-		dashboardPo.setupDecimalAndPerfomance(decimal, Pi);
+	@And("I setup the decimal value and PerfomanceIndicator")
+	public void passing_Decimal_and_PerfomanceIndicator() throws InterruptedException {
+		dashboardPo.setupDecimalAndPerfomance();
 	}
 	
 	@Then("I Verify the newly added column")
@@ -36,9 +36,9 @@ public class Dashboard_AddColumn_StepDefinition {
 		assertTrue(dashboardPo.verifySuccessMessage());
 	}
 	
-	@And("I am navigate to Delete column page {string}")
-	public void I_am_navigate_to_Delete_column_page(String columnName) throws InterruptedException {
-		assertTrue(dashboardPo.navigateToDeleteColumn(columnName));
+	@And("I am navigate to Delete column page")
+	public void I_am_navigate_to_Delete_column_page() throws InterruptedException {
+		assertTrue(dashboardPo.navigateToDeleteColumn());
 	}
 	
 	@And("I click the delete button and verify whether the column is deleted")

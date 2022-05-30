@@ -15,10 +15,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.github.dockerjava.api.model.Config;
 
 import utils.ConfigReader;
+import utils.ConstantsReader;
 
 public class Dashboard_AddColumn_PageObjective {
 	private WebDriver driver;
 	ConfigReader c = new ConfigReader();
+	private ConstantsReader configReader = new ConstantsReader();
 
 	public Dashboard_AddColumn_PageObjective(WebDriver driver) {
 		this.driver = driver;
@@ -104,16 +106,16 @@ public class Dashboard_AddColumn_PageObjective {
 		return lblAdd.isDisplayed();
 	}
 
-	public void setupNameAndKpi(String name, String kpi) throws InterruptedException {
+	public void setupNameAndKpi() throws InterruptedException {
 
 		txtName.sendKeys(Keys.CONTROL + "a");
 		txtName.sendKeys(Keys.DELETE);
-		txtName.sendKeys(name);
+		txtName.sendKeys(configReader.getProp("NameAddColumn"));
 
 		txtKpiId.click();
 
 		for (int i = 0; i < lstKpi.size(); i++) {
-			if (lstKpi.get(i).getText().equalsIgnoreCase(kpi)) {
+			if (lstKpi.get(i).getText().equalsIgnoreCase(configReader.getProp("KPIAddColumn"))) {
 				lstKpi.get(i).click();
 
 			}
@@ -121,12 +123,12 @@ public class Dashboard_AddColumn_PageObjective {
 
 	}
 
-	public void setupAmountAndPeriod(String amount, String period) throws InterruptedException {
+	public void setupAmountAndPeriod() throws InterruptedException {
 
 		btnAmount.click();
 
 		for (int i = 0; i < lstAmount.size(); i++) {
-			if (lstAmount.get(i).getText().equalsIgnoreCase(amount)) {
+			if (lstAmount.get(i).getText().equalsIgnoreCase(configReader.getProp("AmountTypeAddColumn")))  {
 				lstAmount.get(i).click();
 
 			}
@@ -136,21 +138,21 @@ public class Dashboard_AddColumn_PageObjective {
 		// lstPeriod.get(2).click();
 
 		for (int i = 1; i < lstPeriod.size(); i++) {
-			if (lstPeriod.get(i).getText().equalsIgnoreCase(period)) {
+			if (lstPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("PeriodAddColumn"))) {
 				lstPeriod.get(i).click();
 
 			}
 		}
 	}
 
-	public void setupDecimalAndPerfomance(String decimal, String pi) throws InterruptedException {
+	public void setupDecimalAndPerfomance() throws InterruptedException {
 
 		toggleDecimalMaster.click();
 
 		btnDecimal.click();
 
 		for (int i = 0; i < lstDecimal.size(); i++) {
-			if (lstDecimal.get(i).getText().equalsIgnoreCase(decimal)) {
+			if (lstDecimal.get(i).getText().equalsIgnoreCase(configReader.getProp("decimalvalueAddColumn"))) {
 				lstDecimal.get(i).click();
 
 			}
@@ -159,7 +161,7 @@ public class Dashboard_AddColumn_PageObjective {
 		btnPerfomanceIndicator.click();
 
 		for (int i = 0; i < lstPerfomanceIndicator.size(); i++) {
-			if (lstPerfomanceIndicator.get(i).getText().equalsIgnoreCase(pi)) {
+			if (lstPerfomanceIndicator.get(i).getText().equalsIgnoreCase(configReader.getProp("PerfomanceIndicatorAddColumn"))) {
 				lstPerfomanceIndicator.get(i).click();
 
 			}
@@ -183,7 +185,7 @@ public class Dashboard_AddColumn_PageObjective {
 
 	}
 
-	public boolean navigateToDeleteColumn(String columnName) throws InterruptedException {
+	public boolean navigateToDeleteColumn() throws InterruptedException {
 
 		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(btnEditColumn));
@@ -192,7 +194,7 @@ public class Dashboard_AddColumn_PageObjective {
 
 		Thread.sleep(10000);
 
-		WebElement tst = driver.findElement(By.xpath("//button[@data-el='button-delete-" + columnName + "']"));
+		WebElement tst = driver.findElement(By.xpath("//button[@data-el='button-delete-" + configReader.getProp("NameAddColumn") + "']"));
 		WebElement btnDelete = new WebDriverWait(driver, Duration.ofSeconds(15))
 				.until(ExpectedConditions.visibilityOf(tst));
 

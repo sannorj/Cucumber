@@ -1,5 +1,5 @@
 @myP2_Regression
-Feature: Dashboard Toggle Widgets
+Feature: Primary Dashboard - Toggle Widgets
 
 	Scenario: Verify whether turned off widgets are not exist in the dashboard 
     Given I am login to the myp2 site

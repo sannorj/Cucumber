@@ -11,11 +11,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ConstantsReader;
+
 public class Dashboard_PrimaryDecimal_PageObjective {
 
 	private WebDriver driver;
 	String roomRevenue, roomAvailable;
 	int masterDecimal, primaryDecimal;
+	private ConstantsReader configReader = new ConstantsReader();
+	
 
 	public Dashboard_PrimaryDecimal_PageObjective(WebDriver driver) {
 		this.driver = driver;
@@ -97,7 +101,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//h1[text()='Select Widgets to View']")
 	WebElement togglePage;
 
-	public boolean loadPageWithParameters(String grp, String property, String date) throws InterruptedException {
+	public boolean loadPageWithParameters() throws InterruptedException {
 
 		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(header));
@@ -109,7 +113,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			drpGroup.click();
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
-				if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(grp)) {
+				if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
 					lstDropDowGroup.get(i).click();
 
 				}
@@ -117,7 +121,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			dropDownProperty.click();
 			for (int i = 0; i < lstDropDowProperty.size(); i++) {
-				if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(property)) {
+				if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
 					lstDropDowProperty.get(i).click();
 
 				}
@@ -125,7 +129,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			txtDate.sendKeys(Keys.CONTROL + "a");
 			txtDate.sendKeys(Keys.DELETE);
-			txtDate.sendKeys(date);
+			txtDate.sendKeys(configReader.getProp("Date"));
 
 			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(15))
 					.until(ExpectedConditions.visibilityOf(txtRowField));

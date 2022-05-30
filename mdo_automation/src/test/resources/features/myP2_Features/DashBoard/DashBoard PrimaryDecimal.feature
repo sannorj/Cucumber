@@ -1,10 +1,10 @@
 @myP2_Regression
-Feature: Primary Dashboard 
+Feature: Primary Dashboard - Custom Decimal Places Features
 
-Scenario: Navigate to P&L report Func
+Scenario: Verify whether user can able to set the custom decimal places in primary dashboard
     Given I am login to the myp2 site
     And System navigate to the home page
-    When I select the group "01 West Coast Hotels" , property "Boston Park Plaza" , Date "04/24/2021"
+    When I select the group,property and Date
     And I click the edit column icon "3"
     Then I click the Setting icon on Rooms Available
     And I am assigning decimal values "2"

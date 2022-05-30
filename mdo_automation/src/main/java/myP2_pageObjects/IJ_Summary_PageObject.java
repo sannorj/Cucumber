@@ -190,9 +190,9 @@ public class IJ_Summary_PageObject {
 		txtAdjustment.sendKeys(configReader.getProp("IJ_adjustment"));
 
 		/* Select the appropriate GL code from the drop-down menu. */
-		WebElement drpGlCodeEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGlCode));
+		WebElement drpGlCodeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpGlCode));
 		drpGlCodeEle.click();
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_GLCode"))) {
 				listDrpValueSize.get(i).click();

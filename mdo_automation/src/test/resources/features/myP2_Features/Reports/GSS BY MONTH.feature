@@ -1,4 +1,4 @@
-@myP2_Regression @jenkin1
+@myP2_Regression 
 Feature: Gss By Month - Set Priority Feature
  
   Scenario:  Verify GSS Medallia

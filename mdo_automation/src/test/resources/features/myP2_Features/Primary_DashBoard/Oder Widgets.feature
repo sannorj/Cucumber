@@ -1,5 +1,5 @@
 @myP2_Regression
-Feature: Dashboard Order Widgets
+Feature: Primary Dashboard - Re arrange the widgets and verify
 
 Scenario: Verify whether Ordered Widgets are in the correct order
     Given I am login to the myp2 site

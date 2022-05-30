@@ -3,6 +3,7 @@ package myP2_pageObjects;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.ElementUtils;
 
 public class PnLYearly_PageObject {
 
@@ -66,7 +69,7 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnGo;
 
-	@FindBy(xpath = "//input[@name='nullRecords']")
+	@FindBy(xpath = "//label[@data-el='labelswitchDisableNullRecords']")
 	WebElement btnZeroValue;
 
 	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[1]//td")
@@ -92,6 +95,9 @@ public class PnLYearly_PageObject {
 
 	@FindBy(xpath = "//tr[@data-el='Total Operating Revenue']//td")
 	List<WebElement> lstTotalOperatingRevenue;
+
+	@FindBy(xpath = "//div[text()='Rooms available']")
+	WebElement lblRoomAva;
 
 	public void expandPnLStatement() {
 
@@ -171,14 +177,15 @@ public class PnLYearly_PageObject {
 	public void loadPriorityReport() throws InterruptedException {
 
 		btnGo.click();
-
-		/* mandatory pause */
-		Thread.sleep(2500);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
+		Thread.sleep(5000);
 		btnZeroValue.click();
-
+		Thread.sleep(2500);
 	}
 
-	public void assignValues() {
+	public void assignValues() throws InterruptedException {
+
+		Thread.sleep(7500);
 
 		roomAvailable = new double[lstRoomAvailable.size() - 2];
 		roomSold = new double[lstRoomSold.size() - 2];

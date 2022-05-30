@@ -180,7 +180,7 @@ public class PnLYearly_PageObject {
 
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
 		btnZeroValue.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 	
 
 		

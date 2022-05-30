@@ -8,7 +8,7 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
     Then I am navigate to P&L Yearly page
     And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     When I am Loading the PnLYearly Report with GO button
-    #Then Page should load the defualt static section 
+    Then Page should load the defualt static section 
     And I am calulating the values
 		When ROOMS SOLD divided by ROOMS AVAILABLE Yearly    
     Then Calculated value should be match with OCCUPANCY Yearly

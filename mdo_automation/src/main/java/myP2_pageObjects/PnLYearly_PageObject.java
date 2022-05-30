@@ -95,7 +95,7 @@ public class PnLYearly_PageObject {
 
 	@FindBy(xpath = "//tr[@data-el='Total Operating Revenue']//td")
 	List<WebElement> lstTotalOperatingRevenue;
-	
+
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 
@@ -177,21 +177,16 @@ public class PnLYearly_PageObject {
 	public void loadPriorityReport() throws InterruptedException {
 
 		btnGo.click();
-
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
-		btnZeroValue.click();
 		Thread.sleep(5000);
-	
-
-		
-		
-
+		btnZeroValue.click();
+		Thread.sleep(2500);
 	}
 
 	public void assignValues() throws InterruptedException {
 
 		Thread.sleep(7500);
-		
+
 		roomAvailable = new double[lstRoomAvailable.size() - 2];
 		roomSold = new double[lstRoomSold.size() - 2];
 		occupancy = new double[lstOccupancy.size() - 2];

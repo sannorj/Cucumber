@@ -402,12 +402,13 @@ public class Guest_Ledger_PageObject {
 
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
+		Thread.sleep(3000);
 
 		/* Select the appropriate Group value from the drop-down menu. */
 		WebElement drpFolioEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterFolio));
 		drpFolioEle.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(3000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("Ledger_Folio"))) {
 				listDrpValueSize.get(i).click();

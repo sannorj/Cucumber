@@ -14,7 +14,8 @@ public class Dashboard_PrimaryDecimal_StepDefinition {
 	private Dashboard_PrimaryDecimal_PageObjective dashBoardPo = new Dashboard_PrimaryDecimal_PageObjective(DriverFactory.getDriver());
 
 	@When("I select the group,property and Date")
-	public void I_select_the_group_property_and_Date() throws InterruptedException {
+
+	public void select_the_parameteres() throws InterruptedException {
 		assertTrue(dashBoardPo.loadPageWithParameters());
 	}
 

@@ -126,11 +126,9 @@ public class Dashboard_AddColumn_PageObjective {
 	public void setupAmountAndPeriod() throws InterruptedException {
 
 		btnAmount.click();
-
 		for (int i = 0; i < lstAmount.size(); i++) {
 			if (lstAmount.get(i).getText().equalsIgnoreCase(configReader.getProp("AmountTypeAddColumn"))) {
 				lstAmount.get(i).click();
-
 			}
 		}
 		btnPeriod.click();

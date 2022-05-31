@@ -174,9 +174,9 @@ public class IJ_Summary_PageObject {
 		txtDescription.sendKeys(configReader.getProp("IJ_Description"));
 
 		/* Select the appropriate PMS Type from the drop-down menu. */
-		WebElement drpPMStypeEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpPMStype));
+		WebElement drpPMStypeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpPMStype));
 		drpPMStypeEle.click();
-		Thread.sleep(1500);
+		Thread.sleep(3500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_PMSType"))) {
 				listDrpValueSize.get(i).click();

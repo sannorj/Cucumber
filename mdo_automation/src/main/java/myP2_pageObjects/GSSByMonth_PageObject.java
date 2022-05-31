@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ConstantsReader;
 import utils.ElementUtils;
 
 public class GSSByMonth_PageObject {
@@ -24,6 +25,7 @@ public class GSSByMonth_PageObject {
 	double valuesMonth[];
 	String propertyNameMedalia, propertyNameMonth;
 	boolean result = false;
+	private ConstantsReader configReader = new ConstantsReader();
 
 	public GSSByMonth_PageObject(WebDriver driver) {
 		this.driver = driver;
@@ -82,6 +84,10 @@ public class GSSByMonth_PageObject {
 
 	@FindBy(xpath = "//tbody//tr[1]//td")
 	List<WebElement> propertyValues;
+	
+	@FindBy(xpath = "//tr[@data-el='0']//td[@index='1']")
+	WebElement btnSetPriority;
+	
 
 	/**/
 	public void setPriorityZero() throws InterruptedException {
@@ -146,9 +152,10 @@ public class GSSByMonth_PageObject {
 		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 
+	
 		if (homePage.isDisplayed()) {
-			WebElement btn = driver.findElement(By.xpath("//tr[@data-el='0']//td[@index='1']"));
-
+			WebElement btn = driver.findElement(By.xpath("//tbody//tr[@data-el='0']//td[2]"));
+			ElementUtils.waitForElementToDisplay(btn, 100);
 			btn.click();
 
 			ElementUtils.waitForElementToDisplay(gssMedalliaPage, 100);

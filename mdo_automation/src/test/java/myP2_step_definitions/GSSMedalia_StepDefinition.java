@@ -27,6 +27,11 @@ public class GSSMedalia_StepDefinition {
 		assertTrue(gssMedalliaPo.loadMedalliaReport(string));
 	}
 	
+	@And("I am Loading the Medalliah Report with GO button")
+	public void  I_am_Loading_the_Medalliah_Report_with_GO_Button() {
+		assertTrue(gssMedalliaPo.loadMedalliaReport());
+	}
+	
 	
 	@Then("I am Assinging the 0 as priority for all the priority dropDown")
 	public void I_am_Assinging_the_0_as_priority_for_all_the_priority_dropDown() throws InterruptedException {

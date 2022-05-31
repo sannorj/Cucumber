@@ -15,24 +15,30 @@ public class GSSPriority_StepDefinition {
 	public void I_am_navigate_to_GSS_Priority_page() {
 		assertTrue(gssPriorityPo.navigateToGssPriorityPage());
 	}
-	@And("I select the group {string} , period {string} , quantity {string}")
-	public void I_select_the_group(String grp,String period,String quantity) {
-		gssPriorityPo.passParameteres(grp,period,quantity);
+	@And("I select the group,period, quantity")
+	public void I_select_the_group() {
+		gssPriorityPo.passParameteres();
 	}
 	@Then("I am Loading the Priority Report with GO button")
 	public void  I_am_Loading_the_Priority_Report_with_GO_button() throws InterruptedException {
 		assertTrue(gssPriorityPo.loadPriorityReport());
 	}
-	@And("I am navigate medallia page to set priority {string}")
-	public void I_am_navigate_medallia_page_to_set_priority(String grp) throws InterruptedException
+	@And("I am navigate medallia page to set priority")
+	public void I_am_navigate_medallia_page_to_set_priority() throws InterruptedException
 	{
-		gssPriorityPo.navigateToMedallia(grp);
+		gssPriorityPo.navigateToMedallia();
 	}
-	@Then("I am search for group and assign priotiy 1 {string}")
-	public void I_am_search_for_group_and_assign_priotiy_1(String property) throws InterruptedException
+	@Then("I am search for group and assign priotiy 1")
+	public void I_am_search_for_group_and_assign_priotiy_1() throws InterruptedException
 	{
-		gssPriorityPo.setPriority(property);
+		gssPriorityPo.setPriority();
 	}
+	@Then("I select the group,period, quantity and Property")
+	public void I_select_the_group_period_quantity_and_Property() throws InterruptedException
+	{
+		gssPriorityPo.passParameteresWithProperty();;
+	}
+	
 	@Then("I am Calculating values")
 	public void I_am_Calculating_values() throws InterruptedException
 	{

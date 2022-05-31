@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @medaliaSmoke
 Feature: Verify GSS Priority Functionality
 
   Scenario: Verify GSS Medallia

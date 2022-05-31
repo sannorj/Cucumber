@@ -115,7 +115,7 @@ public class GSSMedallia_PageObject {
 				.until(ExpectedConditions.visibilityOf(reports));
 		reportsEx.click();
 
-		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(gss));
 		guestSatisfaction.click();
 

@@ -148,7 +148,7 @@ public class GSSPriority_PageObjective {
 	public boolean loadPriorityReport() throws InterruptedException {
 
 		btnGo.click();
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		if (reportData.size() > 0) {
 
 			return true;

@@ -14,6 +14,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.ConstantsReader;
+
 //import com.google.j2objc.annotations.Property;
 
 //import utils.ConfigReader;
@@ -22,6 +24,8 @@ public class GSSMedallia_PageObject {
 	private WebDriver driver;
 	ArrayList<String> propertyList = new ArrayList<>();
 	boolean flag;
+	private ConstantsReader configReader = new ConstantsReader();
+
 
 	public GSSMedallia_PageObject(WebDriver driver) {
 		this.driver = driver;
@@ -115,7 +119,7 @@ public class GSSMedallia_PageObject {
 				.until(ExpectedConditions.visibilityOf(reports));
 		reportsEx.click();
 
-		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(gss));
 		guestSatisfaction.click();
 
@@ -132,8 +136,8 @@ public class GSSMedallia_PageObject {
 		return gssMedalliaPageCL.isDisplayed();
 
 	}
-
-	public boolean loadMedalliaReport(String year) {
+	
+	public boolean loadMedalliaReport(String Keyword) {
 		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 
@@ -141,7 +145,28 @@ public class GSSMedallia_PageObject {
 		
 		dropDownMedalliaYear.click();
 		for(int i=0; i<lstDropDownMedalliaYear.size(); i++) {
-			if(lstDropDownMedalliaYear.get(i).getText().equals(year))
+			if(lstDropDownMedalliaYear.get(i).getText().equals(Keyword))
+			{
+				lstDropDownMedalliaYear.get(i).click();
+				btnGo.click();
+			}
+		}
+		
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
+				.until(ExpectedConditions.visibilityOf(tableProperty));
+		return homePage.isDisplayed();
+	}
+	
+
+	public boolean loadMedalliaReport() {
+		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
+
+		gssMedalliaPageCL.isDisplayed();
+		
+		dropDownMedalliaYear.click();
+		for(int i=0; i<lstDropDownMedalliaYear.size(); i++) {
+			if(lstDropDownMedalliaYear.get(i).getText().equals(configReader.getProp("MedalliaYear")))
 			{
 				lstDropDownMedalliaYear.get(i).click();
 				btnGo.click();

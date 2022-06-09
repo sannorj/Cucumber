@@ -9,7 +9,7 @@ Background: Navigate to AR Property and verify functionality
   When I select the property and Date
   Then I am loading ar property report with Go button
   
-Scenario: Verify whether the AR Dashboard chart is visible  
+Scenario: Verify whether the AR Account chart is visible  
 	
 	Given I turn on the Show chart
 	And Verify whether the chart is visible

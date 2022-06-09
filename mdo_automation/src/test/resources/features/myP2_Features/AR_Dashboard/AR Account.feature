@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @ARAccountSmoke
 Feature: AR Account Functionality 
 
 Background: Navigate to AR Account and verify functionality  

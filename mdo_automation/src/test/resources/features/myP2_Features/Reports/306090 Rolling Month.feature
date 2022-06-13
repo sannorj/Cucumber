@@ -1,4 +1,4 @@
-@myP2_Regression @rollSmoke
+@myP2_Regression @myP2_Smoke
 
 Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation 
 

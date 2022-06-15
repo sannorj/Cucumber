@@ -129,8 +129,7 @@ public class Login_PageObject {
 	}
 
 	public boolean navigateHomePage() {
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(header));
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}
 }

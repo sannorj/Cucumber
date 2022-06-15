@@ -1,4 +1,4 @@
-@myP2_Regression @myP2_Smoke @calsomke
+@myP2_Regression @myP2_Smoke 
 
 Feature: 306090 Calendar Month Report - Header, Parameters and Search Validation 
 

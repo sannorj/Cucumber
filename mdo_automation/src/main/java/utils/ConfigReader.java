@@ -34,5 +34,17 @@ public class ConfigReader {
 		}
 		return result;
 	}
+	
+	String myp1Data =null;
+	public String getMYP1Prop(String value) {
+		try {
+			prop = new Properties();
+			prop.load(new FileInputStream("./src/test/resources/configurations/myp1_env.properties"));
+			myp1Data = prop.getProperty(value);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return myp1Data;
+	}
 
 }

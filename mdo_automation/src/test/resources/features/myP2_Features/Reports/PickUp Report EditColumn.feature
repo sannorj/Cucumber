@@ -13,13 +13,13 @@ Scenario: Verify whether turned off column are not visible in the table
 		Given I am loading the Pickup report
 		Then I am navigate to edit column page
     And turning on all the columns
-    And I am validating with the report column
+    And I am validating with the report columns
     
 Scenario: Verify whether turned on column are visible in the table
 
 		Given I am loading the Pickup report
 		Then I am navigate to edit column page
     And turning off some of the columns
-    And I am validating with the report column    
+    And I am validating with the report columns  
      
     

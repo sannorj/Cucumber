@@ -25,7 +25,7 @@ public class PickUpReport_EdiColumn_StepDefinition {
 		pickupReport.switchOnAllTheColumns();
 	}
 	
-	@And("I am validating with the report column")
+	@And("I am validating with the report columns")
 	public void I_am_validating_with_the_report_column() throws InterruptedException {
 
 	}

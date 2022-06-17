@@ -179,11 +179,7 @@ public class PickUpReport_EdiColumn_PageObject {
 		btnApply.click();
 		Thread.sleep(3000);
 		
-		for (int i = 0; i < offColumnName.size(); i++) {
-
-			System.out.println("BB" + offColumnName.get(i));
-
-		}
+		
 
 	}
 

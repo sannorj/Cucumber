@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
 import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
 import myP2_pageObjects.PickUpReport_EdiColumn_PageObject;
 
 public class PickUpReport_EdiColumn_StepDefinition {

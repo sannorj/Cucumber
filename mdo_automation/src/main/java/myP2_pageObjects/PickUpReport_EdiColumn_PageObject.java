@@ -117,7 +117,7 @@ public class PickUpReport_EdiColumn_PageObject {
 	public void switchOnAllTheColumns() throws InterruptedException {
 		for (int i = 0; i < listColumn.size(); i++) {
 
-			columnName.add(listColumn.get(i).getText());
+			columnName.add(listColumn.get(i).getText()); //
 
 		}
 

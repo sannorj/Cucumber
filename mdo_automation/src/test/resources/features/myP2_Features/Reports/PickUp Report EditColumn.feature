@@ -1,4 +1,4 @@
-@myP2_Regression
+@myP2_Regression @myp2_smoke
 
 Feature: Pickup report - Edit Column Validation 
 

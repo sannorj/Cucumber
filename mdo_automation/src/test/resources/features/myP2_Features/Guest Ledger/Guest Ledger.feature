@@ -1,10 +1,11 @@
-@myP2_Regression @myP2_Smoke 
+@myP2_Regression @myP2_Smoke  @GLSmoke
 Feature: Guest Ledger - Search & Filter Validation
 
 	Background: Navigate to Guest Ledger
     Given I am login to the myp2 site
     And System navigate to the home page
     And go to the Guest Ledger
+    And Select the organization as "Marriott"
     And Select the Group
     
    Scenario: Verify whether the user can filter the records.

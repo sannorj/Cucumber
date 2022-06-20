@@ -177,8 +177,8 @@ public class Guest_Ledger_PageObject {
 
 	}
 	
-	public void selectParametersFunc() throws InterruptedException {
-
+	public void selectOrgFunc(String org) throws InterruptedException {
+		
 		int Org = driver.findElements(By.xpath("(//div/input[contains(@class, 'MuiInputBase-inputAdornedEnd')])[1]")).size();
 		if (Org > 0) {
 			/* Select the appropriate Group value from the drop-down menu. */
@@ -187,11 +187,37 @@ public class Guest_Ledger_PageObject {
 
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Ledger_Org"))) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(org)) {
 					listDrpValueSize.get(i).click();
 				}
 			}
+		
+		
+		int groupDrp = driver.findElements(By.xpath("//label[contains(text(),'Group')]")).size();
+		int PropertyDrp = driver.findElements(By.xpath("//label[contains(text(),'Property')]")).size();
+		int DateTxt = driver.findElements(By.xpath("//label[contains(text(),'Date')]")).size(); 
+		int SearchTxt=driver.findElements(By.xpath("//label[contains(text(),'Search')]")).size(); 
+		
+		
+		if (groupDrp > 0) {
+			WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
+			ElementUtils.waitForElementToDisplay(lblGrp, 100);
+		}else if (PropertyDrp>0) {
+			WebElement lblPrp = driver.findElement(By.xpath("//label[contains(text(),'Property')]"));
+			ElementUtils.waitForElementToDisplay(lblPrp, 100);
+		} else if (DateTxt>0) {
+			WebElement lblDate = driver.findElement(By.xpath("//label[contains(text(),'Date')]"));
+			ElementUtils.waitForElementToDisplay(lblDate, 100);
+		} else if (SearchTxt>0) {
+			WebElement lblSearch = driver.findElement(By.xpath("//label[contains(text(),'Search')]"));
+			ElementUtils.waitForElementToDisplay(lblSearch, 100);
+		}else {
+			Thread.sleep(3500);
 		}
+	}
+	}
+	
+	public void selectParametersFunc() throws InterruptedException {
 
 		ElementUtils.waitForElementToDisplay(lblMARSHA, 100);
 

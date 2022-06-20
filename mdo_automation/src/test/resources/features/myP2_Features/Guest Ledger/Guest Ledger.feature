@@ -1,4 +1,4 @@
-@myP2_Regression @myP2_Smoke
+@myP2_Regression @myP2_Smoke 
 Feature: Guest Ledger - Search & Filter Validation
 
 	Background: Navigate to Guest Ledger

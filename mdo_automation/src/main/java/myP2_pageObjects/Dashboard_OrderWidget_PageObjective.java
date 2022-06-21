@@ -78,7 +78,7 @@ public class Dashboard_OrderWidget_PageObjective {
 
 		Save.click();
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		dashBoardWidgets = new String[listDasBoardHeaders.size()];
 

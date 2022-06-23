@@ -17,6 +17,12 @@ public class GuestLedger_StepDefinition {
 	public void go_to_the_guest_ledger() throws InterruptedException {
 	assertTrue(GuestLedger.navigateGuestLedgerFunc());
 	}
+	
+	@Given("Select the organization as {string}")
+	public void selest_the_organization_as(String org) throws InterruptedException {
+		GuestLedger.selectOrgFunc(org);
+	}
+
 
 	@Given("Select the Group")
 	public void select_the_group() throws InterruptedException {

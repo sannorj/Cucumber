@@ -63,21 +63,21 @@ public class GLHierarchy_StepDefinition {
 	public void Verify_the_top_child_modal_is_not_visible_in_the_report() throws InterruptedException {
 		assertTrue(GLHpo.validateTurnedOffTopModalinPnLMonth());
 	}
-	
+
 //=============================================================Parent=============================================================================	
-		@Given("I am expanding the parent value of Total Room revenue")
-		public void i_am_expanding_the_parent_value_of_total_room_revenue() throws InterruptedException {
-			assertTrue(GLHpo.captureParentModal());
-		}
+	@Given("I am expanding the parent value of Total Room revenue")
+	public void i_am_expanding_the_parent_value_of_total_room_revenue() throws InterruptedException {
+		assertTrue(GLHpo.captureParentModal());
+	}
 
-		@Then("Verify the captured parent modal GL hierarchy and turn off the modal")
-		public void Verify_the_captured_parent_modal_GL_hierarchy_and_turn_off_the_modal() throws InterruptedException {
-			assertTrue(GLHpo.turnOffParentCapturedModal());
-		}
+	@Then("Verify the captured parent modal GL hierarchy and turn off the modal")
+	public void Verify_the_captured_parent_modal_GL_hierarchy_and_turn_off_the_modal() throws InterruptedException {
+		assertTrue(GLHpo.turnOffParentCapturedModal());
+	}
 
-		@And("Verify the parent modal is not visible in the report")
-		public void Verify_the_parent_modal_is_not_visible_in_the_report() throws InterruptedException {
-			assertTrue(GLHpo.validateTurnedOffParentModalinPnLMonth());
-		}
+	@And("Verify the parent modal is not visible in the report")
+	public void Verify_the_parent_modal_is_not_visible_in_the_report() throws InterruptedException {
+		assertTrue(GLHpo.validateTurnedOffParentModalinPnLMonth());
+	}
 
 }

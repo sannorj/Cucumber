@@ -1,4 +1,4 @@
-@myP2_Regression 
+@myP2_Regression @glh_pnl
 Feature: GL Hierarchy
 
 Background: Navigate to P&L Monthly report

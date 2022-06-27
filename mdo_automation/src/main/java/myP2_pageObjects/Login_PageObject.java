@@ -134,7 +134,7 @@ public class Login_PageObject {
 
 	public boolean navigateHomePage() throws InterruptedException {
 		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(header));
-		return homePage.isDisplayed();
+	//	WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(header));
+		return lblmyP2.isDisplayed();
 	}
 }

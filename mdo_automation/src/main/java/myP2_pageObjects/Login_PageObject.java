@@ -38,8 +38,8 @@ public class Login_PageObject {
 	@FindBy(xpath = "//div[@data-el='appName']")
 	WebElement header;
 	
-	@FindBy(xpath = "//div[text()='myPerspective 2.0']")
-	WebElement lblmyP2;
+	@FindBy(xpath = "//h1[text()='Primary Dashboard']")
+	WebElement lblPrimary;
 
 	public void launchURLAndLogin() {
 		String environmentJenkin = System.getProperty("environment");
@@ -134,7 +134,8 @@ public class Login_PageObject {
 	}
 
 	public boolean navigateHomePage() throws InterruptedException {
-		Thread.sleep(4500);
+		Thread.sleep(10000);
+		//ElementUtils.waitForElementToDisplay(lblPrimary, 100);
 		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(150)).until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}

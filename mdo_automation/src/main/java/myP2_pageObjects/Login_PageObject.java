@@ -75,6 +75,7 @@ public class Login_PageObject {
 			password.sendKeys(configReader.getProp("uat_password"));
 			passwordReset.isDisplayed();
 			loginButton.click();
+			
 		}
 		/*
 		if(environmentJenkin != null) {
@@ -134,6 +135,7 @@ public class Login_PageObject {
 
 	public boolean navigateHomePage() throws InterruptedException {
 		
+		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
 		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(90)).until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}

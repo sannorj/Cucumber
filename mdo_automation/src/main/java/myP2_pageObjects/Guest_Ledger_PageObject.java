@@ -405,10 +405,10 @@ public class Guest_Ledger_PageObject {
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
 		/* Select the appropriate Group value from the drop-down menu. */
-		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
+		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
 		drpSTEle.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(2500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("Ledger_ST"))) {
 				listDrpValueSize.get(i).click();

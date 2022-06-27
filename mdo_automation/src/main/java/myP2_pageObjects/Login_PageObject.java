@@ -41,7 +41,7 @@ public class Login_PageObject {
 	@FindBy(xpath = "//h1[text()='Primary Dashboard']")
 	WebElement lblPrimary;
 
-	public void launchURLAndLogin() {
+	public void launchURLAndLogin() throws InterruptedException {
 		String environmentJenkin = System.getProperty("environment");
 		String env = configReader.getProp("environment");
 		String myEnv = null;
@@ -52,6 +52,7 @@ public class Login_PageObject {
 		}
 		
 		if (myEnv.toLowerCase().equals("dev")) {
+			Thread.sleep(5000);
 			driver.get(configReader.getProp("dev_myp2URL"));
 
 			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))

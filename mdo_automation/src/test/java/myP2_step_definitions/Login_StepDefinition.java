@@ -12,7 +12,7 @@ public class Login_StepDefinition {
 	private Login_PageObject loginPO = new Login_PageObject(DriverFactory.getDriver());
 	
 	@Given("I am login to the myp2 site")
-	public void i_am_login_to_the_myp2_site() {
+	public void i_am_login_to_the_myp2_site() throws InterruptedException {
 		loginPO.launchURLAndLogin();
 	}
 

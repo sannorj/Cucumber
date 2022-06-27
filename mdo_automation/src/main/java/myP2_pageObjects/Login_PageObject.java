@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConfigReader;
+import utils.ElementUtils;
 
 public class Login_PageObject {
 	private WebDriver driver;
@@ -36,6 +37,9 @@ public class Login_PageObject {
 
 	@FindBy(xpath = "//div[@data-el='appName']")
 	WebElement header;
+	
+	@FindBy(xpath = "//div[text()='myPerspective 2.0']")
+	WebElement lblmyP2;
 
 	public void launchURLAndLogin() {
 		String environmentJenkin = System.getProperty("environment");
@@ -128,7 +132,8 @@ public class Login_PageObject {
 		}*/
 	}
 
-	public boolean navigateHomePage() {
+	public boolean navigateHomePage() throws InterruptedException {
+		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
 		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}

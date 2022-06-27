@@ -14,7 +14,7 @@ public class PnLMonthlyStaticView_StepDefinition {
 	private PnLMonthly_PageObject pnlMonthly = new PnLMonthly_PageObject(DriverFactory.getDriver());
 	
 	@And("go to the P&L Monthly page")
-	public void i_am_navigate_to_p_l_monthly_page() {
+	public void i_am_navigate_to_p_l_monthly_page() throws InterruptedException {
 		assertTrue(pnlMonthly.navigatePnLMonthlyPage());
 	}
 

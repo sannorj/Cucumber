@@ -17,7 +17,7 @@ public class Login_StepDefinition {
 	}
 
 	@And("System navigate to the home page")
-	public void system_navigate_to_the_home_page() {
+	public void system_navigate_to_the_home_page() throws InterruptedException {
 		assertTrue(loginPO.navigateHomePage());
 	}
 }

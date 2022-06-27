@@ -103,10 +103,12 @@ private ConstantsReader configReader = new ConstantsReader();
 	WebElement lblRoomAva;
 	
 	
-	public boolean navigatePnLMonthlyPage() {
+	public boolean navigatePnLMonthlyPage() throws InterruptedException {
 		
 		WebElement pnlMonthEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthly));
 		pnlMonthEle.click();
+		
+		Thread.sleep(3500);
 		
 		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
 		return pnlMothlyPageEle.isDisplayed();
@@ -359,7 +361,7 @@ private ConstantsReader configReader = new ConstantsReader();
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		
-		ExpectedConditions.invisibilityOf(lblLoading);
+		 Thread.sleep(4500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
 				listDrpValueSize.get(i).click();

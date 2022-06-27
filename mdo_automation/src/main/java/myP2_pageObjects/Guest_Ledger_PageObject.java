@@ -159,6 +159,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//button[@title='Refresh']")
 	WebElement btnGo;
 	
+	@FindBy(xpath = "//div[text()='myPerspective 2.0']")
+	WebElement lblmyP2;
+	
+	
 	
 	
 	public boolean navigateGuestLedgerFunc() throws InterruptedException {
@@ -190,30 +194,11 @@ public class Guest_Ledger_PageObject {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(org)) {
 					listDrpValueSize.get(i).click();
 				}
-			}
-		
-		
-		int groupDrp = driver.findElements(By.xpath("//label[contains(text(),'Group')]")).size();
-		int PropertyDrp = driver.findElements(By.xpath("//label[contains(text(),'Property')]")).size();
-		int DateTxt = driver.findElements(By.xpath("//label[contains(text(),'Date')]")).size(); 
-		int SearchTxt=driver.findElements(By.xpath("//label[contains(text(),'Search')]")).size(); 
-		
-		
-		if (groupDrp > 0) {
-			WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
-			ElementUtils.waitForElementToDisplay(lblGrp, 100);
-		}else if (PropertyDrp>0) {
-			WebElement lblPrp = driver.findElement(By.xpath("//label[contains(text(),'Property')]"));
-			ElementUtils.waitForElementToDisplay(lblPrp, 100);
-		} else if (DateTxt>0) {
-			WebElement lblDate = driver.findElement(By.xpath("//label[contains(text(),'Date')]"));
-			ElementUtils.waitForElementToDisplay(lblDate, 100);
-		} else if (SearchTxt>0) {
-			WebElement lblSearch = driver.findElement(By.xpath("//label[contains(text(),'Search')]"));
-			ElementUtils.waitForElementToDisplay(lblSearch, 100);
-		}else {
-			Thread.sleep(3500);
-		}
+			}	
+		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
+		WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
+		ElementUtils.waitForElementToDisplay(lblGrp, 100);
+		Thread.sleep(3500);
 	}
 	}
 	

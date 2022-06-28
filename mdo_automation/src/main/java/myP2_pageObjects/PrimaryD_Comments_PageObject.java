@@ -135,7 +135,8 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 
-		ElementUtils.waitForElementToDisplay(lblGroup, 100);
+		Thread.sleep(5000);
+	//	ElementUtils.waitForElementToDisplay(lblGroup, 100);
 
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));

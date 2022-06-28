@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca  
-@myP2_Regression  @IJS
+@myP2_Regression  
 Feature: Income Journal Summary  - Add New Row Feature
 
 	Background: Navigate to Income Journal Summary

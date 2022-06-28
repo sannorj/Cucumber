@@ -297,6 +297,7 @@ public class PrimaryD_Comments_PageObject {
 	public boolean verifyResolvedCommentFunc() throws InterruptedException {
 		drpStatus.click();
 		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
+		Thread.sleep(4500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Resolved_Comments"))) {
 				listDrpValueSize.get(i).click();

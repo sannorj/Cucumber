@@ -1,10 +1,11 @@
-@myP2_Regression @myP2_Smoke 
-
+#Author: sannorj@mydigitaloffice.ca
+@myP2_Regression @myP2_Smoke @CM
 Feature: 306090 Calendar Month Report - Header, Parameters and Search Validation 
 
    Background: Navigate to 306090 Calendar Month Report
    Given I am login to the myp2 site
    And System navigate to the home page
+   And Select the organization as "HighGate Hotels"
    And Expand the Calendar Month Report option under Reports section in Side Menu
    And Navigate to Calendar Month Report page
    

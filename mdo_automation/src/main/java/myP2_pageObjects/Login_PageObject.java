@@ -76,6 +76,7 @@ public class Login_PageObject {
 			password.sendKeys(configReader.getProp("uat_password"));
 			passwordReset.isDisplayed();
 			loginButton.click();
+			ElementUtils.waitForElementToDisplay(lblPrimary, 100);
 			
 		}
 		/*

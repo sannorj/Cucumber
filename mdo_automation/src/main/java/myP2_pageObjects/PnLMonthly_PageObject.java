@@ -149,7 +149,7 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 			drpViewEle.click();
-			Thread.sleep(1500);
+			Thread.sleep(4500);
 
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {

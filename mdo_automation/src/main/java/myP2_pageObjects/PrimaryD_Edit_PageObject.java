@@ -73,7 +73,7 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//th[text()='Property']")
 	WebElement lblProperty;
 		
-	@FindBy(xpath = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root'])[1]")
+	@FindBy(xpath = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root'])[2]")
 	WebElement lblEditedColumnHeader;
 	
 	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
@@ -179,7 +179,7 @@ public class PrimaryD_Edit_PageObject {
 		
 		int Property =driver.findElements(By.xpath("//th[text()='Property']")).size();
 		if (Property>0) {
-			ElementUtils.waitForElementToDisplay(lblProperty, 150);
+			ElementUtils.waitForElementToDisplay(lblProperty, 100);
 		} else {
 			ElementUtils.waitForElementToDisplay(lblTotal, 100);
 		}

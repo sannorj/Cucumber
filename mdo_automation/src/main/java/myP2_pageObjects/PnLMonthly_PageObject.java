@@ -117,6 +117,8 @@ private ConstantsReader configReader = new ConstantsReader();
 	
    public void selectParameters() throws InterruptedException {
 
+	   Thread.sleep(4500);
+	   
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -149,7 +151,7 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 			drpViewEle.click();
-			Thread.sleep(4500);
+			
 
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {

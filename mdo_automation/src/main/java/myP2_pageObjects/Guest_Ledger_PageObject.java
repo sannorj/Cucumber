@@ -183,6 +183,8 @@ public class Guest_Ledger_PageObject {
 	
 	public void selectOrgFunc(String org) throws InterruptedException {
 		
+		
+		Thread.sleep(5000);
 		int Org = driver.findElements(By.xpath("(//div/input[contains(@class, 'MuiInputBase-inputAdornedEnd')])[1]")).size();
 		if (Org > 0) {
 			/* Select the appropriate Group value from the drop-down menu. */

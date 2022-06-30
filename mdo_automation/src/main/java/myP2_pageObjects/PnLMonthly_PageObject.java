@@ -331,8 +331,8 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-		Thread.sleep(10000);
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(20000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 	}
 	
 	public boolean verifyOperatorSection() {
@@ -372,7 +372,8 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(20000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 		
 	}
 	

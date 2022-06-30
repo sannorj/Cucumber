@@ -62,7 +62,7 @@ public class Login_PageObject {
 			username.sendKeys(configReader.getProp("dev_userName"));
 			password.sendKeys(configReader.getProp("dev_password"));
 			passwordReset.isDisplayed();
-			Thread.sleep(10000); 
+			Thread.sleep(15000); 
 			loginButton.click();
 
 		} else if (myEnv.toLowerCase().equals("uat")) {

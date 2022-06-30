@@ -197,6 +197,7 @@ public class Guest_Ledger_PageObject {
 					listDrpValueSize.get(i).click();
 				}
 			}	
+		Thread.sleep(8000);
 		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
 		WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
 		ElementUtils.waitForElementToDisplay(lblGrp, 100);
@@ -399,7 +400,7 @@ public class Guest_Ledger_PageObject {
 	
 	public void filterBySTFunc() throws InterruptedException {
 
-		Thread.sleep(1500);
+		Thread.sleep(2500);
 		btnReset.click();
 		ElementUtils.waitForElementToDisplay(lblMARSHA, 100);
 
@@ -410,7 +411,7 @@ public class Guest_Ledger_PageObject {
 		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
 		drpSTEle.click();
 
-		Thread.sleep(2500);
+		Thread.sleep(8000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("Ledger_ST"))) {
 				listDrpValueSize.get(i).click();

@@ -245,7 +245,7 @@ public class PrimaryD_Comments_PageObject {
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
-		ElementUtils.waitForElementToDisplay(lblCommentIcon, 100);
+		ElementUtils.waitForElementToDisplay(lblCommentIcon, 180);
 
 		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");

@@ -92,7 +92,10 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
 	
-	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+//	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+//	WebElement lblFirstReplyComment;
+	
+	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
 	WebElement lblFirstReplyComment;
 	
 	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")

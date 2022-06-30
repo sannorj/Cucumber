@@ -250,9 +250,10 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 			double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
-
+	
 			double x = TotalRoomsRevenueValue / RoomsAvailableValue;
 			roundOffrevPar = Math.round(x * 100.0) / 100.0;		
+			
 	}
 	
 	public boolean verifyRevParCalculationFunc() {
@@ -261,8 +262,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
-		System.out.println("===== roundOffTotalRevPar=========== "+roundOffTotalRevPar);
-		System.out.println("===== revParValue=========== "+revParValue);
 		if (roundOffrevPar == revParValue) {
 			return true;
 		} else {

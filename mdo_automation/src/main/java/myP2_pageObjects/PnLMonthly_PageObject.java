@@ -331,7 +331,7 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 	}
 	

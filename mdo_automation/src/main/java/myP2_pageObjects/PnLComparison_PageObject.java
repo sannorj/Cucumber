@@ -101,9 +101,9 @@ public class PnLComparison_PageObject {
 	
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();	
-			
+		Thread.sleep(10000);	
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
-		Thread.sleep(1500);
+		Thread.sleep(4500);
 	    btnZeroValue.click();
 		
 }

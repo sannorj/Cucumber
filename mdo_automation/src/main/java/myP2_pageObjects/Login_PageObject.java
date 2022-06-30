@@ -59,6 +59,7 @@ public class Login_PageObject {
 					.until(ExpectedConditions.visibilityOf(logo));
 
 			LoginLogo.isDisplayed();
+			Thread.sleep(15000); 
 			username.sendKeys(configReader.getProp("dev_userName"));
 			password.sendKeys(configReader.getProp("dev_password"));
 			passwordReset.isDisplayed();

@@ -1,4 +1,6 @@
-@myP2_Regression @myP2_Smoke @PnLC
+#Author: sannorj@mydigitaloffice.ca
+@myP2_Regression @myP2_Smoke @BSB
+
 Feature: P&L Property Comparison - View Feature Validation and Static Calculation
 
 	Background: Navigate to P&L Monthly report

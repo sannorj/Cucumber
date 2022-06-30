@@ -1,5 +1,6 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @PDC
+@myP2_Regression @BSB
+
 Feature: Primary Dashboard - Comments Feature
 
 Background: Login to MYP2 application 

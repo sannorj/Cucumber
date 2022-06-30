@@ -1,4 +1,5 @@
-@myP2_Regression @myP2_Smoke
+#Author: sannorj@mydigitaloffice.ca
+@myP2_Regression @myP2_Smoke @BSB
 
 Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation 
 

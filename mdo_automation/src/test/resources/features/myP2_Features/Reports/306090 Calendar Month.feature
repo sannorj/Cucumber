@@ -1,5 +1,6 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @CM
+@myP2_Regression @myP2_Smoke @BSB
+
 Feature: 306090 Calendar Month Report - Header, Parameters and Search Validation 
 
    Background: Navigate to 306090 Calendar Month Report

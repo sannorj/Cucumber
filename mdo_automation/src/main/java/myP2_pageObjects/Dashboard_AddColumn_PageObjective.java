@@ -148,18 +148,19 @@ public class Dashboard_AddColumn_PageObjective {
 		toggleDecimalMaster.click();
 
 		btnDecimal.click();
-
+		Thread.sleep(4000);
 		for (int i = 0; i < lstDecimal.size(); i++) {
-			if (lstDecimal.get(i).getText().equalsIgnoreCase(configReader.getProp("decimalvalueAddColumn"))) {
+			if (lstDecimal.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("decimalvalueAddColumn"))) {
+				System.out.print("=====dfg======"+lstDecimal.get(i));
 				lstDecimal.get(i).click();
-
+				
 			}
 		}
 
+		Thread.sleep(4000);
 		btnPerfomanceIndicator.click();
-
 		for (int i = 0; i < lstPerfomanceIndicator.size(); i++) {
-			if (lstPerfomanceIndicator.get(i).getText().equalsIgnoreCase(configReader.getProp("PerfomanceIndicatorAddColumn"))) {
+			if (lstPerfomanceIndicator.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("PerfomanceIndicatorAddColumn"))) {
 				lstPerfomanceIndicator.get(i).click();
 
 			}

@@ -1,9 +1,12 @@
-@myP2_Regression @PnlSmoke5
+#Author: haniffa@mydigitaloffice.ca
+@myP2_Regression
+
 Feature: P&L Yearly - View Feature Validation and Static Calculation
-@kethees
+
 	Scenario: Navigate to P&L report Func
     Given I am login to the myp2 site
     And System navigate to the home page
+    And Select the organization as "Beck Legacy Group" 
     And I am expand the P&L Statement option under Reports section in Side Menu
     Then I am navigate to P&L Yearly page
     And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"

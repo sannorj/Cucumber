@@ -1,10 +1,12 @@
-@myP2_Regression @TrendOrderwidget
+#Author: haniffa@mydigitaloffice.ca
+@myP2_Regression
 
 Feature: Trend Dashboard Order Widgets Functionality Validation
 
 Background: Navigate to trend dashboard order widgets
   	Given I am login to the myp2 site
     And System navigate to the home page
+    And Select the organization as "Beck Legacy Group"
     And I am expand the DashBoard section in Side Menu and navigate to trend dashboard
     When I Am navigate to toggle widget page by clicking ToggleWidget Icon
     Then i am changing all the widget state to on 

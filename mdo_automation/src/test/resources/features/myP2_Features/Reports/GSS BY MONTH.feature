@@ -1,9 +1,12 @@
-@myP2_Regression 
-Feature: Gss By Month - Set Priority Feature
+#Author: haniffa@mydigitaloffice.ca
+@myP2_Regression
+
+    Feature: Gss By Month - Set Priority Feature
  
-  Scenario:  Verify GSS Medallia
+    Scenario:  Verify GSS Medallia
     Given I am login to the myp2 site
     And System navigate to the home page
+    And Select the organization as "Beck Legacy Group" 
     And I am expand the Guest Satisfaction option under Reports section in Side Menu
     Then I am navigate to GSS Medallia page
     And I am Loading the Medalliah Report with GO button "2022"

@@ -92,7 +92,10 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
 	
-	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+//	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+//	WebElement lblFirstReplyComment;
+	
+	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
 	WebElement lblFirstReplyComment;
 	
 	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")
@@ -135,7 +138,8 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 
-		ElementUtils.waitForElementToDisplay(lblGroup, 100);
+		Thread.sleep(5000);
+	//	ElementUtils.waitForElementToDisplay(lblGroup, 100);
 
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
@@ -241,7 +245,7 @@ public class PrimaryD_Comments_PageObject {
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
-		ElementUtils.waitForElementToDisplay(lblCommentIcon, 100);
+		ElementUtils.waitForElementToDisplay(lblCommentIcon, 180);
 
 		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
@@ -296,6 +300,7 @@ public class PrimaryD_Comments_PageObject {
 	public boolean verifyResolvedCommentFunc() throws InterruptedException {
 		drpStatus.click();
 		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
+		Thread.sleep(4500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Resolved_Comments"))) {
 				listDrpValueSize.get(i).click();

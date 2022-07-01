@@ -180,15 +180,14 @@ public class PnL_Monthly_EditCol_PageObject {
 			}
 		}
     	
-    	Thread.sleep(2000);
-    	
+    	Thread.sleep(5000);
     	drpYear4.click();
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	

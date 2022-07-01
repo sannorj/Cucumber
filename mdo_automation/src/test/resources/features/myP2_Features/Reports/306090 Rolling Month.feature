@@ -1,10 +1,12 @@
-@myP2_Regression @myP2_Smoke
+#Author: sannorj@mydigitaloffice.ca
+@myP2_Regression @myP2_Smoke 
 
 Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation 
 
    Background: Navigate to 306090 Rolling Month Report
    Given I am login to the myp2 site
    And System navigate to the home page
+   And Select the organization as "Beck Legacy Group"
    And Expand the Rolling Month Report option under Reports section in Side Menu
    And Navigate to Rolling Month Report page
     

@@ -182,6 +182,7 @@ public class IJ_Summary_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
+		Thread.sleep(3500);
 
 		/* enter the Amount */
 		txtAmount.sendKeys(configReader.getProp("IJ_Amount"));

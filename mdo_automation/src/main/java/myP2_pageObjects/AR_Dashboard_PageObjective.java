@@ -103,7 +103,7 @@ public class AR_Dashboard_PageObjective {
 
 		drpGroup.click();
 		for (int i = 0; i < lstDropDowGroup.size(); i++) {
-			if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
+			if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("AR_dashBoard"))) {
 				lstDropDowGroup.get(i).click();
 
 			}

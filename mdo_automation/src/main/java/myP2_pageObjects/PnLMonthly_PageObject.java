@@ -117,6 +117,8 @@ private ConstantsReader configReader = new ConstantsReader();
 	
    public void selectParameters() throws InterruptedException {
 
+	   Thread.sleep(4500);
+	   
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -149,6 +151,7 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 			drpViewEle.click();
+			Thread.sleep(2500);
 
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
@@ -157,7 +160,7 @@ private ConstantsReader configReader = new ConstantsReader();
 				}
 			}
 		
-			Thread.sleep(1500);
+			Thread.sleep(2500);
 			WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 			btnGO.click();
 			
@@ -247,9 +250,10 @@ private ConstantsReader configReader = new ConstantsReader();
 
 			WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 			double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
-
+	
 			double x = TotalRoomsRevenueValue / RoomsAvailableValue;
 			roundOffrevPar = Math.round(x * 100.0) / 100.0;		
+			
 	}
 	
 	public boolean verifyRevParCalculationFunc() {
@@ -258,8 +262,6 @@ private ConstantsReader configReader = new ConstantsReader();
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
-		System.out.println("===== roundOffTotalRevPar=========== "+roundOffTotalRevPar);
-		System.out.println("===== revParValue=========== "+revParValue);
 		if (roundOffrevPar == revParValue) {
 			return true;
 		} else {
@@ -321,14 +323,15 @@ private ConstantsReader configReader = new ConstantsReader();
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(8000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
+		Thread.sleep(20000);
 		btnGo.click();
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 	}
 	
 	public boolean verifyOperatorSection() {
@@ -368,7 +371,8 @@ private ConstantsReader configReader = new ConstantsReader();
 			}
 		}
 		btnGo.click();
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(20000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 		
 	}
 	

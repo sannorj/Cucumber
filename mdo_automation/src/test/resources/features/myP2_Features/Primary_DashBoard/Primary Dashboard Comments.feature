@@ -1,9 +1,12 @@
-@myP2_Regression
+#Author: sannorj@mydigitaloffice.ca
+@myP2_Regression 
+
 Feature: Primary Dashboard - Comments Feature
 
 Background: Login to MYP2 application 
   Given I am login to the myp2 site
   And System navigate to the home page
+  And Select the organization as "Beck Legacy Group" 
   And select the Group ,Property and Date 
    
   Scenario: Verify whether the user has the ability to add their first comment

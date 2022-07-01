@@ -183,6 +183,8 @@ public class Guest_Ledger_PageObject {
 	
 	public void selectOrgFunc(String org) throws InterruptedException {
 		
+		
+		Thread.sleep(5000);
 		int Org = driver.findElements(By.xpath("(//div/input[contains(@class, 'MuiInputBase-inputAdornedEnd')])[1]")).size();
 		if (Org > 0) {
 			/* Select the appropriate Group value from the drop-down menu. */
@@ -195,6 +197,7 @@ public class Guest_Ledger_PageObject {
 					listDrpValueSize.get(i).click();
 				}
 			}	
+		Thread.sleep(8000);
 		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
 		WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
 		ElementUtils.waitForElementToDisplay(lblGrp, 100);
@@ -397,7 +400,7 @@ public class Guest_Ledger_PageObject {
 	
 	public void filterBySTFunc() throws InterruptedException {
 
-		Thread.sleep(1500);
+		Thread.sleep(2500);
 		btnReset.click();
 		ElementUtils.waitForElementToDisplay(lblMARSHA, 100);
 
@@ -405,10 +408,10 @@ public class Guest_Ledger_PageObject {
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
 		/* Select the appropriate Group value from the drop-down menu. */
-		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
+		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
 		drpSTEle.click();
 
-		Thread.sleep(1500);
+		Thread.sleep(8000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("Ledger_ST"))) {
 				listDrpValueSize.get(i).click();
@@ -654,7 +657,7 @@ public class Guest_Ledger_PageObject {
 		for (int x = 0; x < ColumnData.length; x++) {
 			columnCount = 0;
 			for (int t = 0; t < ColumnData[x].length; t++) {
-				if (ColumnData[x][t].equalsIgnoreCase("DBEXPR8")) {
+				if (ColumnData[x][t].equalsIgnoreCase("GLD")) {
 					flag = true;
 					columnCount++;
 					break;

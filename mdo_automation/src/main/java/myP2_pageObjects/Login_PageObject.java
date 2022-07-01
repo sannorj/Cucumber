@@ -38,10 +38,10 @@ public class Login_PageObject {
 	@FindBy(xpath = "//div[@data-el='appName']")
 	WebElement header;
 	
-	@FindBy(xpath = "//div[text()='myPerspective 2.0']")
-	WebElement lblmyP2;
+	@FindBy(xpath = "//h1[text()='Primary Dashboard']")
+	WebElement lblPrimary;
 
-	public void launchURLAndLogin() {
+	public void launchURLAndLogin() throws InterruptedException {
 		String environmentJenkin = System.getProperty("environment");
 		String env = configReader.getProp("environment");
 		String myEnv = null;
@@ -52,15 +52,18 @@ public class Login_PageObject {
 		}
 		
 		if (myEnv.toLowerCase().equals("dev")) {
+			Thread.sleep(5000);
 			driver.get(configReader.getProp("dev_myp2URL"));
 
 			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
 					.until(ExpectedConditions.visibilityOf(logo));
 
 			LoginLogo.isDisplayed();
+			Thread.sleep(5000); 
 			username.sendKeys(configReader.getProp("dev_userName"));
 			password.sendKeys(configReader.getProp("dev_password"));
 			passwordReset.isDisplayed();
+			Thread.sleep(15000); 
 			loginButton.click();
 
 		} else if (myEnv.toLowerCase().equals("uat")) {
@@ -75,6 +78,7 @@ public class Login_PageObject {
 			password.sendKeys(configReader.getProp("uat_password"));
 			passwordReset.isDisplayed();
 			loginButton.click();
+			
 		}
 		/*
 		if(environmentJenkin != null) {
@@ -133,8 +137,9 @@ public class Login_PageObject {
 	}
 
 	public boolean navigateHomePage() throws InterruptedException {
-		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
-	//	WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(header));
-		return lblmyP2.isDisplayed();
+		Thread.sleep(10000);
+		//ElementUtils.waitForElementToDisplay(lblPrimary, 100);
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(150)).until(ExpectedConditions.visibilityOf(header));
+		return homePage.isDisplayed();
 	}
 }

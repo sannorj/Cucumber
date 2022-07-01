@@ -6,7 +6,7 @@ Feature: Income Journal Summary  - Add New Row Feature
 	Background: Navigate to Income Journal Summary
     Given I am login to the myp2 site
     And System navigate to the home page
-    And Select the organization as "HighGate Hotels"
+    And Select the organization as "Beck Legacy Group"
     And In the Side Menu, expand the IJ section.
     And Go to the Income Journal Summary
     And Select the Property , Period , Date and Click on GO button

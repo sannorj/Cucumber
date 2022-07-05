@@ -5,3 +5,8 @@ Feature: Property Dashboard functionality
     Given I am login to the myp1 site
     And System navigate to the dashboard
     Then I navigate to Property dashboard page
+    
+    Scenario: Verify Property Dashboard Revenue Breakdown cart new sc
+    Given I am login to the myp1 site
+    And System navigate to the dashboard
+    Then I navigate to Property dashboard page

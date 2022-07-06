@@ -11,6 +11,7 @@ public class propertyDashboard_StepDefinition {
 	@Then("I click Property menu")
 	public void i_click_Property_menu() throws InterruptedException {
 		assertTrue(dashboardPo.navigateToProperty());
+		//KT testing
 	}
 	
 	@Then("I navigate to Property dashboard page")

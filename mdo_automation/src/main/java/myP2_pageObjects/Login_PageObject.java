@@ -68,7 +68,7 @@ public class Login_PageObject {
 			Thread.sleep(2000);
 			password.sendKeys(configReader.getProp("dev_password"));
 			passwordReset.isDisplayed();
-			Thread.sleep(8000);
+			Thread.sleep(10000);
 			// loginButton.click();
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;

@@ -77,7 +77,7 @@ public class propertyDashboard_PageObjects {
 		Thread.sleep(10000);
 		revenueBreakdownLink.click();
 	}
-	
+	//KT testing
 	public boolean verifyToPropertyDashboard() {
 		boolean result = false;
 		if(revenueBreakdownHeader.isDisplayed()) {

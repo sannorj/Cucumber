@@ -173,13 +173,13 @@ public class GSSMedallia_PageObject {
 			}
 		}
 		
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 		return homePage.isDisplayed();
 	}
 
 	public void setPriorityZero() throws InterruptedException {
-		WebElement property = new WebDriverWait(driver, Duration.ofSeconds(1))
+		WebElement property = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 
 		if (property.isDisplayed()) {
@@ -188,7 +188,7 @@ public class GSSMedallia_PageObject {
 				if (!priorityDropdownrB.get(i).getText().equals("0")) {
 					priorityDropdownrB.get(i).click();
 
-					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(1))
+					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 					DrpValue.isDisplayed();
@@ -217,7 +217,7 @@ public class GSSMedallia_PageObject {
 			if (priorityDropdownrB.get(1).getText().equals("0")) {
 				priorityDropdownrB.get(1).click();
 
-				WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(1))
+				WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 						.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 				DrpValue.isDisplayed();
@@ -242,7 +242,7 @@ public class GSSMedallia_PageObject {
 			int count = 0;
 			int index = 0;
 
-			WebElement property = new WebDriverWait(driver, Duration.ofSeconds(1))
+			WebElement property = new WebDriverWait(driver, Duration.ofSeconds(15))
 					.until(ExpectedConditions.visibilityOf(tableProperty));
 
 			if (property.isDisplayed()) {
@@ -258,7 +258,7 @@ public class GSSMedallia_PageObject {
 					priorityDropdownrB.get(index).click();
 					Thread.sleep(1500);
 
-					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(1))
+					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 					DrpValue.isDisplayed();
@@ -267,7 +267,7 @@ public class GSSMedallia_PageObject {
 
 					Thread.sleep(2500);
 
-					WebElement errorMsg = new WebDriverWait(driver, Duration.ofSeconds(1))
+					WebElement errorMsg = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf(msgError));
 
 					flag = errorMsg.isDisplayed();

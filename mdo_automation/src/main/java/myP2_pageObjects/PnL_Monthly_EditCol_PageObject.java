@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -298,18 +299,23 @@ public class PnL_Monthly_EditCol_PageObject {
 		}
     	Thread.sleep(2000);
     	
-    	drpColumn4.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_4"))) {
-				listDrpValueSize.get(i).click();
+		int drp4 = driver.findElements(By.xpath("//div[@id='mui-component-select-columns[3].dataType']")).size();
+		if (drp4 > 0) {
+
+			drpColumn4.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_4"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
-		}
-    	Thread.sleep(2000);
-    	drpYear4.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_4"))) {
-				listDrpValueSize.get(i).click();
+			Thread.sleep(2000);
+			drpYear4.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_4"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
+
 		}
     	Thread.sleep(2000);
     	

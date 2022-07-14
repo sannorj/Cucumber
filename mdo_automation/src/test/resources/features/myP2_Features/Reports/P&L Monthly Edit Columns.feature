@@ -30,7 +30,7 @@ Background: Navigate to P&L Monthly report
     
     Scenario: Verify whether user can edit every header that is available
     When User clicks on edit column option 
-    And change the all the parameters in rdit column 
+    And change the all the parameters in edit column 
     Then Table should display the recently modified column
     
  

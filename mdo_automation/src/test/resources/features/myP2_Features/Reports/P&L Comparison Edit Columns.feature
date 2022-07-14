@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @SMPL
+@myP2_Regression @myP2_Smoke @SMPL1
 
 Feature:  P&L Comparison Report - Edit Column functionality  
 
@@ -26,4 +26,10 @@ Background: Navigate to P&L Monthly report
     When User clicks on edit column option 
     And Remove the values for the columns and years on the Comparison Edit screen, then click the Apply button.
     Then Table should remove the newly inserted column from the Comparison table
+    
+    Scenario: Verify whether user can edit every header that is available
+    When User clicks on edit column option 
+    And change the all the parameters in edit column 
+    Then Table should display the recently modified column
+    
  

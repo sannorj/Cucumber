@@ -59,8 +59,8 @@ public class PnL_Monthly_EditCol_StepDefinition {
 	}
 	
 
-	@When("change the all the parameters in rdit column")
-	public void change_the_all_the_parameters_in_rdit_column() throws InterruptedException {
+	@When("change the all the parameters in edit column")
+	public void change_the_all_the_parameters_in_edit_column() throws InterruptedException {
 		editCol.changeColumnFunc();
 	}
 

@@ -136,7 +136,7 @@ public class PnL_Monthly_EditCol_PageObject {
 		headerName = Headers.get(0).split("-")[0].trim();
 		headerYear =Headers.get(0).split("-")[1].strip();
 		
-		if ( drpColVal1.equalsIgnoreCase(headerName) && drpColVal1.equalsIgnoreCase(headerYear) ) {
+		if ( drpColVal1.equalsIgnoreCase(headerName) && drpYearValue1.equalsIgnoreCase(headerYear) ) {
 			flag = true;
 		} else {
 			flag = false;

@@ -129,6 +129,10 @@ public class PnL_Monthly_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 		
+		for (int i = 0; i < header.size() - 1; i++) {
+			Headers.add(header.get(i).getText());
+		}
+		
 		headerName = Headers.get(0).split("-")[0].trim();
 		headerYear =Headers.get(0).split("-")[1].strip();
 		

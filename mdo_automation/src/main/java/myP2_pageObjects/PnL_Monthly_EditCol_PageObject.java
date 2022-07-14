@@ -132,7 +132,7 @@ public class PnL_Monthly_EditCol_PageObject {
 		headerName = Headers.get(0).split("-")[0].trim();
 		headerYear =Headers.get(0).split("-")[1].strip();
 		
-		if ( drpColVal1.equalsIgnoreCase(headerName) && drpColVal1.equalsIgnoreCase(drpColVal1) ) {
+		if ( drpColVal1.equalsIgnoreCase(headerName) && drpColVal1.equalsIgnoreCase(headerYear) ) {
 			flag = true;
 		} else {
 			flag = false;
@@ -180,14 +180,15 @@ public class PnL_Monthly_EditCol_PageObject {
 			}
 		}
     	
-    	Thread.sleep(5000);
+    	Thread.sleep(2000);
+    	
     	drpYear4.click();
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
-    	Thread.sleep(4000);
+    	Thread.sleep(2000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	
@@ -219,14 +220,14 @@ public class PnL_Monthly_EditCol_PageObject {
     public void removeColumnFunc() throws InterruptedException {
     	
     	drpColumn4.click();
-    	Thread.sleep(4000);
+    	Thread.sleep(2000);
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
     	
-    	Thread.sleep(4000);
+    	Thread.sleep(2000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	
@@ -245,6 +246,97 @@ public class PnL_Monthly_EditCol_PageObject {
 		return flag;
     	
     }
+   
+   public void changeColumnFunc() throws InterruptedException {
+	   
+		drpColumn1.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_1"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	drpYear1.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_1"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	
+    	drpColumn2.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_2"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	drpYear2.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_2"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	
+    	drpColumn3.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_3"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	drpYear3.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_3"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	
+    	drpColumn4.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_4"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	drpYear4.click();
+    	for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_4"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+    	Thread.sleep(2000);
+    	
+    	btnApply.click();
+    	ElementUtils.waitForElementToHide(lblEdit, 100);
+    	
+    	btnGo.click();
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+	   
+   }
+   
+	public boolean verifyNewlyChangedColFunc() throws InterruptedException {
+
+		Thread.sleep(4000);
+		for (int i = 0; i < header.size() - 1; i++) {
+			Headers.add(header.get(i).getText());
+		}
+
+		headerName = Headers.get(0).split("-")[0].trim();
+		headerYear = Headers.get(0).split("-")[2].strip();
+
+		if (headerName.equalsIgnoreCase(configReader.getProp("PnLE_Column_1"))&& headerYear.equalsIgnoreCase(configReader.getProp("PnLE_Year_1"))) {
+			flag = true;
+		} else {
+			flag = false;
+		}
+		return flag;
+
+   }
+   
+   
     
 
 }

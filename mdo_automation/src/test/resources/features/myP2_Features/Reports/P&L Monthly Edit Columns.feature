@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @SMPL
+@myP2_Regression @myP2_Smoke @SMPL1
 
 Feature:  P&L Monthly Report - Edit Column functionality  
 
@@ -27,6 +27,13 @@ Background: Navigate to P&L Monthly report
     When User clicks on edit column option 
     And Remove column and year values from the dropdown and click on apply button
     Then Table should remove the newly inserted column from the table
+    
+    Scenario: Verify whether user can edit every header that is available
+    When User clicks on edit column option 
+    And change the all the parameters in rdit column 
+    Then Table should display the recently modified column
+    
+ 
  
     
     

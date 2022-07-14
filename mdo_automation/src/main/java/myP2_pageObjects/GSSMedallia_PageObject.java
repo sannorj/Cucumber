@@ -173,7 +173,7 @@ public class GSSMedallia_PageObject {
 			}
 		}
 		
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 		return homePage.isDisplayed();
 	}
@@ -193,6 +193,7 @@ public class GSSMedallia_PageObject {
 
 					DrpValue.isDisplayed();
 
+					Thread.sleep(2500);
 					lstdrpValue.get(0).click();
 
 					Thread.sleep(1500);

@@ -221,7 +221,7 @@ private ConstantsReader configReader = new ConstantsReader();
 	
 	public void adrCalFunc() {
 
-			WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
+			WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
 			double TotalRoomsRevenueValue = Double.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
 
 			WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellCRoomSold));

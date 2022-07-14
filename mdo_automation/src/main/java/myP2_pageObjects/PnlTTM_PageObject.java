@@ -1,5 +1,11 @@
 package myP2_pageObjects;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,15 +15,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import utils.ConstantsReader;
+import utils.ElementUtils;
 
 public class PnlTTM_PageObject {
 
 	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
+	ArrayList<String> monthList, reportMonth;
 
 	public PnlTTM_PageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		monthList = new ArrayList<>();
+		reportMonth = new ArrayList<>();
+		storeMonth();
 	}
 
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
@@ -62,46 +73,28 @@ public class PnlTTM_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnGo;
 
-	@FindBy(xpath = "//label[@data-el='labelswitchDisableNullRecords']")
-	WebElement btnZeroValue;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[1]//td")
-	List<WebElement> lstRoomAvailable;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[2]//td")
-	List<WebElement> lstRoomSold;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[3]//td")
-	List<WebElement> lstOccupancy;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[4]//td")
-	List<WebElement> lstAdr;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[5]//td")
-	List<WebElement> lstRevPar;
-
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[6]//td")
-	List<WebElement> lstTotalRevPar;
-
-	@FindBy(xpath = "//tr[@data-el='RMREV90']//td")
-	List<WebElement> lstTotalRoomRevenue;
-
-	@FindBy(xpath = "//tr[@data-el='Total Operating Revenue']//td")
-	List<WebElement> lstTotalOperatingRevenue;
-
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 
 	@FindBy(xpath = "//th//span[contains(text(),'TTM Actual')]")
 	WebElement ttmHeader;
 
-	public void passParameteres(String grp, String property, String view) {
+	@FindBy(xpath = "//h3[text()='Edit Columns']")
+	WebElement lblEdit;
+
+	@FindBy(xpath = "//button[@data-el='buttonFilter']")
+	WebElement btnFilter;
+
+	@FindBy(xpath = "//tr[@class='MuiTableRow-root MuiTableRow-head']//th[@freezecolumns='0']")
+	List<WebElement> lstReportMonthHeader;
+
+	public void passParameteres() {
 
 		try {
 			dropDownGroup.click();
 			Thread.sleep(1500);
 			for (int i = 0; i < lstDropDownGroup.size(); i++) {
-				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(grp)) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMGroup"))) {
 					lstDropDownGroup.get(i).click();
 
 				}
@@ -110,7 +103,7 @@ public class PnlTTM_PageObject {
 			dropDownHotel.click();
 			Thread.sleep(1500);
 			for (int i = 0; i < lstDropDownHotel.size(); i++) {
-				if (lstDropDownHotel.get(i).getText().equalsIgnoreCase(property)) {
+				if (lstDropDownHotel.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMProperty"))) {
 					lstDropDownHotel.get(i).click();
 
 				}
@@ -122,7 +115,7 @@ public class PnlTTM_PageObject {
 
 			dropDownView.click();
 			for (int i = 0; i < lstDropDownView.size(); i++) {
-				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
+				if (lstDropDownView.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMView"))) {
 					lstDropDownView.get(i).click();
 
 				}
@@ -143,6 +136,56 @@ public class PnlTTM_PageObject {
 		} else {
 			return false;
 		}
+	}
+
+	public void navigateToEditColumn() throws InterruptedException {
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		btnFilter.click();
+		ElementUtils.waitForElementToDisplay(lblEdit, 100);
+	}
+
+	public boolean verifyDisabledColumn() throws InterruptedException {
+
+		Thread.sleep(2500);
+		int status = driver
+				.findElements(By.xpath("//div[@data-el='selectorColumnYear0'][contains(@class, 'Mui-disabled')]"))
+				.size();
+
+		if (status > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public void storeMonth() {
+		for (int i = 0; i < 12; i++) {
+			SimpleDateFormat format = new SimpleDateFormat("MMM yyyy");
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.MONTH, -i);
+			monthList.add(format.format(cal.getTime()).toString());
+		}
+
+	}
+
+	public boolean storeReportMonthHeader() throws InterruptedException {
+		Thread.sleep(2500);
+		boolean status = false;
+
+		for (int i = lstReportMonthHeader.size() - 5; i > 0; i--) {
+			reportMonth.add(lstReportMonthHeader.get(i + 2).getText());
+		}
+		for (int i = 0; i < 12; i++) {
+			if (monthList.get(i).equalsIgnoreCase(reportMonth.get(i))) {
+				status = true;
+			} else {
+				status = false;
+				break;
+			}
+		}
+		return status;
+
 	}
 
 }

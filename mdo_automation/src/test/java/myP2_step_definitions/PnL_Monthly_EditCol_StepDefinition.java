@@ -59,15 +59,12 @@ public class PnL_Monthly_EditCol_StepDefinition {
 	}
 	
 
-	@When("change the all the parameters in edit column")
+	@When("The recently modified column should be displayed when a user changes all the parameters in the edit column")
 	public void change_the_all_the_parameters_in_edit_column() throws InterruptedException {
-		editCol.changeColumnFunc();
+		assertTrue(editCol.changeColumnFunc());
 	}
 
-	@Then("Table should display the recently modified column")
-	public void table_should_display_the_recently_modified_column() throws InterruptedException {
-		 assertTrue(editCol.verifyNewlyChangedColFunc());
-	}
+	
 
 
 

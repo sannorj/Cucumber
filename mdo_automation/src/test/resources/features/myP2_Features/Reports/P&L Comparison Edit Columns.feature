@@ -28,8 +28,7 @@ Background: Navigate to P&L Monthly report
     Then Table should remove the newly inserted column from the Comparison table
     
     Scenario: Verify whether user can edit every header that is available
-    When User clicks on edit column option 
-    And change the all the parameters in edit column 
-    Then Table should display the recently modified column
+    When The recently modified column should be displayed when a user changes all the parameters in the edit column 
+    Then Page should load the defualt static section
     
  

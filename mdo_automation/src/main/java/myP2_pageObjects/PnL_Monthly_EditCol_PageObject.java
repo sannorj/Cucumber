@@ -252,101 +252,126 @@ public class PnL_Monthly_EditCol_PageObject {
     	
     }
    
-   public void changeColumnFunc() throws InterruptedException {
-	   
-		drpColumn1.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_1"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	drpYear1.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_1"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	
-    	drpColumn2.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_2"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	drpYear2.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_2"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	
-    	drpColumn3.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_3"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	drpYear3.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_3"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	Thread.sleep(2000);
-    	
-		int drp4 = driver.findElements(By.xpath("//div[@id='mui-component-select-columns[3].dataType']")).size();
-		if (drp4 > 0) {
+	public boolean changeColumnFunc() throws InterruptedException {
 
-			drpColumn4.click();
+		String[] a = configReader.getProp("PnLE_Column_1").split(",");
+		String[] b = configReader.getProp("PnLE_Year_1").split(",");
+		String[] c = configReader.getProp("PnLE_Column_2").split(",");
+		String[] d = configReader.getProp("PnLE_Year_2").split(",");
+		String[] e = configReader.getProp("PnLE_Column_3").split(",");
+		String[] f = configReader.getProp("PnLE_Year_3").split(",");
+		String[] g = configReader.getProp("PnLE_Column_4").split(",");
+		String[] h = configReader.getProp("PnLE_Year_4").split(",");
+		String headerName1 , headerYearl;
+		
+		/*Edit 1st column and year dropdown */
+		for (int x = 0; x < a.length; x++) {
+			
+			clickOnEditFunc();
+			
+			String PnLE_Column_1 = a[x];
+			String PnLE_Year_1 = b[x];
+			drpColumn1.click();
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column_4"))) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Column_1)) {
 					listDrpValueSize.get(i).click();
 				}
 			}
 			Thread.sleep(2000);
-			drpYear4.click();
+			drpYear1.click();
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year_4"))) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Year_1)) {
 					listDrpValueSize.get(i).click();
 				}
 			}
+			Thread.sleep(2000);
+
+			/*Edit 2nd column and year dropdown */
+			String PnLE_Column_2 = c[x];
+			String PnLE_Year_2 = d[x];
+			drpColumn2.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Column_2)) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+			Thread.sleep(2000);
+			drpYear2.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Year_2)) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+			Thread.sleep(2000);
+
+			/*Edit 3rd column and year dropdown */
+			String PnLE_Column_3 = e[x];
+			String PnLE_Year_3 = f[x];
+			drpColumn3.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Column_3)) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+			Thread.sleep(2000);
+			drpYear3.click();
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Year_3)) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+			Thread.sleep(2000);
+			
+			/*Edit 3rd column and year dropdown */
+			int drp4 = driver.findElements(By.xpath("//div[@id='mui-component-select-columns[3].dataType']")).size();
+			if (drp4 > 0) {
+				String PnLE_Column_4 = g[x];
+				String PnLE_Year_4 = h[x];
+				drpColumn4.click();
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Column_4)) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+				Thread.sleep(2000);
+				drpYear4.click();
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(PnLE_Year_4)) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+
+			}
+			Thread.sleep(2000);
+
+			btnApply.click();
+			ElementUtils.waitForElementToHide(lblEdit, 100);
+
+			btnGo.click();
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+			Thread.sleep(7000);
+			Headers.clear();
+			for (int i = 0; i < header.size(); i++) {
+				Headers.add(header.get(i).getText());
+			}
+				    
+			if(PnLE_Column_1.equalsIgnoreCase("FORECAST")|| PnLE_Column_1.equalsIgnoreCase("ACTUAL/FORECAST")) {
+				headerName1 = Headers.get(0).split("-")[0].trim();
+				headerYearl = Headers.get(0).split("-")[2].strip();
+			}else {
+				headerName1 = Headers.get(0).split("-")[0].trim();
+				headerYearl = Headers.get(0).split("-")[1].strip();
+			}
+						
+			if (headerName1.equalsIgnoreCase(PnLE_Column_1)&& headerYearl.equalsIgnoreCase(PnLE_Year_1)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
 
 		}
-    	Thread.sleep(2000);
-    	
-    	btnApply.click();
-    	ElementUtils.waitForElementToHide(lblEdit, 100);
-    	
-    	btnGo.click();
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
-	   
-   }
-   
-	public boolean verifyNewlyChangedColFunc() throws InterruptedException {
-
-		Thread.sleep(4000);
-		for (int i = 0; i < header.size() - 1; i++) {
-			Headers.add(header.get(i).getText());
-		}
-
-		headerName = Headers.get(0).split("-")[0].trim();
-		headerYear = Headers.get(0).split("-")[2].strip();
-
-		if (headerName.equalsIgnoreCase(configReader.getProp("PnLE_Column_1"))&& headerYear.equalsIgnoreCase(configReader.getProp("PnLE_Year_1"))) {
-			flag = true;
-		} else {
-			flag = false;
-		}
-		return flag;
-
-   }
-   
-   
+		return true;
+	}
     
 
 }

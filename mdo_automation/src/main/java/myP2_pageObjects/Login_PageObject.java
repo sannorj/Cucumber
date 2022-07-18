@@ -65,7 +65,6 @@ public class Login_PageObject {
 			LoginLogo.isDisplayed();
 			Thread.sleep(5000);
 			username.sendKeys(configReader.getProp("dev_userName"));
-			//Thread.sleep(2000);
 			password.sendKeys(configReader.getProp("dev_password"));
 			passwordReset.isDisplayed();
 			Thread.sleep(12000);

@@ -57,6 +57,14 @@ public class PnL_Monthly_EditCol_StepDefinition {
 	public void table_should_remove_the_newly_inserted_column_from_the_table() throws InterruptedException {
 		assertTrue(editCol.verifyRemovedColFunc());
 	}
+	
+
+	@When("The recently modified column should be displayed when a user changes all the parameters in the edit column")
+	public void change_the_all_the_parameters_in_edit_column() throws InterruptedException {
+		assertTrue(editCol.changeColumnFunc());
+	}
+
+	
 
 
 

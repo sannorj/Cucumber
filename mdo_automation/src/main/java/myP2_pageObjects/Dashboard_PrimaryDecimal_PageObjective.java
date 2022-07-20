@@ -120,18 +120,15 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			}
 
 			dropDownProperty.click();
-			for (int i = 0; i < lstDropDowProperty.size(); i++) {
-				if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
-					lstDropDowProperty.get(i).click();
+			Thread.sleep(2500);
+			lstDropDowProperty.get(1).click();
 
-				}
-			}
 
 			txtDate.sendKeys(Keys.CONTROL + "a");
 			txtDate.sendKeys(Keys.DELETE);
 			txtDate.sendKeys(configReader.getProp("Date"));
 
-			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(15))
+			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(50))
 					.until(ExpectedConditions.visibilityOf(txtRowField));
 
 			return txtProperty.isDisplayed();

@@ -169,8 +169,6 @@ public class Account_Sales_Manager_PageObjective {
 			columnCount = 0;
 			for (int t = 0; t < ColumnData[x].length; t++) {
 				String expected = configReader.getProp("ASM_FirstName");
-				System.out.println("==========ColumnData[x][t]============"+ColumnData[x][t]);
-				System.out.println("==========expected============"+expected);
 				if (ColumnData[x][t].contains(expected)) {
 					flag = true;
 					columnCount++;
@@ -253,6 +251,9 @@ public class Account_Sales_Manager_PageObjective {
 	public boolean removeAccount() throws InterruptedException {
 
 		btnConfirm.click();
+		
+		txtFName.sendKeys(Keys.CONTROL + "a");
+		txtFName.sendKeys(Keys.DELETE);
 		txtFName.sendKeys(configReader.getProp("ASM_EditFirstName"));
 
 		int x = lstRows.size();

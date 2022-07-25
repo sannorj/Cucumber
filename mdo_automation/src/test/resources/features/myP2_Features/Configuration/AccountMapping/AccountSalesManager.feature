@@ -7,7 +7,7 @@
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 
-    Given I am expand the configuration option in Side Menu
+    And I am expand the configuration option
     Then I am navigate to Sales Managers page
     
     Scenario: Verify whether user can add a Sales Managers 

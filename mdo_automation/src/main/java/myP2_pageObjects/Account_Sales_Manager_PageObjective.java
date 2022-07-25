@@ -87,6 +87,12 @@ public class Account_Sales_Manager_PageObjective {
 	@FindBy(xpath = "//h3[text()='Remove Account']")
 	WebElement lblRemoveAccount;
 	
+	@FindBy(xpath = "//button[@data-el='menuToggle']")
+	WebElement mainMenuButton;
+	
+	@FindBy(xpath = "//div[text()='Configuration']//ancestor::li")
+	WebElement configuration;
+	
 	
 	public boolean navigateToSalesManager() throws InterruptedException {
 		WebElement accountsMappingEle = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(accountsMapping));
@@ -98,6 +104,23 @@ public class Account_Sales_Manager_PageObjective {
 		ElementUtils.waitForElementToDisplay(accountSalesManagers, 100);
 		WebElement accountSalesManagersEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(accountSalesManagers));
 		return accountSalesManagersEle.isDisplayed();
+
+	}
+	
+	public void expandConfigurations() {
+
+		try {
+			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(mainMenuButton));
+			menu.click();
+
+			Thread.sleep(1500);
+
+			WebElement configurationEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(configuration));
+			configurationEle.click();
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 	}
 	

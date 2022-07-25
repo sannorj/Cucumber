@@ -3,6 +3,7 @@ package myP2_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import myP2_pageObjects.Account_Sales_Manager_PageObjective;
@@ -11,6 +12,11 @@ import myP2_pageObjects.Account_Sales_Manager_PageObjective;
 public class AccountSalesManager_StepDefinition {
 	
 	Account_Sales_Manager_PageObjective ASManager = new Account_Sales_Manager_PageObjective(DriverFactory.getDriver());
+	
+	@Given("I am expand the configuration option")
+	public void i_am_expand_the_configuration_option() {
+		ASManager.expandConfigurations();
+	}
 
 	@Then("I am navigate to Sales Managers page")
 	public void i_am_navigate_to_sales_managers_page() throws InterruptedException {

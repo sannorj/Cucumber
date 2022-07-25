@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @ASMSmoke
+@myP2_Regression @ASMSmoke1
 
     Feature: Account Sales Manager : Add|Edit|Delete Sales Manager Account functionality
 

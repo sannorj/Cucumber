@@ -3,7 +3,7 @@
 
     Feature: Account Sales Manager : Add|Edit|Delete Sales Manager Account functionality
 
-    Background: Navigate to P&L Monthly report
+    Background: Navigate to Sales Managers page
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 

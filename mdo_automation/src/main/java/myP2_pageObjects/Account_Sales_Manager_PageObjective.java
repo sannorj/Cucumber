@@ -252,6 +252,7 @@ public class Account_Sales_Manager_PageObjective {
 
 		btnConfirm.click();
 		
+		Thread.sleep(4500);
 		txtFName.sendKeys(Keys.CONTROL + "a");
 		txtFName.sendKeys(Keys.DELETE);
 		txtFName.sendKeys(configReader.getProp("ASM_EditFirstName"));

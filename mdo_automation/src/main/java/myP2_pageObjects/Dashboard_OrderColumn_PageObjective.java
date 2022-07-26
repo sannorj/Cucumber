@@ -41,6 +41,10 @@ public class Dashboard_OrderColumn_PageObjective {
 
 	@FindBy(xpath = "//thead//tr[2]//th")
 	List<WebElement> listDasBoardColumn;
+	
+	@FindBy(xpath = "//thead//tr[2]//th[1]")
+	WebElement firstPropertRow;
+	
 
 	public boolean navigateToOrderColumn() throws InterruptedException {
 
@@ -88,7 +92,12 @@ public class Dashboard_OrderColumn_PageObjective {
 		Save.click();
 
 		Thread.sleep(10000);
-
+		WebElement firstRowAfterEdit = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(firstPropertRow));
+		
+		
+		firstRowAfterEdit.isDisplayed();
+		
 		dashBoardColumns = new String[listDasBoardColumn.size() - 3];
 
 		for (int i = 0; i < dashBoardColumns.length; i++) {
@@ -102,7 +111,6 @@ public class Dashboard_OrderColumn_PageObjective {
 	public boolean verifyOrderedColumns() throws InterruptedException {
 
 		boolean flag = true;
-
 		if (column.length == dashBoardColumns.length) {
 
 			for (int i = 1; i < column.length; i++) {

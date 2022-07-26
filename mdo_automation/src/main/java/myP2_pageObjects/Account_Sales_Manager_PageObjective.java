@@ -257,8 +257,8 @@ public class Account_Sales_Manager_PageObjective {
 		txtFName.sendKeys(Keys.DELETE);
 		txtFName.sendKeys(configReader.getProp("ASM_EditFirstName"));
 
-		int x = lstRows.size();
-		if (x > 0) {
+		
+		if (lstRows.size() == 0) {
 			return true;
 		} else {
 			return false;

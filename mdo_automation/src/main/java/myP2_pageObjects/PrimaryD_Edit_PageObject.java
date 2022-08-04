@@ -30,11 +30,11 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']")
 	WebElement btnEditTable;
 
-//	@FindBy(xpath = "(//button[@class='sc-ewDcJz bZCVUy'])[2]")
-//	WebElement btnEditColumn;
-	
-	@FindBy(xpath = "(//button[@class='sc-djvmMF ewtrKB'])[5]")
+	@FindBy(xpath = "(//button[contains(@data-el,'button-edit')])[1]")
 	WebElement btnEditColumn;
+	
+//	@FindBy(xpath = "(//button[@class='sc-djvmMF ewtrKB'])[5]")
+//	WebElement btnEditColumn;
 	
 	
 	@FindBy(xpath = "//div[text()='Edit Column']")
@@ -73,7 +73,7 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//th[text()='Property']")
 	WebElement lblProperty;
 		
-	@FindBy(xpath = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root'])[2]")
+	@FindBy(xpath = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root'])[1]")
 	WebElement lblEditedColumnHeader;
 	
 	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
@@ -85,7 +85,7 @@ public class PrimaryD_Edit_PageObject {
 	
 	public void clickOnEdit() throws InterruptedException {
 		btnEditTable.click();
-		ElementUtils.waitForElementToDisplay(btnEditColumn, 100);
+		ElementUtils.waitForElementToDisplay(btnEditColumn, 80);
 		
 	}
 	
@@ -107,12 +107,13 @@ public class PrimaryD_Edit_PageObject {
 		ElementUtils.waitForElementToDisplay(lblEditColumn, 100);
 		
 		if(txtName.isDisplayed()) {
+			Thread.sleep(3500);
 			txtName.sendKeys(Keys.CONTROL + "a");
 			txtName.sendKeys(Keys.DELETE);
 			txtName.sendKeys(configReader.getProp("Column_Name"));
 			Thread.sleep(1000);
 		}
-		
+		Thread.sleep(3500);
 		int kpi =driver.findElements(By.xpath("//input[@name='kpiId']")).size();
 		if(kpi>0) {
 			drpkpi.sendKeys(Keys.CONTROL + "a");
@@ -178,10 +179,10 @@ public class PrimaryD_Edit_PageObject {
 		Thread.sleep(2000);
 		
 		int Property =driver.findElements(By.xpath("//th[text()='Property']")).size();
-		if (Property>0) {
-			ElementUtils.waitForElementToDisplay(lblProperty, 100);
+		if (Property==1) {
+			ElementUtils.waitForElementToDisplay(lblProperty, 30);
 		} else {
-			ElementUtils.waitForElementToDisplay(lblTotal, 100);
+			ElementUtils.waitForElementToDisplay(lblTotal, 30);
 		}
 		
 		WebElement btnImDoneEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnImDone));
@@ -191,10 +192,10 @@ public class PrimaryD_Edit_PageObject {
 	public boolean verifyEditedColumn() throws InterruptedException  {
 	
 		int Property =driver.findElements(By.xpath("//th[text()='Property']")).size();
-		if (Property>0) {
-			ElementUtils.waitForElementToDisplay(lblProperty, 150);
+		if (Property==1) {
+			ElementUtils.waitForElementToDisplay(lblProperty, 30);
 		} else {
-			ElementUtils.waitForElementToDisplay(lblTotal, 100);
+			ElementUtils.waitForElementToDisplay(lblTotal, 30);
 		}
 		
 		String EditedColumnHeader = lblEditedColumnHeader.getText();
@@ -209,10 +210,10 @@ public class PrimaryD_Edit_PageObject {
 	public void clickOnEditOnByRevenue() throws InterruptedException {
 		
 		tabByRanvanue.click();
-		ElementUtils.waitForElementToDisplay(lblTotal, 100);
+		ElementUtils.waitForElementToDisplay(lblTotal, 50);
 		
 		btnEditTable.click();
-		ElementUtils.waitForElementToDisplay(btnEditColumn, 100);
+		ElementUtils.waitForElementToDisplay(btnEditColumn,50);
 		
 	} 
 

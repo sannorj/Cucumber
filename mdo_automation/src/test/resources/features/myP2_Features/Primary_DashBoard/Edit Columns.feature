@@ -1,11 +1,11 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @ECS
+@myP2_Regression 
 Feature: Primary DashBoard - Edit Columns Feature
 
 Background: Login to MYP2 application 
   Given I am login to the myp2 site
   And System navigate to the home page
-  And Select the organization as "HighGate Hotels" 
+  And Select the organization as "Beck Legacy Group" 
   And select the Group ,Property and Date 
   
   Scenario: Verify whether a user is able to edit the column in the By Property table

@@ -123,7 +123,7 @@ public class PrimaryD_Comments_PageObject {
 	
 	public void selectParameters() throws InterruptedException {
 
-		ElementUtils.waitForElementToDisplay(lblGroup, 100);
+		ElementUtils.waitForElementToDisplay(lblGroup, 50);
 
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */

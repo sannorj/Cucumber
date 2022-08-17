@@ -19,7 +19,6 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	String roomRevenue, roomAvailable;
 	int masterDecimal, primaryDecimal;
 	private ConstantsReader configReader = new ConstantsReader();
-	
 
 	public Dashboard_PrimaryDecimal_PageObjective(WebDriver driver) {
 		this.driver = driver;
@@ -62,7 +61,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//button[@data-el='button-edit-Rooms Available']")
 	WebElement btnEditRoomAvailable;
 
-	@FindBy(xpath = "	//button[@data-el='button-edit-Room Revenue ($)']")
+	@FindBy(xpath = "//button[@data-el='button-edit-Room Revenue ($)']")
 	WebElement btnEditRoomRevenue;
 
 	@FindBy(xpath = "//input[@name='overrideDecimalMaster']")
@@ -83,7 +82,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//div[@id='mui-component-select-performanceIndicatorMasterOverride']")
 	WebElement dropDownMassterFeature;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li") 
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstSwitch;
 
 	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[3]")
@@ -108,7 +107,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		if (homePage.isDisplayed()) {
 
-			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5))
+			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(15))
 					.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
 			drpGroup.click();
@@ -120,18 +119,14 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			}
 
 			dropDownProperty.click();
-			for (int i = 0; i < lstDropDowProperty.size(); i++) {
-				if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
-					lstDropDowProperty.get(i).click();
-
-				}
-			}
+			Thread.sleep(2500);
+			lstDropDowProperty.get(1).click();
 
 			txtDate.sendKeys(Keys.CONTROL + "a");
 			txtDate.sendKeys(Keys.DELETE);
 			txtDate.sendKeys(configReader.getProp("Date"));
 
-			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(15))
+			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(35))
 					.until(ExpectedConditions.visibilityOf(txtRowField));
 
 			return txtProperty.isDisplayed();
@@ -144,26 +139,25 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public void setupPrimaryDecimalValue(String value) throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnEditColumn));
 
 		btnEdit.click();
 
-		WebElement drpDecimal = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpDecimal = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(dropDownDecimal));
 
-		if (drpDecimal.isDisplayed()) {
+		drpDecimal.isDisplayed();
 
-			drpDecimal.click();
+		drpDecimal.click();
 
-			Thread.sleep(2500);
+		Thread.sleep(2500);
 
-			for (int i = 0; i < lstDropDownDecimal.size(); i++) {
-				if (lstDropDownDecimal.get(i).getText().equalsIgnoreCase(value)) {
-					lstDropDownDecimal.get(i).click();
+		for (int i = 0; i < lstDropDownDecimal.size(); i++) {
+			if (lstDropDownDecimal.get(i).getText().equalsIgnoreCase(value)) {
+				lstDropDownDecimal.get(i).click();
 
-					masterDecimal = Integer.parseInt(value);
-				}
+				masterDecimal = Integer.parseInt(value);
 			}
 		}
 
@@ -173,20 +167,20 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		Thread.sleep(15000);
 
-		WebElement editRoomAvailable = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement editRoomAvailable = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(btnEditRoomAvailable));
 		editRoomAvailable.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(6500);
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(editPageEle));
 		return editPage.isDisplayed();
 
 	}
 
 	public void assignPermenantDecimal(String value) throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 
 		WebElement editDecimal = new WebDriverWait(driver, Duration.ofSeconds(35))
 				.until(ExpectedConditions.visibilityOf(dropDownEditDecimal));
@@ -201,34 +195,34 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			}
 		}
 
-		Thread.sleep(2000);
+		Thread.sleep(3500);
 		btnSave.click();
 
 	}
 
 	public boolean navigateToSetupOverRideValue() throws InterruptedException {
 
-		Thread.sleep(5000);
+		Thread.sleep(4000);
 
-		WebElement editRoomRevenue = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement editRoomRevenue = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnEditRoomRevenue));
 		editRoomRevenue.click();
-
+		System.out.print("AAAA");
 		Thread.sleep(2500);
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(editPageEle));
 		return editPage.isDisplayed();
 
 	}
 
 	public void assignOverrideDecimal() throws InterruptedException {
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		if (dropDownEditDecimal.isDisplayed()) {
 			toggleButton.click();
 		}
-		
+
 		dropDownMassterFeature.click();
 		lstSwitch.get(0).click();
 
@@ -239,21 +233,21 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public void storeValues() throws InterruptedException {
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		if (editPage.isDisplayed()) {
-			WebElement roomAvailableWE = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement roomAvailableWE = new WebDriverWait(driver, Duration.ofSeconds(20))
 					.until(ExpectedConditions.visibilityOf(txtRoomAvailable));
 
 			roomAvailable = roomAvailableWE.getText();
 
-			WebElement roomRevenueWE = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement roomRevenueWE = new WebDriverWait(driver, Duration.ofSeconds(20))
 					.until(ExpectedConditions.visibilityOf(txtRoomRevenue));
 
 			roomRevenue = roomRevenueWE.getText();
 
-			System.out.println("roomAvailable = " + roomAvailable + " roomRev = " + roomRevenue);
+			//System.out.println("roomAvailable = " + roomAvailable + " roomRev = " + roomRevenue);
 
 			String roomAvailablespl[] = roomAvailable.split("\\.");
 			String roomRevenuespl[] = roomRevenue.split("\\.");

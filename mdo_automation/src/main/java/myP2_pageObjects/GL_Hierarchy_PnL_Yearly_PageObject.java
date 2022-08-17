@@ -87,7 +87,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 	// ===============================================Bottom Child
 	// Scenario================================================================
 	public boolean captureBottomChildModal() throws InterruptedException {
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 
 		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));

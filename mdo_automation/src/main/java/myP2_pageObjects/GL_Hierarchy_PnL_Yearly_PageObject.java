@@ -14,7 +14,7 @@ import utils.ConstantsReader;
 import utils.ElementUtils;
 
 public class GL_Hierarchy_PnL_Yearly_PageObject {
-	
+
 	String capturedModal;
 	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
@@ -83,230 +83,233 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 	@FindBy(xpath = "//div[text()='Successfully updated status.']")
 	WebElement lblTurnOffMessage;
-	
-	//===============================================Bottom Child Scenario================================================================
-		public boolean captureBottomChildModal() throws InterruptedException {
-			Thread.sleep(5000);
 
-			WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
+	// ===============================================Bottom Child
+	// Scenario================================================================
+	public boolean captureBottomChildModal() throws InterruptedException {
+		Thread.sleep(5000);
 
-			Thread.sleep(2000);
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
-			btnRoomRev.click();
+		Thread.sleep(2000);
 
-			WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
+		btnRoomRev.click();
 
-			btnRoomRevBeofreOther.click();
+		WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
 
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
+		btnRoomRevBeofreOther.click();
 
-			if (status == 1) {
-				WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[1]"));
-				capturedModal = totalRoomCntract.getText();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
 
-				System.out.print("AAA" + capturedModal);
+		if (status == 1) {
+			WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[1]"));
+			capturedModal = totalRoomCntract.getText();
 
-				return true;
-			} else {
-				return false;
-			}
+			System.out.print("AAA" + capturedModal);
+
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean turnOffBottomCapturedModal() throws InterruptedException {
+		Thread.sleep(5000);
+
+		WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(glParent));
+
+		glParentButton.click();
+
+		WebElement glRoomRev = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(glRoomRevenue));
+
+		glRoomRev.click();
+
+		WebElement glRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(glRoomRevenueBeofreOther));
+
+		glRoomRevBeofreOther.click();
+
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[3]")).getText();
+
+		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
+		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
+
+			btnBottomCapturedValueToggle.click();
+
+			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+
+			btnConfirm.click();
+
+			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
+
+			return lblSuccessmsg.isDisplayed();
+
+		} else {
+			return false;
 		}
 
-		public boolean turnOffBottomCapturedModal() throws InterruptedException {
-			Thread.sleep(5000);
+	}
 
-			WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(glParent));
+	public boolean validateTurnedOffBottomModalinPnLYearly() {
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
-			glParentButton.click();
+		btnRoomRev.click();
 
-			WebElement glRoomRev = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(glRoomRevenue));
+		WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
 
-			glRoomRev.click();
+		btnRoomRevBeofreOther.click();
 
-			WebElement glRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(glRoomRevenueBeofreOther));
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
 
-			glRoomRevBeofreOther.click();
+		if (status == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	// ===============================================Top Child Scenario
+	// =========================================================================================
 
-			String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[3]")).getText();
+	public boolean captureTopChildModal() throws InterruptedException {
+		Thread.sleep(5000);
 
-			System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
-			if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
-				btnBottomCapturedValueToggle.click();
+		btnRoomRev.click();
 
-				ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
 
-				btnConfirm.click();
+		if (status == 1) {
+			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[1]"));
+			capturedModal = totalRoomRevBefore.getText();
 
-				WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
-						.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
+			System.out.print("AAA" + capturedModal);
 
-				return lblSuccessmsg.isDisplayed();
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-			} else {
-				return false;
-			}
+	public boolean turnOffTopCapturedModal() throws InterruptedException {
+		Thread.sleep(5000);
 
+		WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(glParent));
+
+		glParentButton.click();
+
+		WebElement glRoomRev = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(glRoomRevenue));
+
+		glRoomRev.click();
+
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[3]")).getText();
+
+		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
+		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
+
+			btnTopCapturedValueToggle.click();
+
+			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+
+			btnConfirm.click();
+
+			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
+
+			return lblSuccessmsg.isDisplayed();
+
+		} else {
+			return false;
 		}
 
-		public boolean validateTurnedOffBottomModalinPnLYearly() {
-			WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
+	}
 
-			btnRoomRev.click();
+	public boolean validateTurnedOffTopModalinPnLYearly() {
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
-			WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
+		btnRoomRev.click();
 
-			btnRoomRevBeofreOther.click();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
 
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
-
-			if (status == 0) {
-				return true;
-			} else {
-				return false;
-			}
+		if (status == 0) {
+			return true;
+		} else {
+			return false;
 		}
-	//===============================================Top Child Scenario =========================================================================================	
+	}
 
-		public boolean captureTopChildModal() throws InterruptedException {
-			Thread.sleep(5000);
+	// ================================================Parent
+	// Scenario==================================================================================
 
-			WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
+	public boolean captureParentModal() throws InterruptedException {
+		Thread.sleep(5000);
 
-			btnRoomRev.click();
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV90']")).size();
 
-			if (status == 1) {
-				WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[1]"));
-				capturedModal = totalRoomRevBefore.getText();
+		if (status == 1) {
+			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[1]"));
+			capturedModal = totalRoomRevBefore.getText();
 
-				System.out.print("AAA" + capturedModal);
+			System.out.print("AAA" + capturedModal);
 
-				return true;
-			} else {
-				return false;
-			}
+			return true;
+		} else {
+			return false;
 		}
+	}
 
-		public boolean turnOffTopCapturedModal() throws InterruptedException {
-			Thread.sleep(5000);
+	public boolean turnOffParentCapturedModal() throws InterruptedException {
+		Thread.sleep(5000);
 
-			WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(glParent));
+		WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(glParent));
 
-			glParentButton.click();
+		glParentButton.click();
 
-			WebElement glRoomRev = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(glRoomRevenue));
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[3]")).getText();
 
-			glRoomRev.click();
+		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
-			String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[3]")).getText();
+			btnParentCapturedValueToggle.click();
 
-			System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
-			if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
+			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
 
-				btnTopCapturedValueToggle.click();
+			btnConfirm.click();
 
-				ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
 
-				btnConfirm.click();
+			return lblSuccessmsg.isDisplayed();
 
-				WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
-						.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
-
-				return lblSuccessmsg.isDisplayed();
-
-			} else {
-				return false;
-			}
-
+		} else {
+			return false;
 		}
 
-		public boolean validateTurnedOffTopModalinPnLYearly() {
-			WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
+	}
 
-			btnRoomRev.click();
+	public boolean validateTurnedOffParentModalinPnLYearly() {
 
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
-
-			if (status == 0) {
-				return true;
-			} else {
-				return false;
-			}
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV90']")).size();
+		System.out.println("AA" + status);
+		if (status == 0) {
+			return true;
+		} else {
+			return false;
 		}
-
-		// ================================================Parent Scenario==================================================================================
-
-		public boolean captureParentModal() throws InterruptedException {
-			Thread.sleep(5000);
-
-			WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
-
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV90']")).size();
-
-			if (status == 1) {
-				WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[1]"));
-				capturedModal = totalRoomRevBefore.getText();
-
-				System.out.print("AAA" + capturedModal);
-
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		public boolean turnOffParentCapturedModal() throws InterruptedException {
-			Thread.sleep(5000);
-
-			WebElement glParentButton = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(glParent));
-
-			glParentButton.click();
-
-			String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[3]")).getText();
-
-			if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
-
-				btnParentCapturedValueToggle.click();
-
-				ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
-
-				btnConfirm.click();
-
-				WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
-						.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
-
-				return lblSuccessmsg.isDisplayed();
-
-			} else {
-				return false;
-			}
-
-		}
-
-		public boolean validateTurnedOffParentModalinPnLYearly() {
-
-			int status = driver.findElements(By.xpath("//tr[@data-el='RMREV90']")).size();
-
-			if (status == 0) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+	}
 
 }

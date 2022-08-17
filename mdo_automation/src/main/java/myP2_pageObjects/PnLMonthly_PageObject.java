@@ -231,7 +231,7 @@ public class PnLMonthly_PageObject {
 		double TotalRoomsRevenueValue = Double
 				.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
 
-		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(cellCRoomSold));
 		double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
 
@@ -242,7 +242,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyAdrCalculationFunc() {
 
-		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(cellAdr));
 		double adrValue = Double.parseDouble(adr.getText().replace(",", "").replaceAll("\\$", ""));
 		if (roundOffAdr == adrValue) {
@@ -254,7 +254,7 @@ public class PnLMonthly_PageObject {
 
 	public void revParCalFunc() {
 
-		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
 		double TotalRoomsRevenueValue = Double
 				.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
@@ -270,7 +270,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyRevParCalculationFunc() {
 
-		WebElement revPar = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement revPar = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(cellRevPar));
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 

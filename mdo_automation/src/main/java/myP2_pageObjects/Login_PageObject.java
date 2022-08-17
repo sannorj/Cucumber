@@ -148,10 +148,8 @@ public class Login_PageObject {
 	}
 
 	public boolean navigateHomePage() throws InterruptedException {
-		Thread.sleep(10000);
-		// ElementUtils.waitForElementToDisplay(lblPrimary, 100);
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(150))
-				.until(ExpectedConditions.visibilityOf(header));
+		Thread.sleep(15000);
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(150)).until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}
 }

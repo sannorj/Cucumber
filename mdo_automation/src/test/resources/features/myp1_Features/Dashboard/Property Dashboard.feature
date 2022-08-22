@@ -1,12 +1,13 @@
 @myP1_Regression
-Feature: Property Dashboard functionality
+Feature: Property Dashboard Data Load functionality
 
-  Scenario: Verify Property Dashboard Revenue Breakdown cart
+  Scenario: Verify Property Dashboard Page Navigation
     Given I am login to the myp1 site
     And System navigate to the dashboard
     Then I navigate to Property dashboard page
+  	#Verify Data Loaded successfully
+    Given Check data load according to selected date
+    When Verify First table is loaded
+    And Verify all the Chartes Loaded    
     
-    Scenario: Verify Property Dashboard Revenue Breakdown cart new sc
-    Given I am login to the myp1 site
-    And System navigate to the dashboard
-    Then I navigate to Property dashboard page
+    

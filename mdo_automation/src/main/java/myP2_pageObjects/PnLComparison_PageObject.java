@@ -92,7 +92,10 @@ public class PnLComparison_PageObject {
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
+		Thread.sleep(5000);
+		
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				listDrpValueSize.get(i).click();

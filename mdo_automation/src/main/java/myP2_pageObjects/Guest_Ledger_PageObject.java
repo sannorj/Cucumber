@@ -657,7 +657,7 @@ public class Guest_Ledger_PageObject {
 		for (int x = 0; x < ColumnData.length; x++) {
 			columnCount = 0;
 			for (int t = 0; t < ColumnData[x].length; t++) {
-				if (ColumnData[x][t].equalsIgnoreCase("GLD")) {
+				if (ColumnData[x][t].equalsIgnoreCase("BPIP")) {
 					flag = true;
 					columnCount++;
 					break;

@@ -9,11 +9,11 @@ Feature: P&L - Suppress Zero Values
     And Select the organization as "Beck Legacy Group" 
     And I am expand the P&L Statement option under Reports section in Side Menu
     
-    #Scenario: Verify whether user can hide the rows with 0 value on the P&L monthly report
-    #When go to the P&L Monthly page  
-    #And Select the Group ,Propery, feature date,View and Click on GO button 
-    #And Turn on the Zero Value Rows toggle button 
-    #Then The report should suppress records that have amount 0 for all applicable columns. 
+    Scenario: Verify whether user can hide the rows with 0 value on the P&L monthly report
+    When go to the P&L Monthly page  
+    And Select the Group ,Propery, feature date,View and Click on GO button 
+    And Turn on the Zero Value Rows toggle button 
+    Then The report should suppress records that have amount 0 for all applicable columns. 
     
     Scenario: Verify whether user can hide the rows with 0 value on the P&L yearly report
     When I am navigate to P&L Yearly page  

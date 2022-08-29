@@ -124,6 +124,11 @@ public class PnL_SuppressZero_PageObject {
 
 	 public void clickOnSuppressZeroFunc() throws InterruptedException {
 		 
+		 int GO = driver.findElements(By.xpath("//button//span[text()='Go']")).size();
+			if (GO==1) {
+				btnGo.click();
+				Thread.sleep(3500);
+			} 
 		 /* mandatory pause */
 			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 			btnZeroValue.click();

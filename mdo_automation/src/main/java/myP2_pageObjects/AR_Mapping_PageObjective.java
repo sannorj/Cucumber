@@ -289,9 +289,9 @@ public class AR_Mapping_PageObjective {
 		
 		for (int i = 0; i < mulAccountList.size(); i++) {
 			WebElement removebtn = driver.findElement(By.xpath("//div[text()='"+mulAccountList.get(i)+"']//ancestor::td//following-sibling::td[@index='4']"));
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			removebtn.click();
-			Thread.sleep(7500);
+			Thread.sleep(11500);
 		}
 	}
 

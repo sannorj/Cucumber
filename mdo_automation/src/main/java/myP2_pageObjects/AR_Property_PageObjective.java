@@ -103,7 +103,7 @@ public class AR_Property_PageObjective {
 
 		btnGo.click();
 
-		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
+		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		return txtProperty.isDisplayed();

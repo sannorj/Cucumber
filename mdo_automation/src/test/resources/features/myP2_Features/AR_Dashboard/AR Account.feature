@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @ARAccountSmoke
+@myP2_Regression @ARAccountSmokeT
 Feature: AR Account Functionality 
 
   Background: Navigate to AR Account and verify functionality  

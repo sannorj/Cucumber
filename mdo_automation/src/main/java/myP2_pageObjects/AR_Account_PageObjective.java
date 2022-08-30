@@ -69,11 +69,11 @@ public class AR_Account_PageObjective {
 	
 	public boolean navigateToARAccountPage() {
 
-		WebElement arArAccountCL = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement arArAccountCL = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(ArAccount));
 		arArAccountCL.click();
 
-		WebElement arArAccountPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement arArAccountPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(ArAccountPage));
 		return arArAccountPageCL.isDisplayed();
 
@@ -83,7 +83,7 @@ public class AR_Account_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
-		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownAccount));
 
 		drpAccount.click();
@@ -126,7 +126,7 @@ public class AR_Account_PageObjective {
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		Thread.sleep(2500);
-		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownAccount));
 		
 		drpAccount.click();

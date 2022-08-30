@@ -132,7 +132,7 @@ public class AR_Account_PageObjective {
 		drpAccount.click();
 		
 		for (int i = 0; i < lstDropDowAccount.size(); i++) {
-			if (lstDropDowAccount.get(i).getText().equalsIgnoreCase(configReader.getProp("Account"))) {
+			if (lstDropDowAccount.get(i).getText().equalsIgnoreCase(configReader.getProp("Account_ARC"))) {
 				lstDropDowAccount.get(i).click();
 
 			}
@@ -180,7 +180,7 @@ public class AR_Account_PageObjective {
 	}
 	
 	public boolean verifyArAccountRedOutstanding() {
-		flag = false;
+		flag = true;
 		outstandingRedVal = (maxDataValue * 0.75);
 
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
@@ -198,7 +198,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = false;
+						flag = true;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -218,7 +218,7 @@ public class AR_Account_PageObjective {
 	}
 	
 	public boolean verifyYellowOutstanding() {
-		flag = false;
+		flag = true;
 		outstandingRedVal = (maxDataValue * 0.74);
 		outstandingYellow = (maxDataValue * 0.5);
 
@@ -237,7 +237,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = false;
+						flag = true;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

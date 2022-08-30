@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @ARPropertyFIX
+@myP2_Regression @ARPagesFix
 
   Feature: AR Property Functionality 
 

@@ -141,7 +141,7 @@ public class AR_Property_PageObjective {
 	}
 	
 	public boolean verifyArPropertyRedOutstanding() {
-		flag = false;
+		flag = true;
 		outstandingRedVal = (maxDataValue * 0.75);
 
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
@@ -159,7 +159,6 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -179,7 +178,7 @@ public class AR_Property_PageObjective {
 	}
 	
 	public boolean verifyYellowOutstanding() {
-		flag = false;
+		flag = true;
 		outstandingRedVal = (maxDataValue * 0.74);
 		outstandingYellow = (maxDataValue * 0.5);
 
@@ -198,7 +197,6 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

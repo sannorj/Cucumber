@@ -83,14 +83,12 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-		Thread.sleep(10000);
+		WebElement txtDte = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(txtDate));
 		
 		txtDate.sendKeys(Keys.CONTROL + "a");
-		Thread.sleep(2000);
 		txtDate.sendKeys(Keys.DELETE);
-		Thread.sleep(2000);
 		txtDate.sendKeys(configReader.getProp("Date"));
-		Thread.sleep(2000);
 
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(drpView));

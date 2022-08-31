@@ -144,6 +144,8 @@ public class PnLYearly_PageObject {
 				}
 			}
 
+			Thread.sleep(1500);
+			
 			dropDownHotel.click();
 			for (int i = 0; i < lstDropDownHotel.size(); i++) {
 				if (lstDropDownHotel.get(i).getText().equalsIgnoreCase(property)) {
@@ -152,6 +154,8 @@ public class PnLYearly_PageObject {
 				}
 			}
 
+			Thread.sleep(1500);
+			
 			dropDownPeriod.click();
 			Thread.sleep(1000);
 			for (int i = 0; i < lstDropDownPeriod.size(); i++) {
@@ -160,6 +164,8 @@ public class PnLYearly_PageObject {
 
 				}
 			}
+
+			Thread.sleep(1500);
 
 			dropDownView.click();
 			for (int i = 0; i < lstDropDownView.size(); i++) {

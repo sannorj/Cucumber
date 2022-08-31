@@ -26,7 +26,7 @@ Scenario: Verify whether the PnL comparison Room revenue bottom child modal sect
  		Then I am expand the P&L Statement option under Reports section in Side Menu
  		And go to the P&L Property Comparison
     And Select the Group , date,View and Click on GO button
-    And Verify the bottom child modal is not visible in the Pnl comparison report		
+    And Verify the bottom child modal is not visible in the Pnl comparison report
 
 Scenario: Verify whether the PnL comparison Room revenue top child modal section working according to the GL Hierarchy Toggle button
  		
@@ -37,7 +37,7 @@ Scenario: Verify whether the PnL comparison Room revenue top child modal section
  		Then I am expand the P&L Statement option under Reports section in Side Menu
  		And go to the P&L Property Comparison
     And Select the Group , date,View and Click on GO button
-    And Verify the top child modal is not visible in the Pnl comparison report  	
+    And Verify the top child modal is not visible in the Pnl comparison report
     
 Scenario: Verify whether the PnL comparison Room revenue parent modal section working according to the GL Hierarchy Toggle button
  		Given I am expanding the parent value of Total Room revenue in PnL Comparison
@@ -47,5 +47,5 @@ Scenario: Verify whether the PnL comparison Room revenue parent modal section wo
  		Then I am expand the P&L Statement option under Reports section in Side Menu
  		And go to the P&L Property Comparison
     And Select the Group , date,View and Click on GO button
-    And Verify the parent modal is not visible in the Pnl comparison report    
+    And Verify the parent modal is not visible in the Pnl comparison report
 		   

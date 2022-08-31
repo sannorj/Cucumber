@@ -28,7 +28,7 @@ Scenario: Verify whether the PnL Yearly Room revenue bottom child modal section 
  		And I am navigate to P&L Yearly page
     When I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     Then I am Loading the PnLYearly Report with GO button
-    And Verify the bottom child modal is not visible in the Pnl Yearly report		
+    And Verify the bottom child modal is not visible in the Pnl Yearly report
 
 Scenario: Verify whether the PnL Yearly Room revenue top child modal section working according to the GL Hierarchy Toggle button
  		
@@ -40,7 +40,7 @@ Scenario: Verify whether the PnL Yearly Room revenue top child modal section wor
  		And I am navigate to P&L Yearly page
     When I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     Then I am Loading the PnLYearly Report with GO button
-    And Verify the top child modal is not visible in the Pnl Yearly report  	
+    And Verify the top child modal is not visible in the Pnl Yearly report
     
 Scenario: Verify whether the PnL Yearly Room revenue parent modal section working according to the GL Hierarchy Toggle button
  		Given I am expanding the parent value of Total Room revenue in PnL Yearly
@@ -51,5 +51,5 @@ Scenario: Verify whether the PnL Yearly Room revenue parent modal section workin
  		And I am navigate to P&L Yearly page
     When I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     Then I am Loading the PnLYearly Report with GO button
-    And Verify the parent modal is not visible in the Pnl Yearly report    
+    And Verify the parent modal is not visible in the Pnl Yearly report
 		   

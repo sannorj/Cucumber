@@ -34,7 +34,7 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 
-	@FindBy(xpath = "//input[contains(@placeholder,'mm/dd/yyyy')]")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")
@@ -83,7 +83,9 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-		WebElement txtDte = new WebDriverWait(driver, Duration.ofSeconds(100))
+		
+		
+		WebElement txtDte = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(txtDate));
 		
 		txtDate.sendKeys(Keys.CONTROL + "a");

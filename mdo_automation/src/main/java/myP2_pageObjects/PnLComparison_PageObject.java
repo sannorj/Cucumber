@@ -83,7 +83,7 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-		Thread.sleep(4);
+		Thread.sleep(4000);
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("Date"));

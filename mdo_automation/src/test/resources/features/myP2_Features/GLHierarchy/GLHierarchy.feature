@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @glh
+@myP2_Regression
 
     Feature: GL Hierarchy
 

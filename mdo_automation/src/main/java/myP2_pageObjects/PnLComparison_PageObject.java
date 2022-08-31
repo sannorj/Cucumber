@@ -34,7 +34,7 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 
-	@FindBy(xpath = "//input[@placeholder='mm/dd/yyyy']")
+	@FindBy(xpath = "//input[contains(@placeholder,'mm/dd/yyyy')]")
 	WebElement txtDate;
 
 	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")

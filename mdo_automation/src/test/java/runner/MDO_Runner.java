@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		features = { "src/test/resources/features" }, 
-		glue = { "myP2_step_definitions", "hooks" }, 
+		glue = { "myP2_step_definitions", "myP1_step_definitions", "hooks" }, 
 		tags = "@myP2_Smoke",
 		plugin = { "pretty",
                 "json:target/cucumber.json"

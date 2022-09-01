@@ -85,11 +85,10 @@ public class propertyDashboard_AddComment_PageObjects {
 	}
 
 	public void FillData() throws InterruptedException {
-		Thread.sleep(2000);
 		selectAddTags.click();
 		Thread.sleep(2000);
 		for (int i = 0; i < lstDropDowAddTags.size(); i++) {
-			if (lstDropDowAddTags.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Add_comment_Tags"))) {
+			if (lstDropDowAddTags.get(i).getText().equalsIgnoreCase(configReader.getProp("Add_comment_Tags"))) {
 				System.out.println("add tags list item ===" + lstDropDowAddTags.get(i).getText());
 				lstDropDowAddTags.get(i).click();
 			}
@@ -98,7 +97,7 @@ public class propertyDashboard_AddComment_PageObjects {
 		Thread.sleep(2000);
 
 		for (int i = 0; i < lstDropDowTagUsers.size(); i++) {
-			if (lstDropDowTagUsers.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Add_comment_TagUsers"))) {
+			if (lstDropDowTagUsers.get(i).getText().equalsIgnoreCase(configReader.getProp("Add_comment_TagUsers"))) {
 				System.out.println("Tag Users list item ===" + lstDropDowTagUsers.get(i).getText());
 				lstDropDowTagUsers.get(i).click();
 			}
@@ -106,7 +105,7 @@ public class propertyDashboard_AddComment_PageObjects {
 		Thread.sleep(3000);
 		fillComment.sendKeys(Keys.CONTROL + "a");
 		fillComment.sendKeys(Keys.DELETE);
-		fillComment.sendKeys(configReader.getMYP1Prop("Add_comment_CommentVal"));
+		fillComment.sendKeys(configReader.getProp("Add_comment_CommentVal"));
 		Thread.sleep(3000);
 	}
 
@@ -125,14 +124,14 @@ public class propertyDashboard_AddComment_PageObjects {
 			btnRefresh.click();
 			Thread.sleep(7000);
 			WebElement viewComments = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='"+ configReader.getMYP1Prop("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div")));
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='"+ configReader.getProp("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div")));
 			if (viewComments.isDisplayed()) {
-			List<WebElement> addedCommentsList = driver.findElements(By.xpath("//h2[text()='"+ configReader.getMYP1Prop("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div"));
+			List<WebElement> addedCommentsList = driver.findElements(By.xpath("//h2[text()='"+ configReader.getProp("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div"));
 
 			Thread.sleep(3000);
 			for (int i = 0; i < addedCommentsList.size(); i++) {
 				if (addedCommentsList.get(i).getText()
-						.equalsIgnoreCase(configReader.getMYP1Prop("Add_comment_CommentVal"))) {
+						.equalsIgnoreCase(configReader.getProp("Add_comment_CommentVal"))) {
 					System.out.println("Resently added comment : " + addedCommentsList.get(i).getText());
 				}
 			}
@@ -164,7 +163,7 @@ public class propertyDashboard_AddComment_PageObjects {
 	public boolean checkSubmittedData() throws InterruptedException {
 		viewCommentsPageSearch.sendKeys(Keys.CONTROL + "a");
 		viewCommentsPageSearch.sendKeys(Keys.DELETE);
-		viewCommentsPageSearch.sendKeys(configReader.getMYP1Prop("Add_comment_CommentVal"));
+		viewCommentsPageSearch.sendKeys(configReader.getProp("Add_comment_CommentVal"));
 
 		for (int i = 1; i <= viewCommentsPageTblraw.size(); i++) {
 			boolean addedCommentIsExist = false;
@@ -187,13 +186,13 @@ public class propertyDashboard_AddComment_PageObjects {
 					.getText();
 			Thread.sleep(3000);
 
-			String userPropVal = configReader.getMYP1Prop("View_comment_user");
+			String userPropVal = configReader.getProp("View_comment_user");
 
-			String hotelNamePropVal = configReader.getMYP1Prop("Property_dashboard_hotel");
+			String hotelNamePropVal = configReader.getProp("Property_dashboard_hotel");
 
-			String tagsPropVal = configReader.getMYP1Prop("Add_comment_Tags");
+			String tagsPropVal = configReader.getProp("Add_comment_Tags");
 
-			String commentsPropVal = configReader.getMYP1Prop("Add_comment_CommentVal");
+			String commentsPropVal = configReader.getProp("Add_comment_CommentVal");
 
 			if (userPropVal.equalsIgnoreCase(user)) {
 				System.out.println("User column value is equal to ==== " + user);

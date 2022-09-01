@@ -75,7 +75,7 @@ public class propertyDashboard_PageObjects {
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
 		Select drpHotel = new Select(propertyDropdown);
 		Thread.sleep(7000);
-		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
+		drpHotel.selectByVisibleText(configReader.getProp("Property_dashboard_hotel"));
 		Thread.sleep(3000);
 		try {
 			searchBTN.click();
@@ -100,7 +100,7 @@ public class propertyDashboard_PageObjects {
 		}
 		datePickerVal.sendKeys(Keys.CONTROL + "a");
 		datePickerVal.sendKeys(Keys.DELETE);
-		datePickerVal.sendKeys(configReader.getMYP1Prop("date_href_val"));
+		datePickerVal.sendKeys(configReader.getProp("date_href_val"));
 		Thread.sleep(7000);
 		searchBTN.click();
 
@@ -114,7 +114,7 @@ public class propertyDashboard_PageObjects {
 
 		WebElement dateHrefVal = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//a[@id='alnkRoomRevenueSummary' and contains(@href,'" + configReader.getMYP1Prop("date_href_val") + "')]")));
+						By.xpath("//a[@id='alnkRoomRevenueSummary' and contains(@href,'" + configReader.getProp("date_href_val") + "')]")));
 
 		Thread.sleep(3000);
 

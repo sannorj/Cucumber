@@ -96,8 +96,8 @@ public class propertyDashboard_AddEvent_PageObjects {
 	@FindBy(xpath = "//a[@class='alinkDisplayEvent']")
 	WebElement calendarIcon;
 
-	List<String> addedEvents = Arrays.asList(configReader.getMYP1Prop("Add_Event_Name"),
-			configReader.getMYP1Prop("Add_Event_NameRepeat"));
+	List<String> addedEvents = Arrays.asList(configReader.getProp("Add_Event_Name"),
+			configReader.getProp("Add_Event_NameRepeat"));
 
 	public void clickAddEvent() throws InterruptedException {
 		Thread.sleep(7000);
@@ -116,21 +116,21 @@ public class propertyDashboard_AddEvent_PageObjects {
 	public void fillFormDataWithoutRepeat() {
 		addEventName.sendKeys(Keys.CONTROL + "a");
 		addEventName.sendKeys(Keys.DELETE);
-		addEventName.sendKeys(configReader.getMYP1Prop("Add_Event_Name"));
+		addEventName.sendKeys(configReader.getProp("Add_Event_Name"));
 
 		addEventDescription.sendKeys(Keys.CONTROL + "a");
 		addEventDescription.sendKeys(Keys.DELETE);
-		addEventDescription.sendKeys(configReader.getMYP1Prop("Add_Event_Description"));
+		addEventDescription.sendKeys(configReader.getProp("Add_Event_Description"));
 
 		addEventStartDate.sendKeys(Keys.CONTROL + "a");
 		addEventStartDate.sendKeys(Keys.DELETE);
-		addEventStartDate.sendKeys(configReader.getMYP1Prop("Add_Event_StartDate"));
+		addEventStartDate.sendKeys(configReader.getProp("Add_Event_StartDate"));
 
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", addEventTimeZone);
 		for (int i = 0; i < lstDropDowAddEventTimeZone.size(); i++) {
 			if (lstDropDowAddEventTimeZone.get(i).getText()
-					.equalsIgnoreCase(configReader.getMYP1Prop("Add_Event_TimeZone"))) {
+					.equalsIgnoreCase(configReader.getProp("Add_Event_TimeZone"))) {
 				System.out.println("Time Zone list item ===" + lstDropDowAddEventTimeZone.get(i).getText());
 				lstDropDowAddEventTimeZone.get(i).click();
 			}
@@ -155,21 +155,21 @@ public class propertyDashboard_AddEvent_PageObjects {
 
 		addEventName.sendKeys(Keys.CONTROL + "a");
 		addEventName.sendKeys(Keys.DELETE);
-		addEventName.sendKeys(configReader.getMYP1Prop("Add_Event_NameRepeat"));
+		addEventName.sendKeys(configReader.getProp("Add_Event_NameRepeat"));
 
 		addEventDescription.sendKeys(Keys.CONTROL + "a");
 		addEventDescription.sendKeys(Keys.DELETE);
-		addEventDescription.sendKeys(configReader.getMYP1Prop("Add_Event_DescriptionRepeat"));
+		addEventDescription.sendKeys(configReader.getProp("Add_Event_DescriptionRepeat"));
 
 		addEventStartDate.sendKeys(Keys.CONTROL + "a");
 		addEventStartDate.sendKeys(Keys.DELETE);
-		addEventStartDate.sendKeys(configReader.getMYP1Prop("Add_Event_StartDateRepeat"));
+		addEventStartDate.sendKeys(configReader.getProp("Add_Event_StartDateRepeat"));
 
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", addEventTimeZone);
 		for (int i = 0; i < lstDropDowAddEventTimeZone.size(); i++) {
 			if (lstDropDowAddEventTimeZone.get(i).getText()
-					.equalsIgnoreCase(configReader.getMYP1Prop("Add_Event_TimeZone"))) {
+					.equalsIgnoreCase(configReader.getProp("Add_Event_TimeZone"))) {
 				System.out.println("Time Zones list item ===" + lstDropDowAddEventTimeZone.get(i).getText());
 				lstDropDowAddEventTimeZone.get(i).click();
 			}
@@ -180,7 +180,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 		executorEventRepeats.executeScript("arguments[0].click();", addEventRepeats);
 		for (int i = 0; i < lstDropDowAddEventRepeats.size(); i++) {
 			if (lstDropDowAddEventRepeats.get(i).getText()
-					.equalsIgnoreCase(configReader.getMYP1Prop("Add_Event_RepeatOption"))) {
+					.equalsIgnoreCase(configReader.getProp("Add_Event_RepeatOption"))) {
 				System.out.println("Repeats list item ===" + lstDropDowAddEventRepeats.get(i).getText());
 				lstDropDowAddEventRepeats.get(i).click();
 			}
@@ -189,7 +189,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 		addEventRepeatEvery.click();
 		for (int i = 0; i < lstDropDowAddEventRepeatEvery.size(); i++) {
 			if (lstDropDowAddEventRepeatEvery.get(i).getText()
-					.equalsIgnoreCase(configReader.getMYP1Prop("Add_Event_RepeatEvery"))) {
+					.equalsIgnoreCase(configReader.getProp("Add_Event_RepeatEvery"))) {
 				System.out.println("Repeat Every list item ===" + lstDropDowAddEventRepeatEvery.get(i).getText());
 				lstDropDowAddEventRepeatEvery.get(i).click();
 			}
@@ -197,7 +197,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 
 		addEventEndDate.sendKeys(Keys.CONTROL + "a");
 		addEventEndDate.sendKeys(Keys.DELETE);
-		addEventEndDate.sendKeys(configReader.getMYP1Prop("Add_Event_EndDate"));
+		addEventEndDate.sendKeys(configReader.getProp("Add_Event_EndDate"));
 		Thread.sleep(7000);
 
 	}
@@ -269,7 +269,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 				.until(ExpectedConditions.visibilityOf(calendarIcon));
 		calendarDisplayed.click();
 			Thread.sleep(2500);
-			String Add_Event_Name = configReader.getMYP1Prop("Add_Event_Name");
+			String Add_Event_Name = configReader.getProp("Add_Event_Name");
 			boolean firstEventDeleted=false;
 			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
 				if (Add_Event_Name.equalsIgnoreCase(lstDropDowDisplayAddedEvent.get(i).getText())) {
@@ -280,7 +280,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 				}
 			}
 			WebElement viewAdd_Event_NameRepeat = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getMYP1Prop("Add_Event_NameRepeat")+"]//following::div//a[@class='alnkdeleteevent']")));
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getProp("Add_Event_NameRepeat")+"]//following::div//a[@class='alnkdeleteevent']")));
 			viewAdd_Event_NameRepeat.click();
 			System.out.println("Add_Event_NameRepeat also deleted!");
 			return firstEventDeleted;

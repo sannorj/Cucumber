@@ -8,7 +8,7 @@ public class GLHierarchy_StepDefinition {
 
 	GLHierarchy_PageObject GLHpo = new GLHierarchy_PageObject(DriverFactory.getDriver());
 
-	@Given("I am expand the configuration option in Side Menu")
+	@Given("I am expand the configuration options in Side Menu")
 	public void I_am_expand_the_configuration_option_in_Side_Menu() {
 		GLHpo.expandConfigurations();
 	}

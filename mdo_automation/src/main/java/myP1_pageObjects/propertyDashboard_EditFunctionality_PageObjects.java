@@ -91,14 +91,14 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public void removeChart() throws InterruptedException {
 		WebElement removingPanel = driver.findElement(
-				By.xpath("//div[@id='" + configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch on']"));
+				By.xpath("//div[@id='" + configReader.getProp("Panel_switch_id") + "']//div[@class='ios-switch on']"));
 
 		WebElement submitbtn = driver.findElement(By.xpath("//button[@id='btnsave']"));
 		if (removingPanel.isDisplayed()) {
 			removingPanel.click();
 			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='"
-							+ configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch off']")));
+							+ configReader.getProp("Panel_switch_id") + "']//div[@class='ios-switch off']")));
 			if (waitforSwitchoff.isDisplayed())
 				submitbtn.click();
 			System.out.println("swith disabled");
@@ -117,7 +117,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		if (waitAddChartClose) {
 			Thread.sleep(7000);
 			WebElement removingChart = driver
-					.findElement(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']"));
+					.findElement(By.xpath("//a[@data-content='" + configReader.getProp("Panel_switch_id") + "']"));
 			Thread.sleep(3000);
 			if (removingChart.isDisplayed()) {
 				System.out.println("Chart not removed" + removingChart.isDisplayed());
@@ -136,13 +136,13 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void reSelectRemovedChart() throws InterruptedException {
 
 		WebElement addingPanel = driver.findElement(
-				By.xpath("//div[@id='" + configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch off']"));
+				By.xpath("//div[@id='" + configReader.getProp("Panel_switch_id") + "']//div[@class='ios-switch off']"));
 
 		if (addingPanel.isDisplayed()) {
 			addingPanel.click();
 			WebElement waitforSwitchon = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='"
-							+ configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch on']")));
+							+ configReader.getProp("Panel_switch_id") + "']//div[@class='ios-switch on']")));
 			System.out.println("swith enabled");
 		} else {
 			System.out.println("swith already enabled");
@@ -161,7 +161,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 		WebElement addingChart = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")));
+						By.xpath("//a[@data-content='" + configReader.getProp("Panel_switch_id") + "']")));
 		Thread.sleep(7000);
 
 		if (addingChart.isDisplayed()) {
@@ -180,7 +180,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		WebElement removingCol = driver
 				.findElement(By.xpath("(//th[@class='center num sorting_disabled']//span[text()='"
-						+ configReader.getMYP1Prop("Remove_Column") + "']//following::a[@class='colRemove'])[1]"));
+						+ configReader.getProp("Remove_Column") + "']//following::a[@class='colRemove'])[1]"));
 		Thread.sleep(3000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", removingCol);
@@ -207,7 +207,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 				.until(ExpectedConditions.invisibilityOfElementLocated(
 						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		for (int i = 0; i < dashboardTblColumns.size(); i++) {
-			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
+			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getProp("Remove_Column"))) {
 				System.out.println("==Column already exists ==");
 				return false;
 			}
@@ -244,7 +244,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		List<WebElement> removingCol = driver.findElements(By
 				.xpath("(//select[@id='ddlCols"+ noOfCol + "'])[1]//option"));
 		for (int i = 0; i < removingCol.size(); i++) {
-			if (removingCol.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
+			if (removingCol.get(i).getText().equalsIgnoreCase(configReader.getProp("Remove_Column"))) {
 				System.out.println("add tags list item ===" + removingCol.get(i).getText());
 				removingCol.get(i).click();
 			}
@@ -255,7 +255,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 //				.until(ExpectedConditions.visibilityOf(saveBtn));
 //		boolean waitColVisible = new WebDriverWait(driver, Duration.ofSeconds(100))
 //				.until(ExpectedConditions.invisibilityOfElementLocated(
-//						By.xpath("(//th//span[text()='"+configReader.getMYP1Prop("Remove_Column")+"'] )[1]")));
+//						By.xpath("(//th//span[text()='"+configReader.getProp("Remove_Column")+"'] )[1]")));
 //		System.out.println(2);
 		saveBtn.click();
 		System.out.println(3);
@@ -270,7 +270,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 //				.until(ExpectedConditions.invisibilityOfElementLocated(
 //						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		for (int i = 1; i <= noOfCol; i++) {
-			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
+			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getProp("Remove_Column"))) {
 				System.out.println("==Column added successfully==");
 				return true;
 			}
@@ -283,7 +283,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public void removeSelectedChart() {
 		WebElement removingChart = driver
-				.findElement(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']"));
+				.findElement(By.xpath("//a[@data-content='" + configReader.getProp("Panel_switch_id") + "']"));
 		removingChart.click();
 		saveBtn.click();
 	}

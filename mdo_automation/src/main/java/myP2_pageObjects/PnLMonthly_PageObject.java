@@ -66,7 +66,7 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//h3[text()='Loading...']")
 	WebElement lblLoading;
 
-	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+	@FindBy(xpath = "//input[@name='date']")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//input[@name='nullRecords']")

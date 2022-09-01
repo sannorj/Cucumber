@@ -92,6 +92,9 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
 	
+//	@FindBy(xpath = "(//div[@class='sc-KfMfS cgSLAU'])[1]")
+//	WebElement lblFirstReplyComment;
+	
 	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
 	WebElement lblFirstReplyComment;
 	
@@ -136,6 +139,7 @@ public class PrimaryD_Comments_PageObject {
 		}
 
 		Thread.sleep(5000);
+	//	ElementUtils.waitForElementToDisplay(lblGroup, 100);
 
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));

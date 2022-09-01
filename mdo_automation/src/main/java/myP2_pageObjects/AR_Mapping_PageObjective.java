@@ -73,8 +73,8 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonMapTo']")
 	WebElement buttonMapTo;
 	
-	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input")    //(xpath = "//div[@class='sc-jtJlRs kajoKa']//input")
-	WebElement popupSearch; 
+	@FindBy(xpath = "//div[@class='sc-jtJlRs kajoKa']//input")
+	WebElement popupSearch;
 	
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowPopupAcc;
@@ -242,18 +242,17 @@ public class AR_Mapping_PageObjective {
 	////////////////////Verify bulk mapping Functionality
 
 	public void selectFewAccounts() throws InterruptedException {
-		Thread.sleep(7500);
+		Thread.sleep(5000);
 		for (int i = 0; i < mulAccountList.size(); i++) {
 			WebElement e = driver.findElement(By.xpath("//div[text()='"+ mulAccountList.get(i) +"']//ancestor::td//preceding-sibling::td[@index='0']//input"));
 			e.click();
-			Thread.sleep(6000);
+			Thread.sleep(4000);
 			System.out.println("clicked bullet icon: "+mulAccountList.get(i));
 		}
 		buttonMapTo.click();
 	}
 
-	public void selectAccountFromPopup() throws InterruptedException {
-		Thread.sleep(5000);
+	public void selectAccountFromPopup() {
 		popupSearch.click();
 		for (int i = 0; i < lstDropDowPopupAcc.size(); i++) {
 			if (lstDropDowPopupAcc.get(i).getText().equalsIgnoreCase(configReader.getProp("AR_MappedTo"))) {
@@ -264,7 +263,7 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean verifyAccountsChanged() throws InterruptedException {
-		Thread.sleep(10000);
+		Thread.sleep(6000);
 		boolean flag=true;
 		for (int i = 0; i < mulAccountList.size(); i++) {
 			
@@ -286,17 +285,16 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public void removeMappedBulkAcc() throws InterruptedException {
-		
 		for (int i = 0; i < mulAccountList.size(); i++) {
 			WebElement removebtn = driver.findElement(By.xpath("//div[text()='"+mulAccountList.get(i)+"']//ancestor::td//following-sibling::td[@index='4']"));
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			removebtn.click();
-			Thread.sleep(11500);
+			Thread.sleep(3000);
 		}
 	}
 
 	public boolean verifyAllAccRemoved() throws InterruptedException {
-		Thread.sleep(8000);
+		Thread.sleep(4000);
 		boolean flag=true;
 		for (int i = 0; i < mulAccountList.size(); i++) {
 			

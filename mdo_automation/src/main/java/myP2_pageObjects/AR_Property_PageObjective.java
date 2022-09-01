@@ -103,7 +103,7 @@ public class AR_Property_PageObjective {
 
 		btnGo.click();
 
-		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		return txtProperty.isDisplayed();
@@ -141,7 +141,7 @@ public class AR_Property_PageObjective {
 	}
 	
 	public boolean verifyArPropertyRedOutstanding() {
-		flag = true;
+		flag = false;
 		outstandingRedVal = (maxDataValue * 0.75);
 
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
@@ -159,6 +159,7 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -178,7 +179,7 @@ public class AR_Property_PageObjective {
 	}
 	
 	public boolean verifyYellowOutstanding() {
-		flag = true;
+		flag = false;
 		outstandingRedVal = (maxDataValue * 0.74);
 		outstandingYellow = (maxDataValue * 0.5);
 
@@ -197,6 +198,7 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

@@ -69,11 +69,11 @@ public class AR_Account_PageObjective {
 	
 	public boolean navigateToARAccountPage() {
 
-		WebElement arArAccountCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement arArAccountCL = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(ArAccount));
 		arArAccountCL.click();
 
-		WebElement arArAccountPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement arArAccountPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(ArAccountPage));
 		return arArAccountPageCL.isDisplayed();
 
@@ -83,7 +83,7 @@ public class AR_Account_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
-		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(dropDownAccount));
 
 		drpAccount.click();
@@ -126,13 +126,13 @@ public class AR_Account_PageObjective {
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		Thread.sleep(2500);
-		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(dropDownAccount));
 		
 		drpAccount.click();
 		
 		for (int i = 0; i < lstDropDowAccount.size(); i++) {
-			if (lstDropDowAccount.get(i).getText().equalsIgnoreCase(configReader.getProp("Account_ARC"))) {
+			if (lstDropDowAccount.get(i).getText().equalsIgnoreCase(configReader.getProp("Account"))) {
 				lstDropDowAccount.get(i).click();
 
 			}
@@ -180,7 +180,7 @@ public class AR_Account_PageObjective {
 	}
 	
 	public boolean verifyArAccountRedOutstanding() {
-		flag = true;
+		flag = false;
 		outstandingRedVal = (maxDataValue * 0.75);
 
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
@@ -198,7 +198,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = true;
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -218,7 +218,7 @@ public class AR_Account_PageObjective {
 	}
 	
 	public boolean verifyYellowOutstanding() {
-		flag = true;
+		flag = false;
 		outstandingRedVal = (maxDataValue * 0.74);
 		outstandingYellow = (maxDataValue * 0.5);
 
@@ -237,7 +237,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = true;
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

@@ -84,7 +84,7 @@ public class AR_Dashboard_PageObjective {
 
 	public boolean navigateToARDahsboardPage() {
 
-		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(ArDashboard));
 		arDashBoardCL.click();
 
@@ -98,7 +98,7 @@ public class AR_Dashboard_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
 		drpGroup.click();

@@ -111,15 +111,15 @@ public class GSSMedallia_PageObject {
 	WebElement msgError;
 
 	public void expandGuestSatisfaction() {
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(selector));
 		menu.click();
 
-		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(reports));
 		reportsEx.click();
 
-		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(gss));
 		guestSatisfaction.click();
 
@@ -127,18 +127,18 @@ public class GSSMedallia_PageObject {
 
 	public boolean navigateToGssMedalliaPage() {
 
-		WebElement gssMedalliaCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement gssMedalliaCL = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(gssMedallia));
 		gssMedalliaCL.click();
 
-		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 		return gssMedalliaPageCL.isDisplayed();
 
 	}
 	
 	public boolean loadMedalliaReport(String Keyword) {
-		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 
 		gssMedalliaPageCL.isDisplayed();
@@ -152,14 +152,14 @@ public class GSSMedallia_PageObject {
 			}
 		}
 		
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 		return homePage.isDisplayed();
 	}
 	
 
 	public boolean loadMedalliaReport() {
-		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 
 		gssMedalliaPageCL.isDisplayed();
@@ -188,7 +188,7 @@ public class GSSMedallia_PageObject {
 				if (!priorityDropdownrB.get(i).getText().equals("0")) {
 					priorityDropdownrB.get(i).click();
 
-					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(50))
+					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 					DrpValue.isDisplayed();
@@ -210,22 +210,27 @@ public class GSSMedallia_PageObject {
 
 			txtSearch.sendKeys(propertyList.get(i));
 			Thread.sleep(2000);
+			// WebElement response = new WebDriverWait(driver, Duration.ofSeconds(20))
+			// .until(ExpectedConditions.visibilityOf((WebElement) surveyResponses));
+
+			// if (response.isDisplayed()) {
 			if (priorityDropdownrB.get(1).getText().equals("0")) {
 				priorityDropdownrB.get(1).click();
 
-				WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(50))
+				WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 						.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 				DrpValue.isDisplayed();
 
 				lstdrpValue.get(i + 1).click();
+				// txtSearch.sendKeys("");
 				Thread.sleep(2000);
 
 			}
 			txtSearch.sendKeys(Keys.CONTROL + "a");
 			txtSearch.sendKeys(Keys.DELETE);
 
-			
+			// }
 
 		}
 
@@ -237,7 +242,7 @@ public class GSSMedallia_PageObject {
 			int count = 0;
 			int index = 0;
 
-			WebElement property = new WebDriverWait(driver, Duration.ofSeconds(50))
+			WebElement property = new WebDriverWait(driver, Duration.ofSeconds(15))
 					.until(ExpectedConditions.visibilityOf(tableProperty));
 
 			if (property.isDisplayed()) {
@@ -253,7 +258,7 @@ public class GSSMedallia_PageObject {
 					priorityDropdownrB.get(index).click();
 					Thread.sleep(1500);
 
-					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(50))
+					WebElement DrpValue = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf((WebElement) drpValue));
 
 					DrpValue.isDisplayed();
@@ -262,7 +267,7 @@ public class GSSMedallia_PageObject {
 
 					Thread.sleep(2500);
 
-					WebElement errorMsg = new WebDriverWait(driver, Duration.ofSeconds(50))
+					WebElement errorMsg = new WebDriverWait(driver, Duration.ofSeconds(15))
 							.until(ExpectedConditions.visibilityOf(msgError));
 
 					flag = errorMsg.isDisplayed();
@@ -273,6 +278,7 @@ public class GSSMedallia_PageObject {
 
 			}
 		} catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		}
 

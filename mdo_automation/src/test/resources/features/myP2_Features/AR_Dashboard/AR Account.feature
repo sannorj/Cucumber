@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @ARPagesFix
+@myP2_Regression 
 Feature: AR Account Functionality 
 
   Background: Navigate to AR Account and verify functionality  
@@ -25,4 +25,4 @@ Feature: AR Account Functionality
  	Given I am storing all the account values
  	And I am sorting all the account values
  	Then I turn on the Show at risk
-	And Verify whether the AR account Yellow Outstanding values are correctly highlighted		
+	And Verify whether the AR account Yellow Outstanding values are correctly highlighted

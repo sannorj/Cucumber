@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @mypGSS
+@myP2_Regression @mypGSSM
 
    Feature: Verify GSS Medalia Functionality
 

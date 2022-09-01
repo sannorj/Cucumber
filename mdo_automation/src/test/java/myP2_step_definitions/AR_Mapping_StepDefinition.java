@@ -60,7 +60,7 @@ public class AR_Mapping_StepDefinition {
 	}
 
 	@And("Select an account then click on save button")
-	public void select_an_account_then_click_on_save_button() {
+	public void select_an_account_then_click_on_save_button() throws InterruptedException {
 		ARmappingPo.selectAccountFromPopup();
 	}
 

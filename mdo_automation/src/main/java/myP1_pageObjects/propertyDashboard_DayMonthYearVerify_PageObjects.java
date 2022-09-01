@@ -63,16 +63,16 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 	public void searchSelectedMonthYear() throws InterruptedException {
 		Thread.sleep(7000);
 		Select drpMonth = new Select(selectMonth);
-		drpMonth.selectByVisibleText(configReader.getMYP1Prop("Selected_month"));
+		drpMonth.selectByVisibleText(configReader.getProp("Selected_month"));
 
 		Select drpYear = new Select(selectYear);
-		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
+		drpYear.selectByVisibleText(configReader.getProp("Selected_year"));
 
 		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
 		Select drpHotel = new Select(propertyDropdown);
 		Thread.sleep(7000);
-		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
+		drpHotel.selectByVisibleText(configReader.getProp("Property_dashboard_hotel"));
 
 		searchBtn.click();
 		Thread.sleep(7000);
@@ -100,8 +100,8 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 		closeAddEvent.click();
 		Thread.sleep(7000);
 		Thread.sleep(7000);
-		WebElement seletedDate = driver.findElement(By.xpath("//div[@id='div" + configReader.getMYP1Prop("date_href_val")
-				+ "']//div[contains(text(),'" + configReader.getMYP1Prop("Selected_date") + "')]"));
+		WebElement seletedDate = driver.findElement(By.xpath("//div[@id='div" + configReader.getProp("date_href_val")
+				+ "']//div[contains(text(),'" + configReader.getProp("Selected_date") + "')]"));
 		seletedDate.click();
 	}
 
@@ -109,11 +109,11 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 		Thread.sleep(7000);
 		WebElement hotelLst = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//span[text()='" + configReader.getMYP1Prop("Property_dashboard_hotel") + "']")));
+						By.xpath("//span[text()='" + configReader.getProp("Property_dashboard_hotel") + "']")));
 
 		WebElement datePageLoaded = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//span[text()='" + configReader.getMYP1Prop("date_href_val") + "']")));
+						By.xpath("//span[text()='" + configReader.getProp("date_href_val") + "']")));
 		if (datePageLoaded.isDisplayed()) {
 			System.out.println("Navigate to Date Page");
 			return true;
@@ -130,13 +130,13 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 	public void searchSelectedYear() throws InterruptedException {
 
 		Select drpYear = new Select(selectYear);
-		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
+		drpYear.selectByVisibleText(configReader.getProp("Selected_year"));
 
 		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
 		Select drpHotel = new Select(propertyDropdown);
 		Thread.sleep(7000);
-		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
+		drpHotel.selectByVisibleText(configReader.getProp("Property_dashboard_hotel"));
 
 		searchBtn.click();
 		Thread.sleep(7000);
@@ -148,7 +148,7 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 
 	public void clickOnSelectedMonth() throws InterruptedException {
 		WebElement seletedMonth = driver.findElement(
-				By.xpath("//label[text()='" + configReader.getMYP1Prop("Selected_month") + "']//following::div"));
+				By.xpath("//label[text()='" + configReader.getProp("Selected_month") + "']//following::div"));
 		seletedMonth.click();
 	}
 

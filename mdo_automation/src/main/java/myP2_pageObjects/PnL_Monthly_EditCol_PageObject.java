@@ -33,8 +33,14 @@ public class PnL_Monthly_EditCol_PageObject {
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 	
-	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD MuiTableCell-alignCenter')]/span")
-	List<WebElement> header;
+//	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD MuiTableCell-alignCenter')]/span")
+//	List<WebElement> header;
+	
+//	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
+//	List <WebElement> header;
+	
+	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
+	List <WebElement> header;
 	
 	@FindBy(xpath = "//button[@data-el='buttonFilter']")
 	WebElement btnFilter;
@@ -141,27 +147,24 @@ public class PnL_Monthly_EditCol_PageObject {
 	}
 	
 	public boolean verifyFirstHeaderFunc() throws InterruptedException {
-		
-		
+
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
-		
+		Thread.sleep(4500);
 		for (int i = 0; i < header.size() - 1; i++) {
 			Headers.add(header.get(i).getText());
 		}
-		
+
 		headerName = Headers.get(0).split("-")[0].trim();
-		headerYear =Headers.get(0).split("-")[1].strip();
-		
-		if ( drpColVal1.equalsIgnoreCase(headerName) && drpYearValue1.equalsIgnoreCase(headerYear) ) {
+		headerYear = Headers.get(0).split("-")[1].strip();
+
+		if (drpColVal1.equalsIgnoreCase(headerName) && drpYearValue1.equalsIgnoreCase(headerYear)) {
 			flag = true;
 		} else {
 			flag = false;
 		}
 		return flag;
-		
 
-		
 	}
 	
     public boolean verifySecoundHeaderFunc() throws InterruptedException {

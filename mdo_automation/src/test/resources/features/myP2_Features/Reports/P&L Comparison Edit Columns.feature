@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @SMPL1
+@myP2_Regression @myP2_Smoke @cssfix
 
 Feature:  P&L Comparison Report - Edit Column functionality  
 
@@ -29,6 +29,5 @@ Background: Navigate to P&L Monthly report
     
     Scenario: Verify whether user can edit every header that is available
     When The recently modified column should be displayed when a user changes all the parameters in the edit column 
-    Then Page should load the defualt static section
-    
+    Then Page should load the defualt static section    
  

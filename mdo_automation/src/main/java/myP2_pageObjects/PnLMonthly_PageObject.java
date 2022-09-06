@@ -57,7 +57,10 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//h1[text()='Profit & Loss Monthly Report']")
 	WebElement pnlMonthlyPage;
 
-	@FindBy(xpath = "//*[@class='MuiTable-root']/tbody/tr")
+//	@FindBy(xpath = "//*[@class='MuiTable-root']/tbody/tr")
+//	List<WebElement> listStaticValues;
+	
+	@FindBy(xpath = "//tbody/tr")
 	List<WebElement> listStaticValues;
 
 	@FindBy(xpath = "//tr[@data-el]/td[1]")
@@ -179,9 +182,11 @@ public class PnLMonthly_PageObject {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("Static_Names").split(",");
 			/* Get the 5 static section form property file */
-			for (int i = 0; i < a.length; i++) {
+		//	for (int i = 0; i < a.length; i++) {
+				for (int i = 0; i <5; i++) {
 				String expected = a[i];
-				String actual = listStaticValues.get(i).getText();
+				//String actual = listStaticValues.get(i).getText();
+				String actual = listStaticValues.get(i).getAttribute("data-el");
 				if (actual.contains(expected)) {
 					flag = true;
 				} else {

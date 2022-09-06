@@ -226,6 +226,7 @@ public class Guest_Ledger_PageObject {
 		}
 		
 		/* Select the appropriate From date  from Date picker */
+		Thread.sleep(3000);
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("Ledger_Date"));

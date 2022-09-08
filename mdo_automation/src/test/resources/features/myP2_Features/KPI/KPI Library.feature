@@ -7,7 +7,7 @@
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 
-    When I am expand the configuration options in Side Menu
+    When I am expand the configuration option
     And System navigate to KPI Library page
     
     Scenario: Create new KPI with Static Fromula

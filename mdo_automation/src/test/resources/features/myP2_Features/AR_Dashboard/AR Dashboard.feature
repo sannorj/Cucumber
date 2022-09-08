@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @arFix
 
-Feature: AR DashBoard Functionality 
+Feature: AR DashBoard - Outstanding validation Functionality 
 
 Background: Navigate to AR Dashboard and verify functionality  
   Given I am login to the myp2 site

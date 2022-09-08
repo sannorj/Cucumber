@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @arFix
 
-  Feature: AR Property Functionality 
+  Feature: AR Property - Outstanding valiadtion Functionality 
 
   Background: Navigate to AR Property and verify functionality  
   Given I am login to the myp2 site

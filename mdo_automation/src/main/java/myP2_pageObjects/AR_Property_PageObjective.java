@@ -51,7 +51,7 @@ public class AR_Property_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@placeholder='mm/dd/yyyy']")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
@@ -137,6 +137,7 @@ public class AR_Property_PageObjective {
 				}
 			}
 		}
+		System.out.println("Max"+maxDataValue);
 		return maxDataValue;
 	}
 	
@@ -159,6 +160,7 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -197,6 +199,7 @@ public class AR_Property_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

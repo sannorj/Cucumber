@@ -1,6 +1,6 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression 
-Feature: AR Account Functionality 
+@myP2_Regression  @arFix
+Feature: AR Account - Outstanding validation Functionality 
 
   Background: Navigate to AR Account and verify functionality  
   Given I am login to the myp2 site

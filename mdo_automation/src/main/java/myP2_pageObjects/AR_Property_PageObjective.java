@@ -51,7 +51,7 @@ public class AR_Property_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
-	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@placeholder='mm/dd/yyyy']")
+	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")

@@ -51,7 +51,7 @@ public class AR_Account_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowAccount;
 
-	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@placeholder='mm/dd/yyyy']")
+	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")

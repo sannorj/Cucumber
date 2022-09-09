@@ -32,5 +32,16 @@ public Properties prop;
 		}
 		return result;
 	}
+	
+	public String getMYP1Prop(String value) {
+		try {
+			prop = new Properties();
+			prop.load(new FileInputStream("./src/test/resources/configurations/myp1Data.properties"));
+			result = prop.getProperty(value);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return result;
+	}
 
 }

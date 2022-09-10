@@ -44,7 +44,10 @@ public class CalendarMonth__PageObject {
 	@FindBy(xpath = "//h1[text()='30/60/90 Calendar Month Report']")
 	WebElement hlCalendarMonthReport;
 	
-	@FindBy(xpath = "//th[@class='MuiTableCell-root MuiTableCell-head sc-bBXxYQ dgldxD MuiTableCell-alignCenter']/span")
+//	@FindBy(xpath = "//th[@class='MuiTableCell-root MuiTableCell-head sc-bBXxYQ dgldxD MuiTableCell-alignCenter']/span")
+//	List <WebElement> listHeaders;
+	
+	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
 	List <WebElement> listHeaders;
 	
 	@FindBy(xpath = "//input[@name='keyword']")
@@ -96,9 +99,10 @@ public class CalendarMonth__PageObject {
 		for (int x = 0; x < 5; x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("CM_Headers").split(",");
-			for (int i = 0; i < a.length; i++) {
+			//for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < a.length; i++) {
 				String expected = a[i];
-				String actual = listHeaders.get(i).getText();
+				String actual = listHeaders.get(i+1).getText();
 				if (actual.contains(expected)) {
 					flag = true;
 				} else {

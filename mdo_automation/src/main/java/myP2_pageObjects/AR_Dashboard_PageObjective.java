@@ -113,6 +113,8 @@ public class AR_Dashboard_PageObjective {
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("AR_date"));
+		
+		Thread.sleep(5000);
 
 	}
 

@@ -52,7 +52,7 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "(//input[contains(@class,'MuiInput-input')])[4]")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 				  
 	WebElement txtDate;
 

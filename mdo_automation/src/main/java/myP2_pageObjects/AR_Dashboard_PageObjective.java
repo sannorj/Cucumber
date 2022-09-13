@@ -99,6 +99,15 @@ public class AR_Dashboard_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
+		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(txtDate));
+
+		date.sendKeys(Keys.CONTROL + "a");
+		date.sendKeys(Keys.DELETE);
+		date.sendKeys("03/31/2021");
+
+		Thread.sleep(5000);
+		
 		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
@@ -110,14 +119,7 @@ public class AR_Dashboard_PageObjective {
 			}
 		}
 
-		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(txtDate));
-
-		date.sendKeys(Keys.CONTROL + "a");
-		date.sendKeys(Keys.DELETE);
-		date.sendKeys("03/31/2021");
-
-		Thread.sleep(5000);
+		
 
 	}
 

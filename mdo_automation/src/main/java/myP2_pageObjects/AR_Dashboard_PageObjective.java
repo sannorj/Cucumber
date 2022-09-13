@@ -20,7 +20,7 @@ public class AR_Dashboard_PageObjective {
 	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
 	double dataValues[][];
-	double maxDataValue, outstandingRedVal,outstandingYellow;
+	double maxDataValue, outstandingRedVal, outstandingYellow;
 	boolean flag;
 
 	public AR_Dashboard_PageObjective(WebDriver driver) {
@@ -53,7 +53,7 @@ public class AR_Dashboard_PageObjective {
 	List<WebElement> lstDropDowGroup;
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
-				  
+
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
@@ -112,11 +112,11 @@ public class AR_Dashboard_PageObjective {
 
 		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(txtDate));
-		
+
 		date.sendKeys(Keys.CONTROL + "a");
 		date.sendKeys(Keys.DELETE);
 		date.sendKeys(configReader.getProp("AR_date"));
-		
+
 		Thread.sleep(5000);
 
 	}
@@ -173,6 +173,9 @@ public class AR_Dashboard_PageObjective {
 			}
 		}
 
+		txtDate.isDisplayed();
+
+		System.out.println("ABC" + txtDate.getText());
 		for (int k = 0; k < dataValues[0].length; k++) {
 			System.out.println(dataValues[0][k]);
 		}
@@ -232,10 +235,9 @@ public class AR_Dashboard_PageObjective {
 						flag = true;
 					} else {
 						flag = false;
-						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
+						System.out.println("row" + i + " col" + j + " val" + tempDataValue);
 						break;
-						
-						
+
 					}
 				}
 
@@ -249,7 +251,7 @@ public class AR_Dashboard_PageObjective {
 		return flag;
 
 	}
-	
+
 	public boolean verifyYellowOutstanding() {
 		flag = false;
 		outstandingRedVal = (maxDataValue * 0.75);
@@ -271,10 +273,9 @@ public class AR_Dashboard_PageObjective {
 						flag = true;
 					} else {
 						flag = false;
-						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
+						System.out.println("row" + i + " col" + j + " val" + tempDataValue);
 						break;
-						
-						
+
 					}
 				}
 

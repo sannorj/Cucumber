@@ -85,9 +85,10 @@ public class PnlTTM_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonFilter']")
 	WebElement btnFilter;
 
-	@FindBy(xpath = "//tr[@class='MuiTableRow-root MuiTableRow-head']//th[@freezecolumns='0']")
+	@FindBy(xpath = "(//tr[2])[1]//th[@freezecolumns='0']")
 	List<WebElement> lstReportMonthHeader;
-
+	//--------//tr[@class='MuiTableRow-root MuiTableRow-head']//th[@freezecolumns='0']---------------//
+	
 	public void passParameteres() {
 
 		try {
@@ -176,6 +177,15 @@ public class PnlTTM_PageObject {
 		for (int i = lstReportMonthHeader.size() - 5; i > 0; i--) {
 			reportMonth.add(lstReportMonthHeader.get(i + 2).getText());
 		}
+		
+		for (int i = 0; i < monthList.size(); i++) {
+			System.out.println("A"+monthList.get(i));
+		}
+		
+		for (int i = 0; i < reportMonth.size(); i++) {
+			System.out.println("B"+reportMonth.get(i));
+		}
+		
 		for (int i = 0; i < 12; i++) {
 			if (monthList.get(i).equalsIgnoreCase(reportMonth.get(i))) {
 				status = true;

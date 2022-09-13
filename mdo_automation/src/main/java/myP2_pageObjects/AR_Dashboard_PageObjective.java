@@ -126,7 +126,14 @@ public class AR_Dashboard_PageObjective {
 	public boolean loadArReport() {
 
 		btnGo.click();
+		
+		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.sendKeys(Keys.DELETE);
+		txtDate.sendKeys(configReader.getProp("Date"));
+		
 
+		btnGo.click();
+		
 		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
@@ -177,7 +184,7 @@ public class AR_Dashboard_PageObjective {
 
 		txtDate.isDisplayed();
 
-		System.out.println("ABC" + txtDate.getText()+txtDate.isDisplayed());
+	
 		for (int k = 0; k < dataValues[0].length; k++) {
 			System.out.println(dataValues[0][k]);
 		}

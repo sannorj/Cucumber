@@ -15,7 +15,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	
 	private WebDriver driver;	
 	private ConstantsReader configReader = new ConstantsReader();
-	ArrayList<String> Headers ,MainHeaders;
+	ArrayList<String> Headers ,SUBHeader;
 	String headerName , headerYear , drpColVal2 ,drpYearValue2, drpColVal3 ,drpYearValue3;
 	boolean flag;
 	
@@ -24,16 +24,17 @@ public class PnL_Comparison_EditCol_PageObject {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 		Headers = new ArrayList<>();
-		MainHeaders = new ArrayList<>();
+		SUBHeader = new ArrayList<>();
 		
 	}
 	
-	@FindBy(xpath = "//th[contains(@class,'sc-gXmSlM kMcrTp MuiTableCell-alignCenter')]")
+
+	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
 	List<WebElement> header;
 	
-	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD MuiTableCell-alignCenter')]/span")
-	List<WebElement> mainHeader;
-	
+	@FindBy(xpath = "//th[contains(@class,'sc-gXmSlM kMcrTp css-164s97t')]")
+	List<WebElement> subHeader;
+
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 	
@@ -80,17 +81,17 @@ public class PnL_Comparison_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 
-		for (int i = 0; i < header.size() - 1; i++) {
+		for (int i = 0; i < header.size(); i++) {
 			Headers.add(header.get(i).getText());
 		}
 
-		for (int i = 0; i < mainHeader.size(); i++) {
-			MainHeaders.add(mainHeader.get(i).getText());
+		for (int i = 0; i < subHeader.size(); i++) {
+			SUBHeader.add(subHeader.get(i).getText());
 		}
-
-		headerName = Headers.get(4).split("-")[0].trim();
-		headerYear = MainHeaders.get(1).split("-")[1].strip();
-
+		
+		headerName = SUBHeader.get(4).split("-")[0].trim();
+		headerYear = Headers.get(1).split("-")[1].strip();
+		
 		if (drpColVal2.equalsIgnoreCase(headerName) && drpYearValue2.equalsIgnoreCase(headerYear)) {
 			flag = true;
 		} else {
@@ -127,16 +128,16 @@ public class PnL_Comparison_EditCol_PageObject {
 	    
 	    public boolean verifyNewlyAddedColFunc() throws InterruptedException {
 	    	
-			for (int i = 0; i < header.size() - 1; i++) {
+			for (int i = 0; i < header.size(); i++) {
 				Headers.add(header.get(i).getText());
 			}
 
-			for (int i = 0; i < mainHeader.size(); i++) {
-				MainHeaders.add(mainHeader.get(i).getText());
+			for (int i = 0; i < subHeader.size(); i++) {
+				SUBHeader.add(subHeader.get(i).getText());
 			}
-
-			headerName = Headers.get(6).split("-")[0].trim();
-			headerYear = MainHeaders.get(2).split("-")[1].strip();
+			
+			headerName = SUBHeader.get(6).split("-")[0].trim();
+			headerYear = Headers.get(2).split("-")[1].strip();
 			
 			if (headerName.equalsIgnoreCase(configReader.getProp("PnLE_Column")) && headerYear.equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
 				flag = true;
@@ -168,7 +169,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	    
 	   public boolean verifyRemovedColFunc() throws InterruptedException {
 			
-			if (mainHeader.size()==2) {
+			if (header.size()==2) {
 				flag = true;
 			} else {
 				flag = false;

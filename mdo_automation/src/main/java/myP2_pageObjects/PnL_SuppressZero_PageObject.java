@@ -45,8 +45,8 @@ public class PnL_SuppressZero_PageObject {
 		
 		@FindBy(xpath = "//ul[@role='listbox']//li")
 		List <WebElement> listDrpValueSize;
-		
-		@FindBy(xpath = "//input[@name='date']")
+			
+		@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 		WebElement txtDate;
 			
 		@FindBy(xpath = "//input[@name='nullRecords']")

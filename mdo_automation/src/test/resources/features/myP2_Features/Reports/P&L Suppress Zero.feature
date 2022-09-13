@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke11 
+@myP2_Regression @myP2_Smoke @cssfix
 
 Feature: P&L - Suppress Zero Values
 

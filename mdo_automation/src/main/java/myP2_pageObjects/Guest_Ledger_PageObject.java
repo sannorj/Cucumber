@@ -81,10 +81,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//input[@name='folio']")
 	WebElement drpFilterFolio;
 	
-	@FindBy(xpath = "//input[@name='arrivalDate']")
+	@FindBy(xpath = "//label[text()='Arrival']//parent::div//input")
 	WebElement drpFilterArrivalDate;
 	
-	@FindBy(xpath = "//input[@name='departureDate']")
+	@FindBy(xpath = "//label[text()='Departure']//parent::div//input")
 	WebElement drpFilterDepartureDate;
 	
 	@FindBy(xpath = "//input[@name='numberOfNight']")
@@ -153,7 +153,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//*[@id='root']//table/tbody/tr[1]/td/div/div/div/div/div")
 	List <WebElement> noOfColumns;
 	
-	@FindBy(xpath = "//div/input[@name='latestDate']")
+//	@FindBy(xpath = "//div/input[@name='latestDate']")
+//	WebElement txtDate;
+	
+	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
 	@FindBy(xpath = "//button[@title='Refresh']")
@@ -223,6 +226,7 @@ public class Guest_Ledger_PageObject {
 		}
 		
 		/* Select the appropriate From date  from Date picker */
+		Thread.sleep(3000);
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("Ledger_Date"));
@@ -487,7 +491,7 @@ public class Guest_Ledger_PageObject {
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
-		/* Select the appropriate Group value from the drop-down menu. */
+		/* Select the appropriate ARR-Date value from the drop-down menu. */
 		WebElement drpFolioEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterArrivalDate));
 		drpFolioEle.click();
 		
@@ -657,7 +661,7 @@ public class Guest_Ledger_PageObject {
 		for (int x = 0; x < ColumnData.length; x++) {
 			columnCount = 0;
 			for (int t = 0; t < ColumnData[x].length; t++) {
-				if (ColumnData[x][t].equalsIgnoreCase("BPIP")) {
+				if (ColumnData[x][t].equalsIgnoreCase("SZWS")) {
 					flag = true;
 					columnCount++;
 					break;

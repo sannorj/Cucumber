@@ -115,7 +115,7 @@ public class AR_Dashboard_PageObjective {
 
 		date.sendKeys(Keys.CONTROL + "a");
 		date.sendKeys(Keys.DELETE);
-		date.sendKeys(configReader.getProp("AR_date"));
+		date.sendKeys("03/31/2021");
 
 		Thread.sleep(5000);
 

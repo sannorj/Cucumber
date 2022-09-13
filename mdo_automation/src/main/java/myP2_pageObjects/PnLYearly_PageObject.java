@@ -267,7 +267,9 @@ public class PnLYearly_PageObject {
 
 		boolean flag = false;
 
-		for (int i = 0; i < occupancyCalc.length; i++) {
+		
+		
+		for (int i = 0; i < occupancyCalc.length-2; i++) {
 			if (occupancy[i] == occupancyCalc[i]) {
 				flag = true;
 			} else {
@@ -384,7 +386,9 @@ public class PnLYearly_PageObject {
 
 		boolean flag = false;
 
-		for (int i = 0; i < totalRevParCalc.length; i++) {
+		
+		
+		for (int i = 0; i < totalRevParCalc.length-2; i++) {
 			if (totalRevpar[i] == totalRevParCalc[i]) {
 				flag = true;
 			} else {

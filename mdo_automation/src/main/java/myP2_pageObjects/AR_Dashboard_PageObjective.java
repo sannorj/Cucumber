@@ -99,12 +99,18 @@ public class AR_Dashboard_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
+		
+		
 		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(txtDate));
 
-		date.sendKeys(Keys.CONTROL + "a");
-		date.sendKeys(Keys.DELETE);
+		Thread.sleep(2000);
+		//date.sendKeys(Keys.CONTROL + "a");
+		date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
 		date.sendKeys("03/31/2021");
+		
+		/*
+		 * myP1_date.sendKeys(Keys.CONTROL, "a", Keys.TAB);*/
 
 		Thread.sleep(5000);
 		

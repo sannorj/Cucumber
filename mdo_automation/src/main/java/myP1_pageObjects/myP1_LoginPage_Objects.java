@@ -1,7 +1,6 @@
 package myP1_pageObjects;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,14 +42,28 @@ public class myP1_LoginPage_Objects {
 	
 	@FindBy(xpath = "//a[@id='proceed-link']")
 	WebElement processLink;
+	
+	@FindBy(xpath = "//input[@name='UserName']")
+	WebElement usernameOld;
+	
+	@FindBy(xpath = "//input[@name='Password']")
+	WebElement passwordOld;
+	
+	@FindBy(xpath = "(//button[@type='submit'])[1]")
+	WebElement submitOld;
+	
+	@FindBy(xpath = "//a[text()='Lost Password?']")
+	WebElement passwordResetOld;
+	
+	@FindBy(xpath = "//h2[@class='title text-uppercase text-bold m-none']")
+	WebElement logoOld;
 
 	public void launchURLAndLogin() {
 		String environmentJenkin = System.getProperty("environment");
 		String env = configReader.getMYP1Prop("environment");
 		String myEnv = null;
 		if(environmentJenkin != null) {
-			//myEnv = environmentJenkin;
-			myEnv = env;
+			myEnv = environmentJenkin;
 		}else {
 			myEnv = env;
 		}
@@ -58,14 +71,26 @@ public class myP1_LoginPage_Objects {
 		if (myEnv.toLowerCase().equals("uat")) {
 			driver.get(configReader.getMYP1Prop("uat_myp1URL"));
 			acceptUnAuthorized();
-			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(logo));
+			//int logoSize = driver.findElements(By.xpath("//img[contains(@src,'/logo.png')]")).size();
+			try {
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logo));
 
-			LoginLogo.isDisplayed();
-			username.sendKeys(configReader.getMYP1Prop("uat_userName"));
-			password.sendKeys(configReader.getMYP1Prop("uat_password"));
-			passwordReset.isDisplayed();
-			loginButton.click();
+				LoginLogo.isDisplayed();
+				username.sendKeys(configReader.getMYP1Prop("uat_userName"));
+				password.sendKeys(configReader.getMYP1Prop("uat_password"));
+				passwordReset.isDisplayed();
+				loginButton.click();
+			} catch (Exception e) {
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+						.until(ExpectedConditions.visibilityOf(logoOld));
+
+				LoginLogo.isDisplayed();
+				usernameOld.sendKeys(configReader.getMYP1Prop("uat_userName"));
+				passwordOld.sendKeys(configReader.getMYP1Prop("uat_password"));
+				passwordResetOld.isDisplayed();
+				submitOld.click();
+			}
 
 		} else {
 			System.out.println("Provide avalid environment name");

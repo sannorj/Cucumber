@@ -1,4 +1,4 @@
-@myP1_Regression @myP1_Smoke
+@myP1_Regression @myP1_login
 Feature: Login to myp1
 
   Scenario: Verify MYP1 login

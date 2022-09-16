@@ -16,9 +16,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConstantsReader;
 
-//import com.google.j2objc.annotations.Property;
-
-//import utils.ConfigReader;
 
 public class GSSMedallia_PageObject {
 	private WebDriver driver;
@@ -53,8 +50,11 @@ public class GSSMedallia_PageObject {
 
 	@FindBy(xpath = "//div[text()='Guest Satisfaction']//ancestor::li")
 	WebElement gss;
+	
+	@FindBy(xpath = "//div[text()='Medallia Reports']//ancestor::li")
+	WebElement gssNew;
 
-	@FindBy(xpath = "//div[text()='GSS Medallia']//ancestor::li")
+	@FindBy(xpath = "//div[text()='Medallia (MYP2 new)']//ancestor::li")
 	WebElement gssMedallia;
 
 	@FindBy(xpath = "//h1[text()='GSS Medallia']")
@@ -127,11 +127,15 @@ public class GSSMedallia_PageObject {
 
 	public boolean navigateToGssMedalliaPage() {
 
-		WebElement gssMedalliaCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement guestSatisfaction = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(gssNew));
+		guestSatisfaction.click();
+		
+		WebElement gssMedalliaCL = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(gssMedallia));
 		gssMedalliaCL.click();
 
-		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement gssMedalliaPageCL = new WebDriverWait(driver, Duration.ofSeconds(75))
 				.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 		return gssMedalliaPageCL.isDisplayed();
 

@@ -35,6 +35,9 @@ public class GSSPriority_PageObjective {
 
 	}
 
+	@FindBy(xpath = "//div[text()='Medallia Reports']//ancestor::li")
+	WebElement gssNew;
+
 	@FindBy(xpath = "//div[text()='GSS By Priority']//ancestor::li")
 	WebElement gssPriority;
 
@@ -53,7 +56,7 @@ public class GSSPriority_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-priorityQty']")
@@ -103,6 +106,10 @@ public class GSSPriority_PageObjective {
 
 	public boolean navigateToGssPriorityPage() {
 
+		WebElement gss = new WebDriverWait(driver, Duration.ofSeconds(5))
+				.until(ExpectedConditions.visibilityOf(gssNew));
+		gss.click();
+
 		WebElement gssPriorityCL = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(gssPriority));
 		gssPriorityCL.click();
@@ -137,7 +144,8 @@ public class GSSPriority_PageObjective {
 
 			dropDownPriorityQuantity.click();
 			for (int i = 0; i < lstDropDownPriorityQuantity.size(); i++) {
-				if (lstDropDownPriorityQuantity.get(i).getText().equalsIgnoreCase(configReader.getProp("QuantityMedallia"))) {
+				if (lstDropDownPriorityQuantity.get(i).getText()
+						.equalsIgnoreCase(configReader.getProp("QuantityMedallia"))) {
 					lstDropDownPriorityQuantity.get(i).click();
 
 				}
@@ -183,7 +191,7 @@ public class GSSPriority_PageObjective {
 						.until(ExpectedConditions.visibilityOf(gssMedalliaPage));
 
 				gssMedalliaPageCL.isDisplayed();
-				
+
 				if (dropDownMedalliaYear.getText().equalsIgnoreCase(dtSplit[2])) {
 					btnGo.click();
 
@@ -203,7 +211,7 @@ public class GSSPriority_PageObjective {
 
 				if (reportData.size() > 0) {
 					sampleValuesMedallia = new double[sampleSizeRow.size() - 2];
-					
+
 					for (int i = 0; i < sampleValuesMedallia.length; i++) {
 						sampleValuesMedallia[i] = Double
 								.parseDouble(sampleSizeRow.get(i + 1).getText().replaceAll(",", ""));
@@ -242,7 +250,8 @@ public class GSSPriority_PageObjective {
 			listOfPriorityDropdownMedallia.get(0).click();
 			lstDropDownValues.get(1).click();
 
-			propertyName = configReader.getProp("PriorityProperty");;
+			propertyName = configReader.getProp("PriorityProperty");
+			;
 			Thread.sleep(2500);
 
 		}
@@ -273,25 +282,25 @@ public class GSSPriority_PageObjective {
 
 			dropDownPriorityQuantity.click();
 			for (int i = 0; i < lstDropDownPriorityQuantity.size(); i++) {
-				if (lstDropDownPriorityQuantity.get(i).getText().equalsIgnoreCase(configReader.getProp("QuantityMedallia"))) {
+				if (lstDropDownPriorityQuantity.get(i).getText()
+						.equalsIgnoreCase(configReader.getProp("QuantityMedallia"))) {
 					lstDropDownPriorityQuantity.get(i).click();
 
 				}
 			}
 			Thread.sleep(2500);
-			
+
 			txtSearch.sendKeys(Keys.CONTROL + "a");
 			txtSearch.sendKeys(Keys.DELETE);
 			txtSearch.sendKeys(configReader.getProp("PriorityGroup"));
-			
-		
+
 			Thread.sleep(2500);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void calculateValues() throws InterruptedException {
 
 		txtSearch.sendKeys(Keys.CONTROL + "a");
@@ -307,28 +316,28 @@ public class GSSPriority_PageObjective {
 
 				sampleSize = driver.findElement(By.xpath("//tbody//tr[1]//td[2]"));
 				sampleValuePriorityOne = driver.findElement(By.xpath("//tbody//tr[1]//td[3]"));
-				
+
 				if (dropDownPeriod.getText().equalsIgnoreCase("MTD")) {
 					cpPrioritySample = sampleValuesMedallia[Integer.parseInt(dtSplit[0]) - 1];
 					cpPriorityValue = samplePropertValueMedalliah[Integer.parseInt(dtSplit[0]) - 1];
 				} else if (dropDownPeriod.getText().equalsIgnoreCase("YTD")) {
 
 					for (int j = 0; j <= Integer.parseInt(dtSplit[0]) - 1; j++) {
-						
+
 						cpPrioritySample += sampleValuesMedallia[j];
 						cpPriorityValue += samplePropertValueMedalliah[j];
 					}
 				} else if (dropDownPeriod.getText().equalsIgnoreCase("Wave 1")) {
 
 					for (int j = 0; j < 6; j++) {
-						
+
 						cpPrioritySample += sampleValuesMedallia[j];
 						cpPriorityValue += samplePropertValueMedalliah[j];
 					}
 				} else if (dropDownPeriod.getText().equalsIgnoreCase("Wave 2")) {
 
 					for (int j = 6; j < 12; j++) {
-						
+
 						cpPrioritySample += sampleValuesMedallia[j];
 						cpPriorityValue += samplePropertValueMedalliah[j];
 					}

@@ -108,9 +108,6 @@ public class AR_Dashboard_PageObjective {
 		//date.sendKeys(Keys.CONTROL + "a");
 		date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
 		//date.sendKeys("03/31/2021");
-		
-		/*
-		 * myP1_date.sendKeys(Keys.CONTROL, "a", Keys.TAB);*/
 
 		Thread.sleep(5000);
 		
@@ -132,14 +129,6 @@ public class AR_Dashboard_PageObjective {
 	public boolean loadArReport() {
 
 		btnGo.click();
-		
-		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("Date"));
-		
-
-		btnGo.click();
-		
 		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 

@@ -106,8 +106,8 @@ public class AR_Dashboard_PageObjective {
 
 		Thread.sleep(2000);
 		//date.sendKeys(Keys.CONTROL + "a");
-		date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
-		date.sendKeys("03/31/2021");
+		//date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
+		//date.sendKeys("03/31/2021");
 		
 		/*
 		 * myP1_date.sendKeys(Keys.CONTROL, "a", Keys.TAB);*/

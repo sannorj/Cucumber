@@ -48,14 +48,17 @@ public class GSSByMonth_PageObject {
 
 	@FindBy(xpath = "//li[@data-value]")
 	List<WebElement> lstDropDownValues;
-
-	@FindBy(xpath = "//div[text()='GSS By Month']//ancestor::li")
+	
+	@FindBy(xpath = "//div[text()='Medallia Reports']//ancestor::li")
+	WebElement gssNew;
+	
+	@FindBy(xpath = "//div[text()='GSS Priority (MYP2 new)']//ancestor::li")
 	WebElement gssMonth;
 
 	@FindBy(xpath = "//h1[text()='GSS By Month']")
 	WebElement gssMonthPage;
 
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//div[@data-el='inputDate']")
@@ -117,6 +120,10 @@ public class GSSByMonth_PageObject {
 
 	public boolean navigateToGssMonthPage() {
 
+		WebElement gss = new WebDriverWait(driver, Duration.ofSeconds(5))
+				.until(ExpectedConditions.visibilityOf(gssNew));
+		gss.click();
+		
 		WebElement gssMonthCL = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(gssMonth));
 		gssMonthCL.click();
@@ -139,7 +146,7 @@ public class GSSByMonth_PageObject {
 		Thread.sleep(1500);
 		btnGo.click();
 
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(75))
 				.until(ExpectedConditions.visibilityOf(tableProperty));
 		return homePage.isDisplayed();
 	}

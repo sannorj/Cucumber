@@ -51,7 +51,7 @@ public class AR_Account_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowAccount;
 
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
@@ -122,11 +122,11 @@ public class AR_Account_PageObjective {
 		
 		btnGo.click();
 
-		WebElement txtProperty1 = new WebDriverWait(driver, Duration.ofSeconds(40))
+		WebElement txtProperty1 = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
 		Thread.sleep(2500);
-		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement drpAccount = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(dropDownAccount));
 		
 		drpAccount.click();
@@ -139,7 +139,7 @@ public class AR_Account_PageObjective {
 		}
 		
 		btnGo.click();
-		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(150))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 		
 		return txtProperty.isDisplayed();
@@ -198,7 +198,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = true;
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						
@@ -237,7 +237,7 @@ public class AR_Account_PageObjective {
 					if (coloredData > 0) {
 						flag = true;
 					} else {
-						flag = true;
+						flag = false;
 						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
 						break;
 						

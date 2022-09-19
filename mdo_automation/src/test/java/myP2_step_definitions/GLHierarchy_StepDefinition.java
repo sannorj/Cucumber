@@ -1,3 +1,4 @@
+package myP2_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;

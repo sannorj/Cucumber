@@ -47,10 +47,6 @@ public class GSSMedalia_StepDefinition {
 		assertTrue(gssMedalliaPo.assignExistingPriority());
 	}
 	
-	
-	/*@And("^Search for \"([^\"])\" $")
-	public void  SearchFor(String searchText) {
-		gssMedalliaPo.Search(searchText);
-	}*/
+
 	
 }

@@ -1,6 +1,6 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression
-
+@myP2_Regression @pnlT
+ 
 Feature:  P&L Monthly Report - View Feature Validation and Static Calculation
 
 Background: Navigate to P&L Monthly report

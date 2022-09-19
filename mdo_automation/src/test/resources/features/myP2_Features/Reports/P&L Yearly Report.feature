@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @pnlT
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 

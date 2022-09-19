@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @pnlT
 
-Feature: P&L Yearly - TTM Validstion
+Feature: P&L Yearly - TTM Validation
 
 	 Background: Navigate to P&L report Func
    Given I am login to the myp2 site
@@ -26,7 +26,7 @@ Feature: P&L Yearly - TTM Validstion
    When I am Loading the PnLYearly Report with GO button
    Then Page should load the defualt static section
    And I am navigate to PnL Yearly Edit Column
- 	 And Verify whether the year drodwon disabled  
+ 	 And Verify whether the year drodwon disabled
  	 
  	 Scenario: Verify whether the month header is located correctly 
  	 Given I select the group,property,view

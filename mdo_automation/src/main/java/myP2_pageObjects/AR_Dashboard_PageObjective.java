@@ -20,7 +20,7 @@ public class AR_Dashboard_PageObjective {
 	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
 	double dataValues[][];
-	double maxDataValue, outstandingRedVal,outstandingYellow;
+	double maxDataValue, outstandingRedVal, outstandingYellow;
 	boolean flag;
 
 	public AR_Dashboard_PageObjective(WebDriver driver) {
@@ -52,7 +52,8 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
@@ -98,6 +99,18 @@ public class AR_Dashboard_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
+		
+		
+		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(txtDate));
+
+		Thread.sleep(2000);
+		//date.sendKeys(Keys.CONTROL + "a");
+		date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
+		date.sendKeys("03/31/2021");
+
+		Thread.sleep(5000);
+		
 		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
@@ -109,16 +122,13 @@ public class AR_Dashboard_PageObjective {
 			}
 		}
 
-		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("Date"));
+		
 
 	}
 
 	public boolean loadArReport() {
 
 		btnGo.click();
-
 		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
@@ -167,6 +177,9 @@ public class AR_Dashboard_PageObjective {
 			}
 		}
 
+		txtDate.isDisplayed();
+
+	
 		for (int k = 0; k < dataValues[0].length; k++) {
 			System.out.println(dataValues[0][k]);
 		}
@@ -226,10 +239,9 @@ public class AR_Dashboard_PageObjective {
 						flag = true;
 					} else {
 						flag = false;
-						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
+						System.out.println("row" + i + " col" + j + " val" + tempDataValue);
 						break;
-						
-						
+
 					}
 				}
 
@@ -243,7 +255,7 @@ public class AR_Dashboard_PageObjective {
 		return flag;
 
 	}
-	
+
 	public boolean verifyYellowOutstanding() {
 		flag = false;
 		outstandingRedVal = (maxDataValue * 0.75);
@@ -265,10 +277,9 @@ public class AR_Dashboard_PageObjective {
 						flag = true;
 					} else {
 						flag = false;
-						System.out.println("row"+i+" col"+j+ " val"+tempDataValue);
+						System.out.println("row" + i + " col" + j + " val" + tempDataValue);
 						break;
-						
-						
+
 					}
 				}
 

@@ -15,12 +15,12 @@ Background: Login to MYP2 application
   And User changed the paramerters and clicks save button 
   Then The changes are reflected in the column
   
-  #Scenario: Verify whether a user is able to edit the column in the By Revenue table
-  #When User clicks Edit icon in By By Revenue
-  #Then The table goes into the editable mode
-  #And User click on the edit icon in the particular column
-  #And User changed the paramerters and clicks save button 
-  #Then The changes are reflected in the column
+  Scenario: Verify whether a user is able to edit the column in the By Revenue table
+  When User clicks Edit icon in By By Revenue
+  Then The table goes into the editable mode
+  And User click on the edit icon in the particular column
+  And User changed the paramerters and clicks save button 
+  Then The changes are reflected in the column
   
   
   

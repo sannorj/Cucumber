@@ -43,10 +43,7 @@ public class CalendarMonth__PageObject {
 	
 	@FindBy(xpath = "//h1[text()='30/60/90 Calendar Month Report']")
 	WebElement hlCalendarMonthReport;
-	
-//	@FindBy(xpath = "//th[@class='MuiTableCell-root MuiTableCell-head sc-bBXxYQ dgldxD MuiTableCell-alignCenter']/span")
-//	List <WebElement> listHeaders;
-	
+		
 	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
 	List <WebElement> listHeaders;
 	

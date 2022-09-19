@@ -126,6 +126,7 @@ public class RollingMonth_PageObject {
 		}
 		
 		/* Select the appropriate From date  from Date picker */
+		Thread.sleep(2000);
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));

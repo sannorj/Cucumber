@@ -47,7 +47,7 @@ public class IJ_Summary_PageObject {
 	@FindBy(xpath = "//div[@data-el='selectorIJPeriod']")
 	WebElement drpPeriod;
 	
-	@FindBy(xpath = "//div/input[@name='date']")
+	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
 	@FindBy(xpath = "//button//span[text()='Go']")
@@ -80,7 +80,10 @@ public class IJ_Summary_PageObject {
 	@FindBy(xpath = "//input[@name='hmgGlCode']")
 	WebElement drpGlCode;
 	
-	@FindBy(xpath = "//span[text()='Save']/../..")
+//	@FindBy(xpath = "//span[text()='Save']/../..")
+//	WebElement btnSave;
+	
+	@FindBy(xpath = "//span[text()='Save']//parent::button")
 	WebElement btnSave;
 	
 	@FindBy(xpath = "//div[text()='Total Revenue']/../../button[@class='sc-bZnhIo jzTzWP']")

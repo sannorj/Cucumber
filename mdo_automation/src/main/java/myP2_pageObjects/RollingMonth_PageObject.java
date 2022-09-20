@@ -57,7 +57,7 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "//button//span[text()='Go']")
+	@FindBy(xpath = "//span[text()='Go']//parent::button")
 	WebElement btnGo;
 	
 	@FindBy(xpath = "//span[text()='Property']")

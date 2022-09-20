@@ -32,16 +32,14 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
-//	@FindBy(xpath = "//input[@name='date']")
-//	WebElement txtDate;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "//input[@name='startDate']")
+	@FindBy(xpath = "//label[text()='From Date']//parent::div//input")
 	WebElement txtStartDate;
 	
-	@FindBy(xpath = "//input[@name='endDate']")
+	@FindBy(xpath = "//label[text()='To Date']//parent::div//input")
 	WebElement txtEndDate;
 	
 	@FindBy(xpath = "//div/input[@name='porfolio-hotel']")
@@ -65,7 +63,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//th[text()='Groups']")
 	WebElement lblGroup;
 	
-	@FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-text sc-gKXOVf llAzkm tbutton']")
+	@FindBy(xpath = "//span[text()='Submit']//parent::button[contains(@class, 'MuiButton-root MuiButton-text')]")
 	WebElement btnSubmit;
 	
 	@FindBy(xpath = "//div[@class='sc-hKMtZM MgHPv']")

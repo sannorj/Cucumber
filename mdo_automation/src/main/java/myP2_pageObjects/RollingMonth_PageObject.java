@@ -51,8 +51,6 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'portfolio-group')]")
 	WebElement drpgroup;
 	
-//	@FindBy(xpath = "//div/input[@name='date']")
-//	WebElement txtDate;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -66,8 +64,6 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//span[text()='Property']")
 	List <WebElement> lstHeaders ;
 	
-//	@FindBy(xpath = "//th[@class='MuiTableCell-root MuiTableCell-head sc-bBXxYQ dgldxD MuiTableCell-alignCenter']/span")
-//	List <WebElement> listHeaders;
 	
 	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
 	List <WebElement> listHeaders;
@@ -126,10 +122,13 @@ public class RollingMonth_PageObject {
 		}
 		
 		/* Select the appropriate From date  from Date picker */
-		for(int x=1 ; x<=2 ; x++ ) {
+		
 		Thread.sleep(2000);
+//		txtDate.sendKeys(Keys.CONTROL + "a");
+//		txtDate.sendKeys(Keys.DELETE);
+		txtDate.click();
 		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
+		txtDate.sendKeys(Keys.BACK_SPACE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		Thread.sleep(1000);
 		
@@ -137,7 +136,7 @@ public class RollingMonth_PageObject {
 		Thread.sleep(1000);
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 		
-		}
+		
 	}
 	
 	

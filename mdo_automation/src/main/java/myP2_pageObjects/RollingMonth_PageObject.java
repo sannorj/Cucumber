@@ -126,7 +126,6 @@ public class RollingMonth_PageObject {
 		Thread.sleep(2000);
 //		txtDate.sendKeys(Keys.CONTROL + "a");
 //		txtDate.sendKeys(Keys.DELETE);
-		txtDate.click();
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.BACK_SPACE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));

@@ -132,10 +132,12 @@ public class RollingMonth_PageObject {
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		Thread.sleep(1000);
-		}
+		
 		btnGo.click();
 		Thread.sleep(1000);
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
+		
+		}
 	}
 	
 	

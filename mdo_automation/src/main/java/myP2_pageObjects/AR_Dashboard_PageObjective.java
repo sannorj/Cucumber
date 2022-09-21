@@ -129,6 +129,7 @@ public class AR_Dashboard_PageObjective {
 
 		btnGo.click();
 		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.sendKeys("03/31/2021");
 		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 

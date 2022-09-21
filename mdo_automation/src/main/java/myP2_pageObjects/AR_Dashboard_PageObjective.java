@@ -52,14 +52,13 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
-
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div/input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
 	WebElement txtRowField;
 
-	@FindBy(xpath = "//button//span[text()='Go']")
+	@FindBy(xpath = "//button//span[text()='Goolk']")
 	WebElement btnGo;
 
 	@FindBy(xpath = "//div//h5")

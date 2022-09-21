@@ -104,9 +104,9 @@ public class AR_Dashboard_PageObjective {
 				.until(ExpectedConditions.visibilityOf(txtDate));
 
 		Thread.sleep(2000);
-		date.sendKeys(Keys.CONTROL + "a");
-		//date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
-		date.sendKeys("03/31/2021");
+		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.clear();
+		//date.sendKeys("03/31/2021");
 
 		Thread.sleep(5000);
 		

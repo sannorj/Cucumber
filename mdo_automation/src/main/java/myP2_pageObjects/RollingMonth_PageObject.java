@@ -55,7 +55,7 @@ public class RollingMonth_PageObject {
 //	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 //	WebElement txtDate;
 	
-	@FindBy(xpath = "//input[@name='date']")
+	@FindBy(xpath = "//input[@type='tel']")
 	WebElement txtDate;
 
 	
@@ -126,7 +126,7 @@ public class RollingMonth_PageObject {
 		}
 		
 		/* Select the appropriate From date  from Date picker */
-		
+		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
 		Thread.sleep(3000);
 //		txtDate.sendKeys(Keys.CONTROL + "a");
 //		txtDate.sendKeys(Keys.DELETE);

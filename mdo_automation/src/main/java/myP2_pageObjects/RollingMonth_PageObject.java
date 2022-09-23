@@ -52,8 +52,12 @@ public class RollingMonth_PageObject {
 	WebElement drpgroup;
 	
 	
-	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
+//	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
+//	WebElement txtDate;
+	
+	@FindBy(xpath = "//input[@name='date']")
 	WebElement txtDate;
+
 	
 	@FindBy(xpath = "//span[text()='Go']//parent::button")
 	WebElement btnGo;

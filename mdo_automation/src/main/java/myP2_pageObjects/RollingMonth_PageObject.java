@@ -127,7 +127,7 @@ public class RollingMonth_PageObject {
 //		txtDate.sendKeys(Keys.CONTROL + "a");
 //		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.BACK_SPACE);
+	//	txtDate.sendKeys(Keys.BACK_SPACE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		Thread.sleep(1000);
 		
@@ -145,7 +145,6 @@ public class RollingMonth_PageObject {
 		for (int x = 0; x < 5; x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("RM_Headers").split(",");
-			//for (int i = 0; i < a.length; i++) {
 			for (int i = 0; i < 5; i++) {
 				String expected = a[i];
 				String actual = listHeaders.get(i+1).getText();

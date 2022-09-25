@@ -128,17 +128,12 @@ public class RollingMonth_PageObject {
 		/* Select the appropriate From date  from Date picker */
 		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
 		Thread.sleep(4000);
-//		txtDate.sendKeys(Keys.CONTROL + "a");
-//		txtDate.sendKeys(Keys.DELETE);
-	//	txtDate.sendKeys(Keys.CONTROL , "a");
-	//	txtDate.sendKeys(Keys.BACK_SPACE);
-		//txtDate.click();
-		//txtDate.clear();
+
 		
 		Thread.sleep(4000);
 	//	txtDate.sendKeys(configReader.getProp("RM_Date"));
 		
-		txtDate.sendKeys(Keys.CONTROL + "a");
+	//	txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys("06092022");
 		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
 		Thread.sleep(2000);

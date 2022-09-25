@@ -129,7 +129,7 @@ public class RollingMonth_PageObject {
 		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
 		Thread.sleep(4000);
 
-		
+		drpgroup.sendKeys(Keys.TAB);
 		Thread.sleep(4000);
 	//	txtDate.sendKeys(configReader.getProp("RM_Date"));
 		

@@ -138,8 +138,8 @@ public class RollingMonth_PageObject {
 		Thread.sleep(4000);
 	//	txtDate.sendKeys(configReader.getProp("RM_Date"));
 		
+		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys("06092022");
-		txtDate.submit();
 		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
 		Thread.sleep(2000);
 		

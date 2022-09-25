@@ -131,11 +131,9 @@ public class RollingMonth_PageObject {
 
 		drpgroup.sendKeys(Keys.TAB);
 		Thread.sleep(4000);
-	//	txtDate.sendKeys(configReader.getProp("RM_Date"));
-		
-	//	txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys("06092022");
-		System.out.println("=====dateeeeeeeee====== "+configReader.getProp("RM_Date"));
+		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.sendKeys(Keys.DELETE);
+		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		Thread.sleep(2000);
 		
 		btnGo.click();

@@ -24,10 +24,10 @@ Feature: Guest Ledger - Search & Filter Validation
    		Then Records should be filtered based on the Folio  
    		And User selects the Group from the filter options after clicking the reset button.
   	  Then Records should be filtered based on the Group
-   		And User selects the Arrival date from the filter options after clicking the reset button.
-   		Then Records should be filtered based on the Arrival date
-   		And User selects the Departure date from the filter options after clicking the reset button.
-   		Then Records should be filtered based on the Departure date
+   #		And User selects the Arrival date from the filter options after clicking the reset button.
+   #		Then Records should be filtered based on the Arrival date
+   #		And User selects the Departure date from the filter options after clicking the reset button.
+   #		Then Records should be filtered based on the Departure date
    		And User enters OutStanding amount
    		Then Records should be filtered based on the OutStanding amount
    		And User enters Limit amount from the filter options

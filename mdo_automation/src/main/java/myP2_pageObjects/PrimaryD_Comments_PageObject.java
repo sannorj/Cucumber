@@ -65,11 +65,11 @@ public class PrimaryD_Comments_PageObject {
 	
 	@FindBy(xpath = "//span[text()='Submit']//parent::button[contains(@class, 'MuiButton-root MuiButton-text')]")
 	WebElement btnSubmit;
-	
-	@FindBy(xpath = "//div[@class='sc-hKMtZM MgHPv']")
+
+	@FindBy(xpath = "(//td[contains(@class,'MuiTableCell-root MuiTableCell-body')]//child::div)[18]")
 	WebElement btnMainComment;
 	
-	@FindBy(xpath = "//span[text()='Comment']")
+	@FindBy(xpath = "//h1[text()='Comments']")
 	WebElement titleComment;
 	
 	@FindBy(xpath = "//label[@class='sc-bjUoiL nDYYA']")
@@ -78,8 +78,6 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
 	WebElement btnViewAllComment;
 	
-	@FindBy(xpath = "(//div[@class='sc-hKMtZM cNmSDD'])[1]")
-	WebElement lblCommentIcon;
 	
 	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
 	WebElement lblLatestComment;
@@ -189,17 +187,17 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 		
-		WebElement txtStartDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtStartDate));
-		txtStartDateEle.click();
-		txtStartDateEle.sendKeys(Keys.CONTROL + "a");
-		txtStartDateEle.sendKeys(Keys.DELETE);
-		txtStartDateEle.sendKeys(configReader.getProp("Date"));
-		
-	    WebElement txtEndDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtEndDate));
-		txtEndDateEle.click();
-		txtEndDateEle.sendKeys(Keys.CONTROL + "a");
-		txtEndDateEle.sendKeys(Keys.DELETE);
-		txtEndDateEle.sendKeys(configReader.getProp("Date"));
+//		WebElement txtStartDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtStartDate));
+//		txtStartDateEle.click();
+//		txtStartDateEle.sendKeys(Keys.CONTROL + "a");
+//		txtStartDateEle.sendKeys(Keys.DELETE);
+//		txtStartDateEle.sendKeys(configReader.getProp("Date"));
+//		
+//	    WebElement txtEndDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtEndDate));
+//		txtEndDateEle.click();
+//		txtEndDateEle.sendKeys(Keys.CONTROL + "a");
+//		txtEndDateEle.sendKeys(Keys.DELETE);
+//		txtEndDateEle.sendKeys(configReader.getProp("Date"));
 		
 		WebElement txtCommentBoxeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtCommentBox));
 		txtCommentBoxeEle.sendKeys(configReader.getProp("Comment"));
@@ -242,7 +240,8 @@ public class PrimaryD_Comments_PageObject {
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
-		ElementUtils.waitForElementToDisplay(lblCommentIcon, 180);
+		Thread.sleep(3000);
+
 
 		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");

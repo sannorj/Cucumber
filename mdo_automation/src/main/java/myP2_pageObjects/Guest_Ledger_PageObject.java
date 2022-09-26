@@ -492,8 +492,8 @@ public class Guest_Ledger_PageObject {
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
 		/* Select the appropriate ARR-Date value from the drop-down menu. */
-		WebElement drpFolioEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterArrivalDate));
-		drpFolioEle.click();
+//		WebElement drpFilterArrivalDateEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterArrivalDate));
+//		drpFilterArrivalDateEle.click();
 		
 		drpFilterArrivalDate.sendKeys(configReader.getProp("Ledger_ArrDate"));
 
@@ -526,8 +526,8 @@ public class Guest_Ledger_PageObject {
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
 		/* Select the appropriate Group value from the drop-down menu. */
-		WebElement drpFolioEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterDepartureDate));
-		drpFolioEle.click();
+//		WebElement drpFilterDepartureDateEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpFilterDepartureDate));
+//		drpFilterDepartureDateEle.click();
 
 		drpFilterDepartureDate.sendKeys(configReader.getProp("Ledger_Depdate")); 
 		btnApply.click();

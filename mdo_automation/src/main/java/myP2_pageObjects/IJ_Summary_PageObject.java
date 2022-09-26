@@ -147,7 +147,7 @@ public class IJ_Summary_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
-		
+		Thread.sleep(3000);
 		/* Select the appropriate From date  from Date picker */
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);

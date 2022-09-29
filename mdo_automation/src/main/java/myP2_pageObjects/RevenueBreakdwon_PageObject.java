@@ -112,16 +112,13 @@ public class RevenueBreakdwon_PageObject {
 		revenueBreakdownPageEle.click();
 
 		WebElement RevenuePageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnDatePicker));
-		
-		Thread.sleep(5000);
+				.until(ExpectedConditions.visibilityOf(RevenuePage));
 		return RevenuePageEle.isDisplayed();
 
 	}
 
 	public boolean loadReportWithParameters() throws InterruptedException {
 
-		Thread.sleep(5000);
 		
 		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownProperty));

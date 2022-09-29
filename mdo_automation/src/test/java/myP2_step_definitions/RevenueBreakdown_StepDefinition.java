@@ -23,8 +23,8 @@ public class RevenueBreakdown_StepDefinition {
 
 	@And("I am Loading the Revenue Breakdown Report with GO button")
 	public void I_am_Loading_the_Revenue_Breakdown_Report_with_GO_button() throws InterruptedException {
-		assertTrue(reveneuePO.loadReportWithParameters());
-		assertTrue(reveneuePO.loadRevenueReport());
+		//assertTrue(reveneuePO.loadReportWithParameters());
+		//assertTrue(reveneuePO.loadRevenueReport());
 	}
 
 }

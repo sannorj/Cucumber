@@ -112,7 +112,9 @@ public class RevenueBreakdwon_PageObject {
 		revenueBreakdownPageEle.click();
 
 		WebElement RevenuePageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(RevenuePage));
+				.until(ExpectedConditions.visibilityOf(btnDatePicker));
+		
+		Thread.sleep(5000);
 		return RevenuePageEle.isDisplayed();
 
 	}

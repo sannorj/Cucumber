@@ -61,7 +61,7 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//th//span[@role='button']")
 	WebElement txtRowField;
 
-	@FindBy(xpath = "//button//span[text()='Go']")
+	@FindBy(xpath = "//button//span[text()='Godd']")
 	WebElement btnGo;
 
 	@FindBy(xpath = "//div//h5")

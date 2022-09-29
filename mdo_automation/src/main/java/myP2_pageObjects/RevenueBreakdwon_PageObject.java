@@ -119,11 +119,12 @@ public class RevenueBreakdwon_PageObject {
 
 	public boolean loadReportWithParameters() throws InterruptedException {
 
+		Thread.sleep(5000);
+		
 		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownProperty));
 
 		drpProperty.click();
-		Thread.sleep(1500);
 		for (int i = 0; i < lstDropDowProperty.size(); i++) {
 			if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("revenueProperty"))) {
 				lstDropDowProperty.get(i).click();
@@ -177,7 +178,7 @@ public class RevenueBreakdwon_PageObject {
 		boolean flag = false;
 		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
 
-		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(btnDatePicker));
 		datePicker.click();
 

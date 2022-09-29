@@ -65,7 +65,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownCategory;
 
-	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+	@FindBy(xpath = "//div/label[text() = 'Date'] //following-sibling::div//button[@type='button']")
 	WebElement btnDatePicker;
 
 	@FindBy(xpath = "//div[@role='dialog']")

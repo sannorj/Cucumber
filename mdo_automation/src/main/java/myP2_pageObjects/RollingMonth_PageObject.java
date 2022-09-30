@@ -54,7 +54,10 @@ public class RollingMonth_PageObject {
 	WebElement drpgroup;
 	
 	
-	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
+//	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
+//	WebElement txtDate;
+	
+	@FindBy(xpath = "//label[text()='Date']")
 	WebElement txtDate;
 	
 //	@FindBy(xpath = "//input[@type='tel']")
@@ -223,10 +226,12 @@ public class RollingMonth_PageObject {
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
+			System.out.println("bbbbbbbbbbbbb");
 			Thread.sleep(2500);
 		}
 		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Thread.sleep(4000);
+		txtDate.click();
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
 		txtDate.sendKeys(configReader.getProp("RM_Date"));

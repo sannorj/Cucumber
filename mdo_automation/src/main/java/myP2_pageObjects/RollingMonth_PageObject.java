@@ -60,6 +60,11 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//label[text()='Date']")
 	WebElement txtDate;
 	
+	@FindBy(xpath = "(//input[@placeholder=\"mm/dd/yyyy\"])[2]")
+	WebElement txtDate1;
+	
+	
+	
 //	@FindBy(xpath = "//input[@type='tel']")
 //	WebElement txtDate;
 
@@ -231,12 +236,12 @@ public class RollingMonth_PageObject {
 		}
 		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Thread.sleep(4000);
-		txtDate.click();
-//		txtDate.sendKeys(Keys.CONTROL + "a");
-//		txtDate.sendKeys(Keys.DELETE);
-		System.out.println("vvvvvvvvvvvv"+txtDate.getText());
-		txtDate.clear();
-		txtDate.sendKeys(configReader.getProp("RM_Date"));
+		txtDate1.click();
+		txtDate1.sendKeys(Keys.CONTROL + "a");
+		txtDate1.sendKeys(Keys.DELETE);
+		System.out.println("vvvvvvvvvvvv"+txtDate1.getText());
+		
+		txtDate1.sendKeys(configReader.getProp("RM_Date"));
 		System.out.println("3333333333333333333333333333333");
 		txtDate.sendKeys(Keys.ENTER);
 		

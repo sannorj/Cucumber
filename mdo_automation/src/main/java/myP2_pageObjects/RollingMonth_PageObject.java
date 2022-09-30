@@ -217,10 +217,22 @@ public class RollingMonth_PageObject {
 
 	//	drpgroup.sendKeys(Keys.TAB);
 		txtDate.click();
+		System.out.println("1111111111111111111111111111111111111111111");
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+		if (status == 1) {
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+			Thread.sleep(2500);
+		}
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Thread.sleep(4000);
-//		txtDate.sendKeys(Keys.CONTROL + "a");
-//		txtDate.sendKeys(Keys.DELETE);
-//		txtDate.sendKeys(configReader.getProp("RM_Date"));
+		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.sendKeys(Keys.DELETE);
+		txtDate.sendKeys(configReader.getProp("RM_Date"));
+		System.out.println("3333333333333333333333333333333");
+		txtDate.sendKeys(Keys.ENTER);
+		
 		Thread.sleep(2000);
 		
 		selectDate();

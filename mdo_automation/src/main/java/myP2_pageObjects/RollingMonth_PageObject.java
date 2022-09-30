@@ -60,7 +60,7 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//label[text()='Date']")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "(//input[@placeholder=\"mm/dd/yyyy\"])[2]")
+	@FindBy(xpath = "(//input)[4]")
 	WebElement txtDate1;
 	
 	

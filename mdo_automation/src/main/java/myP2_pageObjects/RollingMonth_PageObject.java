@@ -140,14 +140,18 @@ public class RollingMonth_PageObject {
 		boolean flag = false;
 		String [] dateForPicker = configReader.getProp("RM_Date").split("/");
 		
-		//WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
-		//datePicker.click();
+		
 		Thread.sleep(2500);
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 		if (status == 1) {
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
+			Thread.sleep(2500);
+			
+			WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
+			datePicker.click();
+			
 			Thread.sleep(2500);
 			WebElement pickYear = driver.findElement(By
 					.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '" + dateForPicker[2] + "')]"));

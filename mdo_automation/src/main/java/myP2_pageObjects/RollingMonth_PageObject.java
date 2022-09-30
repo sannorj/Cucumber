@@ -212,13 +212,13 @@ public class RollingMonth_PageObject {
 		Thread.sleep(4000);
 
 	//	drpgroup.sendKeys(Keys.TAB);
-//		Thread.sleep(4000);
-//		txtDate.sendKeys(Keys.CONTROL + "a");
-//		txtDate.sendKeys(Keys.DELETE);
-//		txtDate.sendKeys(configReader.getProp("RM_Date"));
-//		Thread.sleep(2000);
+		Thread.sleep(4000);
+		txtDate.sendKeys(Keys.CONTROL + "a");
+		txtDate.sendKeys(Keys.DELETE);
+		txtDate.sendKeys(configReader.getProp("RM_Date"));
+		Thread.sleep(2000);
 		
-		selectDate();
+	//	selectDate();
 		
 		btnGo.click();
 		Thread.sleep(1000);

@@ -54,20 +54,12 @@ public class RollingMonth_PageObject {
 	WebElement drpgroup;
 	
 	
-//	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
-//	WebElement txtDate;
-	
-	@FindBy(xpath = "//label[text()='Date']")
+	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
+
 	
 	@FindBy(xpath = "(//input)[4]")
 	WebElement txtDate1;
-	
-	
-	
-//	@FindBy(xpath = "//input[@type='tel']")
-//	WebElement txtDate;
-
 	
 	@FindBy(xpath = "//span[text()='Go']//parent::button")
 	WebElement btnGo;
@@ -222,32 +214,35 @@ public class RollingMonth_PageObject {
 		}
 		
 		Thread.sleep(4000);
-
-	//	drpgroup.sendKeys(Keys.TAB);
-		txtDate.click();
-		System.out.println("1111111111111111111111111111111111111111111");
-		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
-		if (status == 1) {
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
-			expandYear.click();
-			System.out.println("bbbbbbbbbbbbb");
-			Thread.sleep(2500);
-		}
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		Thread.sleep(4000);
-		txtDate1.click();
+//		txtDate.click();
+//		System.out.println("1111111111111111111111111111111111111111111");
+//		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+//		if (status == 1) {
+//			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+//					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+//			expandYear.click();
+//			System.out.println("bbbbbbbbbbbbb");
+//			Thread.sleep(2500);
+//		}
+//		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//		Thread.sleep(4000);
+//		txtDate1.click();
+//		txtDate1.sendKeys(Keys.CONTROL + "a");
+//		txtDate1.sendKeys(Keys.DELETE);
+//		System.out.println("vvvvvvvvvvvv"+txtDate1.getText());
+//		
+//		txtDate1.sendKeys(configReader.getProp("RM_Date"));
+//		System.out.println("3333333333333333333333333333333");
+//		txtDate.sendKeys(Keys.ENTER);
+//		
+//		Thread.sleep(2000);
+//		
+//		selectDate();
+		
+		
 		txtDate1.sendKeys(Keys.CONTROL + "a");
 		txtDate1.sendKeys(Keys.DELETE);
-		System.out.println("vvvvvvvvvvvv"+txtDate1.getText());
-		
 		txtDate1.sendKeys(configReader.getProp("RM_Date"));
-		System.out.println("3333333333333333333333333333333");
-		txtDate.sendKeys(Keys.ENTER);
-		
-		Thread.sleep(2000);
-		
-		selectDate();
 		
 		btnGo.click();
 		Thread.sleep(1000);

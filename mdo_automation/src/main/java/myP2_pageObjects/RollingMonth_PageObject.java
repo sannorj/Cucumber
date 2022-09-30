@@ -140,7 +140,7 @@ public class RollingMonth_PageObject {
 		boolean flag = false;
 		String [] dateForPicker = configReader.getProp("RM_Date").split("/");
 		
-		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
+		//WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
 		//datePicker.click();
 		Thread.sleep(2500);
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();

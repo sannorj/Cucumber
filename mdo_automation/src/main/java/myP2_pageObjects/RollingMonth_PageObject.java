@@ -232,8 +232,10 @@ public class RollingMonth_PageObject {
 		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Thread.sleep(4000);
 		txtDate.click();
-		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
+//		txtDate.sendKeys(Keys.CONTROL + "a");
+//		txtDate.sendKeys(Keys.DELETE);
+		System.out.println("vvvvvvvvvvvv"+txtDate.getText());
+		txtDate.clear();
 		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		System.out.println("3333333333333333333333333333333");
 		txtDate.sendKeys(Keys.ENTER);

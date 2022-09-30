@@ -18,7 +18,7 @@ public class DriverFactory {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("--no-sandbox");
-			//options.addArguments("window-size=1920,1080");
+			options.addArguments("window-size=1920,1080");
 			tlDriver.set(new ChromeDriver(options));
 		} else if (browser.toLowerCase().equals("edge")) {
 			WebDriverManager.edgedriver().setup();

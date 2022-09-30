@@ -141,7 +141,7 @@ public class RollingMonth_PageObject {
 		String [] dateForPicker = configReader.getProp("RM_Date").split("/");
 		
 		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
-		datePicker.click();
+		//datePicker.click();
 		Thread.sleep(2500);
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 		if (status == 1) {
@@ -212,13 +212,14 @@ public class RollingMonth_PageObject {
 		Thread.sleep(4000);
 
 	//	drpgroup.sendKeys(Keys.TAB);
+		txtDate.click();
 		Thread.sleep(4000);
-		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("RM_Date"));
+//		txtDate.sendKeys(Keys.CONTROL + "a");
+//		txtDate.sendKeys(Keys.DELETE);
+//		txtDate.sendKeys(configReader.getProp("RM_Date"));
 		Thread.sleep(2000);
 		
-	//	selectDate();
+		selectDate();
 		
 		btnGo.click();
 		Thread.sleep(1000);

@@ -96,7 +96,6 @@ public class Login_PageObject {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("arguments[0].click();", loginButton);
 			}
-
 		}
 		/*
 		 * if(environmentJenkin != null) { if

@@ -3,6 +3,7 @@ package myP2_pageObjects;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -91,7 +92,10 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
 	
-	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
+//	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
+//	WebElement lblFirstReplyComment;
+	
+	@FindBy(xpath = "(//div[contains(text(),'BSB - Feature of a')])[1]")
 	WebElement lblFirstReplyComment;
 	
 	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")
@@ -260,8 +264,9 @@ public class PrimaryD_Comments_PageObject {
 		btnReplySubmint.click();
 
 		Thread.sleep(2000);
-		String drpProperty = lblFirstReplyComment.getText();
-		if (drpProperty.equals(configReader.getProp("Reply_Comment"))) {
+		WebElement lblReplyComment = driver.findElement(By.xpath("(//div[contains(text(),'"+configReader.getProp("Reply_Comment")+"')])[1]"));
+		String lblRComment = lblReplyComment.getText();
+		if (lblRComment.equals(configReader.getProp("Reply_Comment"))) {
 			return true;
 		} else {
 			return false;

@@ -243,7 +243,8 @@ public class Account_Sales_Manager_PageObjective {
 		txtFName.sendKeys(configReader.getProp("ASM_EditFirstName"));
 		Thread.sleep(4500);
 		btnRemove.click();
-
+		Thread.sleep(2500);
+		
 		WebElement lblRemoveAccountEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(lblRemoveAccount));
 		return lblRemoveAccountEle.isDisplayed();
 	}

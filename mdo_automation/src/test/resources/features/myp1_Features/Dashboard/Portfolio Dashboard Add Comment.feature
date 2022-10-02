@@ -1,3 +1,4 @@
+#Author: madushika@mydigitaloffice.ca
 @myP1_Regression
 Feature: Portfolio Dashboard Add Comment functionality
 
@@ -12,11 +13,12 @@ Feature: Portfolio Dashboard Add Comment functionality
     Given Click on Portfolio Add Comment button
     And Verify Portfolio Comment Popup form Loaded
     When Select a Hotel
-    Then Fill all Form Data
-    When Click on submit button
-    And Verify Data successfully Submited and comment added
+    Then Fill all Form Data in Portfolio
+    When Click on submit button in Portfolio
+    And Verify Portfolio Data successfully Submited and comment added
     
-    #Scenario: Verify Added Comment availability in View Comments page
-    #Then Click on Portfolio View Past Comments link
+    Scenario: Verify Added Comment availability in View Comments page
+    Then Click on Portfolio View Past Comments link
     #And Naviage to View Comments page
     #When Check Submitted data is in View Comment table
+    

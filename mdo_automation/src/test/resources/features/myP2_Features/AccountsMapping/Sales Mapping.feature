@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression @salesMp1
 Feature: Sales Mapping Functionality 
 
   Background: Navigate to Sales Mapping and verify functionality  
@@ -24,7 +24,7 @@ Feature: Sales Mapping Functionality
  	And Select an salesMapping account then click on save button
  	Then Verify whether the MappedTo accounts successfully changed
 	And Remove mappedTo accounts again
-	Then Verify whether the removed accounts successfully removed	
+	Then Verify whether the removed accounts successfully removed
 
 	Scenario: Verify Sales Manager and Management Status change functionality
 	Given I am selecting a Sales Manager option and Verify successfully changed

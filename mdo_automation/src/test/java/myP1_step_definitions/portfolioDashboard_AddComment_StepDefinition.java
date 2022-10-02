@@ -29,6 +29,21 @@ public class portfolioDashboard_AddComment_StepDefinition {
 		assertTrue(dashboardAddCommentPo.selectHotel());
 	}
 	
+	@Then("Fill all Form Data in Portfolio")
+	public void fill_all_form_data_in_portfolio() throws InterruptedException {
+		dashboardAddCommentPo.FillData();
+	}
+
+	@When("Click on submit button in Portfolio")
+	public void click_on_submit_button_in_portfolio() throws InterruptedException {
+		dashboardAddCommentPo.clickAddCommentSubmit();
+	}
+
+	@And("Verify Portfolio Data successfully Submited and comment added")
+	public void verify_portfolio_data_successfully_submited_and_comment_added() throws InterruptedException {
+		assertTrue(dashboardAddCommentPo.dataIsSubmited());
+	}
+	
 	@Then("Click on Portfolio View Past Comments link")
 	public void click_on_portfolio_view_past_comments_link() throws InterruptedException {
 		dashboardAddCommentPo.clickViewPastComment();

@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @sannorj @sannorj1
+@myP2_Regression @myP2_Smoke @sannorj119
 
 Feature: Guest Ledger - Search & Filter Validation
 

@@ -422,7 +422,7 @@ public class Guest_Ledger_PageObject {
 			}
 		}
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 

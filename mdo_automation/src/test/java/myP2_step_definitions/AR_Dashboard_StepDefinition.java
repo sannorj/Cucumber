@@ -65,5 +65,11 @@ public class AR_Dashboard_StepDefinition {
 	public void verify_whether_the_YELLOW_Outstanding_values_are_correctly_highlighted() {
 		assertTrue(ARdashboardPo.verifyYellowOutstanding());
 	}
+	
+	@And("I select the date from picker")
+	public void I_select_the_date_from_picker() throws InterruptedException {
+		assertTrue(ARdashboardPo.selectDate());
+	}
+	
 
 }

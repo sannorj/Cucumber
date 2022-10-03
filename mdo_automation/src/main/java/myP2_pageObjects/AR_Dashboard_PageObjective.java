@@ -1,6 +1,8 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConstantsReader;
+import utils.DatePicker;
 import utils.ElementUtils;
 
 public class AR_Dashboard_PageObjective {
@@ -53,7 +56,6 @@ public class AR_Dashboard_PageObjective {
 	List<WebElement> lstDropDowGroup;
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
-
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
@@ -67,6 +69,132 @@ public class AR_Dashboard_PageObjective {
 
 	@FindBy(xpath = "//tbody//tr")
 	List<WebElement> dataRowCount;
+
+	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+	WebElement btnDatePicker;
+
+	@FindBy(xpath = "//div[@role='dialog']")
+	WebElement divCalender;
+
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
+	WebElement btnExpandYear;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+	WebElement btnPreviousMonth;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+	WebElement btnNextMonth;
+
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+
+		return month + 1;
+	}
+
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
+	public boolean selectDate() throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
+
+		txtDate.click();
+
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+
+			Thread.sleep(2500);
+
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
+
+			pickYear.click();
+
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+				
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
+	}
 
 	public void expandAccountRecievable() {
 		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -99,18 +227,6 @@ public class AR_Dashboard_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
-		
-		
-		WebElement date = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(txtDate));
-
-		Thread.sleep(2000);
-		//date.sendKeys(Keys.CONTROL + "a");
-		date.sendKeys(Keys.CONTROL, "a", Keys.TAB);
-		date.sendKeys("03/31/2021");
-
-		Thread.sleep(5000);
-		
 		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
@@ -122,13 +238,12 @@ public class AR_Dashboard_PageObjective {
 			}
 		}
 
-		
-
 	}
 
 	public boolean loadArReport() {
 
 		btnGo.click();
+
 		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40))
 				.until(ExpectedConditions.visibilityOf(txtRowField));
 
@@ -179,7 +294,6 @@ public class AR_Dashboard_PageObjective {
 
 		txtDate.isDisplayed();
 
-	
 		for (int k = 0; k < dataValues[0].length; k++) {
 			System.out.println(dataValues[0][k]);
 		}

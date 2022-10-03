@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -72,7 +73,7 @@ public class GLHierarchy_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
 	WebElement glRoomContracts;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV10']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
 	WebElement btnBottomCapturedValueToggle;
 
 	@FindBy(xpath = "//h3[text() = 'Turn Off Parent GL Code?']")
@@ -83,6 +84,12 @@ public class GLHierarchy_PageObject {
 
 	@FindBy(xpath = "//div[text()='Successfully updated status.']")
 	WebElement lblTurnOffMessage;
+	
+	@FindBy(xpath = "//input[@name='hotelId']")
+	WebElement dropDownProperty;
+
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> lstDropDowProperty;
 
 	public void expandConfigurations() {
 
@@ -108,12 +115,13 @@ public class GLHierarchy_PageObject {
 	}
 
 	public boolean navigateToGLHierarchy() {
-		WebElement glHierarchyEle = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement glHierarchyEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(glHierarchy));
 		glHierarchyEle.click();
 
-		WebElement glHierarchyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement glHierarchyPageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(glHierarchyPage));
+		
 		return glHierarchyPageEle.isDisplayed();
 
 	}
@@ -123,7 +131,6 @@ public class GLHierarchy_PageObject {
 				.until(ExpectedConditions.visibilityOf(btnAllon));
 
 		btnOn.click();
-		Thread.sleep(5000);
 	}
 
 	public boolean verifyAllOnFunction() {
@@ -147,10 +154,10 @@ public class GLHierarchy_PageObject {
 
 		btnRoomRevBeofreOther.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[1]"));
+			WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
 			capturedModal = totalRoomCntract.getText();
 
 			System.out.print("AAA" + capturedModal);
@@ -179,7 +186,7 @@ public class GLHierarchy_PageObject {
 
 		glRoomRevBeofreOther.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV10']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
@@ -212,7 +219,7 @@ public class GLHierarchy_PageObject {
 
 		btnRoomRevBeofreOther.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 0) {
 			return true;
@@ -257,7 +264,7 @@ public class GLHierarchy_PageObject {
 
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
@@ -325,7 +332,7 @@ public class GLHierarchy_PageObject {
 
 		glParentButton.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[2]")).getText();
 
 		
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {

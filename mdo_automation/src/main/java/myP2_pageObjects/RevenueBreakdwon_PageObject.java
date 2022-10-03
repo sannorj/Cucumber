@@ -158,6 +158,12 @@ public class RevenueBreakdwon_PageObject {
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
+			
+			int sizeOfPicker = driver
+					.findElements(By.xpath("//div[@role='presentation']//button[contains(@aria-label, 'calendar view')]")).size();
+			
+			System.out.println("Size of"+sizeOfPicker);
+			
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();

@@ -324,7 +324,7 @@ public class GLHierarchy_PageObject {
 
 		glParentButton.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[2]")).getText();
 
 		
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {

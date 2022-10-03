@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression @glhFixt
 
-Feature: GL Hierarchy
+Feature: GL Hierarchy - Toggle button Validation With PnL Monthly 
 
     Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site

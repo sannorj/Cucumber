@@ -1,7 +1,7 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @cssfix
+@myP2_Regression @myP2_Smoke @sannorj119
 
-    Feature: Account Sales Manager : Add|Edit|Delete Sales Manager Account functionality
+    Feature: Account Sales Manager : Add,Edit,Delete Sales Manager Account functionality
 
     Background: Navigate to Sales Managers page
     Given I am login to the myp2 site

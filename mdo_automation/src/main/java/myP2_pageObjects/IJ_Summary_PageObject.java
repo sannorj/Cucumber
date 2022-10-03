@@ -129,6 +129,7 @@ public class IJ_Summary_PageObject {
 	public void selectParametersFunc() throws InterruptedException {
 		
 		/* Select the appropriate Property value from the drop-down menu. */
+		Thread.sleep(3000);
 		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 		drpGroupEle.click();
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
@@ -147,7 +148,7 @@ public class IJ_Summary_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
-		
+		Thread.sleep(3000);
 		/* Select the appropriate From date  from Date picker */
 		txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
@@ -205,6 +206,7 @@ public class IJ_Summary_PageObject {
 
 		btnSave.click();
 		ElementUtils.waitForElementToDisplay(lblTotalRevenue, 100);
+		Thread.sleep(4500);
 
 	}
 		

@@ -47,4 +47,10 @@ Feature: GL Hierarchy - Toggle button Validation With PnL Monthly
     Then select the Group ,Propery, date,View and Click on GO button
     And Verify the parent modal is not visible in the report
     
+    Scenario: All on Modal Function After Validation
+    Given I am expand the configuration options in Side Menu
+		Then I am navigate to GL Hierarchy page
+		And Click the All On button
+		And  Verify whether the function worked properly
+    
     

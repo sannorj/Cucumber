@@ -142,6 +142,8 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
 
+			Thread.sleep(2500);
+			
 			btnConfirm.click();
 
 			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))

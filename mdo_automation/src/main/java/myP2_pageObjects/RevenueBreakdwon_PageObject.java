@@ -160,7 +160,7 @@ public class RevenueBreakdwon_PageObject {
 		if (status == 1) {
 			
 			int sizeOfPicker = driver
-					.findElements(By.xpath("//div[@role='presentation']//button[contains(@aria-label, 'calendar view')]")).size();
+					.findElements(By.xpath("//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")).size();
 			
 			System.out.println("Size of"+sizeOfPicker);
 			
@@ -175,6 +175,11 @@ public class RevenueBreakdwon_PageObject {
 							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
+			
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+			
+			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
 

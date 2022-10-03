@@ -84,7 +84,7 @@ public class AR_Dashboard_PageObjective {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
-	
+
 	public int getMonth() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -94,23 +94,33 @@ public class AR_Dashboard_PageObjective {
 		return month + 1;
 	}
 
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
 	public boolean selectDate() throws InterruptedException {
 		boolean flag = false;
 		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
 
 		txtDate.click();
-		
-		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
-		
-		if(btnDatePickforLocal>0)
-		{
+
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
 		}
-		
+
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
-			
+
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
@@ -122,7 +132,7 @@ public class AR_Dashboard_PageObjective {
 							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
-			
+
 			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
@@ -142,10 +152,9 @@ public class AR_Dashboard_PageObjective {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
-				
-				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				btnOk.click(); // Comment when using in the local
-				
+
+				validateOkCancelandClick();
+
 				flag = true;
 			}
 
@@ -162,9 +171,8 @@ public class AR_Dashboard_PageObjective {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
-				
-				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				btnOk.click();// Comment when using in the local
+
+				validateOkCancelandClick();
 				
 				flag = true;
 			}
@@ -175,8 +183,7 @@ public class AR_Dashboard_PageObjective {
 
 				btnDate.click();
 				
-				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				btnOk.click();// Comment when using in the local
+				validateOkCancelandClick();
 				
 				flag = true;
 			}
@@ -230,8 +237,6 @@ public class AR_Dashboard_PageObjective {
 
 			}
 		}
-		
-		
 
 	}
 

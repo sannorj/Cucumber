@@ -55,13 +55,13 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div/input")
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 
 	@FindBy(xpath = "//th//span[@role='button']")
 	WebElement txtRowField;
 
-	@FindBy(xpath = "//button//span[text()='Godd']")
+	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
 
 	@FindBy(xpath = "//div//h5")
@@ -98,28 +98,34 @@ public class AR_Dashboard_PageObjective {
 
 	public boolean selectDate() throws InterruptedException {
 		boolean flag = false;
-		String [] dateForPicker = configReader.getProp("GSSMonthDate").split("/");
+		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
+
+		txtDate.click();
 		
-
-		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(btnDatePicker));
-		datePicker.click();
-
-		Thread.sleep(2500);
-
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		
+		if(btnDatePickforLocal>0)
+		{
+			btnDatePicker.click();
+		}
+		
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
+			
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
 			Thread.sleep(2500);
 
-			WebElement pickYear = driver.findElement(By
-					.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '" + dateForPicker[2] + "')]"));
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
+			
+			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
 
@@ -138,6 +144,10 @@ public class AR_Dashboard_PageObjective {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click(); // Comment when using in the local
+				
 				flag = true;
 			}
 
@@ -148,14 +158,17 @@ public class AR_Dashboard_PageObjective {
 
 					btnNext.click();
 					Thread.sleep(1500);
-
 				}
+				
 				WebElement btnDate = driver
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click();// Comment when using in the local
+				
 				flag = true;
-
 			}
 
 			else {
@@ -163,13 +176,14 @@ public class AR_Dashboard_PageObjective {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click();// Comment when using in the local
+				
 				flag = true;
 			}
 
-			
-		}
-		else
-		{
+		} else {
 			flag = false;
 		}
 

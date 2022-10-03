@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @revenue
+@myP2_Regression
 
 Feature: Verify Revenue Breakdown Functionality
 

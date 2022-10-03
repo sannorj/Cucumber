@@ -176,8 +176,6 @@ public class RevenueBreakdwon_PageObject {
 
 			pickYear.click();
 			
-			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
-			btnOk.click();
 			
 			Thread.sleep(2500);
 
@@ -198,6 +196,11 @@ public class RevenueBreakdwon_PageObject {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
 			}
 
@@ -214,6 +217,10 @@ public class RevenueBreakdwon_PageObject {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
 
 			}
@@ -223,6 +230,11 @@ public class RevenueBreakdwon_PageObject {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
 			}
 

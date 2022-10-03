@@ -71,7 +71,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//div[@role='dialog']")
 	WebElement divCalender;
 
-	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view')]")
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
 	WebElement btnExpandYear;
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")

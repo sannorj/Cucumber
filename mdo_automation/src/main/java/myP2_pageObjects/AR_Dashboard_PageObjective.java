@@ -84,9 +84,7 @@ public class AR_Dashboard_PageObjective {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
-
 	
-
 	public int getMonth() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -145,8 +143,8 @@ public class AR_Dashboard_PageObjective {
 
 				btnDate.click();
 				
-				//WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				//btnOk.click(); // Comment when using in the local
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click(); // Comment when using in the local
 				
 				flag = true;
 			}
@@ -165,8 +163,8 @@ public class AR_Dashboard_PageObjective {
 
 				btnDate.click();
 				
-				//WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				//btnOk.click();// Comment when using in the local
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click();// Comment when using in the local
 				
 				flag = true;
 			}
@@ -177,8 +175,8 @@ public class AR_Dashboard_PageObjective {
 
 				btnDate.click();
 				
-				//WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
-				//btnOk.click();// Comment when using in the local
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']")); // Comment when using in the local
+				btnOk.click();// Comment when using in the local
 				
 				flag = true;
 			}

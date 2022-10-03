@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @arFix
+@myP2_Regression @arPropertySmoke
 
   Feature: AR Property - Outstanding valiadtion Functionality 
 
@@ -10,6 +10,7 @@
   And I am expand the Account Recievable option under Reports section in Side Menu
   Then I am navigate to AR Property page
   When I select the property and Date
+  And I select the date from picker
   Then I am loading ar property report with Go button
   
   Scenario: Verify whether the AR Account chart is visible  

@@ -80,11 +80,14 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
 
-	@FindBy(xpath = "//button//span[text()='Go']")
+	@FindBy(xpath = "//button//span[text()='God']")
 	WebElement btnGo;
 
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
 	WebElement selector;
+	
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+	WebElement txtDate;
 	
 	public void expandRevenue() throws InterruptedException {
 
@@ -130,33 +133,6 @@ public class RevenueBreakdwon_PageObject {
 
 			}
 		}
-
-		/*Thread.sleep(1500);
-		WebElement drpPeriod = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(dropDownPeriod));
-
-		drpPeriod.click();
-		Thread.sleep(1500);
-		for (int i = 0; i < lstDropDownPeriod.size(); i++) {
-			if (lstDropDownPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("revenuePeriod"))) {
-				lstDropDownPeriod.get(i).click();
-
-			}
-		}
-
-		Thread.sleep(1500);
-		WebElement drpCategory = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(dropDownCategory));
-
-		drpCategory.click();
-		Thread.sleep(1500);
-		for (int i = 0; i < lstDropDownCategory.size(); i++) {
-			if (lstDropDownCategory.get(i).getText().equalsIgnoreCase(configReader.getProp("revenueCategory"))) {
-				lstDropDownCategory.get(i).click();
-
-			}
-		}*/
-
 		Thread.sleep(1500);
 		boolean status = selectDate();
 
@@ -177,12 +153,8 @@ public class RevenueBreakdwon_PageObject {
 		boolean flag = false;
 		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
 
-		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(btnDatePicker));
-		datePicker.click();
-
-		Thread.sleep(2500);
-
+		txtDate.click();
+		
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {

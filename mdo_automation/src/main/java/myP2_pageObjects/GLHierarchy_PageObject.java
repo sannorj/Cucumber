@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -83,6 +84,12 @@ public class GLHierarchy_PageObject {
 
 	@FindBy(xpath = "//div[text()='Successfully updated status.']")
 	WebElement lblTurnOffMessage;
+	
+	@FindBy(xpath = "//input[@name='hotelId']")
+	WebElement dropDownProperty;
+
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> lstDropDowProperty;
 
 	public void expandConfigurations() {
 
@@ -114,6 +121,7 @@ public class GLHierarchy_PageObject {
 
 		WebElement glHierarchyPageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(glHierarchyPage));
+		
 		return glHierarchyPageEle.isDisplayed();
 
 	}

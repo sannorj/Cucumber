@@ -133,7 +133,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		glRoomRevBeofreOther.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
@@ -166,7 +166,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		btnRoomRevBeofreOther.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV10']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 0) {
 			return true;
@@ -212,7 +212,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
@@ -280,7 +280,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		glParentButton.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV90']//td[2]")).getText();
 
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 

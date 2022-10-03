@@ -80,7 +80,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
 
-	@FindBy(xpath = "//button//span[text()='God']")
+	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
 
 	@FindBy(xpath = "//button[@data-el='menuToggle']")

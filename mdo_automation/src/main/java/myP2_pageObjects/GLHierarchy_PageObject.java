@@ -256,7 +256,7 @@ public class GLHierarchy_PageObject {
 
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[3]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {

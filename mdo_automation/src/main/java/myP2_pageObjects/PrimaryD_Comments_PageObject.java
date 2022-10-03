@@ -3,6 +3,7 @@ package myP2_pageObjects;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,16 +33,14 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
-//	@FindBy(xpath = "//input[@name='date']")
-//	WebElement txtDate;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "//input[@name='startDate']")
+	@FindBy(xpath = "//label[text()='From Date']//parent::div//input")
 	WebElement txtStartDate;
 	
-	@FindBy(xpath = "//input[@name='endDate']")
+	@FindBy(xpath = "//label[text()='To Date']//parent::div//input")
 	WebElement txtEndDate;
 	
 	@FindBy(xpath = "//div/input[@name='porfolio-hotel']")
@@ -65,13 +64,13 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//th[text()='Groups']")
 	WebElement lblGroup;
 	
-	@FindBy(xpath = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-text sc-gKXOVf llAzkm tbutton']")
+	@FindBy(xpath = "//span[text()='Submit']//parent::button[contains(@class, 'MuiButton-root MuiButton-text')]")
 	WebElement btnSubmit;
-	
-	@FindBy(xpath = "//div[@class='sc-hKMtZM MgHPv']")
+
+	@FindBy(xpath = "(//td[contains(@class,'MuiTableCell-root MuiTableCell-body')]//child::div)[18]")
 	WebElement btnMainComment;
 	
-	@FindBy(xpath = "//span[text()='Comment']")
+	@FindBy(xpath = "//h1[text()='Comments']")
 	WebElement titleComment;
 	
 	@FindBy(xpath = "//label[@class='sc-bjUoiL nDYYA']")
@@ -80,8 +79,6 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
 	WebElement btnViewAllComment;
 	
-	@FindBy(xpath = "(//div[@class='sc-hKMtZM cNmSDD'])[1]")
-	WebElement lblCommentIcon;
 	
 	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
 	WebElement lblLatestComment;
@@ -95,7 +92,10 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
 	
-	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
+//	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
+//	WebElement lblFirstReplyComment;
+	
+	@FindBy(xpath = "(//div[contains(text(),'BSB - Feature of a')])[1]")
 	WebElement lblFirstReplyComment;
 	
 	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")
@@ -191,17 +191,17 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 		
-		WebElement txtStartDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtStartDate));
-		txtStartDateEle.click();
-		txtStartDateEle.sendKeys(Keys.CONTROL + "a");
-		txtStartDateEle.sendKeys(Keys.DELETE);
-		txtStartDateEle.sendKeys(configReader.getProp("Date"));
-		
-	    WebElement txtEndDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtEndDate));
-		txtEndDateEle.click();
-		txtEndDateEle.sendKeys(Keys.CONTROL + "a");
-		txtEndDateEle.sendKeys(Keys.DELETE);
-		txtEndDateEle.sendKeys(configReader.getProp("Date"));
+//		WebElement txtStartDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtStartDate));
+//		txtStartDateEle.click();
+//		txtStartDateEle.sendKeys(Keys.CONTROL + "a");
+//		txtStartDateEle.sendKeys(Keys.DELETE);
+//		txtStartDateEle.sendKeys(configReader.getProp("Date"));
+//		
+//	    WebElement txtEndDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtEndDate));
+//		txtEndDateEle.click();
+//		txtEndDateEle.sendKeys(Keys.CONTROL + "a");
+//		txtEndDateEle.sendKeys(Keys.DELETE);
+//		txtEndDateEle.sendKeys(configReader.getProp("Date"));
 		
 		WebElement txtCommentBoxeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtCommentBox));
 		txtCommentBoxeEle.sendKeys(configReader.getProp("Comment"));
@@ -244,7 +244,8 @@ public class PrimaryD_Comments_PageObject {
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
-		ElementUtils.waitForElementToDisplay(lblCommentIcon, 180);
+		Thread.sleep(3000);
+
 
 		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
@@ -263,8 +264,9 @@ public class PrimaryD_Comments_PageObject {
 		btnReplySubmint.click();
 
 		Thread.sleep(2000);
-		String drpProperty = lblFirstReplyComment.getText();
-		if (drpProperty.equals(configReader.getProp("Reply_Comment"))) {
+		WebElement lblReplyComment = driver.findElement(By.xpath("(//div[contains(text(),'"+configReader.getProp("Reply_Comment")+"')])[1]"));
+		String lblRComment = lblReplyComment.getText();
+		if (lblRComment.equals(configReader.getProp("Reply_Comment"))) {
 			return true;
 		} else {
 			return false;

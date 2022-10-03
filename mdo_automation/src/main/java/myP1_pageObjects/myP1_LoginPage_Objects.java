@@ -1,6 +1,9 @@
 package myP1_pageObjects;
 
 import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -58,31 +61,34 @@ public class myP1_LoginPage_Objects {
 	@FindBy(xpath = "//h2[@class='title text-uppercase text-bold m-none']")
 	WebElement logoOld;
 
-	public void launchURLAndLogin() {
+	public void launchURLAndLogin() throws InterruptedException {
 		String environmentJenkin = System.getProperty("environment");
 		String env = configReader.getMYP1Prop("environment");
 		String myEnv = null;
 		if(environmentJenkin != null) {
 			myEnv = environmentJenkin;
+//			myEnv = env;
 		}else {
 			myEnv = env;
 		}
 		
 		if (myEnv.toLowerCase().equals("uat")) {
+			Thread.sleep(5000);
 			driver.get(configReader.getMYP1Prop("uat_myp1URL"));
+			Thread.sleep(5000);
 			acceptUnAuthorized();
+			Thread.sleep(10000);
 			//int logoSize = driver.findElements(By.xpath("//img[contains(@src,'/logo.png')]")).size();
 			try {
-				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(100))
 						.until(ExpectedConditions.visibilityOf(logo));
-
 				LoginLogo.isDisplayed();
 				username.sendKeys(configReader.getMYP1Prop("uat_userName"));
 				password.sendKeys(configReader.getMYP1Prop("uat_password"));
 				passwordReset.isDisplayed();
 				loginButton.click();
 			} catch (Exception e) {
-				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(700))
 						.until(ExpectedConditions.visibilityOf(logoOld));
 
 				LoginLogo.isDisplayed();
@@ -98,14 +104,16 @@ public class myP1_LoginPage_Objects {
 	}
 
 	public boolean navigateHomePage() {
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}
 	
 	public void acceptUnAuthorized() {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(10000);
+			WebElement advancedBtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions.visibilityOf(advancedBtn));
 			advancedBtn.click();
 			Thread.sleep(2000);
 			processLink.click();

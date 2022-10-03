@@ -142,6 +142,7 @@ public class propertyDashboard_AddComment_PageObjects {
 	}
 
 	public void clickViewPastComment() throws InterruptedException {
+		Thread.sleep(3000);
 		btnAddComment.click();
 		viewPastComments.click();
 		Thread.sleep(3000);

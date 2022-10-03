@@ -1,7 +1,7 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -30,10 +30,13 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//div[text()='AR Mapping']//ancestor::li")
 	WebElement ARMapping;
 
+	@FindBy(xpath = "//span[text()='Source Account']//following::tbody//tr//td")
+	WebElement sourceAccount;
+
 	@FindBy(xpath = "//h1[text()='Sales Mapping']")
 	WebElement navigatedSalesMappingPage;
 
-	@FindBy(xpath = "//button//span//div[text()='Sales Mapping']")
+	@FindBy(xpath = "//button//div[text()='Sales Mapping']")
 	WebElement SalesMappingBtn;
 
 	@FindBy(xpath = "//ul[@role='listbox']//li")
@@ -56,17 +59,17 @@ public class Sales_Mapping_PageObjective {
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnRefresh;
-	
+
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowMappingTolst;
 
-	String mulAccounts = configReader.getProp("Sales_BulkAccounts");
-	List<String> mulAccountList = Arrays.asList(mulAccounts.split(","));
+//	String mulAccounts = configReader.getProp("Sales_BulkAccounts");
+//	List<String> mulAccountList = Arrays.asList(mulAccounts.split(","));
 
 	@FindBy(xpath = "//button[@data-el='buttonMapTo']")
 	WebElement buttonMapTo;
 
-	@FindBy(xpath = "//div[@class='sc-jtJlRs kajoKa']//input")
+	@FindBy(xpath = "//input[contains(@class,'MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd')]")
 	WebElement popupSearch;
 
 	@FindBy(xpath = "//ul[@role='listbox']//li")
@@ -81,11 +84,19 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowManagementStatus;
 
+	String singleMapOpt = null;
+	String salesSingleAccount = null;
+	String salesMappedTo = null;
+	String salesManagerMappedTo = null;
+	List<String> salesBulkAccountsArray = new ArrayList<>();
+
 	public boolean landSalesMapping() throws InterruptedException {
 		WebElement ARMappingEle = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(ARMapping));
 		ARMappingEle.click();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
+		WebElement SalesMappingBtnView = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(SalesMappingBtn));
 		SalesMappingBtn.click();
 		WebElement SalesMappingPage = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(navigatedSalesMappingPage));
@@ -122,8 +133,6 @@ public class Sales_Mapping_PageObjective {
 		}
 		goButton.click();
 		Thread.sleep(2500);
-//		btnRefresh.click();
-//		Thread.sleep(7000);
 	}
 
 /////////////////Verify the search option functionality
@@ -156,31 +165,30 @@ public class Sales_Mapping_PageObjective {
 
 		Thread.sleep(2000);
 
-		WebElement singleCheck = driver.findElement(By.xpath("//div[text()='"
-				+ configReader.getProp("Sales_SingleAccount") + "']//ancestor::td//following-sibling::td[@index='3']"));
+		WebElement SelectedAccount = driver.findElement(By.xpath("//tbody/tr[1]/td[2]/div/div/div/div/div/div"));
+		salesSingleAccount = SelectedAccount.getText();
+
+		WebElement singleCheck = driver
+				.findElement(By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//input)[1]"));
 		singleCheck.click();
-		Thread.sleep(2000);
-		for (int i = 0; i < lstDropDowMappingTolst.size(); i++) {
-			if (lstDropDowMappingTolst.get(i).getText().equalsIgnoreCase(configReader.getProp("Sales_MappedTo"))) {
-				lstDropDowMappingTolst.get(i).click();
-			}
-		}
+		Thread.sleep(3000);
+
+		singleMapOpt = lstDropDowMappingTolst.get(1).getText();
+		lstDropDowMappingTolst.get(1).click();
+
 		Thread.sleep(3500);
 		System.out.println("check single Account");
 	}
 
 	public boolean checkAccountMapped() throws InterruptedException {
+		WebElement singleCheckSelectedVal = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//child::input)[1]")));
+		String singleCheckSelectedValue = singleCheckSelectedVal.getAttribute("value");
 		Thread.sleep(3000);
-		String singleCheckSelectedValue = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
-				.getAttribute("value");
-		Thread.sleep(3000);
-		String MappedAccountVal = configReader.getProp("Sales_MappedTo");
-
 		Thread.sleep(3000);
 
-		if (MappedAccountVal.equalsIgnoreCase(singleCheckSelectedValue)) {
+		if (singleMapOpt.equalsIgnoreCase(singleCheckSelectedValue)) {
 			System.out.println("The expected mappedaccount is same as actual single mapped account --- "
 					+ singleCheckSelectedValue);
 			return true;
@@ -192,18 +200,16 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public boolean verifyRemoved() throws InterruptedException {
-//		Thread.sleep(3000);
-		WebElement singleRemovebtn = driver.findElement(By.xpath("//div[text()='"
-				+ configReader.getProp("Sales_SingleAccount") + "']//ancestor::td//following-sibling::td[@index='6']"));
+		Thread.sleep(3000);
+		WebElement singleRemovebtn = driver
+				.findElement(By.xpath("//div//ancestor::td//following-sibling::td[@index='6']"));
 		Thread.sleep(5000);
 		singleRemovebtn.click();
-
-		Thread.sleep(4000);
-
-		String currentValueOfRemovedAcc = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
-				.getAttribute("value");
+		Thread.sleep(5000);
+		WebElement currentValueOfRemovedAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//child::input)[1]")));
+		String currentValueOfRemovedAcc = currentValueOfRemovedAccView.getAttribute("value");
 
 		Thread.sleep(6000);
 		String defaultMappedToValue = configReader.getProp("Sales_Default_mappedTo");
@@ -221,39 +227,43 @@ public class Sales_Mapping_PageObjective {
 
 	public void slectAccounts() throws InterruptedException {
 		Thread.sleep(5000);
-		for (int i = 0; i < mulAccountList.size(); i++) {
-			WebElement e = driver.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
-					+ "']//ancestor::td//preceding-sibling::td[@index='0']//input"));
+
+		for (int i = 1; i < 5; i++) {
+			Thread.sleep(3000);
+			WebElement e = driver.findElement(By.xpath("(//tbody/tr/td[1]//input)[" + i + "]"));
 			e.click();
 			Thread.sleep(4000);
-			System.out.println("clicked bullet icon: " + mulAccountList.get(i));
+			salesBulkAccountsArray.add(
+					driver.findElement(By.xpath("(//tbody/tr/td[2]/div/div/div/div/div/div)[" + i + "]")).getText());
+			System.out.println("clicked bullet icon: " + salesBulkAccountsArray.get(i - 1));
 		}
 		buttonMapTo.click();
 	}
 
 	public void selectMappedToAcc() {
 		popupSearch.click();
-		for (int i = 0; i < lstDropDowPopupAcc.size(); i++) {
-			if (lstDropDowPopupAcc.get(i).getText().equalsIgnoreCase(configReader.getProp("Sales_MappedTo"))) {
-				lstDropDowPopupAcc.get(i).click();
-			}
-		}
+		salesMappedTo = lstDropDowPopupAcc.get(1).getText();
+		lstDropDowPopupAcc.get(1).click();
 		saveBtn.click();
 	}
 
 	public boolean verifyAccChanged() throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(3000);
+		WebElement sourceAccountView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOf(sourceAccount));
 		boolean flag = true;
-		for (int i = 0; i < mulAccountList.size(); i++) {
-
+		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
+			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
+									+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
 			String currentValueOfAcc = driver
-					.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
+					.findElement(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
 							+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
 					.getAttribute("value");
 			Thread.sleep(4000);
-			String mappedAccount = configReader.getProp("Sales_MappedTo");
 
-			if (mappedAccount.equalsIgnoreCase(currentValueOfAcc)) {
+			if (salesMappedTo.equalsIgnoreCase(currentValueOfAcc)) {
 				System.out.println("current account is same to added account value --- " + currentValueOfAcc);
 			} else {
 				System.out.println("current account doesn't match the added account value  --- " + currentValueOfAcc);
@@ -264,9 +274,12 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public void removeAccounts() throws InterruptedException {
-		for (int i = 0; i < mulAccountList.size(); i++) {
-			WebElement removebtn = driver.findElement(By.xpath(
-					"//div[text()='" + mulAccountList.get(i) + "']//ancestor::td//following-sibling::td[@index='6']"));
+		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
+			WebElement removebtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"
+							+ salesBulkAccountsArray.get(i) + "']//ancestor::td//following-sibling::td[@index='6']")));
+			WebElement removebtn = driver.findElement(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
+					+ "']//ancestor::td//following-sibling::td[@index='6']"));
 			Thread.sleep(3000);
 			removebtn.click();
 			Thread.sleep(3000);
@@ -276,10 +289,13 @@ public class Sales_Mapping_PageObjective {
 	public boolean verifyAccRemoved() throws InterruptedException {
 		Thread.sleep(4000);
 		boolean flag = true;
-		for (int i = 0; i < mulAccountList.size(); i++) {
-
+		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
+			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
+									+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
 			String currentValueOfAcc = driver
-					.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
+					.findElement(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
 							+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
 					.getAttribute("value");
 			Thread.sleep(4000);
@@ -295,31 +311,29 @@ public class Sales_Mapping_PageObjective {
 		return flag;
 	}
 
+	///////////////////// Sales Manager change
+
 	public boolean selectSalesManager() throws InterruptedException {
-		WebElement salesManager = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button"));
+		Thread.sleep(5000);
+		WebElement salesManagerView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+						"(//div//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button)[1]")));
 		Thread.sleep(7000);
-		salesManager.click();
+		salesManagerView.click();
+		salesManagerMappedTo = lstDropDowSalesManager.get(1).getText();
+		lstDropDowSalesManager.get(1).click();
 
-		for (int i = 0; i < lstDropDowSalesManager.size(); i++) {
-			if (lstDropDowSalesManager.get(i).getText().equalsIgnoreCase(configReader.getProp("Sales_Manager"))) {
-				lstDropDowSalesManager.get(i).click();
-				System.out.println("oooooooooo"+ lstDropDowSalesManager.get(i).getText());
-			}
-		}
 		Thread.sleep(4000);
-		String selectedSalesManager = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='4']//child::input"))
-				.getAttribute("value");
+		WebElement selectedSalesManagerView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='4']//child::input)[1]")));
+		String selectedSalesManager = selectedSalesManagerView.getAttribute("value");
 		Thread.sleep(4000);
-		String salesManagerVal=configReader.getProp("Sales_Manager");
-		
-		System.out.println("############################# ==== " + salesManagerVal);//Keri Walker
 
-		if (salesManagerVal.equalsIgnoreCase(selectedSalesManager)) {
-			System.out.println("sales manager successfully changed ==== " + selectedSalesManager);//Map Sales Manager
+		System.out.println("salesManagerMappedTo ==== " + salesManagerMappedTo);
+
+		if (salesManagerMappedTo.equalsIgnoreCase(selectedSalesManager)) {
+			System.out.println("sales manager successfully changed ==== " + selectedSalesManager);
 			return true;
 		} else {
 			System.out.println("sales manager doesn't updated  === " + selectedSalesManager);
@@ -328,21 +342,23 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public boolean removeSalesManager() throws InterruptedException {
-		WebElement salesManager = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button"));
+		Thread.sleep(5000);
+		WebElement salesManager = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+						"(//div//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button)[1]")));
 		salesManager.click();
 		Thread.sleep(4000);
 		for (int i = 0; i < lstDropDowSalesManager.size(); i++) {
-			if (lstDropDowSalesManager.get(i).getText().equalsIgnoreCase(configReader.getProp("default_Sales_Manager"))) {
+			if (lstDropDowSalesManager.get(i).getText()
+					.equalsIgnoreCase(configReader.getProp("default_Sales_Manager"))) {
 				lstDropDowSalesManager.get(i).click();
 			}
 		}
-		String currentSalesManager = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='4']//child::input"))
+		String currentSalesManager = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='4']//child::input)[1]")))
 				.getAttribute("value");
-		Thread.sleep(4000);
+
 		String defaultSalesManager = configReader.getProp("default_Sales_Manager");
 
 		if (defaultSalesManager.equalsIgnoreCase(currentSalesManager)) {
@@ -354,27 +370,29 @@ public class Sales_Mapping_PageObjective {
 		}
 	}
 
+	//////////////////// Management Status change
+
 	public boolean selectManagementStatus() throws InterruptedException {
-		WebElement managementStatus = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='5']//child::input//following-sibling::div//button"));
+		WebElement managementStatus = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+						"(//div//ancestor::td//following-sibling::td[@index='5']//child::input//following-sibling::div//button)[1]")));
 		Thread.sleep(4000);
 		managementStatus.click();
 
 		for (int i = 0; i < lstDropDowManagementStatus.size(); i++) {
-			if (lstDropDowManagementStatus.get(i).getText().equalsIgnoreCase(configReader.getProp("Management_Status"))) {
+			if (lstDropDowManagementStatus.get(i).getText()
+					.equalsIgnoreCase(configReader.getProp("Management_Status"))) {
 				lstDropDowManagementStatus.get(i).click();
-				System.out.println("Management Status::::"+ lstDropDowManagementStatus.get(i).getText());
 			}
 		}
 		Thread.sleep(4000);
-		String selectedManagementStatus = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='5']//child::input"))
-				.getAttribute("value");
+		WebElement selectedManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='5']//child::input)[1]")));
+		String selectedManagementStatus = selectedManagementStatusView.getAttribute("value");
 		Thread.sleep(4000);
-		String managementStatusVal=configReader.getProp("Management_Status");
-		
+		String managementStatusVal = configReader.getProp("Management_Status");
+
 		System.out.println("Management Status value expect to select ==== " + managementStatusVal);
 
 		if (managementStatusVal.equalsIgnoreCase(selectedManagementStatus)) {
@@ -387,20 +405,22 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public boolean removeManagementStatus() throws InterruptedException {
-		WebElement managementStatus = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='5']//child::input//following-sibling::div//button"));
+		WebElement managementStatus = driver.findElement(By.xpath(
+				"(//div//ancestor::td//following-sibling::td[@index='5']//child::input//following-sibling::div//button)[1]"));
 		managementStatus.click();
 		Thread.sleep(4000);
 		for (int i = 0; i < lstDropDowManagementStatus.size(); i++) {
-			if (lstDropDowManagementStatus.get(i).getText().equalsIgnoreCase(configReader.getProp("default_Management_Status"))) {
+			if (lstDropDowManagementStatus.get(i).getText()
+					.equalsIgnoreCase(configReader.getProp("default_Management_Status"))) {
 				lstDropDowManagementStatus.get(i).click();
 			}
 		}
-
+		WebElement currentManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(
+						By.xpath("(//div//ancestor::td//following-sibling::td[@index='5']//child::input)[1]")));
+		
 		String currentManagementStatus = driver
-				.findElement(By.xpath("//div[text()='" + configReader.getProp("Sales_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='5']//child::input"))
+				.findElement(By.xpath("(//div//ancestor::td//following-sibling::td[@index='5']//child::input)[1]"))
 				.getAttribute("value");
 		Thread.sleep(4000);
 		String defaultManagementStatus = configReader.getProp("default_Management_Status");
@@ -409,7 +429,8 @@ public class Sales_Mapping_PageObjective {
 			System.out.println("current Management Status is successfully removed ==== " + currentManagementStatus);
 			return true;
 		} else {
-			System.out.println("current Management Status doesn't match with default value ==== " + currentManagementStatus);
+			System.out.println(
+					"current Management Status doesn't match with default value ==== " + currentManagementStatus);
 			return false;
 		}
 	}

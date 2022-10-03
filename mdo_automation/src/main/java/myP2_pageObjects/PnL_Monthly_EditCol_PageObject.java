@@ -244,14 +244,14 @@ public class PnL_Monthly_EditCol_PageObject {
     public void removeColumnFunc() throws InterruptedException {
     	
     	drpColumn4.click();
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
     	
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	

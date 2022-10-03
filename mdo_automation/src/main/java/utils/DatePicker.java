@@ -21,6 +21,9 @@ public class DatePicker {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+	WebElement txtDate;
+	
 	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
 	WebElement btnDatePicker;
 
@@ -45,21 +48,22 @@ public class DatePicker {
 		return month + 1;
 	}
 
-	public boolean selectDateFromPicker() throws InterruptedException {
+	public boolean selectDateFromPicker(String date) throws InterruptedException {
 		boolean flag = false;
-		String date = "03/31/2021";
 		String[] dateForPicker = date.split("/");
-
-		WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnDatePicker));
-		datePicker.click();
-
-		Thread.sleep(2500);
-
+		
+		txtDate.click();
+		
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(25))
+			
+			int sizeOfPicker = driver
+					.findElements(By.xpath("//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")).size();
+			
+			System.out.println("Size of"+sizeOfPicker);
+			
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
@@ -70,6 +74,8 @@ public class DatePicker {
 							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
+			
+			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
 
@@ -77,7 +83,7 @@ public class DatePicker {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(25))
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
 							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
@@ -88,12 +94,16 @@ public class DatePicker {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
 			}
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(25))
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
 							.until(ExpectedConditions.visibilityOf(btnNextMonth));
 
 					btnNext.click();
@@ -104,8 +114,11 @@ public class DatePicker {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+				
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
-
 			}
 
 			else {
@@ -113,6 +126,10 @@ public class DatePicker {
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
+			
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
+				
 				flag = true;
 			}
 

@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression @revenue
 
-  Feature: Verify Revenue Breakdown Functionality
+Feature: Verify Revenue Breakdown Functionality
 
   Scenario: Navigate to Revenue Breakdown report
     Given I am login to the myp2 site

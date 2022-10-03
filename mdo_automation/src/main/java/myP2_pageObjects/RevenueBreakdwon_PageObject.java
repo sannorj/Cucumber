@@ -103,7 +103,6 @@ public class RevenueBreakdwon_PageObject {
 				.until(ExpectedConditions.visibilityOf(revenueBreakdown));
 		
 		revenueBreakdownEle.click();
-
 	}
 
 	public boolean navigateToRevenueBreakDown() throws InterruptedException {
@@ -117,11 +116,9 @@ public class RevenueBreakdwon_PageObject {
 		WebElement RevenuePageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(RevenuePage));
 		return RevenuePageEle.isDisplayed();
-
 	}
 
 	public boolean loadReportWithParameters() throws InterruptedException {
-
 		
 		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownProperty));
@@ -137,7 +134,6 @@ public class RevenueBreakdwon_PageObject {
 		boolean status = selectDate();
 
 		return status;
-
 	}
 
 	public int getMonth() {
@@ -145,7 +141,6 @@ public class RevenueBreakdwon_PageObject {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		int month = cal.get(Calendar.MONTH);
-
 		return month + 1;
 	}
 
@@ -176,7 +171,6 @@ public class RevenueBreakdwon_PageObject {
 
 			pickYear.click();
 			
-			
 			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
@@ -197,7 +191,6 @@ public class RevenueBreakdwon_PageObject {
 
 				btnDate.click();
 				
-
 				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
 				btnOk.click();
 				
@@ -211,8 +204,8 @@ public class RevenueBreakdwon_PageObject {
 
 					btnNext.click();
 					Thread.sleep(1500);
-
 				}
+				
 				WebElement btnDate = driver
 						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 
@@ -222,7 +215,6 @@ public class RevenueBreakdwon_PageObject {
 				btnOk.click();
 				
 				flag = true;
-
 			}
 
 			else {
@@ -231,7 +223,6 @@ public class RevenueBreakdwon_PageObject {
 
 				btnDate.click();
 				
-
 				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
 				btnOk.click();
 				

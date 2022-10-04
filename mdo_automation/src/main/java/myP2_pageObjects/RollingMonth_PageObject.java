@@ -58,7 +58,7 @@ public class RollingMonth_PageObject {
 	WebElement txtDate;
 
 	
-	@FindBy(xpath = "(//input)[4]")
+	@FindBy(xpath = "//input[@type='tel']")
 	WebElement txtDate1;
 	
 	@FindBy(xpath = "//span[text()='Go']//parent::button")
@@ -69,7 +69,6 @@ public class RollingMonth_PageObject {
 	
 	@FindBy(xpath = "//span[text()='Property']")
 	List <WebElement> lstHeaders ;
-	
 	
 	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
 	List <WebElement> listHeaders;
@@ -86,13 +85,29 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//div[@data-el='buttonSummary']")
 	WebElement tabCalendarMonth;
 	
+//	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+//	WebElement btnDatePicker;
+//
+//	@FindBy(xpath = "//div[@role='dialog']")
+//	WebElement divCalender;
+//
+//	@FindBy(xpath = "//div[@role='presentation']//button")
+//	WebElement btnExpandYear;
+//
+//	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+//	WebElement btnPreviousMonth;
+//
+//	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+//	WebElement btnNextMonth;
+//	
+	
 	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
 	WebElement btnDatePicker;
 
 	@FindBy(xpath = "//div[@role='dialog']")
 	WebElement divCalender;
 
-	@FindBy(xpath = "//div[@role='presentation']//button")
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
 	WebElement btnExpandYear;
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
@@ -100,6 +115,115 @@ public class RollingMonth_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
+	
+	
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+
+		return month + 1;
+	}
+
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
+	public boolean selectDate() throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("RM_Date").split("/");
+
+		txtDate.click();
+
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+
+			Thread.sleep(2500);
+
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+
+			pickYear.click();
+
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+				
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
+	}
+
 	
 	public void expandReportFunc() throws InterruptedException {
 
@@ -129,75 +253,6 @@ public class RollingMonth_PageObject {
 
 	}
 	
-	public int getMonth() {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		int month = cal.get(Calendar.MONTH);
-		return month + 1;
-	}
-	public boolean selectDate() throws InterruptedException {
-		boolean flag = false;
-		String [] dateForPicker = configReader.getProp("RM_Date").split("/");
-		
-		
-		Thread.sleep(2500);
-		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
-		if (status == 1) {
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
-			expandYear.click();
-			Thread.sleep(2500);
-			
-			WebElement datePicker = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnDatePicker));
-			datePicker.click();
-			
-			Thread.sleep(2500);
-			WebElement pickYear = driver.findElement(By
-					.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '" + dateForPicker[2] + "')]"));
-			pickYear.click();
-			int monthInnum = getMonth();
-			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
-			if (monthDiff > 0) {
-				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
-					btnPrevious.click();
-					Thread.sleep(1500);
-				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-				btnDate.click();
-				flag = true;
-			}
-			else if (monthDiff < 0) {
-				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnNextMonth));
-					btnNext.click();
-					Thread.sleep(1500);
-				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-				btnDate.click();
-				flag = true;
-			}
-			else {
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-				btnDate.click();
-				flag = true;
-			}
-			
-		}
-		else
-		{
-			flag = false;
-		}
-		return flag;
-	}
-	
-	
 	
 	
 	public void selectParametersFunc() throws InterruptedException {
@@ -214,35 +269,12 @@ public class RollingMonth_PageObject {
 		}
 		
 		Thread.sleep(4000);
-//		txtDate.click();
-//		System.out.println("1111111111111111111111111111111111111111111");
-//		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
-//		if (status == 1) {
-//			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-//					.until(ExpectedConditions.visibilityOf(btnExpandYear));
-//			expandYear.click();
-//			System.out.println("bbbbbbbbbbbbb");
-//			Thread.sleep(2500);
-//		}
-//		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-//		Thread.sleep(4000);
-//		txtDate1.click();
+		
 //		txtDate1.sendKeys(Keys.CONTROL + "a");
 //		txtDate1.sendKeys(Keys.DELETE);
-//		System.out.println("vvvvvvvvvvvv"+txtDate1.getText());
-//		
 //		txtDate1.sendKeys(configReader.getProp("RM_Date"));
-//		System.out.println("3333333333333333333333333333333");
-//		txtDate.sendKeys(Keys.ENTER);
-//		
-//		Thread.sleep(2000);
-//		
-//		selectDate();
 		
-		
-		txtDate1.sendKeys(Keys.CONTROL + "a");
-		txtDate1.sendKeys(Keys.DELETE);
-		txtDate1.sendKeys(configReader.getProp("RM_Date"));
+		selectDate();
 		
 		btnGo.click();
 		Thread.sleep(1000);

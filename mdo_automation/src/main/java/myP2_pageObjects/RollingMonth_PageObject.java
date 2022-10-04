@@ -356,7 +356,7 @@ public class RollingMonth_PageObject {
 		String group = drpgroup.getAttribute("value");
 		String date = txtDate.getAttribute("value");
 
-		if (group.equals(configReader.getProp("RM_Group")) && date.equals(configReader.getProp("RM_Date"))) {
+		if (group.equals(configReader.getProp("RM_Group")) && date.equals(configReader.getProp("CM_Date"))) {
 			flag = true;
 		} else {
 			flag = false;

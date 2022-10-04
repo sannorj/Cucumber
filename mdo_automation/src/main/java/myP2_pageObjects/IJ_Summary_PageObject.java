@@ -129,7 +129,7 @@ public class IJ_Summary_PageObject {
 	public void selectParametersFunc() throws InterruptedException {
 		
 		/* Select the appropriate Property value from the drop-down menu. */
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 		drpGroupEle.click();
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));

@@ -85,21 +85,6 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//div[@data-el='buttonSummary']")
 	WebElement tabCalendarMonth;
 	
-//	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
-//	WebElement btnDatePicker;
-//
-//	@FindBy(xpath = "//div[@role='dialog']")
-//	WebElement divCalender;
-//
-//	@FindBy(xpath = "//div[@role='presentation']//button")
-//	WebElement btnExpandYear;
-//
-//	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
-//	WebElement btnPreviousMonth;
-//
-//	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
-//	WebElement btnNextMonth;
-//	
 	
 	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
 	WebElement btnDatePicker;

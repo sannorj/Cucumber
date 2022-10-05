@@ -80,8 +80,6 @@ public class IJ_Summary_PageObject {
 	@FindBy(xpath = "//input[@name='hmgGlCode']")
 	WebElement drpGlCode;
 	
-//	@FindBy(xpath = "//span[text()='Save']/../..")
-//	WebElement btnSave;
 	
 	@FindBy(xpath = "//span[text()='Save']//parent::button")
 	WebElement btnSave;

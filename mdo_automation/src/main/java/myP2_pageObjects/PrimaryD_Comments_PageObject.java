@@ -240,6 +240,7 @@ public class PrimaryD_Comments_PageObject {
 		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
 		btnMainCommentEle.click();
 
+		Thread.sleep(5000);
 		/* Click on view All comment linked-label in Comment model   */
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();

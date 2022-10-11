@@ -89,18 +89,18 @@ public class Dashboard_AddColumn_PageObjective {
 
 	public boolean navigateToAddColumn() throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnEditColumn));
 
 		btnEdit.click();
 
-		WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnAddColumn));
 
 		btnAdd.click();
 		Thread.sleep(2500);
 
-		WebElement lblAdd = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement lblAdd = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(lblAddColumn));
 
 		return lblAdd.isDisplayed();
@@ -133,7 +133,6 @@ public class Dashboard_AddColumn_PageObjective {
 		}
 		btnPeriod.click();
 		Thread.sleep(2000);
-		// lstPeriod.get(2).click();
 
 		for (int i = 1; i < lstPeriod.size(); i++) {
 			if (lstPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("PeriodAddColumn"))) {
@@ -149,33 +148,22 @@ public class Dashboard_AddColumn_PageObjective {
 
 		btnDecimal.click();
 		Thread.sleep(4000);
-		for (int i = 0; i < lstDecimal.size(); i++) {
-			if (lstDecimal.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("decimalvalueAddColumn"))) {
-				System.out.print("=====dfg======"+lstDecimal.get(i));
-				lstDecimal.get(i).click();
-				
-			}
-		}
+		lstDecimal.get(2).click();
 
 		Thread.sleep(4000);
 		btnPerfomanceIndicator.click();
-		for (int i = 0; i < lstPerfomanceIndicator.size(); i++) {
-			if (lstPerfomanceIndicator.get(i).getAttribute("data-value").equalsIgnoreCase(configReader.getProp("PerfomanceIndicatorAddColumn"))) {
-				lstPerfomanceIndicator.get(i).click();
-
-			}
-		}
+		lstPerfomanceIndicator.get(1).click();
 	}
 
 	public boolean verifySuccessMessage() throws InterruptedException {
-		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnSave));
 
 		Thread.sleep(2500);
 
 		Save.click();
 
-		WebElement Success = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement Success = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(lblSuccess));
 
 		System.out.println(Success.getText());
@@ -186,21 +174,22 @@ public class Dashboard_AddColumn_PageObjective {
 
 	public boolean navigateToDeleteColumn() throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnEditColumn));
 
 		btnEdit.click();
 
 		Thread.sleep(10000);
 
-		WebElement tst = driver.findElement(By.xpath("//button[@data-el='button-delete-" + configReader.getProp("NameAddColumn") + "']"));
-		WebElement btnDelete = new WebDriverWait(driver, Duration.ofSeconds(15))
+		WebElement tst = driver.findElement(
+				By.xpath("//button[@data-el='button-delete-" + configReader.getProp("NameAddColumn") + "']"));
+		WebElement btnDelete = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(tst));
 
 		btnDelete.click();
 		Thread.sleep(2000);
 
-		WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(dialogBox));
 
 		return dialogBoxEle.isDisplayed();
@@ -210,17 +199,16 @@ public class Dashboard_AddColumn_PageObjective {
 
 		Thread.sleep(5000);
 
-		WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(dialogBox));
 
 		if (dialogBoxEle.isDisplayed()) {
-			WebElement btnOkEle = new WebDriverWait(driver, Duration.ofSeconds(5))
+			WebElement btnOkEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(btnOk));
 
 			btnOkEle.click();
-			Thread.sleep(2000);
-			
-			WebElement alert = new WebDriverWait(driver, Duration.ofSeconds(5))
+
+			WebElement alert = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(alertDelete));
 
 			return alert.isDisplayed();

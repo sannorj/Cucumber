@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca 
-@myP2_Regression @toggleWidget
+@myP2_Regression @FinalFix
 Feature: Primary Dashboard - Toggle Widgets
 
 	Scenario: Verify whether turned off widgets are not exist in the dashboard 

@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @mypOrderColumn
+@myP2_Regression @FinalFix
 
    Feature: Primary Dashboard - Order column feature  
 

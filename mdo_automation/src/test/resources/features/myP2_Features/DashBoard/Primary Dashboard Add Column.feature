@@ -1,3 +1,4 @@
+#Author: haniffa@mydigitaloffice.ca
 @myP2_Regression @dashBoardAdd
 Feature: Primary Dashboard - Add Column Feature
 

@@ -132,14 +132,7 @@ public class Dashboard_AddColumn_PageObjective {
 			}
 		}
 		btnPeriod.click();
-		Thread.sleep(5000);
-
-		for (int i = 1; i < lstPeriod.size(); i++) {
-			if (lstPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("PeriodAddColumn"))) {
-				lstPeriod.get(i).click();
-
-			}
-		}
+		lstPeriod.get(1).click();
 	}
 
 	public void setupDecimalAndPerfomance() throws InterruptedException {

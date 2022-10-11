@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression
 
-Feature: Verify Revenue Breakdown Functionality
+Feature: Verify Revenue Breakdown Initial Load
 
   Scenario: Navigate to Revenue Breakdown report
     Given I am login to the myp2 site

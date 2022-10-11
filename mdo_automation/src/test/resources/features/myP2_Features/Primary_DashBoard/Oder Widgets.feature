@@ -1,9 +1,11 @@
-@myP2_Regression @faliureSmoke
+#Author: haniffa@mydigitaloffice.ca
+@myP2_Regression @FinalFix
 Feature: Primary Dashboard - Re arrange the widgets and verify
 
 Scenario: Verify whether Ordered Widgets are in the correct order
     Given I am login to the myp2 site
     And System navigate to the home page
+    And Select the organization as "Beck Legacy Group"
     When I Am navigate to toggle widget page by clicking ToggleWidget Icon
     Then I turn on all the widgets
     When I Am navigate to order widget page by clicking OrderWidget Icon

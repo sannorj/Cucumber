@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression @kpi
 
-    Feature: KPI Library functionality feature
+    Feature: KPI Library Add - Eidt - Delete functionality
 
     Background: Navigate to KPI Labrary
     Given I am login to the myp2 site

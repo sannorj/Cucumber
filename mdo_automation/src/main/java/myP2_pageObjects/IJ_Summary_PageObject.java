@@ -330,7 +330,7 @@ public class IJ_Summary_PageObject {
 
 		btnSave.click();
 		ElementUtils.waitForElementToDisplay(lblTotalRevenue, 100);
-		Thread.sleep(4500);
+		Thread.sleep(6000);
 
 	}
 		

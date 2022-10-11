@@ -1,3 +1,5 @@
+#Author: haniffa@mydigitaloffice.ca
+
 @myP2_Regression @faliureSmokeWidget
 Feature: Primary Dashboard - Re arrange the widgets and verify
 

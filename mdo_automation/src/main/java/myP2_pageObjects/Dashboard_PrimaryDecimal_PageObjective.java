@@ -346,7 +346,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	}
 
 	public void assignOverrideDecimal() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
 		if (dropDownEditDecimal.isDisplayed()) {
 			toggleButton.click();

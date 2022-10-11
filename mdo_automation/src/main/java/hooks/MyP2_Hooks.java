@@ -1,5 +1,6 @@
 package hooks;
 
+import java.net.MalformedURLException;
 import java.util.Properties;
 
 import org.openqa.selenium.OutputType;
@@ -26,15 +27,21 @@ public class MyP2_Hooks {
 	}
 	
 	@Before(order=1)
-	public void setup() {
+	public void setup() throws MalformedURLException {
+
 		String browserJenkin = System.getProperty("browserName");
 		String browserName = prop.getProperty("browser");
+		String status = prop.getProperty("docker");
+
 		System.out.println("browserJenkin : " + browserJenkin);
 		System.out.println("browserName : " + browserName);
+
 		driverFactory = new DriverFactory();
-		if(browserJenkin != null) {
+		if (browserJenkin != null) {
 			driver = driverFactory.setDriverJenkin(browserJenkin);
-		}else {
+		} else if (status.equals("true")) {
+			driver = driverFactory.setDriverDockerLocal(browserName);
+		} else {
 			driver = driverFactory.setDriverLocal(browserName);
 		}
 	}

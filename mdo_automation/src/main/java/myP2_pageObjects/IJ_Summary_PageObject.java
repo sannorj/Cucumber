@@ -271,11 +271,6 @@ public class IJ_Summary_PageObject {
 			}
 		}
 		Thread.sleep(3000);
-		/* Select the appropriate From date  from Date picker */
-//		txtDate.sendKeys(Keys.CONTROL + "a");
-//		txtDate.sendKeys(Keys.DELETE);
-//		txtDate.sendKeys(configReader.getProp("IJ_Date"));
-		
 		selectDate();
 		Thread.sleep(1000);
 		
@@ -330,7 +325,7 @@ public class IJ_Summary_PageObject {
 
 		btnSave.click();
 		ElementUtils.waitForElementToDisplay(lblTotalRevenue, 100);
-		Thread.sleep(4500);
+		Thread.sleep(6000);
 
 	}
 		

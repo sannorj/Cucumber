@@ -201,10 +201,7 @@ public class Dashboard_AddColumn_PageObjective {
 
 			btnOkEle.click();
 
-			WebElement alert = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(alertDelete));
-
-			return alert.isDisplayed();
+			return true;
 		} else {
 			return false;
 		}

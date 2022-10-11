@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression @mypGS
 
-   Feature: Verify GSS Medalia Functionality
+   Feature: Verify GSS Medalia Set Priority Feature
 
   Background: Navigate to GSS Medalia report
     Given I am login to the myp2 site

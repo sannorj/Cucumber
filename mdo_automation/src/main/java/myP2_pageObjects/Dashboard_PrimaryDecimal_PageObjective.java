@@ -348,9 +348,13 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	public void assignOverrideDecimal() throws InterruptedException {
 		Thread.sleep(10000);
 
-		if (dropDownEditDecimal.isDisplayed()) {
+		int status = driver
+				.findElements(By.xpath("//div[@id='mui-component-select-valueDecimals']")).size();
+		if(status == 1)
+		{
 			toggleButton.click();
 		}
+		
 
 		dropDownMassterFeature.click();
 		lstSwitch.get(0).click();

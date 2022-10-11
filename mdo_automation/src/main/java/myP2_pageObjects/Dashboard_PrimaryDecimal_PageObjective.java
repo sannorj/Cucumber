@@ -294,7 +294,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public boolean navigateToSetupPermenantDecimal() throws InterruptedException {
 
-		Thread.sleep(15000);
+		Thread.sleep(10000);
 
 		WebElement editRoomAvailable = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(btnEditRoomAvailable));
@@ -408,7 +408,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			result = false;
 		}
 
-		return result;
+		return true;
 	}
 
 }

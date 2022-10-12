@@ -52,7 +52,7 @@ public class MyP2_Hooks {
 //		else {
 //			driver = driverFactory.setDriverJenkin(browserJenkin);
 //		}
-		
+		System.out.println("====dockerJenkin===="+dockerJenkin+"====browserJenkin===="+browserJenkin);
 		if (browserJenkin != null && dockerJenkin.equals("true") ) {
 		    driver = driverFactory.setDriverDockerJenkin(browserName);
 		} 

@@ -56,7 +56,7 @@ public class MyP2_Hooks {
 		if (browserJenkin != null && dockerJenkin.equals("true") ) {
 		    driver = driverFactory.setDriverDockerJenkin(browserName);
 		} 
-		else if (browserJenkin != null && dockerJenkin.equals("flase")) {
+		else if (browserJenkin != null && dockerJenkin.equals("false")) {
 		    driver = driverFactory.setDriverJenkin(browserJenkin);
 		} 
 		else if (status.equals("true")) {

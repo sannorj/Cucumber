@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @sannorj119 @ii
+@myP2_Regression @myP2_Smoke @sannorj119 
 
 Feature: Income Journal Summary  - Add New Row Feature
 

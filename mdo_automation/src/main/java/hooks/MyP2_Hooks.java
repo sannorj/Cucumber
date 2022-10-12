@@ -40,19 +40,7 @@ public class MyP2_Hooks {
 		System.out.println("dockerJenkin : " + dockerJenkin);
 
 		driverFactory = new DriverFactory();
-//		if (status.equals("true")) {
-//			driver = driverFactory.setDriverDockerLocal(browserName);
-//		} 
-//		else if (status.equals("false")) {
-//			driver = driverFactory.setDriverLocal(browserName);
-//		} 
-//		else if (dockerJenkin.equals("true") && browserJenkin != null) {
-//			driver = driverFactory.setDriverDockerJenkin(browserName);
-//		} 
-//		else {
-//			driver = driverFactory.setDriverJenkin(browserJenkin);
-//		}
-		System.out.println("====dockerJenkin===="+dockerJenkin+"====browserJenkin===="+browserJenkin);
+
 		if (browserJenkin != null && dockerJenkin.equals("true") ) {
 		    driver = driverFactory.setDriverDockerJenkin(browserName);
 		} 

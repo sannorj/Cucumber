@@ -32,19 +32,31 @@ public class MyP2_Hooks {
 		String browserJenkin = System.getProperty("browserName");
 		String browserName = prop.getProperty("browser");
 		String status = prop.getProperty("docker");
-
+	   // boolean dockerJenkin = Boolean.getBoolean("dockerStatus");
+		String dockerJenkin =  System.getProperty("dockerStatus");
+		
 		System.out.println("browserJenkin : " + browserJenkin);
 		System.out.println("browserName : " + browserName);
+		System.out.println("dockerJenkin : " + dockerJenkin);
 
 		driverFactory = new DriverFactory();
-		if (browserJenkin != null) {
-			driver = driverFactory.setDriverJenkin(browserJenkin);
-		} else if (status.equals("true")) {
-			driver = driverFactory.setDriverDockerLocal(browserName);
-		} else {
-			driver = driverFactory.setDriverLocal(browserName);
+
+		if (browserJenkin != null && dockerJenkin.equals("true") ) {
+		    driver = driverFactory.setDriverDockerJenkin(browserName);
+		} 
+		else if (browserJenkin != null && dockerJenkin.equals("false")) {
+		    driver = driverFactory.setDriverJenkin(browserJenkin);
+		} 
+		else if (status.equals("true")) {
+		    driver = driverFactory.setDriverDockerLocal(browserName);
+		} 
+		else {
+		    driver = driverFactory.setDriverLocal(browserName);
 		}
 	}
+	
+	
+	
 	
 	@After(order=0)
 	public void after() {

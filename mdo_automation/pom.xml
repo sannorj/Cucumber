@@ -142,6 +142,7 @@
 							<systemPropertyVariables>
 								<browserName>${browser}</browserName>
 								<environment>${env}</environment>
+								<dockerStatus>${status}</dockerStatus>
 							</systemPropertyVariables>
 						</configuration>
 					</execution>

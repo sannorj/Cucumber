@@ -67,6 +67,22 @@ public class DriverFactory {
 		return getDriver();
 	}
 
+	
+	public WebDriver setDriverDockerJenkin(String browser) throws MalformedURLException {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		options.addArguments("--no-sandbox");
+		options.addArguments("window-size=1920,1080");
+
+		URL url = new URL("http://192.168.1.4:4444");
+		tlDriver.set(new RemoteWebDriver(url, options));
+		getDriver().manage().deleteAllCookies();
+		getDriver().manage().window().maximize();
+		return getDriver();
+	}
+	
+	
+	
 
 
 }

@@ -8,7 +8,7 @@ Feature: Income Journal Summary  - Add New Row Feature
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group"
     And In the Side Menu, expand the IJ section.
-    And Go to the Income Journal Summary
+    And Navigate to the Income Journal Summary
     And Select the Property , Period , Date and Click on GO button
 
   Scenario: Verify whether user can Add Row in Income Journal Summary  

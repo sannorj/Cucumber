@@ -17,7 +17,7 @@ public class IJ_Summary_StepDefinition {
 		IJSummary.expandForms();
 	}
 	
-	@Given("Go to the Income Journal Summary")
+	@Given("Navigate to the Income Journal Summary")
 	public void go_to_the_income_journal_summary() throws InterruptedException {
 		IJSummary.navigateIJSummaryFunc();
 	}

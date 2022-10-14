@@ -38,6 +38,7 @@ public class MyP2_Hooks {
 		System.out.println("browserJenkin : " + browserJenkin);
 		System.out.println("browserName : " + browserName);
 		System.out.println("dockerJenkin : " + dockerJenkin);
+		System.out.println("status : " + status);
 
 		driverFactory = new DriverFactory();
 

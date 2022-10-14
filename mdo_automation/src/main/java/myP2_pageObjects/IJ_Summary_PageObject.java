@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,10 +33,10 @@ public class IJ_Summary_PageObject {
 	WebElement menuIJ;
 
 	
-	@FindBy(xpath = "//div[text()='Summary']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Summary (New)')]//ancestor::li")
 	WebElement subMenuIJSummary;
 	
-	@FindBy(xpath = "//h1[text()='Income Journal Summary']")
+	@FindBy(xpath = "//h1[contains(text(),'Summary (New)')]")
 	WebElement h1IncomeJournalSummary;
 	
 	@FindBy(xpath = "//div/input[contains(@name, 'hotelId')]")

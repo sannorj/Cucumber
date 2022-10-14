@@ -33,10 +33,10 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//div[text()='Reports']//ancestor::li")
 	WebElement reports;
 
-	@FindBy(xpath = "//div[text()='P&L Statements']//ancestor::li")
+	@FindBy(xpath = "//div[text()='P&L Reports']//ancestor::li")
 	WebElement pnlStatement;
 
-	@FindBy(xpath = "//div[text()='P&L Yearly']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'P&L Yearly Report')]//ancestor::li")
 	WebElement pnlYearly;
 
 	@FindBy(xpath = "//h1[text()='Profit & Loss Yearly Report']")
@@ -102,18 +102,15 @@ public class PnLYearly_PageObject {
 	public void expandPnLStatement() {
 
 		try {
-			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(mainMenuButton));
+			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(mainMenuButton));
 			menu.click();
 			/* mandatory pause */
 			Thread.sleep(1500);
 
-			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(reports));
+			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(reports));
 			reportsEle.click();
 
-			WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(pnlStatement));
+			WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(pnlStatement));
 			pnlStatementEle.click();
 
 		} catch (InterruptedException e) {
@@ -123,12 +120,10 @@ public class PnLYearly_PageObject {
 	}
 
 	public boolean navigatePnLYearlyPage() {
-		WebElement pnlYearlyEle = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(pnlYearly));
+		WebElement pnlYearlyEle = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(pnlYearly));
 		pnlYearlyEle.click();
 
-		WebElement pnlYearlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlYearlyPage));
+		WebElement pnlYearlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlYearlyPage));
 		return pnlYearlyPageEle.isDisplayed();
 
 	}

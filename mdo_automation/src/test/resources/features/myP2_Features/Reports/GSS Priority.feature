@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression 
 
-  Feature: Verify GSS Priority Set Priority Feature
+  Feature: Verify GSS Priority Set Priority Feature (Disabled in UAT & PROD)
 
   Scenario: Verify GSS Medallia
     Given I am login to the myp2 site

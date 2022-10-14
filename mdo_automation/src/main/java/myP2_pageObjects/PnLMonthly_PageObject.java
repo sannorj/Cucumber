@@ -30,7 +30,7 @@ public class PnLMonthly_PageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[text()='P&L Monthly']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'P&L Monthly')]//ancestor::li")
 	WebElement pnlMonthly;
 
 	@FindBy(xpath = "//div/input[@name='portfolio-group']")
@@ -119,14 +119,12 @@ public class PnLMonthly_PageObject {
 
 	public boolean navigatePnLMonthlyPage() throws InterruptedException {
 
-		WebElement pnlMonthEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlMonthly));
+		WebElement pnlMonthEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthly));
 		pnlMonthEle.click();
 
 		Thread.sleep(3500);
 
-		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
+		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
 		return pnlMothlyPageEle.isDisplayed();
 
 	}
@@ -137,8 +135,7 @@ public class PnLMonthly_PageObject {
 
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(drpGroup));
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));

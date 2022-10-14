@@ -314,13 +314,15 @@ public class Sales_Mapping_PageObjective {
 	///////////////////// Sales Manager change
 
 	public boolean selectSalesManager() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		WebElement salesManagerView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 						"(//div//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button)[1]")));
 		Thread.sleep(7000);
 		salesManagerView.click();
+		Thread.sleep(7000);
 		salesManagerMappedTo = lstDropDowSalesManager.get(1).getText();
+		Thread.sleep(4000);
 		lstDropDowSalesManager.get(1).click();
 
 		Thread.sleep(4000);

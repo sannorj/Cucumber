@@ -29,10 +29,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
 	WebElement mainMenuButton;
 	
-	@FindBy(xpath = "//div[text()='Guest Ledger']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Guest Ledger')]//ancestor::li")
 	WebElement menuGuestLedger;
 	
-	@FindBy(xpath = "//h1[text()='Guest Ledger']")
+	@FindBy(xpath = "//h1[contains(text(),'Guest Ledger')]")
 	WebElement h1GuestLedger;
 	
 	@FindBy(xpath = "(//div/input[contains(@class, 'MuiInputBase-inputAdornedEnd')])[1]")
@@ -152,9 +152,6 @@ public class Guest_Ledger_PageObject {
 	
 	@FindBy(xpath = "//*[@id='root']//table/tbody/tr[1]/td/div/div/div/div/div")
 	List <WebElement> noOfColumns;
-	
-//	@FindBy(xpath = "//div/input[@name='latestDate']")
-//	WebElement txtDate;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -422,7 +419,7 @@ public class Guest_Ledger_PageObject {
 			}
 		}
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 

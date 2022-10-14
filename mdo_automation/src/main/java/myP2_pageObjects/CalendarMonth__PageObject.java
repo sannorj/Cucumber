@@ -34,11 +34,11 @@ public class CalendarMonth__PageObject {
 
 	@FindBy(xpath = "//div[text()='Revenue']//ancestor::li")
 	WebElement reveneue;
+		
+	@FindBy(xpath = "//div[contains(text(),'30/60/90')]//ancestor::li")
+	WebElement RollcalReport;
 	
-	@FindBy(xpath = "//div[text()='30/60/90']//ancestor::li")
-	WebElement RollingCalendarReport;
-	
-	@FindBy(xpath = "//div[text()='30/60/90 Calendar Month']//ancestor::li")
+	@FindBy(xpath = "//div[@data-el='buttonSummary']")
 	WebElement menuCalendarMonth;
 	
 	@FindBy(xpath = "//h1[text()='30/60/90 Calendar Month Report']")
@@ -74,9 +74,9 @@ public class CalendarMonth__PageObject {
 
 		WebElement revenueEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(reveneue));
 		revenueEle.click();
-
-		WebElement calendarMonthReportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(RollingCalendarReport));
-		calendarMonthReportsEle.click();	
+		
+		WebElement cRollcalReportEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(RollcalReport));
+		cRollcalReportEle.click();
 
 	}
 	

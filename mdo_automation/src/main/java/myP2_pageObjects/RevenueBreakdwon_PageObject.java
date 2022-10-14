@@ -35,7 +35,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//div[text()='Revenue']//ancestor::li")
 	WebElement revenueBreakdown;
 
-	@FindBy(xpath = "//div[text()='Revenue Breakdown']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Revenue Breakdown Report')]//ancestor::li")
 	WebElement revenueBreakdownPage;
 
 	@FindBy(xpath = "//tbody//tr[1]//td[1]")
@@ -91,16 +91,13 @@ public class RevenueBreakdwon_PageObject {
 	
 	public void expandRevenue() throws InterruptedException {
 
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(selector));
+		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(selector));
 		menu.click();
 		
-		WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(reports));
+		WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(reports));
 		reportsEle.click();
 
-		WebElement revenueBreakdownEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(revenueBreakdown));
+		WebElement revenueBreakdownEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(revenueBreakdown));
 		
 		revenueBreakdownEle.click();
 	}
@@ -109,12 +106,10 @@ public class RevenueBreakdwon_PageObject {
 
 		Thread.sleep(3500);
 
-		WebElement revenueBreakdownPageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(revenueBreakdownPage));
+		WebElement revenueBreakdownPageEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(revenueBreakdownPage));
 		revenueBreakdownPageEle.click();
 
-		WebElement RevenuePageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(RevenuePage));
+		WebElement RevenuePageEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(RevenuePage));
 		return RevenuePageEle.isDisplayed();
 	}
 

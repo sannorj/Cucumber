@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
 @myP2_Regression 
 
-    Feature: Gss By Month - Set Priority Feature
+    Feature: Gss By Month - Set Priority Feature (Disabled in UAT & PROD)
  
     Scenario:  Verify GSS Medallia
     Given I am login to the myp2 site

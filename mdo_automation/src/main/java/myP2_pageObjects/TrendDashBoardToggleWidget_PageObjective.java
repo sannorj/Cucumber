@@ -34,7 +34,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 	@FindBy(xpath = "//div[text()='Dashboard']//ancestor::li")
 	WebElement dashBoard;
 
-	@FindBy(xpath = "//div[text()='Trends Dashboard']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Trends Dashboard')]//ancestor::li")
 	WebElement trendDashboard;
 
 	@FindBy(xpath = "//h1[text()='Trends Dashboard']")
@@ -53,16 +53,13 @@ public class TrendDashBoardToggleWidget_PageObjective {
 	WebElement txtSearch;
 
 	public boolean navigateToTrendDashboard() throws InterruptedException {
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(selector));
+		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(selector));
 		menu.click();
 
-		WebElement dash = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(dashBoard));
+		WebElement dash = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(dashBoard));
 		dash.click();
 
-		WebElement trendDashboardEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(trendDashboard));
+		WebElement trendDashboardEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(trendDashboard));
 		trendDashboardEle.click();
 
 		Thread.sleep(2500);
@@ -79,13 +76,11 @@ public class TrendDashBoardToggleWidget_PageObjective {
 			WebElement widName = driver.findElement(By.xpath("//tr[" + (i + 1) + "]//td[" + 1 + "]"));
 			widgetName[i] = widName.getText();
 
-			int status = driver
-					.findElements(By.xpath("//tr[" + (i + 1) + "]//td//span[contains(@class,'Mui-checked')]")).size();
+			int status = driver.findElements(By.xpath("//tr[" + (i + 1) + "]//td//span[contains(@class,'Mui-checked')]")).size();
 
 			if (status == 0) {
 
-				WebElement btnSwitch = driver
-						.findElement(By.xpath("//tr[" + (i + 1) + "]//td//input[@type='checkbox']"));
+				WebElement btnSwitch = driver.findElement(By.xpath("//tr[" + (i + 1) + "]//td//input[@type='checkbox']"));
 
 				btnSwitch.click();
 				Thread.sleep(500);
@@ -93,9 +88,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 
 		}
 
-		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(btnSave));
-
+		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(btnSave));
 		Save.click();
 
 	}
@@ -105,7 +98,6 @@ public class TrendDashBoardToggleWidget_PageObjective {
 		Thread.sleep(5000);
 
 		if (widgetName.length == headers.size()) {
-
 			return true;
 		} else {
 			return false;
@@ -134,8 +126,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 			}
 		}
 
-		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(btnSave));
+		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(btnSave));
 
 		Save.click();
 		Thread.sleep(2500);

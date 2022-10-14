@@ -29,10 +29,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
 	WebElement mainMenuButton;
 	
-	@FindBy(xpath = "//div[text()='Guest Ledger']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Guest Ledger')]//ancestor::li")
 	WebElement menuGuestLedger;
 	
-	@FindBy(xpath = "//h1[text()='Guest Ledger']")
+	@FindBy(xpath = "//h1[contains(text(),'Guest Ledger')]")
 	WebElement h1GuestLedger;
 	
 	@FindBy(xpath = "(//div/input[contains(@class, 'MuiInputBase-inputAdornedEnd')])[1]")

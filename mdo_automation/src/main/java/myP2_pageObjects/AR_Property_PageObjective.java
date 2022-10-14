@@ -38,10 +38,10 @@ public class AR_Property_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Receivable']//ancestor::li")
 	WebElement Ar;
 
-	@FindBy(xpath = "//div[text()='AR Property']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'AR Aging Property')]//ancestor::li")
 	WebElement ArProperty;
 
-	@FindBy(xpath = "//h1[text()='AR Property']")
+	@FindBy(xpath = "//h1[contains(text(),'AR Aging Property')]")
 	WebElement ArPropertyPage;
 
 	@FindBy(xpath = "//div[@data-el='appName']")
@@ -196,12 +196,10 @@ public class AR_Property_PageObjective {
 
 	public boolean navigateToARPropertyPage() {
 
-		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(ArProperty));
+		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(ArProperty));
 		arDashBoardCL.click();
 
-		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(ArPropertyPage));
+		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(ArPropertyPage));
 		return arDashBoardPageCL.isDisplayed();
 
 	}
@@ -210,8 +208,7 @@ public class AR_Property_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(header, 100);
 
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5))
-				.until(ExpectedConditions.visibilityOf(dropDownProperty));
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(dropDownProperty));
 
 		drpGroup.click();
 		for (int i = 0; i < lstDropDowProperty.size(); i++) {

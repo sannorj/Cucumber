@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @sa119
+@myP2_Regression 
 
-Feature: AR DashBoard - Outstanding validation Functionality 
+Feature: AR Aging Dashboard - Outstanding validation Functionality 
 
   Background: Navigate to AR Dashboard and verify functionality  
   	Given I am login to the myp2 site

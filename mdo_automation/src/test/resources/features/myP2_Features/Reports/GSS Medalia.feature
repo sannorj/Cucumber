@@ -1,7 +1,7 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @mypGS
+@myP2_Regression 
 
-   Feature: Verify GSS Medalia Set Priority Feature
+   Feature: Verify GSS Medalia Set Priority Feature (Disabled in UAT & PROD)
 
   Background: Navigate to GSS Medalia report
     Given I am login to the myp2 site

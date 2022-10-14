@@ -153,9 +153,6 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//*[@id='root']//table/tbody/tr[1]/td/div/div/div/div/div")
 	List <WebElement> noOfColumns;
 	
-//	@FindBy(xpath = "//div/input[@name='latestDate']")
-//	WebElement txtDate;
-	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
 	
@@ -422,7 +419,7 @@ public class Guest_Ledger_PageObject {
 			}
 		}
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 

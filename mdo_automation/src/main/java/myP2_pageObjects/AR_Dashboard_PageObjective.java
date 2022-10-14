@@ -40,10 +40,10 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Receivable']//ancestor::li")
 	WebElement Ar;
 
-	@FindBy(xpath = "//div[text()='AR Dashboard']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'AR Aging Dashboard')]//ancestor::li")
 	WebElement ArDashboard;
 
-	@FindBy(xpath = "//h1[text()='AR Dashboard']")
+	@FindBy(xpath = "//h1[text()='AR Aging Dashboard (New)']")
 	WebElement ArDashboardPage;
 
 	@FindBy(xpath = "//div[@data-el='appName']")
@@ -109,9 +109,7 @@ public class AR_Dashboard_PageObjective {
 		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
 
 		txtDate.click();
-
-		int btnDatePickforLocal = driver
-				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
@@ -121,10 +119,8 @@ public class AR_Dashboard_PageObjective {
 
 		if (status == 1) {
 
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
-
 			Thread.sleep(2500);
 
 			WebElement pickYear = driver
@@ -132,57 +128,42 @@ public class AR_Dashboard_PageObjective {
 							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
-
 			Thread.sleep(2500);
-
 			int monthInnum = getMonth();
-
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
-
 				flag = true;
 			}
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 
 					btnNext.click();
 					Thread.sleep(1500);
 				}
 				
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
 				
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
-
-				btnDate.click();
-				
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();		
 				validateOkCancelandClick();
 				
 				flag = true;
@@ -197,28 +178,23 @@ public class AR_Dashboard_PageObjective {
 	}
 
 	public void expandAccountRecievable() {
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(selector));
+		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(selector));
 		menu.click();
 
-		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(reports));
+		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(reports));
 		reportsEx.click();
 
-		WebElement accountRecievable = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(Ar));
+		WebElement accountRecievable = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(Ar));
 		accountRecievable.click();
 
 	}
 
 	public boolean navigateToARDahsboardPage() {
 
-		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(50))
-				.until(ExpectedConditions.visibilityOf(ArDashboard));
+		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(ArDashboard));
 		arDashBoardCL.click();
 
-		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(ArDashboardPage));
+		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(ArDashboardPage));
 		return arDashBoardPageCL.isDisplayed();
 
 	}

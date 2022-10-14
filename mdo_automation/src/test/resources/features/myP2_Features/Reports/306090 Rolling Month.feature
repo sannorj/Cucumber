@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @sa119
+@myP2_Regression @myP2_Smoke 
 
 Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation 
 

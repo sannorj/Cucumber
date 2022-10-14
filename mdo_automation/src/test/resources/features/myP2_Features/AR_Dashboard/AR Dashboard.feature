@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @arFixDashboard
+@myP2_Regression @sa119
 
 Feature: AR DashBoard - Outstanding validation Functionality 
 

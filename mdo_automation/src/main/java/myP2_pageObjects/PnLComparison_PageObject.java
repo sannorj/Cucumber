@@ -26,7 +26,7 @@ public class PnLComparison_PageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[text()='P&L Property Comparison']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'P&L Property Comparison')]//ancestor::li")
 	WebElement pnlPropertyComparison;
 
 	@FindBy(xpath = "//h1[text()='Profit & Loss Property Comparison']")
@@ -76,13 +76,10 @@ public class PnLComparison_PageObject {
 
 	public boolean navigatePnLComparison() {
 
-		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
+		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
 		pnlPropertyComparisonEle.click();
 
-		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
-
+		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
 		return pnlComparisonPageEle.isDisplayed();
 
 	}
@@ -91,8 +88,7 @@ public class PnLComparison_PageObject {
 
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(drpGroup));
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
@@ -105,8 +101,7 @@ public class PnLComparison_PageObject {
 
 		selectDate();
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(5000);
@@ -119,15 +114,10 @@ public class PnLComparison_PageObject {
 			}
 		}
 
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(btnGo));
-		
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
-		
 		Thread.sleep(10000);
-		
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
-		
 		Thread.sleep(4500);
 		
 		btnZeroValue.click();

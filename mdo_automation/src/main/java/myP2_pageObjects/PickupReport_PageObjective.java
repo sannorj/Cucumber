@@ -45,7 +45,7 @@ public class PickupReport_PageObjective {
 	@FindBy(xpath = "//div[text()='Revenue']//ancestor::li")
 	WebElement reveneue;
 
-	@FindBy(xpath = "//div[text()='Pickup Reports']//ancestor::li")
+	@FindBy(xpath = "//div[contains(text(),'Pickup Reports')]//ancestor::li")
 	WebElement pickUpReports;
 
 	@FindBy(xpath = "//div[text()='Pickup Report']//ancestor::li")
@@ -359,22 +359,17 @@ public class PickupReport_PageObjective {
 	public void expandPickupReport() {
 
 		try {
-			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(mainMenuButton));
+			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(mainMenuButton));
 			menu.click();
-			/* mandatory pause */
 			Thread.sleep(1500);
 
-			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(reports));
+			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(reports));
 			reportsEle.click();
 
-			WebElement revenueEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(reveneue));
+			WebElement revenueEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(reveneue));
 			revenueEle.click();
 
-			WebElement pickUpReportsEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(pickUpReports));
+			WebElement pickUpReportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(pickUpReports));
 			pickUpReportsEle.click();
 
 		} catch (InterruptedException e) {

@@ -177,6 +177,7 @@ public class PnLYearly_PageObject {
 
 	public void loadPriorityReport() throws InterruptedException {
 
+		Thread.sleep(2000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
 		Thread.sleep(5000);

@@ -195,11 +195,11 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean accountIsSelected() throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		String singleCheckSelectedValue = driver
 				.findElement(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
 						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")).getAttribute("value");
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		String MappedAccountVal=configReader.getProp("AR_MappedTo");
 		
 		Thread.sleep(3000);

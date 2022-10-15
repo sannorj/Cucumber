@@ -408,6 +408,7 @@ public class Guest_Ledger_PageObject {
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 
+		Thread.sleep(3000);
 		/* Select the appropriate Group value from the drop-down menu. */
 		WebElement drpSTEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpFilterSettlementType));
 		drpSTEle.click();

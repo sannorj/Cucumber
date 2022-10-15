@@ -191,17 +191,6 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 		
-//		WebElement txtStartDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtStartDate));
-//		txtStartDateEle.click();
-//		txtStartDateEle.sendKeys(Keys.CONTROL + "a");
-//		txtStartDateEle.sendKeys(Keys.DELETE);
-//		txtStartDateEle.sendKeys(configReader.getProp("Date"));
-//		
-//	    WebElement txtEndDateEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtEndDate));
-//		txtEndDateEle.click();
-//		txtEndDateEle.sendKeys(Keys.CONTROL + "a");
-//		txtEndDateEle.sendKeys(Keys.DELETE);
-//		txtEndDateEle.sendKeys(configReader.getProp("Date"));
 		
 		WebElement txtCommentBoxeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(txtCommentBox));
 		txtCommentBoxeEle.sendKeys(configReader.getProp("Comment"));
@@ -235,7 +224,7 @@ public class PrimaryD_Comments_PageObject {
 	public boolean clickOnAllCommentsFunc() throws InterruptedException {
 	
 		/* Click on view comment icon next to the searched single property   */
-		Thread.sleep(2500);
+		Thread.sleep(3000);
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
 		btnMainCommentEle.click();
@@ -246,8 +235,6 @@ public class PrimaryD_Comments_PageObject {
 		btnViewAllComment.click();
 
 		Thread.sleep(3000);
-
-
 		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
 		if (LatestComment.equals(configReader.getProp("Comment"))&& drpProperty.equals(configReader.getProp("Propery"))) {

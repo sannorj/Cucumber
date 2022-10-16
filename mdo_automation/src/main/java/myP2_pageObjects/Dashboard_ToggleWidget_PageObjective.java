@@ -112,10 +112,11 @@ public class Dashboard_ToggleWidget_PageObjective {
 	}
 
 	public void turnOffWidget(String W1, String W2, String W3) throws InterruptedException {
+		Thread.sleep(4000);
 		txtSearch.sendKeys(Keys.CONTROL + "a");
 		txtSearch.sendKeys(Keys.DELETE);
 		txtSearch.sendKeys(W1);
-		Thread.sleep(500);
+		Thread.sleep(3000);
 
 		if (listWidgets.size() > 0) {
 			WebElement btnSwitch = driver.findElement(By.xpath("//tr[" + 1 + "]//td//input[@type='checkbox']"));

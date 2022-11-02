@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @ardashboard
+@myP2_Regression @arDash
 
 Feature: AR Aging Dashboard - Outstanding validation Functionality 
 

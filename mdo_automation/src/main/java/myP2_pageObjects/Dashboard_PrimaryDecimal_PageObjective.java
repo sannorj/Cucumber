@@ -182,7 +182,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 				}
 				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -201,7 +201,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 				}
 				
 				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -212,7 +212,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			else {
 				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 				

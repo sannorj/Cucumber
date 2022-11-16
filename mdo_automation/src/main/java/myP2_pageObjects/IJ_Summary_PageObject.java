@@ -168,7 +168,7 @@ public class IJ_Summary_PageObject {
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -185,7 +185,7 @@ public class IJ_Summary_PageObject {
 					Thread.sleep(1500);
 				}
 				
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -196,7 +196,7 @@ public class IJ_Summary_PageObject {
 
 			else {
 				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 				

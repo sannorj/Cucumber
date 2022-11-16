@@ -155,7 +155,7 @@ public class RollingMonth_PageObject {
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
@@ -166,14 +166,14 @@ public class RollingMonth_PageObject {
 					btnNext.click();
 					Thread.sleep(1500);
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();				
 				flag = true;

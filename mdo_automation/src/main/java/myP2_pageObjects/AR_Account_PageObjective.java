@@ -111,10 +111,6 @@ public class AR_Account_PageObjective {
 			}
 		}
 		
-		
-
-		
-
 	}
 	
 	public boolean loadArAccountReport() throws InterruptedException {

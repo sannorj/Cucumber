@@ -173,7 +173,7 @@ public class KPI_Validation_PageObject {
 //					Thread.sleep(1500);
 //
 //				}
-//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[2] + "']"));
+//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[2] + "']"));
 //				btnDate.click();
 //				validateOkCancelandClick();
 //
@@ -186,12 +186,12 @@ public class KPI_Validation_PageObject {
 //					btnNext.click();
 //					Thread.sleep(1500);
 //				}
-//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[2] + "']"));
+//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[2] + "']"));
 //				btnDate.click();
 //				validateOkCancelandClick();
 //			} else {
 //				System.out.println("Dif1");
-//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[2] + "']"));
+//				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[2] + "']"));
 //				btnDate.click();
 //				validateOkCancelandClick();
 //			}
@@ -239,7 +239,7 @@ public class KPI_Validation_PageObject {
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -256,14 +256,14 @@ public class KPI_Validation_PageObject {
 					Thread.sleep(1500);
 				}
 				
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='cell']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();		
 				flag = true;

@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @sannorj11911
+@myP2_Regression @sannorj1911
 
 Feature:  P&L Monthly Report - Edit Column functionality  
 

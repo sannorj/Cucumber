@@ -261,7 +261,7 @@ public class PnL_SuppressZero_PageObject {
 	 public boolean displayRowFunc() throws InterruptedException {
 			Thread.sleep(4000);
 			boolean flag = true;
-			int row = driver.findElements(By.xpath("//div[text()='Total Rooms Revenue']")).size();
+			int row = driver.findElements(By.xpath("//div[text()='Other Departmental Revenues']")).size();
 				if (row==1) {
 					flag = true;
 				} else {

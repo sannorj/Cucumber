@@ -121,6 +121,7 @@ public class PnL_Monthly_EditCol_PageObject {
 	
 	public void clickOnEditFunc() throws InterruptedException {
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(2500);
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblEdit, 100);
 	}

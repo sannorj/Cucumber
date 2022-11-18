@@ -33,12 +33,6 @@ public class PnL_Monthly_EditCol_PageObject {
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 	
-//	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD MuiTableCell-alignCenter')]/span")
-//	List<WebElement> header;
-	
-//	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
-//	List <WebElement> header;
-	
 	@FindBy(xpath = "//th[contains(@class,' sc-bCfvAP cCGURw css-164s97t')]/span")
 	List <WebElement> header;
 	

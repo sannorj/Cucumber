@@ -29,8 +29,10 @@ public class PnL_Comparison_EditCol_PageObject {
 	}
 	
 
-	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
-	List<WebElement> header;
+	@FindBy(xpath = "//th[contains(@class,' sc-bCfvAP cCGURw css-164s97t')]/span")
+	List <WebElement> header;
+//	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
+//	List<WebElement> header;
 	
 	@FindBy(xpath = "//th[contains(@class,'sc-gXmSlM kMcrTp css-164s97t')]")
 	List<WebElement> subHeader;

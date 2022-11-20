@@ -130,15 +130,12 @@ public class PnL_Monthly_EditCol_PageObject {
 		
 		drpColVal1=drpColumn1Value.getAttribute("value");
 		drpYearValue1 =drpYear1.getText();
-		System.out.println("======drpYearValue1======"+drpYearValue1);
 		
 		drpColVal2=drpColumn2Value.getAttribute("value");
 		drpYearValue2 =drpYear2.getText();
-		System.out.println("======drpYearValue2======"+drpYearValue2);
 		
 		drpColVal3=drpColumn3Value.getAttribute("value");
 		drpYearValue3 =drpYear3.getText();
-		System.out.println("======drpYearValue3======"+drpYearValue3);
 	
 		
 		WebElement lblEditColumns = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(lblEdit));
@@ -150,24 +147,15 @@ public class PnL_Monthly_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 		Thread.sleep(4500);
-		System.out.println("======header.size()======"+header.size());
 		for (int i =0; i < header.size(); i++) {
 			Thread.sleep(1500);
 			Headers.add(header.get(i).getText());
-			System.out.println("======Headers======"+Headers);
 		}
 		
 		
 		headerName = Headers.get(0).split("-")[0].trim();
-		System.out.println("======headerName======"+headerName);
 		headerYear = Headers.get(0).split("-")[1].strip();
-		System.out.println("======headerYear======"+headerYear);
 
-		
-		System.out.println("======drpColVal1======"+drpColVal1);
-		System.out.println("======headerName======"+headerName);
-		System.out.println("======drpYearValue1======"+drpYearValue1);
-		System.out.println("======headerYear======"+headerYear);
 		if (drpColVal1.equalsIgnoreCase(headerName) && drpYearValue1.equalsIgnoreCase(headerYear)) {
 			flag = true;
 		} else {

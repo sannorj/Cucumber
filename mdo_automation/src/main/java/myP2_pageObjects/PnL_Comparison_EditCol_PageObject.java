@@ -78,7 +78,6 @@ public class PnL_Comparison_EditCol_PageObject {
 
 		drpColVal2 = drpColumn2Value.getAttribute("value");
 		drpYearValue2 = drpYear2.getText();
-		System.out.println("======drpYearValue2======"+drpYearValue2);
 		
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
@@ -87,18 +86,15 @@ public class PnL_Comparison_EditCol_PageObject {
 			Headers.add(header.get(i).getText());
 			
 		}
-		System.out.println("======Headers======"+Headers);
+		
 		
 		for (int i = 0; i < subHeader.size(); i++) {
 			SUBHeader.add(subHeader.get(i).getText());
 		}
-		System.out.println("======SUBHeader======"+SUBHeader);
-		
+			
 		headerName = SUBHeader.get(4).split("-")[0].trim();
 		headerYear = Headers.get(1).split("-")[1].strip();
-		
-		System.out.println("======drpColVal2======"+drpColVal2+"=========headerName========="+headerName);
-		System.out.println("======drpYearValue2======"+drpYearValue2+"=========headerYear========="+headerYear);
+	
 		if (drpColVal2.equalsIgnoreCase(headerName) && drpYearValue2.equalsIgnoreCase(headerYear)) {
 			flag = true;
 		} else {

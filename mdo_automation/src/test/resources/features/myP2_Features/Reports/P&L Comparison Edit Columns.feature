@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke  @PnlEdit1
+@myP2_Regression  @myP2_Smoke  @PnlEdit111
 
 Feature:  P&L Comparison Report - Edit Column functionality  
 

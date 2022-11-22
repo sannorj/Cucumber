@@ -29,10 +29,11 @@ public class PnL_Comparison_EditCol_PageObject {
 	}
 	
 
-	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
+
+	@FindBy(xpath = "//th[contains(@class,' sc-bCfvAP cCGURw css-164s97t')]/span")
 	List<WebElement> header;
 	
-	@FindBy(xpath = "//th[contains(@class,'sc-gXmSlM kMcrTp css-164s97t')]")
+	@FindBy(xpath = "//th[contains(@class,'sc-gYbzsP eIjwFz css-164s97t')]")
 	List<WebElement> subHeader;
 
 	@FindBy(xpath = "//div[text()='Rooms available']")
@@ -77,21 +78,23 @@ public class PnL_Comparison_EditCol_PageObject {
 
 		drpColVal2 = drpColumn2Value.getAttribute("value");
 		drpYearValue2 = drpYear2.getText();
-
+		
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 
 		for (int i = 0; i < header.size(); i++) {
 			Headers.add(header.get(i).getText());
+			
 		}
-
+		
+		
 		for (int i = 0; i < subHeader.size(); i++) {
 			SUBHeader.add(subHeader.get(i).getText());
 		}
-		
+			
 		headerName = SUBHeader.get(4).split("-")[0].trim();
 		headerYear = Headers.get(1).split("-")[1].strip();
-		
+	
 		if (drpColVal2.equalsIgnoreCase(headerName) && drpYearValue2.equalsIgnoreCase(headerYear)) {
 			flag = true;
 		} else {

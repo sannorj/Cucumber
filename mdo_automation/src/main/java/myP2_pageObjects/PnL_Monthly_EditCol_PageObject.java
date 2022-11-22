@@ -33,13 +33,7 @@ public class PnL_Monthly_EditCol_PageObject {
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 	
-//	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD MuiTableCell-alignCenter')]/span")
-//	List<WebElement> header;
-	
-//	@FindBy(xpath = "//th[contains(@class,'MuiTableCell-head')]//span")
-//	List <WebElement> header;
-	
-	@FindBy(xpath = "//th[contains(@class,'sc-bBXxYQ dgldxD css-164s97t')]//span")
+	@FindBy(xpath = "//th[contains(@class,' sc-bCfvAP cCGURw css-164s97t')]/span")
 	List <WebElement> header;
 	
 	@FindBy(xpath = "//button[@data-el='buttonFilter']")
@@ -121,6 +115,7 @@ public class PnL_Monthly_EditCol_PageObject {
 	
 	public void clickOnEditFunc() throws InterruptedException {
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(2500);
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblEdit, 100);
 	}
@@ -141,6 +136,7 @@ public class PnL_Monthly_EditCol_PageObject {
 		
 		drpColVal3=drpColumn3Value.getAttribute("value");
 		drpYearValue3 =drpYear3.getText();
+	
 		
 		WebElement lblEditColumns = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(lblEdit));
 		return lblEditColumns.isDisplayed();
@@ -151,10 +147,12 @@ public class PnL_Monthly_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 		Thread.sleep(4500);
-		for (int i = 0; i < header.size() - 1; i++) {
+		for (int i =0; i < header.size(); i++) {
+			Thread.sleep(1500);
 			Headers.add(header.get(i).getText());
 		}
-
+		
+		
 		headerName = Headers.get(0).split("-")[0].trim();
 		headerYear = Headers.get(0).split("-")[1].strip();
 

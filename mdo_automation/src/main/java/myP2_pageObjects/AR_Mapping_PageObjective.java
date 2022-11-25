@@ -13,7 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import utils.ConstantsReader;
 import utils.ElementUtils;
 
@@ -49,10 +48,10 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
-	@FindBy(xpath = "//input[@name='portfolio-group']")
+	@FindBy(xpath = "//label[text()='Group']//following-sibling::div//input")
 	WebElement group;
 
-	@FindBy(xpath = "//input[@name='portfolio-hotel']")
+	@FindBy(xpath = "//label[text()='Property']//following-sibling::div//input")
 	WebElement property;
 
 	@FindBy(xpath = "//input[@name='keyword']")
@@ -67,21 +66,22 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowMappingTolst;
 
-	String mulAccounts=configReader.getProp("AR_BulkAccounts");
-	List<String> mulAccountList=Arrays.asList(mulAccounts.split(","));
-		
+	String mulAccounts = configReader.getProp("AR_BulkAccounts");
+	List<String> mulAccountList = Arrays.asList(mulAccounts.split(","));
+
 	@FindBy(xpath = "//button[@data-el='buttonMapTo']")
 	WebElement buttonMapTo;
-	
-	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input")    //(xpath = "//div[@class='sc-jtJlRs kajoKa']//input")
-	WebElement popupSearch; 
-	
+
+	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input") // (xpath =
+																						// "//div[@class='sc-jtJlRs
+																						// kajoKa']//input")
+	WebElement popupSearch;
+
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowPopupAcc;
-	
+
 	@FindBy(xpath = "//button[@mdo_variant='success']")
 	WebElement saveBtn;
-
 
 	public void expandAccountsMapping() {
 
@@ -128,7 +128,7 @@ public class AR_Mapping_PageObjective {
 		drpGroup.click();
 		Thread.sleep(2500);
 		for (int i = 0; i < lstDropDowGroup.size(); i++) {
-			if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("AR_Group"))) {
+			if (lstDropDowGroup.get(i).getText().contains(configReader.getProp("AR_Group"))) {
 				lstDropDowGroup.get(i).click();
 
 			}
@@ -161,14 +161,15 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean searchOptionFilled() {
-		WebElement searchValue = driver.findElement(By.xpath("//div[contains(text(),'" + configReader.getProp("AR_Search")
-		+ "')]//parent::div[@class='sc-jOrMOR cCkmMG']"));
-		
+		WebElement searchValue = driver.findElement(
+				By.xpath("//div[contains(text(),'" + configReader.getProp("AR_Search") + "')]//parent::div"));
+
 		WebElement ARMappingPage = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(searchValue));
 		System.out.println("search value is diaplayed ======= " + ARMappingPage.isDisplayed());
 		return ARMappingPage.isDisplayed();
 	}
+	
 
 //////////////////// Verify Single mapping Functionality
 
@@ -180,74 +181,88 @@ public class AR_Mapping_PageObjective {
 
 		Thread.sleep(2000);
 
-		WebElement singleCheck = driver.findElement(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
-				+ "']//ancestor::td//following-sibling::td[@index='3']"));
+		WebElement singleCheck = new WebDriverWait(driver, Duration.ofSeconds(1000)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
+						+ "']//ancestor::td//following-sibling::td[@index='3']")));
 		singleCheck.click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		for (int i = 0; i < lstDropDowMappingTolst.size(); i++) {
+			System.out.println(lstDropDowMappingTolst.get(i).getText() + "**************");
 			if (lstDropDowMappingTolst.get(i).getText().equalsIgnoreCase(configReader.getProp("AR_MappedTo"))) {
 				lstDropDowMappingTolst.get(i).click();
 			}
 		}
-		Thread.sleep(3500);
+		Thread.sleep(6000);
 		System.out.println("check single Account");
+		WebElement WaitTODataLoad = new WebDriverWait(driver, Duration.ofSeconds(1000)).until(
+				ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Source Account')]")));
 
 	}
 
 	public boolean accountIsSelected() throws InterruptedException {
 		Thread.sleep(4000);
+		WebElement singleCheckSelectedValueView = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
+								+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
+
 		String singleCheckSelectedValue = driver
 				.findElement(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
-						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")).getAttribute("value");
+						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
+				.getAttribute("value");
+
 		Thread.sleep(5000);
-		String MappedAccountVal=configReader.getProp("AR_MappedTo");
-		
+		String MappedAccountVal = configReader.getProp("AR_MappedTo");
+
 		Thread.sleep(3000);
 
-		if(MappedAccountVal.equalsIgnoreCase(singleCheckSelectedValue)) {
-          	System.out.println("The expected mappedaccount is same as actual single mapped account --- "+ singleCheckSelectedValue);
-          	return true;
+		if (MappedAccountVal.equalsIgnoreCase(singleCheckSelectedValue)) {
+			System.out.println("The expected mappedaccount is same as actual single mapped account --- "
+					+ singleCheckSelectedValue);
+			return true;
+		} else {
+			System.out.println("The expected mappedaccount doesn't match the actual single mapped account --- "
+					+ singleCheckSelectedValue);
+			return false;
 		}
-    	else {
-          	System.out.println("The expected mappedaccount doesn't match the actual single mapped account --- "+singleCheckSelectedValue);
-          	return false;
-    	}
 	}
 
 	public boolean removeMappedAccount() throws InterruptedException {
 		Thread.sleep(3000);
-		WebElement singleRemovebtn = driver.findElement(By.xpath("//div[text()='"+configReader.getProp("AR_SingleAccount")+"']//ancestor::td//following-sibling::td[@index='4']"));
+		WebElement singleRemovebtn = driver.findElement(By.xpath("//div[text()='"
+				+ configReader.getProp("AR_SingleAccount") + "']//ancestor::td//following-sibling::td[@index='4']"));
 		Thread.sleep(6000);
 		singleRemovebtn.click();
-		
+
 		Thread.sleep(3000);
 
 		String currentValueOfRemovedAcc = driver
 				.findElement(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
-				+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")).getAttribute("value");
+						+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
+				.getAttribute("value");
 
 		Thread.sleep(6000);
-		String defaultMappedToValue=configReader.getProp("Default_mappedTo");
-		
-		if(defaultMappedToValue.equalsIgnoreCase(currentValueOfRemovedAcc)) {
-          	System.out.println("removed account is same to default value --- "+ currentValueOfRemovedAcc);
-          	return true;
+		String defaultMappedToValue = configReader.getProp("Default_mappedTo");
+
+		if (defaultMappedToValue.equalsIgnoreCase(currentValueOfRemovedAcc)) {
+			System.out.println("removed account is same to default value --- " + currentValueOfRemovedAcc);
+			return true;
+		} else {
+			System.out.println("removed account doesn't match the default value  --- " + currentValueOfRemovedAcc);
+			return false;
 		}
-    	else {
-          	System.out.println("removed account doesn't match the default value  --- "+currentValueOfRemovedAcc);
-          	return false;
-    	}
 	}
-	
-	////////////////////Verify bulk mapping Functionality
+
+	//////////////////// Verify bulk mapping Functionality
 
 	public void selectFewAccounts() throws InterruptedException {
 		Thread.sleep(7500);
 		for (int i = 0; i < mulAccountList.size(); i++) {
-			WebElement e = driver.findElement(By.xpath("//div[text()='"+ mulAccountList.get(i) +"']//ancestor::td//preceding-sibling::td[@index='0']//input"));
+			WebElement e = driver.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
+					+ "']//ancestor::td//preceding-sibling::td[@index='0']//input"));
 			e.click();
 			Thread.sleep(6000);
-			System.out.println("clicked bullet icon: "+mulAccountList.get(i));
+			System.out.println("clicked bullet icon: " + mulAccountList.get(i));
 		}
 		buttonMapTo.click();
 	}
@@ -265,30 +280,31 @@ public class AR_Mapping_PageObjective {
 
 	public boolean verifyAccountsChanged() throws InterruptedException {
 		Thread.sleep(10000);
-		boolean flag=true;
+		boolean flag = true;
 		for (int i = 0; i < mulAccountList.size(); i++) {
-			
+
 			String currentValueOfAcc = driver
 					.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
-					+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")).getAttribute("value");
+							+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
+					.getAttribute("value");
 			Thread.sleep(4000);
-			String mappedAccount=configReader.getProp("AR_MappedTo");
-			
-			if(mappedAccount.equalsIgnoreCase(currentValueOfAcc)) {
-	          	System.out.println("current account is same to added account value --- "+ currentValueOfAcc);
+			String mappedAccount = configReader.getProp("AR_MappedTo");
+
+			if (mappedAccount.equalsIgnoreCase(currentValueOfAcc)) {
+				System.out.println("current account is same to added account value --- " + currentValueOfAcc);
+			} else {
+				System.out.println("current account doesn't match the added account value  --- " + currentValueOfAcc);
+				flag = false;
 			}
-	    	else {
-	          	System.out.println("current account doesn't match the added account value  --- "+currentValueOfAcc);
-	          	flag = false;
-	    	}
 		}
 		return flag;
 	}
 
 	public void removeMappedBulkAcc() throws InterruptedException {
-		
+
 		for (int i = 0; i < mulAccountList.size(); i++) {
-			WebElement removebtn = driver.findElement(By.xpath("//div[text()='"+mulAccountList.get(i)+"']//ancestor::td//following-sibling::td[@index='4']"));
+			WebElement removebtn = driver.findElement(By.xpath(
+					"//div[text()='" + mulAccountList.get(i) + "']//ancestor::td//following-sibling::td[@index='4']"));
 			Thread.sleep(5000);
 			removebtn.click();
 			Thread.sleep(11500);
@@ -297,26 +313,140 @@ public class AR_Mapping_PageObjective {
 
 	public boolean verifyAllAccRemoved() throws InterruptedException {
 		Thread.sleep(8000);
-		boolean flag=true;
+		boolean flag = true;
 		for (int i = 0; i < mulAccountList.size(); i++) {
-			
+
 			String currentValueOfAcc = driver
 					.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
-					+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")).getAttribute("value");
+							+ "']//ancestor::td//following-sibling::td[@index='3']//child::input"))
+					.getAttribute("value");
 			Thread.sleep(4000);
-			String defaultAcc=configReader.getProp("Default_mappedTo");
-			
-			if(defaultAcc.equalsIgnoreCase(currentValueOfAcc)) {
-	          	System.out.println("current account is successfully removed ==== "+ currentValueOfAcc);
+			String defaultAcc = configReader.getProp("Default_mappedTo");
+
+			if (defaultAcc.equalsIgnoreCase(currentValueOfAcc)) {
+				System.out.println("current account is successfully removed ==== " + currentValueOfAcc);
+			} else {
+				System.out.println("current account doesn't match the default account value  === " + currentValueOfAcc);
+				flag = false;
 			}
-	    	else {
-	          	System.out.println("current account doesn't match the default account value  === "+currentValueOfAcc);
-	          	flag = false;
-	    	}
 		}
 		return flag;
 	}
-	
-	
+
+	// ******************* Smoke Testing
+	// ********************************************
+
+	public void selectDropdownInMain(String groupName, String propertyName) throws InterruptedException {
+
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
+				.until(ExpectedConditions.visibilityOf(group));
+
+		drpGroup.click();
+		Thread.sleep(2500);
+		for (int i = 0; i < lstDropDowGroup.size(); i++) {
+			if (lstDropDowGroup.get(i).getText().contains(groupName)) {
+				lstDropDowGroup.get(i).click();
+			}
+		}
+
+		Thread.sleep(1500);
+
+		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
+				.until(ExpectedConditions.visibilityOf(property));
+		drpProperty.click();
+		Thread.sleep(2500);
+		for (int i = 0; i < lstDropDowProperty.size(); i++) {
+			if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(propertyName)) {
+				lstDropDowProperty.get(i).click();
+			}
+		}
+
+		WebElement propertyDataView = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//th[text()='Property']")));
+	}
+
+	public void clckMenu() throws InterruptedException {
+		mainMenuButton.click();
+		Thread.sleep(3000);
+	}
+
+	public void clckConfigurationMenu() throws InterruptedException {
+		configuration.click();
+		Thread.sleep(3000);
+	}
+
+	public void clckAccountsMappingMenu() throws InterruptedException {
+		accountsMapping.click();
+		Thread.sleep(3000);
+	}
+
+	public void clckARMappingMenu() throws InterruptedException {
+		ARMapping.click();
+		Thread.sleep(3000);
+	}
+
+	public boolean verifyARMapping(String pageName) {
+		boolean ARMappingPageLoad = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='"+pageName+"']")))
+				.isDisplayed();
+		return ARMappingPageLoad;
+	}
+
+	public boolean verifyDropdown(String groupName, String propertyName) throws InterruptedException {
+
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
+				.until(ExpectedConditions.visibilityOf(group));
+
+		String group = drpGroup.getAttribute("value");
+		System.out.println(group);
+		boolean result = true;
+		Thread.sleep(2500);
+		if (!group.contains(groupName)) {
+			result = false;
+		}
+		Thread.sleep(1500);
+
+		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
+				.until(ExpectedConditions.visibilityOf(property));
+		String property = drpProperty.getAttribute("value");
+		System.out.println(property);
+		Thread.sleep(2500);
+		if (!property.equalsIgnoreCase(propertyName)) {
+			result = false;
+		}
+		return result;
+	}
+
+	public void clckGoBtn(String string) throws InterruptedException {
+		goButton.click();
+		Thread.sleep(4000);
+	}
+
+	public boolean verifyPropertiesFiltered(String propertyName) {
+		String propertyColIndexVal = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Property']//parent::th")))
+				.getAttribute("index");
+		List<WebElement> propertyCellValues = driver.findElements(
+				By.xpath("//td[@index='" + propertyColIndexVal + "']//div[text()='" + propertyName + "']"));
+		boolean result = true;
+		for (int i = 0; i < propertyCellValues.size(); i++) {
+			if (!propertyCellValues.get(i).getText().equalsIgnoreCase(propertyName)) {
+				result = false;
+			}
+		}
+		return result;
+	}
+
+	public boolean verifyCheckBoxLoaded() {
+		int noOfRaws = driver.findElements(By.xpath("//tr")).size();
+		int CKboxCells = driver.findElements(By.xpath("//td[@index='0']//input[@type='checkbox']")).size();
+		boolean result;
+		if ((noOfRaws - 1) == CKboxCells) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
 
 }

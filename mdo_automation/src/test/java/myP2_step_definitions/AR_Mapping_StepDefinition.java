@@ -55,7 +55,8 @@ public class AR_Mapping_StepDefinition {
 	}
 
 	@Given("I am selecting the few bullet icons to select randome accounts and Click on Bulk Action::Map To button")
-	public void i_am_selecting_the_few_bullet_icons_to_select_randome_accounts_and_click_on_bulk_action_map_to_button() throws InterruptedException {
+	public void i_am_selecting_the_few_bullet_icons_to_select_randome_accounts_and_click_on_bulk_action_map_to_button()
+			throws InterruptedException {
 		ARmappingPo.selectFewAccounts();
 	}
 
@@ -79,4 +80,57 @@ public class AR_Mapping_StepDefinition {
 		assertTrue(ARmappingPo.verifyAllAccRemoved());
 	}
 
+	// smoke testing
+
+	@Given("Select Group as {string} and Property as {string}")
+	public void select_group_as_and_property_as(String string, String string2) throws InterruptedException {
+		ARmappingPo.selectDropdownInMain(string,string2);
+	}
+
+	@Given("Click on Menu bar")
+	public void click_on_menu_bar() throws InterruptedException {
+		ARmappingPo.clckMenu();
+	}
+
+	@When("Expand {string} menu")
+	public void expand_menu(String string) throws InterruptedException {
+		ARmappingPo.clckConfigurationMenu();
+	}
+
+	@Then("Expand {string} menu option")
+	public void expand_menu_option(String string) throws InterruptedException {
+		ARmappingPo.clckAccountsMappingMenu();
+	}
+
+	@Then("Select {string} option")
+	public void select_option(String string) throws InterruptedException {
+		ARmappingPo.clckARMappingMenu();
+	}
+
+	@Given("Verify navigate to {string} Page")
+	public void verify_navigate_to_page(String string) {
+		assertTrue(ARmappingPo.verifyARMapping(string));
+	}
+
+	@Given("Verify Group selected as {string} and Property already selected as {string}")
+	public void verify_group_selected_as_and_property_already_selected_as(String string, String string2) throws InterruptedException {
+		assertTrue(ARmappingPo.verifyDropdown(string,string2));
+	}
+
+	@When("Click on {string} button")
+	public void click_on_button(String string) throws InterruptedException {
+		ARmappingPo.clckGoBtn(string);
+	}
+
+	@Then("Verify all the Properties filtered according to selected {string} Property")
+	public void verify_all_the_properties_filtered_according_to_selected_property(String string) {
+		assertTrue(ARmappingPo.verifyPropertiesFiltered(string));
+	}
+
+	@Then("Verify all check box are loaded")
+	public void verify_all_check_box_are_loaded() {
+		assertTrue(ARmappingPo.verifyCheckBoxLoaded());
+	}
+
+	
 }

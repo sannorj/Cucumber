@@ -97,5 +97,13 @@ public class Sales_Mapping_StepDefinition {
 	public void remove_selected_management_status_and_verify_successfully_removed() throws InterruptedException {
 		assertTrue(SalesmappingPo.removeManagementStatus());
 	}
+	
+	//*************** Smoke Testing ********************
+
+	@When("Navigate to {string} Page")
+	public void navigate_to_page(String string) {
+		assertTrue(SalesmappingPo.navigateSalesMapping(string));
+	}
+	
 
 }

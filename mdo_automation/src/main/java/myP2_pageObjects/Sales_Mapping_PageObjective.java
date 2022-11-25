@@ -69,7 +69,7 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonMapTo']")
 	WebElement buttonMapTo;
 
-	@FindBy(xpath = "//input[contains(@class,'MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd')]")
+	@FindBy(xpath = "//label[text()='Search']//following-sibling::div//input[@role='combobox']")
 	WebElement popupSearch;
 
 	@FindBy(xpath = "//ul[@role='listbox']//li")
@@ -147,9 +147,9 @@ public class Sales_Mapping_PageObjective {
 
 	public boolean searchOptionFilledInSales() {
 		WebElement searchValue = driver.findElement(By.xpath("//div[contains(text(),'"
-				+ configReader.getProp("Sales_Search") + "')]//parent::div[@class='sc-jOrMOR cCkmMG']"));
+				+ configReader.getProp("Sales_Search") + "')]//parent::div"));
 
-		WebElement ARMappingPage = new WebDriverWait(driver, Duration.ofSeconds(30))
+		WebElement ARMappingPage = new WebDriverWait(driver, Duration.ofSeconds(300))
 				.until(ExpectedConditions.visibilityOf(searchValue));
 		System.out.println("search value is diaplayed ======= " + ARMappingPage.isDisplayed());
 		return ARMappingPage.isDisplayed();
@@ -437,4 +437,10 @@ public class Sales_Mapping_PageObjective {
 		}
 	}
 
+	public boolean navigateSalesMapping(String string) {
+		SalesMappingBtn.click();
+		return true;
+	}
+
+	
 }

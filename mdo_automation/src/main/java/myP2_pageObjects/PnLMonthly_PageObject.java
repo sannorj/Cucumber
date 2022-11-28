@@ -1,7 +1,6 @@
 package myP2_pageObjects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -116,6 +115,18 @@ public class PnLMonthly_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
+	
+	@FindBy(xpath = "//div[@id='mui-component-select-columns[0].dataType']")
+	WebElement drpColumn1;
+	
+	@FindBy(xpath = "//input[@name='columns[0].dataType']")
+	WebElement drpColumn1Value;
+	
+	@FindBy(xpath = "//div[@id='mui-component-select-columns[0].yearOffest']")
+	WebElement drpYear1;
+	
+	@FindBy(xpath = "//input[@name='columns[0].yearOffest']")
+	WebElement drpYear1Value;
 
 	public boolean navigatePnLMonthlyPage() throws InterruptedException {
 
@@ -132,7 +143,8 @@ public class PnLMonthly_PageObject {
 	public void selectParameters() throws InterruptedException {
 
 		Thread.sleep(4500);
-
+		Thread.sleep(4500);
+		Thread.sleep(4500);
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -158,15 +170,13 @@ public class PnLMonthly_PageObject {
 				}
 			}
 		}
-
+		Thread.sleep(20000);
 		selectDate();
 		
 		Thread.sleep(1500);
-
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
-		Thread.sleep(3500);
+		Thread.sleep(4500);
 
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
@@ -176,8 +186,7 @@ public class PnLMonthly_PageObject {
 		}
 
 		Thread.sleep(3500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(btnGo));
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
@@ -192,10 +201,8 @@ public class PnLMonthly_PageObject {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("Static_Names").split(",");
 			/* Get the 5 static section form property file */
-		//	for (int i = 0; i < a.length; i++) {
 				for (int i = 0; i <5; i++) {
 				String expected = a[i];
-				//String actual = listStaticValues.get(i).getText();
 				String actual = listStaticValues.get(i).getAttribute("data-el");
 				if (actual.contains(expected)) {
 					flag = true;
@@ -211,12 +218,10 @@ public class PnLMonthly_PageObject {
 
 	public void occupancyCalFunc() {
 
-		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellCRoomSold));
+		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellCRoomSold));
 		double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
 
-		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
+		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 		double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
 		/* Calculate the Occupancy value */
@@ -227,8 +232,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyOccCalculationFunc() {
 
-		WebElement OccValue = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellOccupancy));
+		WebElement OccValue = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellOccupancy));
 		double Occupancy = Double.parseDouble(OccValue.getText().replace("%", ""));
 
 		/* Verify the calculated and captured values are same. */
@@ -241,13 +245,10 @@ public class PnLMonthly_PageObject {
 
 	public void adrCalFunc() {
 
-		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
-		double TotalRoomsRevenueValue = Double
-				.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
+		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
+		double TotalRoomsRevenueValue = Double.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
 
-		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(cellCRoomSold));
+		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellCRoomSold));
 		double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
 
 		double x = TotalRoomsRevenueValue / RoomSoldValue;
@@ -257,8 +258,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyAdrCalculationFunc() {
 
-		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(cellAdr));
+		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellAdr));
 		double adrValue = Double.parseDouble(adr.getText().replace(",", "").replaceAll("\\$", ""));
 		if (roundOffAdr == adrValue) {
 			return true;
@@ -269,13 +269,10 @@ public class PnLMonthly_PageObject {
 
 	public void revParCalFunc() {
 
-		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
-		double TotalRoomsRevenueValue = Double
-				.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
+		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
+		double TotalRoomsRevenueValue = Double.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
 
-		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
+		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 		double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
 		double x = TotalRoomsRevenueValue / RoomsAvailableValue;
@@ -285,8 +282,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyRevParCalculationFunc() {
 
-		WebElement revPar = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(cellRevPar));
+		WebElement revPar = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellRevPar));
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
@@ -300,13 +296,10 @@ public class PnLMonthly_PageObject {
 	public void totalRevParCalFunc() {
 
 		ExpectedConditions.visibilityOf(listSection.get(1));
-		WebElement TotalOperatingRevenue = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellTotalOperatingRevenue));
-		double TotalOperatingRevenueValue = Double
-				.parseDouble(TotalOperatingRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
+		WebElement TotalOperatingRevenue = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellTotalOperatingRevenue));
+		double TotalOperatingRevenueValue = Double.parseDouble(TotalOperatingRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
 
-		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
+		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
 		double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
 
 		/* Calculate the Occupancy value */
@@ -351,8 +344,7 @@ public class PnLMonthly_PageObject {
 
 	public void selectOperatorView() throws InterruptedException {
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(8000);
@@ -454,8 +446,7 @@ public class PnLMonthly_PageObject {
 
 		txtDate.click();
 
-		int btnDatePickforLocal = driver
-				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
@@ -464,71 +455,47 @@ public class PnLMonthly_PageObject {
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
-
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
 			Thread.sleep(2500);
-
-			WebElement pickYear = driver
-					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
-							+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
-
 			Thread.sleep(2500);
-
 			int monthInnum = getMonth();
-
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
-
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
-
 				flag = true;
 			}
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnNextMonth));
-
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 					btnNext.click();
 					Thread.sleep(1500);
 				}
-				
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
 				
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-				
 				validateOkCancelandClick();
-				
 				flag = true;
 			}
 
@@ -538,6 +505,108 @@ public class PnLMonthly_PageObject {
 
 		return flag;
 
+	}
+	
+	/****************Smoke ***********************/
+	
+	public void clickOnViewDrpFunc() throws InterruptedException {
+
+		Thread.sleep(1500);
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
+		drpViewEle.click();
+		Thread.sleep(3500);
+
+	
+	}
+	
+	
+	public boolean verifyViewdrpFunc() throws InterruptedException {
+		
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+		for (int x = 0; x < listDrpValueSize.size(); x++) {
+			/* split and ready the data from property file */
+			String[] a = configReader.getProp("PnL_view_values").split(",");
+			String actual = listDrpValueSize.get(x).getText();
+			
+				String expected = a[x];
+				
+				if (expected.contains(actual)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+		}
+		
+		Thread.sleep(4000);
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+				ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+				listDrpValueSize.get(i).click();
+			}
+		}
+
+		Thread.sleep(3500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+		btnGO.click();
+		Thread.sleep(4000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		
+		return flag;
+		
+		
+	}
+	
+	
+	public boolean verifyCucstomCol1drpFunc() throws InterruptedException {
+	
+		
+		
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		
+		Thread.sleep(4000);
+		drpColumn1.click();
+    	Thread.sleep(2000);
+    	
+    	
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+		for (int x = 0; x < listDrpValueSize.size(); x++) {
+			/* split and ready the data from property file */
+			String[] a = configReader.getProp("Custom_col1").split(",");
+		//	for (int i = 0; i < a.length; i++) {
+				String expected = a[x];
+				String actual = listDrpValueSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			//}
+		}
+		return flag;
+	}
+
+	
+	public boolean verifyCucstomYeardrpFunc() throws InterruptedException {
+	
+		Thread.sleep(4000);    	
+    	drpYear1.click();
+    	Thread.sleep(2000);
+    	
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+		for (int x = 0; x < listDrpValueSize.size(); x++) {
+			/* split and ready the data from property file */
+			String[] a = configReader.getProp("Custom_Year").split(",");
+		//	for (int i = 0; i < a.length; i++) {
+				String expected = a[x];
+				String actual = listDrpValueSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+	//	}
+		return flag;
 	}
 
 }

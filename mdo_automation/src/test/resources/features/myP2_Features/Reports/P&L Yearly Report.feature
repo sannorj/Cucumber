@@ -4,13 +4,13 @@
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 
 
-  Scenario: Verify the view, Custom column , year dropdown values
-     Given I am login to the myp2 site
-     And System navigate to the home page
-     And Select the organization as "Beck Legacy Group" 
-     And I am expand the P&L Statement option under Reports section in Side Menu
-     And I am navigate to P&L Yearly page   
-     And select the Group ,Propery, date,View and Click on GO button
+  Scenario: Navigate to P&L report Func
+    Given I am login to the myp2 site
+    And System navigate to the home page
+    And Select the organization as "Beck Legacy Group" 
+    And I am expand the P&L Statement option under Reports section in Side Menu
+    Then I am navigate to P&L Yearly page
+    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     
      When User Clicks on the View dropdown
      Then View dropdown should contains Owners View , Operators View, Room Revenue Detail, Add Custom View

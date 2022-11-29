@@ -10,7 +10,7 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
     And Select the organization as "Beck Legacy Group" 
     And I am expand the P&L Statement option under Reports section in Side Menu
     Then I am navigate to P&L Yearly page
-    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
+    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2021" , view "Owner's View"
     
      When User Clicks on the View dropdown
      Then View dropdown should contains Owners View , Operators View, Room Revenue Detail, Add Custom View

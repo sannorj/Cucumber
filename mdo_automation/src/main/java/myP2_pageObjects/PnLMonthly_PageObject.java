@@ -46,6 +46,7 @@ public class PnLMonthly_PageObject {
 
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
+	
 
 	@FindBy(xpath = "(//div/button[@title='Go']/span)[2]")
 	WebElement btnGo1;
@@ -546,8 +547,8 @@ public class PnLMonthly_PageObject {
 		}
 
 		Thread.sleep(3500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
-		btnGO.click();
+		WebElement Refresh = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnRefresh));
+		Refresh.click();
 		Thread.sleep(4000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		
@@ -572,7 +573,6 @@ public class PnLMonthly_PageObject {
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("Custom_col1").split(",");
-		//	for (int i = 0; i < a.length; i++) {
 				String expected = a[x];
 				String actual = listDrpValueSize.get(x).getText();
 				if (actual.contains(expected)) {
@@ -580,8 +580,16 @@ public class PnLMonthly_PageObject {
 				} else {
 					flag = false;
 				}
-			//}
+			
 		}
+		Thread.sleep(2000);
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+		Thread.sleep(2000);
+		
 		return flag;
 	}
 
@@ -596,7 +604,6 @@ public class PnLMonthly_PageObject {
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("Custom_Year").split(",");
-		//	for (int i = 0; i < a.length; i++) {
 				String expected = a[x];
 				String actual = listDrpValueSize.get(x).getText();
 				if (actual.contains(expected)) {
@@ -605,7 +612,13 @@ public class PnLMonthly_PageObject {
 					flag = false;
 				}
 			}
-	//	}
+		Thread.sleep(2000);
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+		Thread.sleep(2000);
 		return flag;
 	}
 

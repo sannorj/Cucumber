@@ -311,8 +311,7 @@ public class PnLMonthly_PageObject {
 	public boolean verifyTotalRevParCalculationFunc() {
 
 		/* Capture the revPar Value from page */
-		WebElement totalRevPar = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(cellTotalRevPar));
+		WebElement totalRevPar = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellTotalRevPar));
 		double revParValue = Double.parseDouble(totalRevPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
@@ -385,8 +384,7 @@ public class PnLMonthly_PageObject {
 
 	public void selectRooRevenueDetailView() throws InterruptedException {
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(4500);
@@ -560,7 +558,6 @@ public class PnLMonthly_PageObject {
 			GO.click();
 			Thread.sleep(4000);
 			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
-			
 		}	
 		return flag;	
 	}
@@ -568,14 +565,11 @@ public class PnLMonthly_PageObject {
 	
 	public boolean verifyCucstomCol1drpFunc() throws InterruptedException {
 	
-		
-		
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		
 		Thread.sleep(4000);
 		drpColumn1.click();
     	Thread.sleep(2000);
-    	
     	
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
@@ -597,7 +591,6 @@ public class PnLMonthly_PageObject {
 			}
 		}
 		Thread.sleep(2000);
-		
 		return flag;
 	}
 

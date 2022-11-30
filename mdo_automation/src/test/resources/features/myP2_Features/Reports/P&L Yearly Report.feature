@@ -1,10 +1,10 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity
+@myP2_Regression @myP2Sanity @YY
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 
 
-  Scenario: Navigate to P&L report Func
+  Scenario: Navigate to P&L Yearly report Func
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 

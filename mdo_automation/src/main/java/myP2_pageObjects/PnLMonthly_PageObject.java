@@ -47,7 +47,6 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
 	
-
 	@FindBy(xpath = "(//div/button[@title='Go']/span)[2]")
 	WebElement btnGo1;
 
@@ -547,14 +546,23 @@ public class PnLMonthly_PageObject {
 		}
 
 		Thread.sleep(3500);
-		WebElement Refresh = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnRefresh));
-		Refresh.click();
-		Thread.sleep(4000);
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		int Org = driver.findElements(By.xpath("//button[@title='Refresh']")).size();
 		
-		return flag;
-		
-		
+		if (Org > 0) {
+			Thread.sleep(3500);
+			WebElement Refresh = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnRefresh));
+			Refresh.click();
+			Thread.sleep(4000);
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		}else {
+			Thread.sleep(3500);
+			WebElement GO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+			GO.click();
+			Thread.sleep(4000);
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+			
+		}	
+		return flag;	
 	}
 	
 	

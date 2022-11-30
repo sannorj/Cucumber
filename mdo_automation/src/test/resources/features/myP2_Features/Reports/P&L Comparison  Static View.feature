@@ -3,7 +3,7 @@
 
 Feature: P&L Property Comparison - View Feature Validation and Static Calculation
 
-	Background: Navigate to P&L Monthly report
+	Background: Navigate to Property Comparison report
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 

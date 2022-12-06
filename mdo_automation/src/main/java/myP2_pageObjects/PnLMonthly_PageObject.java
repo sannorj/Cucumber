@@ -159,8 +159,7 @@ public class PnLMonthly_PageObject {
 		}
 
 		if (drpProperty.isEnabled()) {
-			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(drpProperty));
+			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
 
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));

@@ -80,46 +80,44 @@ public class AR_Mapping_StepDefinition {
 		assertTrue(ARmappingPo.verifyAllAccRemoved());
 	}
 
-	// smoke testing
-
-	@Given("Select Group as {string} and Property as {string}")
-	public void select_group_as_and_property_as(String string, String string2) throws InterruptedException {
+	@Given("Selects filters as {string} and {string} in the initial page")
+	public void selects_filters_as_and_in_the_initial_page(String string, String string2) throws InterruptedException {
 		ARmappingPo.selectDropdownInMain(string,string2);
 	}
 
-	@Given("Click on Menu bar")
-	public void click_on_menu_bar() throws InterruptedException {
+	@Given("Click on the Menu bar")
+	public void click_on_the_menu_bar() throws InterruptedException {
 		ARmappingPo.clckMenu();
 	}
 
-	@When("Expand {string} menu")
-	public void expand_menu(String string) throws InterruptedException {
-		ARmappingPo.clckConfigurationMenu();
+	@When("Expand the {string} menu")
+	public void expand_the_menu(String string) throws InterruptedException {
+		ARmappingPo.clckConfigurationMenu(string);
 	}
 
-	@Then("Expand {string} menu option")
-	public void expand_menu_option(String string) throws InterruptedException {
-		ARmappingPo.clckAccountsMappingMenu();
+	@Then("Expand the {string} menu option")
+	public void expand_the_menu_option(String string) throws InterruptedException {
+		ARmappingPo.clckAccountsMappingMenu(string);
 	}
 
-	@Then("Select {string} option")
-	public void select_option(String string) throws InterruptedException {
-		ARmappingPo.clckARMappingMenu();
+	@Then("Select the {string} option")
+	public void select_the_option(String string) throws InterruptedException {
+		ARmappingPo.clckARMappingMenu(string);
 	}
 
-	@Given("Verify navigate to {string} Page")
-	public void verify_navigate_to_page(String string) {
+	@Given("Check the header of the navigated page {string}")
+	public void check_the_header_of_the_navigated_page(String string) {
 		assertTrue(ARmappingPo.verifyARMapping(string));
 	}
 
-	@Given("Verify Group selected as {string} and Property already selected as {string}")
-	public void verify_group_selected_as_and_property_already_selected_as(String string, String string2) throws InterruptedException {
+	@Given("Verify Group was selected as {string} and Property was selected as {string}")
+	public void verify_group_was_selected_as_and_property_was_selected_as(String string, String string2) throws InterruptedException {
 		assertTrue(ARmappingPo.verifyDropdown(string,string2));
 	}
 
-	@When("Click on {string} button")
-	public void click_on_button(String string) throws InterruptedException {
-		ARmappingPo.clckGoBtn(string);
+	@When("Click on the Go button")
+	public void click_on_the_go_button() throws InterruptedException {
+		ARmappingPo.clckGoBtn();
 	}
 
 	@Then("Verify all the Properties filtered according to selected {string} Property")
@@ -130,6 +128,16 @@ public class AR_Mapping_StepDefinition {
 	@Then("Verify all check box are loaded")
 	public void verify_all_check_box_are_loaded() {
 		assertTrue(ARmappingPo.verifyCheckBoxLoaded());
+	}
+
+	@Given("Verify mapping dropdown under the Mapped To header")
+	public void verify_mapping_dropdown_under_the_Mapped_To_header() {
+		assertTrue(ARmappingPo.verifyMappedTo());
+	}
+
+	@And("Verify remove Mapping link under the Actions header")
+	public void verify_remove_Mapping_link_under_the_Actions_header() {
+		assertTrue(ARmappingPo.verifyRemoveMapping());
 	}
 
 	

@@ -72,9 +72,7 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonMapTo']")
 	WebElement buttonMapTo;
 
-	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input") // (xpath =
-																						// "//div[@class='sc-jtJlRs
-																						// kajoKa']//input")
+	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input") 
 	WebElement popupSearch;
 
 	@FindBy(xpath = "//ul[@role='listbox']//li")
@@ -150,7 +148,7 @@ public class AR_Mapping_PageObjective {
 		Thread.sleep(2500);
 	}
 
-/////////////////Verify the search option functionality
+	/* Verify the search option functionality */
 
 	public void searchOption() throws InterruptedException {
 		Thread.sleep(2000);
@@ -171,7 +169,7 @@ public class AR_Mapping_PageObjective {
 	}
 	
 
-//////////////////// Verify Single mapping Functionality
+	/* Verify Single mapping Functionality */
 
 	public void singleMapping() throws InterruptedException {
 		Thread.sleep(2000);
@@ -253,7 +251,7 @@ public class AR_Mapping_PageObjective {
 		}
 	}
 
-	//////////////////// Verify bulk mapping Functionality
+	/* Verify bulk mapping Functionality */
 
 	public void selectFewAccounts() throws InterruptedException {
 		Thread.sleep(7500);
@@ -333,8 +331,7 @@ public class AR_Mapping_PageObjective {
 		return flag;
 	}
 
-	// ******************* Smoke Testing
-	// ********************************************
+	// ** Smoke Testing **//
 
 	public void selectDropdownInMain(String groupName, String propertyName) throws InterruptedException {
 
@@ -369,19 +366,24 @@ public class AR_Mapping_PageObjective {
 		mainMenuButton.click();
 		Thread.sleep(3000);
 	}
-
-	public void clckConfigurationMenu() throws InterruptedException {
+	public void clckConfigurationMenu(String mainMenu) throws InterruptedException{
+		WebElement configuration = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+mainMenu+"']//ancestor::li")));
 		configuration.click();
 		Thread.sleep(3000);
 	}
 
-	public void clckAccountsMappingMenu() throws InterruptedException {
-		accountsMapping.click();
+	public void clckAccountsMappingMenu(String subMenu) throws InterruptedException {
+		WebElement accountsMappingLink = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+subMenu+"']//ancestor::li")));
+		accountsMappingLink.click();
 		Thread.sleep(3000);
 	}
 
-	public void clckARMappingMenu() throws InterruptedException {
-		ARMapping.click();
+	public void clckARMappingMenu(String targetPage) throws InterruptedException {
+		WebElement targetPageLink = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+targetPage+"']//ancestor::li")));
+		targetPageLink.click();
 		Thread.sleep(3000);
 	}
 
@@ -393,7 +395,6 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean verifyDropdown(String groupName, String propertyName) throws InterruptedException {
-
 		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
 				.until(ExpectedConditions.visibilityOf(group));
 
@@ -417,7 +418,7 @@ public class AR_Mapping_PageObjective {
 		return result;
 	}
 
-	public void clckGoBtn(String string) throws InterruptedException {
+	public void clckGoBtn() throws InterruptedException {
 		goButton.click();
 		Thread.sleep(4000);
 	}
@@ -448,5 +449,33 @@ public class AR_Mapping_PageObjective {
 		}
 		return result;
 	}
+
+	public boolean verifyMappedTo() {
+		int CKboxCells = driver.findElements(By.xpath("//td[@index='0']//input[@type='checkbox']")).size();
+		String mappedToHeader = driver.findElement(By.xpath("//span[text()='Mapped To']//ancestor::th")).getAttribute("index");
+		int mappedToRaws = driver.findElements(By.xpath("//td[@index='"+mappedToHeader+"']//input")).size();
+		boolean result;
+		if (CKboxCells == mappedToRaws) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean verifyRemoveMapping() {
+		int CKboxCells = driver.findElements(By.xpath("//td[@index='0']//input[@type='checkbox']")).size();
+		String actionsHeader = driver.findElement(By.xpath("//th[text()='Actions']")).getAttribute("index");
+		int actionsRaws = driver.findElements(By.xpath("//td[@index='"+actionsHeader+"']//span[text()='Remove Mapping']")).size();
+		boolean result;
+		if (CKboxCells == actionsRaws) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	 
 
 }

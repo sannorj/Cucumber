@@ -98,12 +98,26 @@ public class Sales_Mapping_StepDefinition {
 		assertTrue(SalesmappingPo.removeManagementStatus());
 	}
 	
-	//*************** Smoke Testing ********************
-
-	@When("Navigate to {string} Page")
+	@Given("Select the {string} menu option")
+	public void select_the_menu_option(String string) throws InterruptedException {
+		assertTrue(SalesmappingPo.selectSubMenu(string));
+	}
+	
+	@When("Navigate to {string} page")
 	public void navigate_to_page(String string) {
 		assertTrue(SalesmappingPo.navigateSalesMapping(string));
 	}
+
+	@When("Verify manager dropdown under the Sales Manager header")
+	public void verify_manager_dropdown_under_the_sales_manager_header() {
+		assertTrue(SalesmappingPo.verifyManagerDropdown());
+	}
+
+	@Then("Verify managed dropdown under the Managed header")
+	public void verify_managed_dropdown_under_the_managed_header() {
+		assertTrue(SalesmappingPo.verifyManagedDropdown());
+	}
+	
 	
 
 }

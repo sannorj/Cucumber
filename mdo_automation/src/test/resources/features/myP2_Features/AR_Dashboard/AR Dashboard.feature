@@ -39,7 +39,7 @@ Feature: AR Aging Dashboard - Outstanding validation Functionality
  	  Then I turn on the Show at risk
 	  And Verify whether the YELLOW Outstanding values are correctly highlighted
 	  
-	@myP2_Smoke
+	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify AR Dashboard page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

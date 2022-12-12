@@ -39,7 +39,8 @@ Feature: Guest Ledger - Search & Filter Validation
     And Select the Group
   	When User inputs a parameter in the search field
    	Then Table should load the results
-   		
+  
+  @dropdown_validation
   Scenario Outline: Verify Guest Ledger page Element visibility and filter functionality
     Then Select the organization as "Beck Legacy Group"
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page

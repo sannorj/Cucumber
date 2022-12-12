@@ -58,7 +58,7 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
 		And  Verify whether the function worked properly
 
 
-	@myP2_Smoke
+	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify P&L Yearly Report page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

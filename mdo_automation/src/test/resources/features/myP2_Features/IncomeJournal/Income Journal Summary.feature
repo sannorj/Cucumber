@@ -15,7 +15,8 @@ Feature: Income Journal Summary  - Add New Row Feature
     When User clicks Add icon in to left coner on ij summary page 
     And User fills up all required fields and click on save button. 
     Then The newly added Income Journal Summary  should be visible on the home page. 
-    
+   
+  @dropdown_validation
   Scenario Outline: Verify Summary page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

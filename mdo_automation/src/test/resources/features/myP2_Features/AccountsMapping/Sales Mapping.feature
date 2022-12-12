@@ -41,7 +41,7 @@ Feature: Sales Mapping Functionality
 	Then I am selecting a Management Status option and Verify successfully changed
 	When Remove selected Management Status and Verify successfully removed
 	
-	@myP2_Smoke
+	@myP2_Smoke @dropdown_validation
 	Scenario Outline: Verify Sales Mapping page Element visibility and filter functionality
   Given Selects filters as '<filter1>' and '<filter2>' in the initial page
   And Click on the Menu bar

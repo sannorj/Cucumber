@@ -65,7 +65,7 @@ Feature: GL Hierarchy - Toggle button Validation With PnL Monthly
 		And Click the All On button
 		And  Verify whether the function worked properly
     
-	@myP2_Smoke
+	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify P&L Monthly page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

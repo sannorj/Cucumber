@@ -32,7 +32,7 @@ Feature: AR Mapping Functionality
 	And Remove mapped account again
 	Then Verify whether the removed account is successfully removed	
 	
-	@myP2_Smoke
+	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify AR Mapping page Element visibility and filter functionality
   Given Selects filters as '<filter1>' and '<filter2>' in the initial page
   And Click on the Menu bar

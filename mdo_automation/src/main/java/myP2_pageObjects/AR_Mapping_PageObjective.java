@@ -395,25 +395,27 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean verifyDropdown(String groupName, String propertyName) throws InterruptedException {
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
-				.until(ExpectedConditions.visibilityOf(group));
-
-		String group = drpGroup.getAttribute("value");
-		System.out.println(group);
 		boolean result = true;
-		Thread.sleep(2500);
-		if (!group.contains(groupName)) {
-			result = false;
+		if(!"null".equals(groupName)) {
+			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
+					.until(ExpectedConditions.visibilityOf(group));
+			String group = drpGroup.getAttribute("value");
+			System.out.println(group);
+			Thread.sleep(2500);
+			if (!group.contains(groupName)) {
+				result = false;
+			}
+			Thread.sleep(1500);
 		}
-		Thread.sleep(1500);
-
-		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
-				.until(ExpectedConditions.visibilityOf(property));
-		String property = drpProperty.getAttribute("value");
-		System.out.println(property);
-		Thread.sleep(2500);
-		if (!property.equalsIgnoreCase(propertyName)) {
-			result = false;
+		if(!"null".equals(propertyName)) {
+			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
+					.until(ExpectedConditions.visibilityOf(property));
+			String property = drpProperty.getAttribute("value");
+			System.out.println(property);
+			Thread.sleep(2500);
+			if (!property.equalsIgnoreCase(propertyName)) {
+				result = false;
+			}
 		}
 		return result;
 	}

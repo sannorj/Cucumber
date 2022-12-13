@@ -93,6 +93,28 @@ public class PnLMonthlyStaticView_StepDefinition {
 	public void the_p_l_should_show_the_relevent_sections_that_belong_to_the_room_revenue_detail_view() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyRoomRevenueDetailSection());
 	}
+	
+	
+	
+	@When("User Clicks on the View dropdown")
+	public void user_clicks_on_the_view_dropdown() throws InterruptedException {
+		pnlMonthly.clickOnViewDrpFunc();
+	}
+
+	@Then("View dropdown should contains Owners View , Operators View, Room Revenue Detail, Add Custom View")
+	public void view_dropdown_should_contains_owners_view_operators_view_room_revenue_detail_add_custom_view() throws InterruptedException {
+		assertTrue(pnlMonthly.verifyViewdrpFunc());
+	}
+
+	@Then("Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL\\/FORECAST")
+	public void custom_column1_dropdown_should_contains_actual_budget_forecast_actual_forecast() throws InterruptedException {
+		assertTrue(pnlMonthly.verifyCucstomCol1drpFunc());
+	}
+
+	@Then("Year  dropdown should contain the current year at the top and the past {int} years in descending order")
+	public void year_dropdown_should_contain_the_current_year_at_the_top_and_the_past_years_in_descending_order(Integer int1) throws InterruptedException {
+		assertTrue(pnlMonthly.verifyCucstomYeardrpFunc());
+	}
 
 }
 

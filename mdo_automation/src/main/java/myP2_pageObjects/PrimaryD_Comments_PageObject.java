@@ -73,12 +73,11 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//h1[text()='Comments']")
 	WebElement titleComment;
 	
-	@FindBy(xpath = "//label[@class='sc-bjUoiL nDYYA']")
+	@FindBy(xpath = "(//div[@data-el='mainLayoutCardContainer']/div/div/div/label)[2]")
 	WebElement lblCommenttxt;
 	
 	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
 	WebElement btnViewAllComment;
-	
 	
 	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
 	WebElement lblLatestComment;
@@ -91,9 +90,6 @@ public class PrimaryD_Comments_PageObject {
 	
 	@FindBy(xpath = "(//input[@name='reply'])[1]")
 	WebElement txtReplyBox;
-	
-//	@FindBy(xpath = "(//div[@class='sc-cHPgQl dQBFwQ'])[1]")
-//	WebElement lblFirstReplyComment;
 	
 	@FindBy(xpath = "(//div[contains(text(),'BSB - Feature of a')])[1]")
 	WebElement lblFirstReplyComment;

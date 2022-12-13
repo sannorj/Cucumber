@@ -36,7 +36,7 @@ public class PrimaryD_Edit_StepDefinition {
 		assertTrue(primaryDEdit.verifyEditedColumn());
 	}
 	
-	@When("User clicks Edit icon in By By Revenue")
+	@When("User clicks edit icon in By Revenue table")
 	public void user_clicks_edit_icon_in_by_by_revenue() throws InterruptedException {
 		primaryDEdit.clickOnEditOnByRevenue();
 	}

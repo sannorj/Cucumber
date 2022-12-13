@@ -24,7 +24,7 @@ public class PnLYearly_StepDefinition {
 	}
 
 	@And("I select the group {string} , property {string} , year {string} , view {string}")
-	public void I_select_the_group(String grp, String property, String year, String view) {
+	public void I_select_the_group(String grp, String property, String year, String view) throws InterruptedException {
 		pnlYearly.passParameteres(grp, property, year, view);
 	}
 

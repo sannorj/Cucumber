@@ -124,8 +124,8 @@ public class PnLYearly_PageObject {
 
 	}
 
-	public void passParameteres(String grp, String property, String year, String view) {
-
+	public void passParameteres(String grp, String property, String year, String view) throws InterruptedException {
+		Thread.sleep(4500);
 		try {
 			dropDownGroup.click();
 			for (int i = 0; i < lstDropDownGroup.size(); i++) {

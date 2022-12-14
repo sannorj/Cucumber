@@ -28,6 +28,8 @@ Feature: Income Journal Summary  - Add New Row Feature
 	  And Select the '<target_Page>' option
 	  Given Check the header of the navigated page '<target_Page_header>'
 	  And Verify Group was selected as '<nullVal>' and Property was selected as '<filter2>'
+	  When Click on the Go button
+	  Then Verify Description raws
   
    Examples: 
        |    filter1         |            filter2 								|    Main_menu   | target_Page  |target_Page_header|  nullVal |  Main_menu_1  |  	 sub_menu_1    |  target_Page_1 |

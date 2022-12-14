@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import myP2_pageObjects.IJ_Summary_PageObject;
 
@@ -42,6 +43,11 @@ public class IJ_Summary_StepDefinition {
 		IJSummary.selectParametersFunc();
 		assertTrue(IJSummary.verifyAddedRowFunc());
 		
+	}
+
+	@Then("Verify Description raws")
+	public void verify_description_raws() throws InterruptedException {
+		assertTrue(IJSummary.verifyDescription());
 	}
 
 

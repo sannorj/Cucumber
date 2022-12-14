@@ -2,10 +2,6 @@ package myP2_pageObjects;
 
 import java.time.Duration;
 import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -128,8 +124,8 @@ public class PnLYearly_PageObject {
 
 	}
 
-	public void passParameteres(String grp, String property, String year, String view) {
-
+	public void passParameteres(String grp, String property, String year, String view) throws InterruptedException {
+		Thread.sleep(4500);
 		try {
 			dropDownGroup.click();
 			for (int i = 0; i < lstDropDownGroup.size(); i++) {

@@ -76,8 +76,11 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "(//span[contains(@class, 'MuiButtonBase-root MuiTableSortLabel-root')])[1]")
 	WebElement lblEditedColumnHeader;
 	
-	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
-	WebElement tabByRanvanue;
+//	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
+//	WebElement tabByRanvanue;
+	
+	@FindBy(xpath = "//button[text()='By Revenue']")
+	WebElement tabByRevenue;
 	
 	@FindBy(xpath = "//div//b[text()='Total']")
 	WebElement lblTotal;
@@ -209,7 +212,7 @@ public class PrimaryD_Edit_PageObject {
 	
 	public void clickOnEditOnByRevenue() throws InterruptedException {
 		
-		tabByRanvanue.click();
+		tabByRevenue.click();
 		ElementUtils.waitForElementToDisplay(lblTotal, 50);
 		
 		btnEditTable.click();

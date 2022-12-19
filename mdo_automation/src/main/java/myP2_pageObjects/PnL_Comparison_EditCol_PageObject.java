@@ -1,8 +1,10 @@
 package myP2_pageObjects;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,6 +70,9 @@ public class PnL_Comparison_EditCol_PageObject {
 	
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
+
+	String PnLENameAllList =configReader.getProp("PnLE_NameList");
+	List<String> PnLENameList=Arrays.asList(PnLENameAllList.split(","));
 	
 	
 	public boolean verifySecoundHeaderFunc() throws InterruptedException {
@@ -180,5 +185,16 @@ public class PnL_Comparison_EditCol_PageObject {
 			return flag;
 	    	
 	    }
+
+	public boolean verifyNameList() {
+		boolean rawExist=true;
+		for (int i=0; i < PnLENameList.size(); i++){
+		      System.out.println(PnLENameList.get(i));
+		      int rawVisible = driver.findElements(By.xpath("//table/tbody/tr/td[1]//div[text()='"+PnLENameList.get(i)+"']")).size();
+		      if(rawVisible<1)
+		    	  rawExist=false;
+		}
+		return rawExist;
+	}
 
 }

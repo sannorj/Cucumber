@@ -40,4 +40,9 @@ public class PnL_Comparison_EditCol_StepDefinition {
 	public void table_should_remove_the_newly_inserted_column_from_the_comparison_table() throws InterruptedException {
 		assertTrue(pnlEdit.verifyRemovedColFunc());
 	}
+
+	@Then("Verify name raws")
+	public void verify_name_raws() throws InterruptedException {
+		assertTrue(pnlEdit.verifyNameList());
+	}
 }

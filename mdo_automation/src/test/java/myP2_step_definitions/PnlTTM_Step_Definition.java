@@ -35,4 +35,9 @@ public class PnlTTM_Step_Definition {
 		PnLTTMPo.storeReportMonthHeader();
 	}
 
+	@And("Select {string} option")
+	public void select_option(String string) throws InterruptedException {
+		PnLTTMPo.selectYear(string);
+	}
+
 }

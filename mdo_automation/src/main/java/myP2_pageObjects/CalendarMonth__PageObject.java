@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -61,6 +62,9 @@ public class CalendarMonth__PageObject {
 	
 	@FindBy(xpath = "//div[@data-el='buttonMapping']")
 	WebElement tabRollingMonth;
+
+	String propertiesAllList =configReader.getProp("CM_Property");
+	List<String> propertiesList=Arrays.asList(propertiesAllList.split(","));
 
 	public void expandReportFunc() throws InterruptedException {
 
@@ -157,6 +161,17 @@ public class CalendarMonth__PageObject {
  		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
  	}
+
+	public boolean verifyProperties() {
+		boolean rawExist=true;
+		for (int i=0; i < propertiesList.size(); i++){
+		      System.out.println(propertiesList.get(i));
+		      int rawVisible = driver.findElements(By.xpath("//table/tbody/tr/td[1]//div[text()='"+propertiesList.get(i)+"']")).size();
+		      if(rawVisible<1)
+		    	  rawExist=false;
+		}
+		return rawExist;
+	}
      
 
 	

@@ -51,5 +51,10 @@ public class CalendarMonth_StepDefinition {
 		assertTrue(rollingMonth.verifyParametesFunc());
 	}
 
+	@Then("Verify Properties available")
+	public void verify_properties_available() throws InterruptedException {
+		assertTrue(calenderMonth.verifyProperties());
+	}
+
 
 }

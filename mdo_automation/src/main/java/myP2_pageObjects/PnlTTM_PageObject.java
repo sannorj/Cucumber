@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -13,6 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConstantsReader;
 import utils.ElementUtils;
@@ -196,6 +200,16 @@ public class PnlTTM_PageObject {
 		}
 		return status;
 
+	}
+
+	public void selectYear(String yearOption) throws InterruptedException {
+		WebElement yearOptions = driver
+				.findElement(By.xpath("//label[text()='Year']//following::div[@data-el='selectorYear']/div[@role='button']"));
+		yearOptions.click();
+		WebElement yearOptionclick = driver
+				.findElement(By.xpath("//ul[@role='listbox']//li[text()='TTM']"));
+		yearOptionclick.click();
+		Thread.sleep(2500);
 	}
 
 }

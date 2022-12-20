@@ -437,9 +437,45 @@ public class Sales_Mapping_PageObjective {
 		}
 	}
 
-	public boolean navigateSalesMapping(String string) {
-		SalesMappingBtn.click();
+	public boolean selectSubMenu(String ARMapping) throws InterruptedException {
+		WebElement selectSubMenu = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+ARMapping+"']//ancestor::li")));
+		selectSubMenu.click();
+		Thread.sleep(3000);
 		return true;
+	}
+
+	public boolean navigateSalesMapping(String salesMapping) {
+		WebElement salesMappingBtn = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button//div[text()='"+salesMapping+"']")));
+		salesMappingBtn.click();
+		return true;
+	}
+
+	public boolean verifyManagerDropdown() {
+		int CKboxCells = driver.findElements(By.xpath("//td[@index='0']//input[@type='checkbox']")).size();
+		String managerHeader = driver.findElement(By.xpath("//span[text()='Sales Manager']//ancestor::th")).getAttribute("index");
+		int managerRaws = driver.findElements(By.xpath("//td[@index='"+managerHeader+"']//input")).size();
+		boolean result;
+		if (CKboxCells == managerRaws) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean verifyManagedDropdown() {
+		int CKboxCells = driver.findElements(By.xpath("//td[@index='0']//input[@type='checkbox']")).size();
+		String managedHeader = driver.findElement(By.xpath("//span[text()='Managed']//ancestor::th")).getAttribute("index");
+		int managedRaws = driver.findElements(By.xpath("//td[@index='"+managedHeader+"']//input")).size();
+		boolean result;
+		if (CKboxCells == managedRaws) {
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
 	}
 
 	

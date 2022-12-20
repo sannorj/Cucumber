@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -105,6 +106,9 @@ public class IJ_Summary_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
+	
+	String descriptionAllList =configReader.getProp("IJ_DescriptionList");
+	List<String> descriptionList=Arrays.asList(descriptionAllList.split(","));
 	
 	public int getMonth() {
 		Date date = new Date();
@@ -347,6 +351,17 @@ public class IJ_Summary_PageObject {
 		}
 			return flag;	
 	}
+
+		public boolean verifyDescription() {
+			boolean rawExist=true;
+			for (int i=0; i < descriptionList.size(); i++){
+			      System.out.println(descriptionList.get(i));
+			      int rawVisible = driver.findElements(By.xpath("//table/tbody/tr/td[1]//div[text()='"+descriptionList.get(i)+"']")).size();
+			      if(rawVisible<1)
+			    	  rawExist=false;
+			}
+			return rawExist;
+		}
 	
 	
 

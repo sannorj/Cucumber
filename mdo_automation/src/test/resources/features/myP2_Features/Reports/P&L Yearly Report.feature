@@ -43,7 +43,7 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
     When TOTAL OPERATING REVENUE divided by ROOMS AVAILABLE Yearly
     Then Calculated value should be match with TOTAL REV-PAR Yearly
     
-  @dropdown_validation
+  @myP2_Smoke
   Scenario Outline: Verify P&L Yearly report page Element visibility and filter functionality
     Given I am login to the myp2 site
     And System navigate to the home page

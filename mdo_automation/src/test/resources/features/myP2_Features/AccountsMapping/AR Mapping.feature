@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @ARFix
+@myP2_Regression 
 Feature: AR Mapping Functionality 
 
   Background: Navigate to AR Mapping and verify functionality  
@@ -32,7 +32,7 @@ Feature: AR Mapping Functionality
 	And Remove mapped account again
 	Then Verify whether the removed account is successfully removed	
 	
-	@myP2_Smoke @dropdown_validation
+	@myP2_Smoke 
   Scenario Outline: Verify AR Mapping page Element visibility and filter functionality
   Given Selects filters as '<filter1>' and '<filter2>' in the initial page
   And Click on the Menu bar

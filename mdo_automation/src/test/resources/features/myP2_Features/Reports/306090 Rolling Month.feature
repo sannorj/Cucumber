@@ -26,7 +26,6 @@ Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation
    When User navigates to the Calendar Month Report
    Then The Rolling Month Report parameters should match the Calendar Month Report.
     
-	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify Rolling Month Report page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

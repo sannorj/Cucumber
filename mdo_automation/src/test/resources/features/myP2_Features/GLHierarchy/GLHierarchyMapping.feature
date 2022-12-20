@@ -44,7 +44,6 @@ Background: Navigate to P&L Monthly report
    And  Remove the all mapped hmg GL codes 
    Then Manage GL Codes GL Codes text should change to Add GL Codes 
    
-	@myP2_Smoke @dropdown_validation
   Scenario Outline: Verify GL Hierarchy page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

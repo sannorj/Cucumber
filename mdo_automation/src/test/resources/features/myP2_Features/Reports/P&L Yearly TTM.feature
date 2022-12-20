@@ -40,8 +40,7 @@ Feature: P&L Yearly - TTM Validation
    Then Page should load the defualt static section
    And I am validating the month header
     
-    
-  @dropdown_validation
+  @myP2_Smoke
   Scenario Outline: Verify P&L Yearly page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

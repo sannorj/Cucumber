@@ -39,7 +39,7 @@
  	Then I turn on the Show at risk
 	And Verify whether the AR Property YELLOW Outstanding values are correctly highlighted	
 	
-	@myP2_Smoke @dropdown_validation
+	@myP2_Smoke 
   Scenario Outline: Verify AR Property page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

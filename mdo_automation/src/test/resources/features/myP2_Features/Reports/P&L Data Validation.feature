@@ -48,7 +48,7 @@ Feature:  P&L Reports - Data validation across the P&L pages
      And Store the february column values
      Then Compare the P&L monthly and P&L Yearly Report figures
      
-  @dropdown_validation
+  @myP2_Smoke
   Scenario Outline: Verify P&L Monthly report page Element visibility and filter functionality
     And Select the organization as "Beck Legacy Group" 
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page

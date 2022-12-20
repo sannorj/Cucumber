@@ -11,7 +11,7 @@ Feature: Verify Revenue Breakdown Initial Load
     Then I am navigate to Revenue Breakdown page
     And I am Loading the Revenue Breakdown Report with GO button
     
-  @dropdown_validation
+  @myP2_Smoke
   Scenario Outline: Verify Revenue Breakdown report page Element visibility and filter functionality
     Given I am login to the myp2 site
     And System navigate to the home page

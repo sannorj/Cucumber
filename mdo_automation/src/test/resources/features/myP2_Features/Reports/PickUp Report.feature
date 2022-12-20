@@ -14,7 +14,7 @@
     When I stored all the actual data
     And I compare the dates and verify
      
-  @dropdown_validation
+  @myP2_Smoke
   Scenario Outline: Verify Pickup report page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

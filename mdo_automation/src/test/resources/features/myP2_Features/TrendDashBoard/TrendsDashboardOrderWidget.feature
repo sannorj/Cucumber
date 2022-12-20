@@ -25,7 +25,7 @@ Background: Navigate to trend dashboard order widgets
     And I am storing all the ordered widget
     And verify whether the widgets are in the correct order   
     
-	@myP2_Smoke @dropdown_validation
+	@myP2_Smoke 
   Scenario Outline: Verify Trends Dashboard page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

@@ -27,7 +27,7 @@ Background: Navigate to P&L Monthly report
     When User clicks on edit column option 
     And Remove column and year values from the dropdown and click on apply button
     Then Table should remove the newly inserted column from the table
-    
+   
     Scenario: Verify whether user can edit every header that is available
     When The recently modified column should be displayed when a user changes all the parameters in the edit column 
     Then Page should load the defualt static section

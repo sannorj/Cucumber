@@ -583,7 +583,7 @@ public class PnLMonthly_PageObject {
 				}
 			
 		}
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
 				listDrpValueSize.get(i).click();

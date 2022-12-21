@@ -195,6 +195,7 @@ public class PnL_Monthly_EditCol_PageObject {
     
     public void addColumnFunc() throws InterruptedException {
     	
+    	Thread.sleep(2000);
     	drpColumn4.click();
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {

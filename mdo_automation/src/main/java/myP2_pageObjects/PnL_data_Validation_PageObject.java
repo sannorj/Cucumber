@@ -80,13 +80,13 @@ public class PnL_data_Validation_PageObject {
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+3]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+3]")
 	List<WebElement> lstFirstCol;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+27]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+27]")
 	List<WebElement> lstTotalCol;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+4]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+4]")
 	List<WebElement> lstFebCol;
 	
 	
@@ -240,7 +240,6 @@ public class PnL_data_Validation_PageObject {
 
 	    for(int i=0; i<lstFirstCol.size(); i++){
 	        all_elements_text.add(lstFirstCol.get(i).getText());
-	        System.out.println(lstFirstCol.get(i).getText());
 	    }
 	}
 	
@@ -249,7 +248,6 @@ public class PnL_data_Validation_PageObject {
 
 	    for(int x=0; x<lstTotalCol.size(); x++){
 	    	all_ComparisionElements_text.add(lstTotalCol.get(x).getText());
-	        System.out.println(lstFirstCol.get(x).getText());
 	    }
 	    Thread.sleep(3500);
 	}

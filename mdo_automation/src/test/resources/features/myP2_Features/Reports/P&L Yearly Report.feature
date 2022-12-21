@@ -1,10 +1,9 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity @YY
+@myP2_Regression @myP2Sanity @newFex123
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 
-
-  Scenario: Navigate to P&L Yearly report Func
+  Scenario: Verify the view, Custom column , year dropdown values
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 
@@ -19,7 +18,7 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
      And  Year  dropdown should contain the current year at the top and the past 4 years in descending order
      
      
-	Scenario: Navigate to P&L report Func
+	Scenario: Validation of P&L Yearly Static section KPI
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 

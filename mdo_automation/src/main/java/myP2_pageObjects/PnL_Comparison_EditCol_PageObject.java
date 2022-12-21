@@ -111,6 +111,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	
 	 public void addColumnFunc() throws InterruptedException {
 	    	
+		 Thread.sleep(3000);
 	    	drpColumn3.click();
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
@@ -158,6 +159,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	    
 	    public void removeColumnFunc() throws InterruptedException {
 	    	
+	    	Thread.sleep(3000);
 	    	drpColumn3.click();
 	    	Thread.sleep(5000);
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {

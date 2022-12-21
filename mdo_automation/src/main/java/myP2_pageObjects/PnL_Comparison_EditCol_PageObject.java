@@ -1,5 +1,6 @@
-package myP2_pageObjects;
+	package myP2_pageObjects;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConstantsReader;
 import utils.ElementUtils;
@@ -111,8 +114,9 @@ public class PnL_Comparison_EditCol_PageObject {
 	
 	 public void addColumnFunc() throws InterruptedException {
 	    	
-	    	drpColumn3.click();
-	    	Thread.sleep(5000);
+		    WebElement drpColumn3Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn3));
+		    drpColumn3Ele.click();   	
+	    	Thread.sleep(15000);
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
 					listDrpValueSize.get(i).click();

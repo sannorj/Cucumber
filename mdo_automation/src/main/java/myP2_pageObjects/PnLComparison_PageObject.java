@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,16 +97,13 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-
+		Thread.sleep(3500);
 		selectDate();
 
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(5000);
-
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				listDrpValueSize.get(i).click();
@@ -149,9 +145,9 @@ public class PnLComparison_PageObject {
 
 		txtDate.click();
 
-		int btnDatePickforLocal = driver
-				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
+		Thread.sleep(3500);
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
 		}
@@ -160,15 +156,12 @@ public class PnLComparison_PageObject {
 
 		if (status == 1) {
 
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
 			Thread.sleep(2500);
 
-			WebElement pickYear = driver
-					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
-							+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
 
@@ -180,8 +173,7 @@ public class PnLComparison_PageObject {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);

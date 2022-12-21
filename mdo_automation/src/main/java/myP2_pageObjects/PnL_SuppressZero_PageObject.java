@@ -248,6 +248,7 @@ public class PnL_SuppressZero_PageObject {
 
 	 public void clickOnSuppressZeroFunc() throws InterruptedException {
 		 
+		 Thread.sleep(3500);
 		 int GO = driver.findElements(By.xpath("//button//span[text()='Go']")).size();
 			if (GO==1) {
 				btnGo.click();

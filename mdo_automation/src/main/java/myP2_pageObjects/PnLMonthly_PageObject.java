@@ -345,7 +345,7 @@ public class PnLMonthly_PageObject {
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(8000);
+		Thread.sleep(9500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
 				listDrpValueSize.get(i).click();
@@ -536,6 +536,7 @@ public class PnLMonthly_PageObject {
 		
 		Thread.sleep(4000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			Thread.sleep(1500);
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 				listDrpValueSize.get(i).click();

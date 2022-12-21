@@ -195,8 +195,9 @@ public class PnL_Monthly_EditCol_PageObject {
     
     public void addColumnFunc() throws InterruptedException {
     	
+    	WebElement drpColumn4Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn4));
     	Thread.sleep(2000);
-    	drpColumn4.click();
+    	drpColumn4Ele.click();
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
 				listDrpValueSize.get(i).click();
@@ -242,7 +243,9 @@ public class PnL_Monthly_EditCol_PageObject {
     
     public void removeColumnFunc() throws InterruptedException {
     	
-    	drpColumn4.click();
+    	Thread.sleep(2000);
+    	WebElement drpColumn4Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn4));
+    	 drpColumn4Ele.click();
     	Thread.sleep(4000);
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {

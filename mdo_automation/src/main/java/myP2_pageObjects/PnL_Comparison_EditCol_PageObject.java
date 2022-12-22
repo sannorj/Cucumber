@@ -173,7 +173,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	    		drpColumn3.click();
 	    	}
 	    	
-	    	Thread.sleep(5000);
+	    	Thread.sleep(7000);
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
 					listDrpValueSize.get(i).click();

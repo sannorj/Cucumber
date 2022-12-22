@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -104,11 +105,24 @@ public class PnLComparison_PageObject {
 		drpViewEle.click();
 
 		Thread.sleep(7000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-				listDrpValueSize.get(i).click();
+		
+		
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+
+		
+		
 
 		Thread.sleep(2500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));

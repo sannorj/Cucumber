@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -165,7 +166,12 @@ public class PnL_Comparison_EditCol_PageObject {
 	    public void removeColumnFunc() throws InterruptedException {
 	    	
 	    	Thread.sleep(6000);
-	    	drpColumn3.click();
+	    	try {
+	    		drpColumn3.click();
+	    	} catch (StaleElementReferenceException e) {
+	    		drpColumn3.click();
+	    	}
+	    	
 	    	Thread.sleep(5000);
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {

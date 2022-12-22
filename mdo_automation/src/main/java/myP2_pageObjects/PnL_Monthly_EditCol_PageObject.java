@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -200,20 +201,38 @@ public class PnL_Monthly_EditCol_PageObject {
     	WebElement drpColumn4Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn4));
     	Thread.sleep(6000);
     	drpColumn4Ele.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
+    	
+    	try {
+    		for (int i = 0; i < listDrpValueSize.size(); i++) {
+    			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+    				listDrpValueSize.get(i).click();
+    			}
+    		}
+    	} catch (StaleElementReferenceException e) {
+    		for (int i = 0; i < listDrpValueSize.size(); i++) {
+    			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+    				listDrpValueSize.get(i).click();
+    			}
+    		}
+    	}
+
     	
     	Thread.sleep(6000);
     	drpYear4.click();
-    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-				listDrpValueSize.get(i).click();
-			}
-		}
-    	
+    	Thread.sleep(2000);
+    	try {
+    		for (int i = 0; i < listDrpValueSize.size(); i++) {
+    			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+    				listDrpValueSize.get(i).click();
+    			}
+    		}
+    	} catch (StaleElementReferenceException e) {
+    		for (int i = 0; i < listDrpValueSize.size(); i++) {
+    			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+    				listDrpValueSize.get(i).click();
+    			}
+    		}
+    	}	
     	Thread.sleep(3000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
@@ -247,17 +266,18 @@ public class PnL_Monthly_EditCol_PageObject {
     
     public void removeColumnFunc() throws InterruptedException {
     	
-    	Thread.sleep(2000);
+    	Thread.sleep(6000);
     	WebElement drpColumn4Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn4));
-    	 drpColumn4Ele.click();
-    	Thread.sleep(4000);
+    	drpColumn4Ele.click();
+    	
+    	Thread.sleep(6000);
     	for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
     	
-    	Thread.sleep(4000);
+    	Thread.sleep(6000);
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	

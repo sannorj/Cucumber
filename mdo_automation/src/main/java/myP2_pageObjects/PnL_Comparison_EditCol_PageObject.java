@@ -180,8 +180,14 @@ public class PnL_Comparison_EditCol_PageObject {
 				}
 			}
 	    	
-	    	Thread.sleep(2000);
-	    	btnApply.click();
+	    	Thread.sleep(6000);
+	    	
+	    	try {	
+	    		btnApply.click();
+	    	} catch (StaleElementReferenceException e) {
+	    		btnApply.click();
+	    	}
+	    	
 	    	ElementUtils.waitForElementToHide(lblEdit, 100);
 	    	
 	    	btnGo.click();

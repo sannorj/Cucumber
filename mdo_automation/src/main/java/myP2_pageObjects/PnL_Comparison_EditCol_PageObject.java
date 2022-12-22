@@ -165,8 +165,9 @@ public class PnL_Comparison_EditCol_PageObject {
 	    
 	    public void removeColumnFunc() throws InterruptedException {
 	    	
-	    	Thread.sleep(6000);
+	    	
 	    	try {
+	    		Thread.sleep(6000);
 	    		drpColumn3.click();
 	    	} catch (StaleElementReferenceException e) {
 	    		drpColumn3.click();

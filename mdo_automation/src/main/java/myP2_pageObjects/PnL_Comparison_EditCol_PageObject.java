@@ -120,10 +120,11 @@ public class PnL_Comparison_EditCol_PageObject {
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
 					listDrpValueSize.get(i).click();
+					Thread.sleep(5000);
 				}
 			}
 	    	
-	    	Thread.sleep(5000);
+	    	
 	    	drpYear3.click();
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {

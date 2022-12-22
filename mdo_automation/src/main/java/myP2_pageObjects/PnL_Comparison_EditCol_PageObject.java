@@ -183,12 +183,21 @@ public class PnL_Comparison_EditCol_PageObject {
 			}
 
 			Thread.sleep(7000);
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
-					listDrpValueSize.get(i).click();
+			
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
+						listDrpValueSize.get(i).click();
+					}
 				}
 			}
-
+			
 			Thread.sleep(6000);
 
 			try {

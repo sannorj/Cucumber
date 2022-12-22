@@ -534,16 +534,15 @@ public class PnLMonthly_PageObject {
 				}
 		}
 		
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			Thread.sleep(1500);
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 				listDrpValueSize.get(i).click();
 			}
 		}
 
-		Thread.sleep(3500);
+		Thread.sleep(6500);
 		int Org = driver.findElements(By.xpath("//button[@title='Refresh']")).size();
 		
 		if (Org > 0) {

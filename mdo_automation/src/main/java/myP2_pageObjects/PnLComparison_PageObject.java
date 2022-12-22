@@ -103,19 +103,20 @@ public class PnLComparison_PageObject {
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
 
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnGo));
+		Thread.sleep(2500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
+		
 		Thread.sleep(10000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		Thread.sleep(4500);
-		
 		btnZeroValue.click();
 
 	}

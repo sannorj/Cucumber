@@ -622,7 +622,7 @@ public class PnLMonthly_PageObject {
 	
 		Thread.sleep(4000);    	
     	drpYear1.click();
-    	Thread.sleep(5000);
+    	Thread.sleep(8000);
     	
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
@@ -636,7 +636,6 @@ public class PnLMonthly_PageObject {
 					flag = false;
 				}
 			}
-		Thread.sleep(6000);
 	
 		try {
 			for (int i = 0; i < listDrpValueSize.size(); i++) {

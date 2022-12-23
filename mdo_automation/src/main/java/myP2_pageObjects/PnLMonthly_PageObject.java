@@ -510,7 +510,7 @@ public class PnLMonthly_PageObject {
 	
 	public void clickOnViewDrpFunc() throws InterruptedException {
 
-		Thread.sleep(1500);
+		Thread.sleep(5500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		Thread.sleep(3500);

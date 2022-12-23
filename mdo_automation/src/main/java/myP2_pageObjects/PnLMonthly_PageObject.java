@@ -386,15 +386,25 @@ public class PnLMonthly_PageObject {
 
 	public void selectRooRevenueDetailView() throws InterruptedException {
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(6500);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
-				listDrpValueSize.get(i).click();
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+
 		btnGo.click();
 		Thread.sleep(20000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
@@ -612,7 +622,7 @@ public class PnLMonthly_PageObject {
 	
 		Thread.sleep(4000);    	
     	drpYear1.click();
-    	Thread.sleep(2000);
+    	Thread.sleep(5000);
     	
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
@@ -626,7 +636,7 @@ public class PnLMonthly_PageObject {
 					flag = false;
 				}
 			}
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 	
 		try {
 			for (int i = 0; i < listDrpValueSize.size(); i++) {

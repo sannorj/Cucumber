@@ -349,11 +349,21 @@ public class PnLMonthly_PageObject {
 		drpViewEle.click();
 
 		Thread.sleep(9500);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
-				listDrpValueSize.get(i).click();
+		
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+		
 		Thread.sleep(20000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
@@ -386,8 +396,7 @@ public class PnLMonthly_PageObject {
 
 	public void selectRooRevenueDetailView() throws InterruptedException {
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(6500);

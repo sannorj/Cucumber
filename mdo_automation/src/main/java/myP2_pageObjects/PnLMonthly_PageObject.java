@@ -344,6 +344,7 @@ public class PnLMonthly_PageObject {
 
 	public void selectOperatorView() throws InterruptedException {
 
+		Thread.sleep(6500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
@@ -586,11 +587,22 @@ public class PnLMonthly_PageObject {
 			
 		}
 		Thread.sleep(5000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
-				listDrpValueSize.get(i).click();
+		
+		
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+		
 		Thread.sleep(2000);
 		return flag;
 	}

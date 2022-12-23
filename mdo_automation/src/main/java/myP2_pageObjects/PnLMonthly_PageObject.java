@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -387,7 +388,7 @@ public class PnLMonthly_PageObject {
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(4500);
+		Thread.sleep(6500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
 				listDrpValueSize.get(i).click();
@@ -614,11 +615,21 @@ public class PnLMonthly_PageObject {
 				}
 			}
 		Thread.sleep(2000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-				listDrpValueSize.get(i).click();
+	
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+	
 		Thread.sleep(2000);
 		return flag;
 	}

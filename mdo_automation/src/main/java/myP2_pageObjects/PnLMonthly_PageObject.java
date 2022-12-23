@@ -364,9 +364,10 @@ public class PnLMonthly_PageObject {
 			}
 		}
 		
-		Thread.sleep(20000);
+		Thread.sleep(9500);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
+		Thread.sleep(9500);
 	}
 
 	public boolean verifyOperatorSection() {

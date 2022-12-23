@@ -629,15 +629,19 @@ public class PnLMonthly_PageObject {
 
 	
 	public boolean verifyCucstomYeardrpFunc() throws InterruptedException {
-	
-		Thread.sleep(4000);    	
-    	drpYear1.click();
-    	Thread.sleep(8000);
-    	
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-		for (int x = 0; x < listDrpValueSize.size(); x++) {
-			/* split and ready the data from property file */
-			String[] a = configReader.getProp("Custom_Year").split(",");
+
+		Thread.sleep(4000);
+		drpYear1.click();
+		Thread.sleep(8000);
+		int y = listDrpValueSize.size();
+
+		if (y < 0) {
+			drpYear1.click();
+			Thread.sleep(8000);
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int x = 0; x < listDrpValueSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
 				String expected = a[x];
 				String actual = listDrpValueSize.get(x).getText();
 				if (actual.contains(expected)) {
@@ -646,22 +650,53 @@ public class PnLMonthly_PageObject {
 					flag = false;
 				}
 			}
-	
-		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-					listDrpValueSize.get(i).click();
+
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
 				}
 			}
-		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-					listDrpValueSize.get(i).click();
+
+			Thread.sleep(2000);
+		} else {
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int x = 0; x < listDrpValueSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
+				String expected = a[x];
+				String actual = listDrpValueSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
 				}
 			}
+
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			}
+
+			Thread.sleep(2000);
 		}
-	
-		Thread.sleep(2000);
+
 		return flag;
 	}
 

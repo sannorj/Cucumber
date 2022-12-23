@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity @newFex12223
+@myP2_Regression @myP2Sanity @new2
  
 Feature:  P&L Reports - Data validation across the P&L pages
 

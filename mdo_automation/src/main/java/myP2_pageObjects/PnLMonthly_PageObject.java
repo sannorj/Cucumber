@@ -414,7 +414,8 @@ public class PnLMonthly_PageObject {
 				}
 			}
 		}
-
+		
+		Thread.sleep(6000);
 		btnGo.click();
 		Thread.sleep(20000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);

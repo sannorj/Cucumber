@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -175,7 +176,8 @@ public class PnLMonthly_PageObject {
 		Thread.sleep(1500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
-		Thread.sleep(4500);
+		
+		Thread.sleep(6500);
 
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
@@ -342,18 +344,30 @@ public class PnLMonthly_PageObject {
 
 	public void selectOperatorView() throws InterruptedException {
 
+		Thread.sleep(6500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(8000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
-				listDrpValueSize.get(i).click();
+		Thread.sleep(9500);
+		
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
-		Thread.sleep(20000);
+		
+		Thread.sleep(9500);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
+		Thread.sleep(9500);
 	}
 
 	public boolean verifyOperatorSection() {
@@ -386,12 +400,22 @@ public class PnLMonthly_PageObject {
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(4500);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
-				listDrpValueSize.get(i).click();
+		Thread.sleep(6500);
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+		
+		Thread.sleep(6000);
 		btnGo.click();
 		Thread.sleep(20000);
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
@@ -508,7 +532,7 @@ public class PnLMonthly_PageObject {
 	
 	public void clickOnViewDrpFunc() throws InterruptedException {
 
-		Thread.sleep(1500);
+		Thread.sleep(5500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		Thread.sleep(3500);
@@ -534,7 +558,7 @@ public class PnLMonthly_PageObject {
 				}
 		}
 		
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
 				ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
@@ -542,7 +566,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(3500);
+		Thread.sleep(6500);
 		int Org = driver.findElements(By.xpath("//button[@title='Refresh']")).size();
 		
 		if (Org > 0) {
@@ -583,27 +607,42 @@ public class PnLMonthly_PageObject {
 				}
 			
 		}
-		Thread.sleep(2000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
-				listDrpValueSize.get(i).click();
+		Thread.sleep(5000);
+		
+		
+		try {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpValueSize.get(i).click();
+				}
 			}
 		}
+		
 		Thread.sleep(2000);
 		return flag;
 	}
 
 	
 	public boolean verifyCucstomYeardrpFunc() throws InterruptedException {
-	
-		Thread.sleep(4000);    	
-    	drpYear1.click();
-    	Thread.sleep(2000);
-    	
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-		for (int x = 0; x < listDrpValueSize.size(); x++) {
-			/* split and ready the data from property file */
-			String[] a = configReader.getProp("Custom_Year").split(",");
+
+		Thread.sleep(4000);
+		drpYear1.click();
+		Thread.sleep(8000);
+		int y = listDrpValueSize.size();
+
+		if (y < 0) {
+			drpYear1.click();
+			Thread.sleep(8000);
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int x = 0; x < listDrpValueSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
 				String expected = a[x];
 				String actual = listDrpValueSize.get(x).getText();
 				if (actual.contains(expected)) {
@@ -612,13 +651,53 @@ public class PnLMonthly_PageObject {
 					flag = false;
 				}
 			}
-		Thread.sleep(2000);
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-				listDrpValueSize.get(i).click();
+
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
 			}
+
+			Thread.sleep(2000);
+		} else {
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int x = 0; x < listDrpValueSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
+				String expected = a[x];
+				String actual = listDrpValueSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			}
+
+			Thread.sleep(2000);
 		}
-		Thread.sleep(2000);
+
 		return flag;
 	}
 

@@ -13,8 +13,8 @@ Feature: Report Income Journal Mapping data validation Functionality
   Given Check the header of the navigated page '<target_Page_header>'
   And Verify Group was selected as '<nullVal>' and Property was selected as '<filter2>'
   And Select date as '<date>'
-  When Click on the Go button
   Then Click on '<mapping>' button
+  When Click on the Go button
   When Store first cell value
   Then Click on '<summary>' button
   And Verify data not loaded

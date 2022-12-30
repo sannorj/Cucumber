@@ -80,13 +80,13 @@ public class PnL_data_Validation_PageObject {
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+3]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+3]")
 	List<WebElement> lstFirstCol;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+27]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+27]")
 	List<WebElement> lstTotalCol;
 	
-	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.=\"$columnName\"]/preceding-sibling::th)+4]")
+	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+4]")
 	List<WebElement> lstFebCol;
 	
 	
@@ -182,7 +182,7 @@ public class PnL_data_Validation_PageObject {
 		Thread.sleep(4500);
 		Thread.sleep(4500);
 		Thread.sleep(4500);
-		
+
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -201,7 +201,7 @@ public class PnL_data_Validation_PageObject {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
 
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			Thread.sleep(6500);
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(property)) {
 					listDrpValueSize.get(i).click();
@@ -209,16 +209,17 @@ public class PnL_data_Validation_PageObject {
 			}
 		}
 		Thread.sleep(20000);
-		
+
 		int date = driver.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
 		if (date > 0) {
-		selectDate();
+			selectDate();
 		}
-		
+
 		Thread.sleep(1500);
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
-		Thread.sleep(4500);
+		Thread.sleep(6500);
 
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
@@ -230,26 +231,34 @@ public class PnL_data_Validation_PageObject {
 		Thread.sleep(3500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
-		
+
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
 	}
 	
 	public void storeMonthlyValuesFunc() throws InterruptedException {
+
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		btnZeroValue.click();
+		
 		Thread.sleep(3500);
 
 	    for(int i=0; i<lstFirstCol.size(); i++){
 	        all_elements_text.add(lstFirstCol.get(i).getText());
-	        System.out.println(lstFirstCol.get(i).getText());
+	        System.out.println("========Monthly======"+all_elements_text);
 	    }
 	}
 	
 	public void storeComparisionValuesFunc() throws InterruptedException {
+		
+		Thread.sleep(6500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+		btnGO.click();
 		Thread.sleep(3500);
 
 	    for(int x=0; x<lstTotalCol.size(); x++){
 	    	all_ComparisionElements_text.add(lstTotalCol.get(x).getText());
-	        System.out.println(lstFirstCol.get(x).getText());
+	    	System.out.println("========com======"+all_ComparisionElements_text);
 	    }
 	    Thread.sleep(3500);
 	}

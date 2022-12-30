@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity 
+@myP2_Regression @myP2Sanity @new2
  
 Feature:  P&L Reports - Data validation across the P&L pages
 
@@ -16,7 +16,6 @@ Feature:  P&L Reports - Data validation across the P&L pages
     
      And I am expand the P&L Statement option under Reports section in Side Menu
      And go to the P&L Property Comparison
-     And select the group "All groups" , property "All properties", specific date, View and Click on GO button 
      And Store the Total column values
      Then Compare the P&L monthly and P&L Comparison Report figures
     

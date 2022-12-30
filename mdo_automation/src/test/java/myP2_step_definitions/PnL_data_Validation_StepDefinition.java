@@ -11,10 +11,6 @@ public class PnL_data_Validation_StepDefinition {
 
 	private PnL_data_Validation_PageObject PnL_data =new PnL_data_Validation_PageObject(DriverFactory.getDriver());
 	
-//	@When("select the Group , Propery, specific date, View and Click on GO button")
-//	public void select_the_group_propery_specific_date_view_and_click_on_go_button() throws InterruptedException {
-//		PnL_data.selectParametersFunc();
-//	}
 	
 	@When("select the group {string} , property {string}, specific date, View and Click on GO button")
 	public void select_the_group_property_specific_date_view_and_click_on_go_button(String grp, String property) throws InterruptedException {

@@ -1,14 +1,18 @@
-package myP2_pageObjects;
+	package myP2_pageObjects;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConstantsReader;
 import utils.ElementUtils;
@@ -87,12 +91,13 @@ public class PnL_Comparison_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 
+		Thread.sleep(1500);
 		for (int i = 0; i < header.size(); i++) {
 			Headers.add(header.get(i).getText());
 			
 		}
 		
-		
+		Thread.sleep(1500);
 		for (int i = 0; i < subHeader.size(); i++) {
 			SUBHeader.add(subHeader.get(i).getText());
 		}
@@ -111,20 +116,32 @@ public class PnL_Comparison_EditCol_PageObject {
 	
 	 public void addColumnFunc() throws InterruptedException {
 	    	
-	    	drpColumn3.click();
+		    WebElement drpColumn3Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn3));
+		    drpColumn3Ele.click();   	
+	    	Thread.sleep(15000);
 	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
 					listDrpValueSize.get(i).click();
+					Thread.sleep(5000);
 				}
 			}
 	    	
-	    	Thread.sleep(5000);
+	    	Thread.sleep(4000);
 	    	drpYear3.click();
-	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-					listDrpValueSize.get(i).click();
+	    	try {
+	    		for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpValueSize.get(i).click();
+					}
 				}
 			}
+	    	
 	    	Thread.sleep(4000);
 	    	btnApply.click();
 	    	ElementUtils.waitForElementToHide(lblEdit, 100);
@@ -156,25 +173,46 @@ public class PnL_Comparison_EditCol_PageObject {
 	    	
 	    }
 	    
-	    public void removeColumnFunc() throws InterruptedException {
-	    	
-	    	drpColumn3.click();
-	    	Thread.sleep(5000);
-	    	for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
-					listDrpValueSize.get(i).click();
+		public void removeColumnFunc() throws InterruptedException {
+
+			try {
+				Thread.sleep(6000);
+				drpColumn3.click();
+			} catch (StaleElementReferenceException e) {
+				drpColumn3.click();
+			}
+
+			Thread.sleep(7000);
+			
+			try {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
+						listDrpValueSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpValueSize.size(); i++) {
+					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_RemoveColumn"))) {
+						listDrpValueSize.get(i).click();
+					}
 				}
 			}
-	    	
-	    	Thread.sleep(2000);
-	    	btnApply.click();
-	    	ElementUtils.waitForElementToHide(lblEdit, 100);
-	    	
-	    	btnGo.click();
+			
+			Thread.sleep(6000);
+
+			try {
+				btnApply.click();
+			} catch (StaleElementReferenceException e) {
+				btnApply.click();
+			}
+
+			ElementUtils.waitForElementToHide(lblEdit, 100);
+
+			btnGo.click();
 			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
-	    	
-	    }
-	    
+
+		}
+
 	   public boolean verifyRemovedColFunc() throws InterruptedException {
 			
 			if (header.size()==2) {

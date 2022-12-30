@@ -6,11 +6,13 @@ import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import myP2_pageObjects.RollingMonth_DataValidation_PageObjective;
 import myP2_pageObjects.RollingMonth_PageObject;
 
 public class RollingMonth_StepDefinition {
 	
 	private RollingMonth_PageObject rollingMonth =new RollingMonth_PageObject(DriverFactory.getDriver());
+	private RollingMonth_DataValidation_PageObjective rollingMonth_DV =new RollingMonth_DataValidation_PageObjective(DriverFactory.getDriver());
 
 	@Given("Expand the Rolling Month Report option under Reports section in Side Menu")
 	public void expand_the_rolling_month_report_option_under_reports_section_in_side_menu() throws InterruptedException {
@@ -52,6 +54,11 @@ public class RollingMonth_StepDefinition {
 	@Then("The Rolling Month Report parameters should match the Calendar Month Report.")
 	public void the_rolling_month_report_parameters_should_match_the_calendar_month_report() throws InterruptedException {
 		assertTrue(rollingMonth.verifyParametesFunc());
+	}
+
+	@Then("Verify data not loaded")
+	public void verify_data_not_loaded() throws InterruptedException {
+		assertTrue(rollingMonth_DV.verifyDataNotView());
 	}
 
 

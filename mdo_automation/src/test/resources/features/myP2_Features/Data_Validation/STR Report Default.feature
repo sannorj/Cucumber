@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke
+@myP2_Regression @myP2_Smoke @DV
 Feature: STR Report data validation Functionality 
 
   Scenario Outline: Navigate to STR Report page and data validation functionality

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke
+@myP2_Regression @myP2_Smoke @DV
 Feature: Report Income Journal Mapping data validation Functionality 
 
   Scenario Outline: Navigate to Income Journal Mapping page and data validation functionality

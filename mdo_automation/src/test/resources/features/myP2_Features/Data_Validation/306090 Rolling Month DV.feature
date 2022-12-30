@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke
+@myP2_Regression @myP2_Smoke @DV
 Feature: Report 306090 data validation Functionality 
 
   Scenario Outline: Navigate to 306090 Report page and data validation functionality

@@ -1,6 +1,8 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -24,6 +26,24 @@ public class STR_Report_DataValidation_PageObjective {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+	WebElement txtDate;
+
+	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+	WebElement btnDatePicker;
+
+	@FindBy(xpath = "//div[@role='dialog']")
+	WebElement divCalender;
+
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
+	WebElement btnExpandYear;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+	WebElement btnPreviousMonth;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+	WebElement btnNextMonth;
+
 	@FindBy(xpath = "//label[text()='Date']//following::input")
 	WebElement goButton;
 	
@@ -44,10 +64,11 @@ public class STR_Report_DataValidation_PageObjective {
 	
 	String firstCellValue=null;
 
-	public void selectDate(String date) {
-		goButton.sendKeys(Keys.CONTROL + "a");
-		goButton.sendKeys(Keys.DELETE);
-		goButton.sendKeys(date);
+	public void selectCurrentDate(String date) throws InterruptedException {
+//		goButton.sendKeys(Keys.CONTROL + "a");
+//		goButton.sendKeys(Keys.DELETE);
+//		goButton.sendKeys(date);
+		selectDate(date);
 	}
 
 	public void selectWeekButton(String weekVal) throws InterruptedException {
@@ -167,6 +188,117 @@ public class STR_Report_DataValidation_PageObjective {
 		Thread.sleep(3000);
 		return true;
 		
+	}
+
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+
+		return month + 1;
+	}
+
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+	
+	public boolean selectDate(String date) throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = date.split("/");
+
+		txtDate.click();
+
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+
+			Thread.sleep(2500);
+
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
+
+			pickYear.click();
+
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+
+				btnDate.click();
+				
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
 	}
 	
 }

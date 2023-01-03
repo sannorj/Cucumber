@@ -21,7 +21,7 @@ public class STR_Report_DataValidation_StepDefinition {
 	
 	@And("Select date as {string}")
 	public void select_date_as (String string) throws InterruptedException {
-		STR_Data.selectDate(string);
+		STR_Data.selectCurrentDate(string);
 	}
 	
 	@Then("Click on {string} button")

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @salesMp1
+@myP2_Regression 
 Feature: Sales Mapping Functionality 
 	
   Background: Navigate to Sales Mapping and verify functionality  

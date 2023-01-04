@@ -396,13 +396,15 @@ public class AR_Mapping_PageObjective {
 
 	public boolean verifyDropdown(String groupName, String propertyName) throws InterruptedException {
 		boolean result = true;
+		System.out.println("groupName="+groupName);
+		System.out.println("propertyName="+propertyName);
 		if(!"null".equals(groupName)) {
 			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(group));
 			String group = drpGroup.getAttribute("value");
 			System.out.println(group);
 			Thread.sleep(2500);
-			if (!group.contains(groupName)) {
+			if (!group.equalsIgnoreCase(groupName)) {
 				result = false;
 			}
 			Thread.sleep(1500);

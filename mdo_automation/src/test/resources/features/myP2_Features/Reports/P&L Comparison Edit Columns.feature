@@ -40,7 +40,7 @@ Feature:  P&L Comparison Report - Edit Column functionality
     When The recently modified column should be displayed when a user changes all the parameters in the edit column 
     Then Page should load the defualt static section    
     
-  Scenario Outline: Verify P&L Monthly report page Element visibility and filter functionality
+  Scenario Outline: Verify P&L Property Comparison page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar
 	  When Expand the '<Main_menu>' menu 

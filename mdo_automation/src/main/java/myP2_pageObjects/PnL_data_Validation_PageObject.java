@@ -179,26 +179,23 @@ public class PnL_data_Validation_PageObject {
 	
 	public void selectParametersFunc(String grp, String property) throws InterruptedException {
 
-		Thread.sleep(4500);
-		Thread.sleep(4500);
-		Thread.sleep(4500);
+		Thread.sleep(9500);
 
-		if (drpGroup.isEnabled()) {
-			/* Select the appropriate Group value from the drop-down menu. */
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
-			drpGroupEle.click();
+		/* Select the appropriate Group value from the drop-down menu. */
+		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpGroup));
+		drpGroupEle.click();
 
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(grp)) {
-					listDrpValueSize.get(i).click();
-				}
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(grp)) {
+				listDrpValueSize.get(i).click();
 			}
 		}
 
+		Thread.sleep(6500);
 		int Property = driver.findElements(By.xpath("//div/input[@name='portfolio-hotel']")).size();
 		if (Property > 0) {
-			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
+			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
 
 			Thread.sleep(6500);
@@ -209,7 +206,6 @@ public class PnL_data_Validation_PageObject {
 			}
 		}
 		Thread.sleep(20000);
-
 		int date = driver.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
 		if (date > 0) {
 			selectDate();

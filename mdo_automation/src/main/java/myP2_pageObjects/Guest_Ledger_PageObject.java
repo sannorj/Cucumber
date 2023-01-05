@@ -237,6 +237,7 @@ public class Guest_Ledger_PageObject {
 	
 	public void clickOnFilterFunc() throws InterruptedException {
 		
+		Thread.sleep(3000);
 		btnFilter.click();
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 		

@@ -1,5 +1,4 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression
 
 Feature: Verify Occupancy KPI Calculation 
 

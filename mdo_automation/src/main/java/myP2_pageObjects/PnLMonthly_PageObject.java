@@ -173,7 +173,7 @@ public class PnLMonthly_PageObject {
 		Thread.sleep(20000);
 		selectDate();
 		
-		Thread.sleep(1500);
+		Thread.sleep(6500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		
@@ -186,7 +186,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(3500);
+		Thread.sleep(6500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		
@@ -349,7 +349,6 @@ public class PnLMonthly_PageObject {
 		drpViewEle.click();
 
 		Thread.sleep(9500);
-		
 		try {
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
@@ -364,7 +363,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 		
-		Thread.sleep(9500);
+		Thread.sleep(9700);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 		Thread.sleep(9500);
@@ -592,7 +591,7 @@ public class PnLMonthly_PageObject {
 		
 		Thread.sleep(4000);
 		drpColumn1.click();
-    	Thread.sleep(2000);
+    	Thread.sleep(4000);
     	
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
 		for (int x = 0; x < listDrpValueSize.size(); x++) {
@@ -607,8 +606,7 @@ public class PnLMonthly_PageObject {
 				}
 			
 		}
-		Thread.sleep(5000);
-		
+		Thread.sleep(6000);
 		
 		try {
 			for (int i = 0; i < listDrpValueSize.size(); i++) {

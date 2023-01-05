@@ -33,4 +33,3 @@ Feature: Report Income Journal Mapping data validation Functionality
        |     filter1       | 	filter2 	|    Main_menu   |   target_Page  | target_Page_header | nullVal|    date    | mapping | summary | reconciliation |     filter3     |    date2   |
        | 01. Highgate - US | 	24 North 	| Income Journal |  Mapping (New) |    Mapping (New)   |  null  | 08/22/2021 | Mapping | Summary | Reconciliation |  Colony Service | 12/21/2021 |
        
-       

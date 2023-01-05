@@ -2,7 +2,7 @@
 @myP2_Regression @myP2_Smoke @DV
 Feature: STR Report data validation Functionality 
 
-  Scenario Outline: Navigate to STR Report page and data validation functionality
+  Scenario Outline: Verify STR Report Page data change according to selected options and tabs in data validation functionality
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "HighGate Hotels" 
@@ -28,3 +28,4 @@ Feature: STR Report data validation Functionality
    Examples: 
        |    filter1       | 	filter2 	|  Main_menu  | sub_menu  | sub_menu_1|       target_Page        |  	 target_Page_header 	| nullVal|    date    | F_week | FT_week |   filter3   |    date2   |
        |  Highgate - US   | 	24 North 	|  	Reports 	|  Revenue  |  	 STR    | STR Report Default (New) | STR Report Default (New) |  null  | 08/22/2021 | 4 Week | 52 Week | Aloft Tulum | 12/21/2021 |
+       

@@ -7,11 +7,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import myP2_pageObjects.AR_Aging_Property_DataValidation_PageObjective;
 import myP2_pageObjects.AR_Property_PageObjective;
 
 public class AR_Property_StepDefinition {
 
 	AR_Property_PageObjective ARpropertyPo = new AR_Property_PageObjective(DriverFactory.getDriver());
+	AR_Aging_Property_DataValidation_PageObjective ARpropertyDV = new AR_Aging_Property_DataValidation_PageObjective(DriverFactory.getDriver());
 	
 	@Then("I am navigate to AR Property page")
 	public void I_am_navigate_to_AR_Property_page() {
@@ -47,5 +49,10 @@ public class AR_Property_StepDefinition {
 	@And("Verify whether the AR Property YELLOW Outstanding values are correctly highlighted")
 	public void verify_whether_the_AR_Property_YELLOW_Outstanding_values_are_correctly_highlighted() {
 		assertTrue(ARpropertyPo.verifyArPropertyRedOutstanding());
+	}
+	
+	@And("Verify Account name")
+	public void verify_account_name() {
+		assertTrue(ARpropertyDV.verifyAccountName());
 	}
 }

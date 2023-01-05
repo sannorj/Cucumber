@@ -187,7 +187,6 @@ public class STR_Report_DataValidation_PageObjective {
 		}
 		Thread.sleep(3000);
 		return true;
-		
 	}
 
 	public int getMonth() {

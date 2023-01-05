@@ -2,7 +2,7 @@
 @myP2_Regression @myP2_Smoke @DV
 Feature: Report 306090 data validation Functionality 
 
-  Scenario Outline: Navigate to 306090 Report page and data validation functionality
+  Scenario Outline: Verify 306090 Report Page data change according to selected options and tabs in data validation functionality
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "HighGate Hotels" 
@@ -27,3 +27,4 @@ Feature: Report 306090 data validation Functionality
    Examples: 
        |     filter1       | 	filter2 	|  Main_menu  | sub_menu  |     target_Page        |  	    target_Page_header     | nullVal|    date    |    R_month    |     C_month    |     filter3     |    date2   |
        | 01. Highgate - US | 	24 North 	|  	Reports 	|  Revenue  |  30/60/90 Report (New) | 30/60/90 Rolling Month Report |  null  | 08/22/2021 | Rolling Month | Calendar Month |  Colony Service | 12/21/2021 |
+       

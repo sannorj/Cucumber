@@ -39,7 +39,10 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//div/input[@name='portfolio-hotel']")
 	WebElement drpProperty;
 
-	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")
+//	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")
+//	WebElement drpView;
+	
+	@FindBy(xpath = "//label[text()='View']//following::div/input")
 	WebElement drpView;
 
 	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@name='date']")

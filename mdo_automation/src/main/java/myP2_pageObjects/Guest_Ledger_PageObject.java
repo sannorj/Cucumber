@@ -1,6 +1,8 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -162,7 +164,115 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//div[text()='myPerspective 2.0']")
 	WebElement lblmyP2;
 	
+	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+	WebElement btnDatePicker;
+
+	@FindBy(xpath = "//div[@role='dialog']")
+	WebElement divCalender;
+
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
+	WebElement btnExpandYear;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+	WebElement btnPreviousMonth;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+	WebElement btnNextMonth;
 	
+	
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+
+		return month + 1;
+	}
+
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
+	public boolean selectDate() throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("Ledger_Date").split("/");
+
+		txtDate.click();
+
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+
+			Thread.sleep(2500);
+
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+			pickYear.click();
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
+	}
 	
 	
 	public boolean navigateGuestLedgerFunc() throws InterruptedException {
@@ -224,9 +334,7 @@ public class Guest_Ledger_PageObject {
 		
 		/* Select the appropriate From date  from Date picker */
 		Thread.sleep(3000);
-		txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("Ledger_Date"));
+		selectDate();
 		Thread.sleep(1000);
 		
 		btnGo.click();

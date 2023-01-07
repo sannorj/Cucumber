@@ -146,9 +146,8 @@ public class PnLMonthly_PageObject {
 
 	public void selectParameters() throws InterruptedException {
 
-		Thread.sleep(4500);
-		Thread.sleep(4500);
-		Thread.sleep(4500);
+		Thread.sleep(12500);
+		
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -189,8 +188,8 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(6500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+		Thread.sleep(9500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
@@ -534,7 +533,7 @@ public class PnLMonthly_PageObject {
 	
 	public void clickOnViewDrpFunc() throws InterruptedException {
 
-		Thread.sleep(5500);
+		Thread.sleep(8500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 		Thread.sleep(3500);

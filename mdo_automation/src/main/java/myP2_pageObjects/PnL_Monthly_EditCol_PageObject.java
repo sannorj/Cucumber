@@ -199,8 +199,8 @@ public class PnL_Monthly_EditCol_PageObject {
     public void addColumnFunc() throws InterruptedException {
     	
     	WebElement drpColumn4Ele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(drpColumn4));
-    	Thread.sleep(6000);
     	drpColumn4Ele.click();
+    	Thread.sleep(6000);
     	
     	try {
     		for (int i = 0; i < listDrpValueSize.size(); i++) {

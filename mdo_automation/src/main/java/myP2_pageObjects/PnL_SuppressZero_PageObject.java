@@ -210,9 +210,9 @@ public class PnL_SuppressZero_PageObject {
 				}
 			}
 
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			selectDate();
-			Thread.sleep(1000);
+			Thread.sleep(6000);
 
 				WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 				drpViewEle.click();
@@ -225,7 +225,7 @@ public class PnL_SuppressZero_PageObject {
 					}
 				}
 			
-				Thread.sleep(3500);
+				Thread.sleep(6500);
 				WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 				btnGO.click();
 				

@@ -32,7 +32,7 @@ Background: Navigate to P&L Monthly report
    When user selects the property form property dropdown
    Then based on the property page should load the MDO gl codes 
    And  clicks on the add GL Codes button from the UI
-   And  select one multiple available hmg gl code from the pop-up and click on save button 
+   And  select multiple available hmg gl code from the pop-up and click on save button 
    Then Add GL Codes text should change to Manage GL Codes
    
    Scenario: Verify whether user can remove the mapped hmg code from the pop-up

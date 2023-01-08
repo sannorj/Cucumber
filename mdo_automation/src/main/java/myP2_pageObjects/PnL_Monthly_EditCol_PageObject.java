@@ -219,7 +219,7 @@ public class PnL_Monthly_EditCol_PageObject {
     	
     	Thread.sleep(6000);
     	drpYear4.click();
-    	Thread.sleep(2000);
+    	Thread.sleep(6000);
     	try {
     		for (int i = 0; i < listDrpValueSize.size(); i++) {
     			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
@@ -237,7 +237,7 @@ public class PnL_Monthly_EditCol_PageObject {
     	btnApply.click();
     	ElementUtils.waitForElementToHide(lblEdit, 100);
     	
-    	Thread.sleep(2500);
+    	Thread.sleep(4500);
     	WebElement btnGoEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
     	btnGoEle.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);

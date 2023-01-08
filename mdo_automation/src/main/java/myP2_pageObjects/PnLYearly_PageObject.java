@@ -156,7 +156,7 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(1500);
+			Thread.sleep(4500);
 
 			dropDownView.click();
 			for (int i = 0; i < lstDropDownView.size(); i++) {
@@ -173,7 +173,7 @@ public class PnLYearly_PageObject {
 
 	public void loadPriorityReport() throws InterruptedException {
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
 		Thread.sleep(5000);

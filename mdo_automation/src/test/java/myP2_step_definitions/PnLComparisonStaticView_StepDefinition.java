@@ -12,7 +12,7 @@ public class PnLComparisonStaticView_StepDefinition {
 	private PnLComparison_PageObject pnlComparison = new PnLComparison_PageObject(DriverFactory.getDriver());
 	
 	@Given("go to the P&L Property Comparison")
-	public void go_to_the_p_l_property_comparison() {
+	public void go_to_the_p_l_property_comparison() throws InterruptedException {
 	    assertTrue(pnlComparison.navigatePnLComparison());
 	}
 	

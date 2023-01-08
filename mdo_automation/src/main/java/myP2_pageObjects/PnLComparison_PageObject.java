@@ -77,11 +77,12 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
 
-	public boolean navigatePnLComparison() {
+	public boolean navigatePnLComparison() throws InterruptedException {
 
 		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
 		pnlPropertyComparisonEle.click();
 
+		Thread.sleep(6500);
 		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
 		return pnlComparisonPageEle.isDisplayed();
 

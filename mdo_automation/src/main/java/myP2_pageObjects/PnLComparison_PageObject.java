@@ -40,9 +40,6 @@ public class PnLComparison_PageObject {
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
-
-//	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")
-//	WebElement drpView;
 	
 	@FindBy(xpath = "//div[@data-el='dropdownGenericSelector']")
 	WebElement drpView;
@@ -106,7 +103,7 @@ public class PnLComparison_PageObject {
 		selectDate();
 
 		Thread.sleep(7000);	
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(7000);
@@ -129,7 +126,7 @@ public class PnLComparison_PageObject {
 		
 		
 
-		Thread.sleep(2500);
+		Thread.sleep(6500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		

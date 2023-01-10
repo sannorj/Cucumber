@@ -79,7 +79,7 @@ public class Login_PageObject {
 
 		} else if (myEnv.toLowerCase().equals("uat")) {
 			driver.get(configReader.getProp("uat_myp2URL"));
-
+			Thread.sleep(12000);
 			WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(20))
 					.until(ExpectedConditions.visibilityOf(logo));
 

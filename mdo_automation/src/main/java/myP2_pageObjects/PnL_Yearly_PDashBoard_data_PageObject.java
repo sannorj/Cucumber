@@ -273,7 +273,7 @@ public class PnL_Yearly_PDashBoard_data_PageObject {
        public void StorePnLExpensesValueFunc() throws InterruptedException {
 
 			Thread.sleep(3500);
-		    for(int x=12; x<14; x++){
+		    for(int x=14; x<16; x++){
 		    	PnL_Expenses_elements.add(lstMarchValue.get(x).getText());
 		    }
 		    Thread.sleep(5000);

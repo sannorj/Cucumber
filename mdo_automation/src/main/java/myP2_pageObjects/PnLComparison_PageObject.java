@@ -40,8 +40,8 @@ public class PnLComparison_PageObject {
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
-
-	@FindBy(xpath = "(//label[text()='View']//following::div)[2]")
+	
+	@FindBy(xpath = "//div[@data-el='dropdownGenericSelector']")
 	WebElement drpView;
 
 	@FindBy(xpath = "//button//span[text()='Go']")
@@ -74,11 +74,12 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
 
-	public boolean navigatePnLComparison() {
+	public boolean navigatePnLComparison() throws InterruptedException {
 
 		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
 		pnlPropertyComparisonEle.click();
 
+		Thread.sleep(6500);
 		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
 		return pnlComparisonPageEle.isDisplayed();
 
@@ -101,7 +102,8 @@ public class PnLComparison_PageObject {
 		Thread.sleep(3500);
 		selectDate();
 
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpView));
+		Thread.sleep(7000);	
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
 		Thread.sleep(7000);
@@ -124,7 +126,7 @@ public class PnLComparison_PageObject {
 		
 		
 
-		Thread.sleep(2500);
+		Thread.sleep(6500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		

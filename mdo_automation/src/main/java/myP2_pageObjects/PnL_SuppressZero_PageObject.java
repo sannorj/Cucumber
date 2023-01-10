@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -210,22 +211,32 @@ public class PnL_SuppressZero_PageObject {
 				}
 			}
 
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			selectDate();
-			Thread.sleep(1000);
+			Thread.sleep(6000);
 
 				WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
 				drpViewEle.click();
-				Thread.sleep(3500);
+				Thread.sleep(6500);
 
-				for (int i = 0; i < listDrpValueSize.size(); i++) {
-					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("SZ_View"))) {
-						ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-						listDrpValueSize.get(i).click();
+				
+				try {
+					for (int i = 0; i < listDrpValueSize.size(); i++) {
+						if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("SZ_View"))) {
+							ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+							listDrpValueSize.get(i).click();
+						}
+					}
+				} catch (StaleElementReferenceException e) {
+					for (int i = 0; i < listDrpValueSize.size(); i++) {
+						if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("SZ_View"))) {
+							ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+							listDrpValueSize.get(i).click();
+						}
 					}
 				}
-			
-				Thread.sleep(3500);
+							
+				Thread.sleep(6500);
 				WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
 				btnGO.click();
 				
@@ -248,7 +259,7 @@ public class PnL_SuppressZero_PageObject {
 
 	 public void clickOnSuppressZeroFunc() throws InterruptedException {
 		 
-		 Thread.sleep(3500);
+		 Thread.sleep(6500);
 		 int GO = driver.findElements(By.xpath("//button//span[text()='Go']")).size();
 			if (GO==1) {
 				btnGo.click();

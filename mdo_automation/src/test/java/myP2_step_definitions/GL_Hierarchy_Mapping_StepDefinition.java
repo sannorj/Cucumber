@@ -53,7 +53,7 @@ public class GL_Hierarchy_Mapping_StepDefinition {
 	}
 	
 	
-	@Then("select one multiple available hmg gl code from the pop-up and click on save button")
+	@Then("select multiple available hmg gl code from the pop-up and click on save button")
 	public void select_one_multiple_available_hmg_gl_code_from_the_pop_up_and_click_on_save_button() throws InterruptedException {
 		glMapping.selectMultipleGlcodeFunc();
 	}

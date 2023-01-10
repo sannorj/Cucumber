@@ -4,11 +4,14 @@ import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
 import io.cucumber.java.en.*;
+import myP2_pageObjects.AR_Aging_Dashboard_DataValidation_PageObjective;
+import myP2_pageObjects.AR_Aging_Property_DataValidation_PageObjective;
 import myP2_pageObjects.AR_Dashboard_PageObjective;
 
 public class AR_Dashboard_StepDefinition {
 
 	AR_Dashboard_PageObjective ARdashboardPo = new AR_Dashboard_PageObjective(DriverFactory.getDriver());
+	AR_Aging_Dashboard_DataValidation_PageObjective ARdashboardDV = new AR_Aging_Dashboard_DataValidation_PageObjective(DriverFactory.getDriver());
 
 	@And("I am expand the Account Recievable option under Reports section in Side Menu")
 	public void I_am_expand_the_Account_Recievable_option_under_Reports_section_in_Side_Menu() {
@@ -47,7 +50,6 @@ public class AR_Dashboard_StepDefinition {
 
 	@And("I am sorting all the values")
 	public void i_am_sorting_all_the_values() {
-
 		ARdashboardPo.calulateMaxValue();
 	}
 
@@ -71,5 +73,9 @@ public class AR_Dashboard_StepDefinition {
 		assertTrue(ARdashboardPo.selectDate());
 	}
 	
+	@And("Verify property")
+	public void verify_property() throws InterruptedException {
+		assertTrue(ARdashboardDV.verifyProperty());
+	}
 
 }

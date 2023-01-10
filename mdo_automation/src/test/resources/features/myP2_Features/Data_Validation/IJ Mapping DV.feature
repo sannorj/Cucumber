@@ -2,7 +2,7 @@
 @myP2_Regression @myP2_Smoke @DV
 Feature: Report Income Journal Mapping data validation Functionality 
 
-  Scenario Outline: Navigate to Income Journal Mapping page and data validation functionality
+  Scenario Outline: Verify IJ Mapping Page data change according to selected options and tabs in data validation functionality
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "HighGate Hotels" 
@@ -32,3 +32,4 @@ Feature: Report Income Journal Mapping data validation Functionality
    Examples: 
        |     filter1       | 	filter2 	|    Main_menu   |   target_Page  | target_Page_header | nullVal|    date    | mapping | summary | reconciliation |     filter3     |    date2   |
        | 01. Highgate - US | 	24 North 	| Income Journal |  Mapping (New) |    Mapping (New)   |  null  | 08/22/2021 | Mapping | Summary | Reconciliation |  Colony Service | 12/21/2021 |
+       

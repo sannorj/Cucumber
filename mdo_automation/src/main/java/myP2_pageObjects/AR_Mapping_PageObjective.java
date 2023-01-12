@@ -382,7 +382,7 @@ public class AR_Mapping_PageObjective {
 
 	public void clckARMappingMenu(String targetPage) throws InterruptedException {
 		WebElement targetPageLink = new WebDriverWait(driver, Duration.ofSeconds(1000))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+targetPage+"']//ancestor::li")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='"+targetPage+"']//ancestor::li")));
 		targetPageLink.click();
 		Thread.sleep(3000);
 	}

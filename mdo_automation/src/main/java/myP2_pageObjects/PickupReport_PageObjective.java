@@ -48,7 +48,7 @@ public class PickupReport_PageObjective {
 	@FindBy(xpath = "//div[contains(text(),'Pickup Reports')]//ancestor::li")
 	WebElement pickUpReports;
 
-	@FindBy(xpath = "//div[text()='Pickup Report (New)']//ancestor::li")
+	@FindBy(xpath = "//div/a[contains(text(),'Pickup Report (New)')]//ancestor::li")
 	WebElement pickUpReportPage;
 
 	@FindBy(xpath = "//h1[text()='Pickup Report']")

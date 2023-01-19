@@ -38,7 +38,6 @@ public class PickUpReport_TotalComparison_PageObject {
 		grandTotArray = new ArrayList<>();
 		newMeanArray = new ArrayList<>();
 
-
 	}
 
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
@@ -410,17 +409,6 @@ public class PickUpReport_TotalComparison_PageObject {
 	
 	public void loadSpecificDatesReport() {
 		try {
-//			txtBusinessDate.sendKeys(Keys.CONTROL + "a");
-//			txtBusinessDate.sendKeys(Keys.DELETE);
-//			txtBusinessDate.sendKeys(configReader.getProp("businessDate2") + "/" + configReader.getProp("businessYear2"));
-			
-//			txtStartDate.sendKeys(Keys.CONTROL + "a");
-//			txtStartDate.sendKeys(Keys.DELETE);
-//			txtStartDate.sendKeys(configReader.getProp("startDate2") + "/" + configReader.getProp("businessYear2"));
-//
-//			txtEndDate.sendKeys(Keys.CONTROL + "a");
-//			txtEndDate.sendKeys(Keys.DELETE);
-//			txtEndDate.sendKeys(configReader.getProp("endDate2") + "/" + configReader.getProp("businessYear2"));
 			Thread.sleep(5000);
 			BusinessDate();
 			startDate();
@@ -494,7 +482,6 @@ public class PickUpReport_TotalComparison_PageObject {
 
 	}
 
-	
 	public void meanArray() throws InterruptedException {
 		
 		DecimalFormat df = new DecimalFormat("0.00");
@@ -554,7 +541,7 @@ public class PickUpReport_TotalComparison_PageObject {
 		
 	}
 	
-public boolean comparingWithMeanArray() {
+	public boolean comparingWithMeanArray() {
 		
 		boolean flag = true;
 		

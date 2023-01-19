@@ -61,6 +61,10 @@ public class RollingMonth_StepDefinition {
 		assertTrue(rollingMonth_DV.verifyDataNotView());
 	}
 
+   @Then("verify whether calender month total are matching with the total row value")
+   public void verify_whether_calender_month_total_are_matching_with_the_total_row_value() throws InterruptedException {
+	   assertTrue(rollingMonth.verifySumFunc());
+   }
 
 	
 }

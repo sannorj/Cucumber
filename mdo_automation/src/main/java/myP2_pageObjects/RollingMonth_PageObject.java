@@ -1,5 +1,6 @@
 package myP2_pageObjects;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.math.BigDecimalMath;
 
 import utils.ConstantsReader;
 import utils.ElementUtils;
@@ -320,6 +323,51 @@ public class RollingMonth_PageObject {
 		return flag;
 
 	}
-
 	
+	public boolean verifySumFunc() throws InterruptedException {
+		Thread.sleep(1500);
+		List<WebElement> headerColumn = driver.findElements(By.xpath("//th/span[@role='button']"));
+		for (int p = 0; p < headerColumn.size() - 1; p++) {
+			int y = p + 2;
+			System.out.println("===============y = p + 2=========="+y);
+			if((p + 1) % 3 != 0) {
+				List<WebElement> valuecells = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//tbody//tr//td[" + y + "]")));
+				String expected = driver.findElement(By.xpath("//table/tbody/tr[last()]/td[" + y + "]")).getText().replaceAll("[$,]", "");
+				double expectedtotal = Double.parseDouble(expected);
+				double totalvalue = 0;
+				
+				for (int i = 0; i < valuecells.size() - 1; i++) {
+					String actual = valuecells.get(i).getText().replaceAll("[$,]", "");
+					double actualvalue = Double.parseDouble(actual);
+					totalvalue += actualvalue;
+
+					
+				}
+				
+				double value = expectedtotal;
+				String expectedtotalValue = String.format("%.2f", value);
+				double expectedtotalValuedecimalNumber = Double.parseDouble(expectedtotalValue);
+				int expectedtotalValuewholeNumber = (int) Math.round(expectedtotalValuedecimalNumber);
+					
+				double roundValue = Math.round(totalvalue * 100.0) / 100.0;
+				double value1 = roundValue;
+				String SumedValue = String.format("%.2f", value1);
+				double SumedValueecimalNumber = Double.parseDouble(SumedValue);
+				int SumedValuewholeNumber = (int) Math.round(SumedValueecimalNumber);
+				
+				System.out.println("==========SumedValue=================="+SumedValue);
+				System.out.println("=======expectedtotalValue============="+expectedtotalValue);
+				
+				if (SumedValuewholeNumber== expectedtotalValuewholeNumber) {
+					flag = true;		
+				}else {
+					flag = false;
+				}
+			
+			}
+			
+		}
+		
+		return flag;
+	}
 }

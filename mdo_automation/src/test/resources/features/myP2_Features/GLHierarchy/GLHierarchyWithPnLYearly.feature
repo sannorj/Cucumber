@@ -56,7 +56,7 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
 		Then I am navigate to GL Hierarchy page
 		And Click the All On button
 		And  Verify whether the function worked properly
-#
+
 	@myP2_Smoke 
   Scenario Outline: Verify P&L Yearly Report page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page

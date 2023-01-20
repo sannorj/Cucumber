@@ -165,6 +165,7 @@ public class PnLYearly_PageObject {
 
 				}
 			}
+			Thread.sleep(4500);
 
 		} catch (Exception e) {
 			e.printStackTrace();

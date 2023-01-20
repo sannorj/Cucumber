@@ -48,7 +48,7 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//button")
 	WebElement btnRoomRevenue;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement btnRoomRevenueBeforeOther;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
@@ -63,16 +63,16 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//td[4]//input[@type='checkbox']")
 	WebElement btnParentCapturedValueToggle;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement glRoomRevenueBeofreOther;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
 	WebElement btnTopCapturedValueToggle;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
 	WebElement glRoomContracts;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV01']//td[4]//input[@type='checkbox']") 
 	WebElement btnBottomCapturedValueToggle;
 
 	@FindBy(xpath = "//h3[text() = 'Turn Off Parent GL Code?']")
@@ -95,10 +95,10 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 		WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
 		btnRoomRevBeofreOther.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV01']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
+			WebElement totalRoomCntract = driver.findElement(By.xpath("(//tr[@data-el='RMREV01']//td[1]//div)[last()]"));
 			capturedModal = totalRoomCntract.getText();
 
 			System.out.print("AAA" + capturedModal);
@@ -121,15 +121,15 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 		WebElement glRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glRoomRevenueBeofreOther));
 		glRoomRevBeofreOther.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV01']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
 			btnBottomCapturedValueToggle.click();
 
-			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
-			btnConfirm.click();
+//			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+//			btnConfirm.click();
 
 			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
 			return lblSuccessmsg.isDisplayed();
@@ -163,10 +163,10 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 		btnRoomRev.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[1]"));
+			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
 			capturedModal = totalRoomRevBefore.getText();
 
 			System.out.print("AAA" + capturedModal);
@@ -185,7 +185,7 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 		WebElement glRoomRev = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glRoomRevenue));
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {

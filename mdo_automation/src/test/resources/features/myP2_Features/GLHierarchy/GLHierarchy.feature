@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @glhFixt
+@myP2_Regression @glhFixt @gl
 
 Feature: GL Hierarchy - Toggle button Validation With PnL Monthly 
 

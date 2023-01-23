@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression @ARtest
 Feature: AR Mapping Functionality 
 
   Background: Navigate to AR Mapping and verify functionality  
@@ -34,6 +34,7 @@ Feature: AR Mapping Functionality
 	
 	@myP2_Smoke 
   Scenario Outline: Verify AR Mapping page Element visibility and filter functionality
+  And Select date as '<date>'
   Given Selects filters as '<filter1>' and '<filter2>' in the initial page
   And Click on the Menu bar
   When Expand the '<Main_menu>' menu 
@@ -48,8 +49,8 @@ Feature: AR Mapping Functionality
   And Verify remove Mapping link under the Actions header
   
    Examples: 
-       |    filter1       | 	filter2 	|       Main_menu   |  			sub_menu  		|  target_Page  |  	target_Page_header 	|
-       |  Highgate - US   | 	24 North 	|  	Configuration 	|  	Accounts Mapping  | 	AR Mapping  |  			AR Mapping 			|
+       |    		filter1	      | 	filter2 	|       Main_menu   |  			sub_menu  		|  target_Page  |  	target_Page_header 	|    date    |
+       |  01. Highgate - US   | 	24 North 	|  	Configuration 	|  	Accounts Mapping  | 	AR Mapping  |  			AR Mapping 			| 08/22/2021 |
   
 		
 		

@@ -36,7 +36,7 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Mapping']//ancestor::li")
 	WebElement accountsMapping;
 
-	@FindBy(xpath = "//div[text()='AR Mapping']//ancestor::li")
+	@FindBy(xpath = "//a[text()='AR Mapping']//ancestor::li")
 	WebElement ARMapping;
 
 	@FindBy(xpath = "//h1[text()='AR Mapping']")

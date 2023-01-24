@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression  @arFix
+@myP2_Regression  
 Feature: AR Account - Outstanding validation Functionality (Disabled in UAT & PROD)
 
   Background: Navigate to AR Account and verify functionality  

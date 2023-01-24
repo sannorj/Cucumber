@@ -32,7 +32,7 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//div[text()='P&L Reports']//ancestor::li")
 	WebElement pnlStatement;
 
-	@FindBy(xpath = "//div[contains(text(),'P&L Yearly Report')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'P&L Yearly Report')]//ancestor::li")
 	WebElement pnlYearly;
 
 	@FindBy(xpath = "//h1[text()='Profit & Loss Yearly Report']")
@@ -165,6 +165,7 @@ public class PnLYearly_PageObject {
 
 				}
 			}
+			Thread.sleep(4500);
 
 		} catch (Exception e) {
 			e.printStackTrace();

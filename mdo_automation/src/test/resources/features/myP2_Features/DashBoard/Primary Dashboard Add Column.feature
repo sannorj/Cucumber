@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @FinalFix
+@myP2_Regression 
 Feature: Primary Dashboard - Add Column Feature
 
 	Background: Navigate to primary dashboard

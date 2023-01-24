@@ -33,7 +33,7 @@ public class Account_Sales_Manager_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Mapping']//ancestor::li")
 	WebElement accountsMapping;
 	
-	@FindBy(xpath = "//div[text()='Sales Managers']//ancestor::li")
+	@FindBy(xpath = "//a[text()='Sales Managers']//ancestor::li")
 	WebElement salesManagers;
 
 	@FindBy(xpath = "//h1[text()='Account Sales Managers']")

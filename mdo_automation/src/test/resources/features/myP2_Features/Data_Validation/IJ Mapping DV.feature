@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @DV
+@myP2_Regression @myP2_Smoke 
 Feature: Report Income Journal Mapping data validation Functionality 
 
   Scenario Outline: Verify IJ Mapping Page data change according to selected options and tabs in data validation functionality

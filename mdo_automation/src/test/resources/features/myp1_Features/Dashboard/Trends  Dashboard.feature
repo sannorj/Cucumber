@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression @myp1test
+@myP1_Regression 
 Feature: Trends Dashboard Functionality
 
   Scenario: Verify Trends Dashboard

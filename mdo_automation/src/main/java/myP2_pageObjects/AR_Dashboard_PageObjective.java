@@ -40,7 +40,7 @@ public class AR_Dashboard_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Receivable']//ancestor::li")
 	WebElement Ar;
 
-	@FindBy(xpath = "//div[contains(text(),'AR Aging Dashboard')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'AR Aging Dashboard')]//ancestor::li")
 	WebElement ArDashboard;
 
 	@FindBy(xpath = "//h1[text()='AR Aging Dashboard (New)']")

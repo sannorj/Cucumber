@@ -36,7 +36,7 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Mapping']//ancestor::li")
 	WebElement accountsMapping;
 
-	@FindBy(xpath = "//div[text()='AR Mapping']//ancestor::li")
+	@FindBy(xpath = "//a[text()='AR Mapping']//ancestor::li")
 	WebElement ARMapping;
 
 	@FindBy(xpath = "//h1[text()='AR Mapping']")
@@ -345,7 +345,6 @@ public class AR_Mapping_PageObjective {
 				lstDropDowGroup.get(i).click();
 			}
 		}
-
 		Thread.sleep(1500);
 
 		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
@@ -357,9 +356,8 @@ public class AR_Mapping_PageObjective {
 				lstDropDowProperty.get(i).click();
 			}
 		}
-
 		WebElement propertyDataView = new WebDriverWait(driver, Duration.ofSeconds(1000))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//th[text()='Property']")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Property']")));
 	}
 
 	public void clckMenu() throws InterruptedException {

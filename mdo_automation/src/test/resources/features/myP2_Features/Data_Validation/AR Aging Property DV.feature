@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @DV
+@myP2_Regression @myP2_Smoke 
 Feature: Report AR Aging Dashboard data validation Functionality 
 
   Scenario Outline: Navigate to AR Aging Dashboard page and verify page showing the record without a account name functionality

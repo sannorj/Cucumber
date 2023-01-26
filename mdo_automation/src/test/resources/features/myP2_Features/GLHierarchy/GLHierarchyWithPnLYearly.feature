@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @GlPnlYearly11
+@myP2_Regression 
 Feature: GL Hierarchy Toggle button Validation With PnL Yearly
 
 	Background: Navigate to P&L Yearly report
@@ -47,7 +47,7 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
     Then I am Loading the PnLYearly Report with GO button
     And Verify the parent modal is not visible in the Pnl Yearly report
     
-    Scenario: Verify the All on Modal Function
+   Scenario: Verify the All on Modal Function
     When I am expand the P&L Statement option under Reports section in Side Menu
     Then I am navigate to P&L Yearly page
     And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"

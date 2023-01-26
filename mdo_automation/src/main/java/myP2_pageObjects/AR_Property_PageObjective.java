@@ -38,7 +38,7 @@ public class AR_Property_PageObjective {
 	@FindBy(xpath = "//div[text()='Accounts Receivable']//ancestor::li")
 	WebElement Ar;
 
-	@FindBy(xpath = "//div[contains(text(),'AR Aging Property')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'AR Aging Property')]//ancestor::li")
 	WebElement ArProperty;
 
 	@FindBy(xpath = "//h1[contains(text(),'AR Aging Property')]")

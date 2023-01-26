@@ -48,7 +48,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//button")
 	WebElement btnRoomRevenue;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement btnRoomRevenueBeforeOther;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
@@ -63,10 +63,10 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//td[4]//input[@type='checkbox']")
 	WebElement btnParentCapturedValueToggle;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement glRoomRevenueBeofreOther;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
 	WebElement btnTopCapturedValueToggle;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
@@ -187,10 +187,10 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		btnRoomRev.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[1]"));
+			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
 			capturedModal = totalRoomRevBefore.getText();
 
 			System.out.print("AAA" + capturedModal);
@@ -214,7 +214,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
 
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
@@ -242,7 +242,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 
 		btnRoomRev.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 0) {
 			return true;

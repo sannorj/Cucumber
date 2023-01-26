@@ -34,7 +34,7 @@ public class GLHierarchy_PageObject {
 	@FindBy(xpath = "//div[text()='P&L Mapping']//ancestor::li")
 	WebElement pnlMapping;
 
-	@FindBy(xpath = "//div[text()='GL Hierarchy']//ancestor::li")
+	@FindBy(xpath = "//div//a[text()='GL Hierarchy']//ancestor::li")
 	WebElement glHierarchy;
 
 	@FindBy(xpath = "//h1[text()='GL Hierarchy']")
@@ -49,7 +49,7 @@ public class GLHierarchy_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//button")
 	WebElement btnRoomRevenue;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement btnRoomRevenueBeforeOther;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
@@ -64,16 +64,16 @@ public class GLHierarchy_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//td[4]//input[@type='checkbox']")
 	WebElement btnParentCapturedValueToggle;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//button")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement glRoomRevenueBeofreOther;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV60']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
 	WebElement btnTopCapturedValueToggle;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")
 	WebElement glRoomContracts;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV01']//td[4]//input[@type='checkbox']")
 	WebElement btnBottomCapturedValueToggle;
 
 	@FindBy(xpath = "//h3[text() = 'Turn Off Parent GL Code?']")
@@ -154,13 +154,13 @@ public class GLHierarchy_PageObject {
 
 		btnRoomRevBeofreOther.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV01']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomCntract = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
+			WebElement totalRoomCntract = driver.findElement(By.xpath("(//tr[@data-el='RMREV01']//td[1]//div)[last()]"));
 			capturedModal = totalRoomCntract.getText();
 
-			System.out.print("AAA" + capturedModal);
+			System.out.print("AAA  " + capturedModal);
 
 			return true;
 		} else {
@@ -186,16 +186,16 @@ public class GLHierarchy_PageObject {
 
 		glRoomRevBeofreOther.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV01']//td[2]")).getText();
 
-		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
+		System.out.println("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
 			btnBottomCapturedValueToggle.click();
 
-			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+//			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
 
-			btnConfirm.click();
+//			btnConfirm.click();
 
 			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));
@@ -237,13 +237,13 @@ public class GLHierarchy_PageObject {
 
 		btnRoomRev.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 1) {
-			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[1]"));
+			WebElement totalRoomRevBefore = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[1]"));
 			capturedModal = totalRoomRevBefore.getText();
 
-			System.out.print("AAA" + capturedModal);
+			System.out.println("AAA  " + capturedModal);
 
 			return true;
 		} else {
@@ -264,9 +264,9 @@ public class GLHierarchy_PageObject {
 
 		glRoomRev.click();
 
-		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV60']//td[2]")).getText();
+		String txtCapturedValue = driver.findElement(By.xpath("//tr[@data-el='RMREV50']//td[2]")).getText();
 
-		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
+		System.out.println("AA " + txtCapturedValue + " BB " + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
 			btnTopCapturedValueToggle.click();
@@ -292,7 +292,7 @@ public class GLHierarchy_PageObject {
 
 		btnRoomRev.click();
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV60']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
 
 		if (status == 0) {
 			return true;
@@ -301,7 +301,7 @@ public class GLHierarchy_PageObject {
 		}
 	}
 
-	// ===============================================Top Child Scenario
+	// ===============================================Top parent Scenario
 	// =========================================================================================
 
 	public boolean captureParentModal() throws InterruptedException {

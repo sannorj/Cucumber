@@ -26,7 +26,7 @@ public class PnLComparison_PageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[contains(text(),'P&L Property Comparison')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'P&L Property Comparison Report (New)')]//ancestor::li")
 	WebElement pnlPropertyComparison;
 
 	@FindBy(xpath = "//h1[text()='Profit & Loss Property Comparison']")
@@ -122,9 +122,6 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-
-		
-		
 
 		Thread.sleep(6500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));

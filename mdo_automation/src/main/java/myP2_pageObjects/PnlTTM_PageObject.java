@@ -46,25 +46,25 @@ public class PnlTTM_PageObject {
 	@FindBy(xpath = "//input[@name='portfolio-group']")
 	WebElement dropDownGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownGroup;
 
 	@FindBy(xpath = "//input[@name='portfolio-hotel']")
 	WebElement dropDownHotel;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownHotel;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-selectedYear']")
 	WebElement dropDownPeriod;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-customViewId']")
 	WebElement dropDownView;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownView;
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
@@ -200,7 +200,7 @@ public class PnlTTM_PageObject {
 				.findElement(By.xpath("//label[text()='Year']//following::div[@data-el='selectorYear']/div[@role='button']"));
 		yearOptions.click();
 		WebElement yearOptionclick = driver
-				.findElement(By.xpath("//ul[@role='listbox']//li[text()='TTM']"));
+				.findElement(By.xpath("//div[@role='listbox']//li[text()='TTM']"));
 		yearOptionclick.click();
 		Thread.sleep(2500);
 	}

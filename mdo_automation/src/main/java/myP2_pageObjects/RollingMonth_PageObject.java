@@ -49,7 +49,7 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//h1[text()='30/60/90 Rolling Month Report']")
 	WebElement hlRollingMonthReport;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//div/input[contains(@name, 'portfolio-group')]")

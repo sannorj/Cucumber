@@ -35,7 +35,7 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'porfolio')]")
 	WebElement drpGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")

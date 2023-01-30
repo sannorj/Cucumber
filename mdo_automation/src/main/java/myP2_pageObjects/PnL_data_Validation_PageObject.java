@@ -53,7 +53,7 @@ public class PnL_data_Validation_PageObject {
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//input[@name='nullRecords']")

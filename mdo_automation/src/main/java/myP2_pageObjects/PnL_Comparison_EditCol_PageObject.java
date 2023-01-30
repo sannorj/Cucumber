@@ -66,7 +66,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	@FindBy(xpath = "//div[@id='mui-component-select-columns[2].yearOffest']")
 	WebElement drpYear3;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//button[@data-el='buttonFiltersApply']")

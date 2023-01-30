@@ -37,7 +37,7 @@ public class PnL_Yearly_PDashBoard_data_PageObject {
 		@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+5]")
 		List<WebElement> lstMarchValue ;
 
-		@FindBy(xpath = ".//tr[1]/td")
+		@FindBy(xpath = "//div[@role='cell']")
 		List<WebElement> listRow;
 
 		@FindBy(xpath = "//button[@data-el='menuToggle']")

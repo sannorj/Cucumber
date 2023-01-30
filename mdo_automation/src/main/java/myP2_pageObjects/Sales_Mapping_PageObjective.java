@@ -39,10 +39,10 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//button//div[text()='Sales Mapping']")
 	WebElement SalesMappingBtn;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
 	@FindBy(xpath = "//input[@name='portfolio-group']")
@@ -60,7 +60,7 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnRefresh;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowMappingTolst;
 
 //	String mulAccounts = configReader.getProp("Sales_BulkAccounts");
@@ -72,16 +72,16 @@ public class Sales_Mapping_PageObjective {
 	@FindBy(xpath = "//label[text()='Search']//following-sibling::div//input[@role='combobox']")
 	WebElement popupSearch;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowPopupAcc;
 
 	@FindBy(xpath = "//button[@mdo_variant='success']")
 	WebElement saveBtn;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowSalesManager;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowManagementStatus;
 
 	String singleMapOpt = null;

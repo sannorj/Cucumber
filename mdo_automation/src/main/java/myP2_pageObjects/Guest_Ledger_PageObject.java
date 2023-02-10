@@ -43,10 +43,10 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'hotelGroupId')]")
 	WebElement drpGroup;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
-	@FindBy(xpath = "//ul//li[@role='option']")
+	@FindBy(xpath = "//div//li[@role='option']")
 	List <WebElement> listDrp2ValueSize;
 	
 	
@@ -301,7 +301,7 @@ public class Guest_Ledger_PageObject {
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpOrg));
 			drpGroupEle.click();
 
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+			Thread.sleep(5000);
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(org)) {
 					listDrpValueSize.get(i).click();

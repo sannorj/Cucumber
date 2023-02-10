@@ -103,7 +103,7 @@ public class PnL_Monthly_EditCol_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonFiltersCancel']")
 	WebElement btnClose ;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//button//span[text()='Go']")

@@ -42,8 +42,6 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//div[@data-el='dropdownGenericSelector']")
 	WebElement drpView;
 	
-//	@FindBy(xpath = "//label[text()='View']//following::div/input")
-//	WebElement drpView;
 
 	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@name='date']")
 	WebElement txtDrp;
@@ -57,7 +55,7 @@ public class PnLMonthly_PageObject {
 	@FindBy(xpath = "//button[@title='Refresh']")
 	WebElement btnRefresh;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 
 	@FindBy(xpath = "//h1[text()='Profit & Loss Monthly Report']")

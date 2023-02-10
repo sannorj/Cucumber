@@ -47,7 +47,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//input[@name='hotelId']")
 	WebElement dropDownProperty;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
 	@FindBy(xpath = "//h1[text()='Revenue Breakdown Report']")
@@ -56,13 +56,13 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//input[@name='period']")
 	WebElement dropDownPeriod;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
 	@FindBy(xpath = "//input[@name='mdoGlCodeBreakdownReportId']")
 	WebElement dropDownCategory;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDownCategory;
 
 	@FindBy(xpath = "//div/label[text() = 'Date'] //following-sibling::div//button[@type='button']")

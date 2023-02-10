@@ -208,7 +208,7 @@ public class GLHierarchy_PageObject {
 
 	}
 
-	public boolean validateTurnedOffBottomModalinPnLMonth() {
+	public boolean validateTurnedOffBottomModalinPnLMonth() throws InterruptedException {
 		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 
@@ -218,8 +218,11 @@ public class GLHierarchy_PageObject {
 				.until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
 
 		btnRoomRevBeofreOther.click();
+		
+		Thread.sleep(3000);
 
-		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV50']")).size();
+		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV01']")).size();
+		
 
 		if (status == 0) {
 			return true;

@@ -273,7 +273,9 @@ public class IJ_Summary_PageObject {
 		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(drpPeriod));
 		drpPeriodEle.click();
+		
 		Thread.sleep(3000);
+		
 		for (int i = 0; i < listDrpPeriod.size(); i++) {
 			if (listDrpPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_Period"))) {
 				listDrpPeriod.get(i).click();

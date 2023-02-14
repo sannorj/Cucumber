@@ -38,9 +38,12 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> listDrpView;
+
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
-	
+
 	@FindBy(xpath = "//div[@data-el='dropdownGenericSelector']")
 	WebElement drpView;
 
@@ -76,20 +79,24 @@ public class PnLComparison_PageObject {
 
 	public boolean navigatePnLComparison() throws InterruptedException {
 
-		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
+		WebElement pnlPropertyComparisonEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(pnlPropertyComparison));
 		pnlPropertyComparisonEle.click();
 
 		Thread.sleep(6500);
-		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
+		WebElement pnlComparisonPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(pnlPropertyComparisonPage));
 		return pnlComparisonPageEle.isDisplayed();
 
 	}
 
 	public void selectParameters() throws InterruptedException {
 
+		Thread.sleep(5000);
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 
 			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
@@ -102,34 +109,35 @@ public class PnLComparison_PageObject {
 		Thread.sleep(3500);
 		selectDate();
 
-		Thread.sleep(7000);	
-		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(drpView));
+		Thread.sleep(4000);
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(60))
+				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(7000);
-		
-		
+		Thread.sleep(3000);
+
 		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpView.size(); i++) {
+				if (listDrpView.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					listDrpView.get(i).click();
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpView.size(); i++) {
+				if (listDrpView.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					listDrpView.get(i).click();
 				}
 			}
 		}
 
-		Thread.sleep(6500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
-		btnGO.click();
-		
-		Thread.sleep(10000);
-		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		Thread.sleep(4500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(btnGo));
+		btnGO.click();
+
+		Thread.sleep(5000);
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		Thread.sleep(3500);
 		btnZeroValue.click();
 
 	}
@@ -155,11 +163,12 @@ public class PnLComparison_PageObject {
 
 	public boolean selectDate() throws InterruptedException {
 		boolean flag = false;
-		String[] dateForPicker = configReader.getProp("Date").split("/");
+		String[] dateForPicker = configReader.getProp("PnLNewDate").split("/");
 
 		txtDate.click();
 
-		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		Thread.sleep(3500);
 		if (btnDatePickforLocal > 0) {
@@ -170,12 +179,15 @@ public class PnLComparison_PageObject {
 
 		if (status == 1) {
 
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
 			Thread.sleep(2500);
 
-			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
 
@@ -187,7 +199,8 @@ public class PnLComparison_PageObject {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);

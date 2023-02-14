@@ -42,10 +42,10 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//h1[text()='AR Mapping']")
 	WebElement navigatedARMappingPage;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
 	@FindBy(xpath = "//label[text()='Group']//following-sibling::div//input")
@@ -63,7 +63,7 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "//span[text()='Source Account']")
 	WebElement checkSourceAccount;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowMappingTolst;
 
 	String mulAccounts = configReader.getProp("AR_BulkAccounts");
@@ -75,7 +75,7 @@ public class AR_Mapping_PageObjective {
 	@FindBy(xpath = "(//label[text() = 'Search'])[2]/following-sibling::div//input") 
 	WebElement popupSearch;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowPopupAcc;
 
 	@FindBy(xpath = "//button[@mdo_variant='success']")
@@ -397,7 +397,7 @@ public class AR_Mapping_PageObjective {
 		System.out.println("groupName="+groupName);
 		System.out.println("propertyName="+propertyName);
 		if(!"null".equals(groupName)) {
-			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
+			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOf(group));
 			String group = drpGroup.getAttribute("value");
 			System.out.println(group);

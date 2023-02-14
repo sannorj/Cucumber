@@ -269,6 +269,8 @@ public class IJ_Summary_PageObject {
 			}
 		}
 
+		Thread.sleep(5000);
+		
 		/* Select the appropriate Property value from the drop-down menu. */
 		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(drpPeriod));
@@ -289,6 +291,42 @@ public class IJ_Summary_PageObject {
 		Thread.sleep(1000);
 		ElementUtils.waitForElementToDisplay(lblTotalRevenue, 100);
 
+	}
+	
+	public void selectParameterAfterPageLoad() throws InterruptedException {
+		
+
+		/* Select the appropriate Property value from the drop-down menu. */
+		Thread.sleep(5000);
+		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(drpProperty));
+		drpGroupEle.click();
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_Propery"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+
+		/* Select the appropriate Property value from the drop-down menu. */
+		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(drpPeriod));
+		drpPeriodEle.click();
+		
+		Thread.sleep(3000);
+		
+		for (int i = 0; i < listDrpPeriod.size(); i++) {
+			if (listDrpPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_Period"))) {
+				listDrpPeriod.get(i).click();
+			}
+		}
+		Thread.sleep(3000);
+		//selectDate();
+		Thread.sleep(1000);
+
+		btnGo.click();
+		Thread.sleep(1000);
+		ElementUtils.waitForElementToDisplay(lblTotalRevenue, 100);
 	}
 
 	public boolean clickOnAddIconFunc() throws InterruptedException {
@@ -346,7 +384,7 @@ public class IJ_Summary_PageObject {
 
 		/* expand the icon */
 		WebElement expandIcon = driver.findElement(By.xpath("//div[text()='" + "Total "
-				+ (configReader.getProp("IJ_PMSType")) + "']/../../button[@class='sc-bZnhIo jzTzWP']"));
+				+ (configReader.getProp("IJ_PMSType")) + "']/../../button"));
 		expandIcon.click();
 		Thread.sleep(1500);
 

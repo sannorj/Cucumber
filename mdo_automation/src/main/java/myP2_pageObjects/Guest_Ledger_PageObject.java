@@ -31,7 +31,7 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//button[@data-el='menuToggle']")
 	WebElement mainMenuButton;
 	
-	@FindBy(xpath = "//div[contains(text(),'Guest Ledger')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'Guest Ledger')]//ancestor::li")
 	WebElement menuGuestLedger;
 	
 	@FindBy(xpath = "//h1[contains(text(),'Guest Ledger')]")

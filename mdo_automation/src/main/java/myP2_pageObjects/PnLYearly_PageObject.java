@@ -53,19 +53,19 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//div[@id='mui-component-select-selectedYear']")
 	WebElement dropDownPeriod;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-customViewId']")
 	WebElement dropDownView;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownView;
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnGo;
 
-	@FindBy(xpath = "//label[@data-el='labelswitchDisableNullRecords']")
+	@FindBy(xpath = "//label[@data-el='switchDisableNullRecordsLabel']")
 	WebElement btnZeroValue;
 
 	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[1]//td")
@@ -148,7 +148,8 @@ public class PnLYearly_PageObject {
 			Thread.sleep(1500);
 			
 			dropDownPeriod.click();
-			Thread.sleep(1000);
+			Thread.sleep(4000);
+			
 			for (int i = 0; i < lstDropDownPeriod.size(); i++) {
 				if (lstDropDownPeriod.get(i).getText().equals(year)) {
 					lstDropDownPeriod.get(i).click();

@@ -46,7 +46,7 @@ public class PnL_Yearly_PDashBoard_data_PageObject {
 		@FindBy(xpath = "//div[text()='Dashboard']//ancestor::li")
 		WebElement dashBoard;
 
-		@FindBy(xpath = "//div[contains(text(),'Primary Dashboard')]//ancestor::li")
+		@FindBy(xpath = "//a[contains(text(),'Primary Dashboard')]//ancestor::li")
 		WebElement primaryDashboard;
 
 		@FindBy(xpath = "//h1[contains(text(),'Primary Dashboard')]")

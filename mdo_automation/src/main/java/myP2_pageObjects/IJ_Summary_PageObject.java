@@ -345,11 +345,15 @@ public class IJ_Summary_PageObject {
 		/* enter the IJ_Description */
 		txtDescription.sendKeys(configReader.getProp("IJ_Description"));
 
+		Thread.sleep(5000);
 		/* Select the appropriate PMS Type from the drop-down menu. */
 		WebElement drpPMStypeEle = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(drpPMStype));
+		
 		drpPMStypeEle.click();
+		
 		Thread.sleep(3500);
+		
 		for (int i = 0; i < listDrpPeriod.size(); i++) {
 			if (listDrpPeriod.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_PMSType"))) {
 				listDrpPeriod.get(i).click();
@@ -360,6 +364,8 @@ public class IJ_Summary_PageObject {
 		/* enter the Amount */
 		txtAmount.sendKeys(configReader.getProp("IJ_Amount"));
 
+		Thread.sleep(3500);
+		
 		/* enter the adjustment */
 		txtAdjustment.sendKeys(configReader.getProp("IJ_adjustment"));
 
@@ -367,7 +373,9 @@ public class IJ_Summary_PageObject {
 		WebElement drpGlCodeEle = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(drpGlCode));
 		drpGlCodeEle.click();
+		
 		Thread.sleep(3000);
+		
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("IJ_GLCode"))) {
 				listDrpValueSize.get(i).click();

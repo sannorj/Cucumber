@@ -230,12 +230,12 @@ public class AR_Dashboard_PageObjective {
 		try {
 			int chartStatus = driver
 					.findElements(
-							By.xpath("//label[@data-el='labelswitchShowCharts']//span[contains(@class,'Mui-checked')]"))
+							By.xpath("//label[@data-el='switchShowChartsLabel']//span[contains(@class,'Mui-checked')]"))
 					.size();
 
 			if (chartStatus == 0) {
 				WebElement showChart = driver
-						.findElement(By.xpath("//label[@data-el='labelswitchShowCharts']//input[@type='checkbox']"));
+						.findElement(By.xpath("//label[@data-el='switchShowChartsLabel']//input[@type='checkbox']"));
 
 				showChart.click();
 
@@ -292,12 +292,12 @@ public class AR_Dashboard_PageObjective {
 		try {
 			int chartStatus = driver
 					.findElements(
-							By.xpath("//label[@data-el='labelswitchShowAtRisk']//span[contains(@class,'Mui-checked')]"))
+							By.xpath("//label[@data-el='switchShowAtRiskLabel']//span[contains(@class,'Mui-checked')]"))
 					.size();
 
 			if (chartStatus == 0) {
 				WebElement showChart = driver
-						.findElement(By.xpath("//label[@data-el='labelswitchShowAtRisk']//input[@type='checkbox']"));
+						.findElement(By.xpath("//label[@data-el='switchShowAtRiskLabel']//input[@type='checkbox']"));
 
 				showChart.click();
 
@@ -351,6 +351,10 @@ public class AR_Dashboard_PageObjective {
 		outstandingRedVal = (maxDataValue * 0.75);
 		outstandingYellow = (maxDataValue * 0.5);
 
+		System.out.println("Max" + maxDataValue+ " Red"+outstandingRedVal);
+
+		System.out.println("Yel" + outstandingYellow+ " Red"+outstandingRedVal);
+		
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
 			for (int j = 2; j < 7; j++) {
 				WebElement data = driver.findElement(By.xpath("//tbody//tr[" + (i + 1) + "]//td[" + j + "]"));

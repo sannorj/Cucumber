@@ -1,5 +1,5 @@
 	#Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity @Q1S1Dataval 
+@myP2_Regression @myP2Sanity
  
  Feature: Data Validation Between P&L Yearly To Primary DashBoard
  

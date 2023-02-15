@@ -374,30 +374,30 @@ public class PnLMonthly_PageObject {
 
 	public void selectOperatorView() throws InterruptedException {
 
-		Thread.sleep(6500);
+		Thread.sleep(5000);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(9500);
+		Thread.sleep(4000);
 		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		}
 
-		Thread.sleep(9700);
+		Thread.sleep(4000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
-		Thread.sleep(9500);
+		Thread.sleep(5000);
 	}
 
 	public boolean verifyOperatorSection() {
@@ -433,15 +433,15 @@ public class PnLMonthly_PageObject {
 
 		Thread.sleep(6500);
 		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("RoomRevenueDetail"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		}

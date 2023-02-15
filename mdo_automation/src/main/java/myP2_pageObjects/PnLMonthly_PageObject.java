@@ -379,7 +379,7 @@ public class PnLMonthly_PageObject {
 				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(10000);
+		Thread.sleep(15000);
 		try {
 			for (int i = 0; i < listDrpSize.size(); i++) {
 				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {

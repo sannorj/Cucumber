@@ -644,12 +644,12 @@ public class PnLMonthly_PageObject {
 		drpColumn1.click();
 		Thread.sleep(6000);
 
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-		for (int x = 0; x < listDrpValueSize.size(); x++) {
+		ExpectedConditions.visibilityOf(listDrpSize.get(1));
+		for (int x = 0; x < listDrpSize.size(); x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("Custom_col1").split(",");
 			String expected = a[x];
-			String actual = listDrpValueSize.get(x).getText();
+			String actual = listDrpSize.get(x).getText();
 			if (actual.contains(expected)) {
 				flag = true;
 			} else {
@@ -660,15 +660,15 @@ public class PnLMonthly_PageObject {
 		Thread.sleep(6000);
 
 		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpSize.get(i).click();
 				}
 			}
 		}
@@ -687,12 +687,12 @@ public class PnLMonthly_PageObject {
 		if (y < 0) {
 			drpYear1.click();
 			Thread.sleep(8000);
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-			for (int x = 0; x < listDrpValueSize.size(); x++) {
+			ExpectedConditions.visibilityOf(listDrpSize.get(1));
+			for (int x = 0; x < listDrpSize.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("Custom_Year").split(",");
 				String expected = a[x];
-				String actual = listDrpValueSize.get(x).getText();
+				String actual = listDrpSize.get(x).getText();
 				if (actual.contains(expected)) {
 					flag = true;
 				} else {
@@ -701,27 +701,27 @@ public class PnLMonthly_PageObject {
 			}
 
 			try {
-				for (int i = 0; i < listDrpValueSize.size(); i++) {
-					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-						listDrpValueSize.get(i).click();
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
 					}
 				}
 			} catch (StaleElementReferenceException e) {
-				for (int i = 0; i < listDrpValueSize.size(); i++) {
-					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-						listDrpValueSize.get(i).click();
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
 					}
 				}
 			}
 
 			Thread.sleep(2000);
 		} else {
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-			for (int x = 0; x < listDrpValueSize.size(); x++) {
+			ExpectedConditions.visibilityOf(listDrpSize.get(1));
+			for (int x = 0; x < listDrpSize.size(); x++) {
 				/* split and ready the data from property file */
 				String[] a = configReader.getProp("Custom_Year").split(",");
 				String expected = a[x];
-				String actual = listDrpValueSize.get(x).getText();
+				String actual = listDrpSize.get(x).getText();
 				if (actual.contains(expected)) {
 					flag = true;
 				} else {
@@ -730,15 +730,15 @@ public class PnLMonthly_PageObject {
 			}
 
 			try {
-				for (int i = 0; i < listDrpValueSize.size(); i++) {
-					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-						listDrpValueSize.get(i).click();
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
 					}
 				}
 			} catch (StaleElementReferenceException e) {
-				for (int i = 0; i < listDrpValueSize.size(); i++) {
-					if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
-						listDrpValueSize.get(i).click();
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
 					}
 				}
 			}

@@ -374,12 +374,12 @@ public class PnLMonthly_PageObject {
 
 	public void selectOperatorView() throws InterruptedException {
 
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(7500);
+		Thread.sleep(10000);
 		try {
 			for (int i = 0; i < listDrpSize.size(); i++) {
 				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
@@ -394,7 +394,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 		Thread.sleep(5000);

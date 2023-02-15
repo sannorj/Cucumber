@@ -379,7 +379,7 @@ public class PnLMonthly_PageObject {
 				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(4000);
+		Thread.sleep(7500);
 		try {
 			for (int i = 0; i < listDrpSize.size(); i++) {
 				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("OperatorView"))) {
@@ -394,7 +394,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		btnGo.click();
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 150);
 		Thread.sleep(5000);

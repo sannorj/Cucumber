@@ -65,9 +65,6 @@ public class STR_Report_DataValidation_PageObjective {
 	String firstCellValue=null;
 
 	public void selectCurrentDate(String date) throws InterruptedException {
-//		goButton.sendKeys(Keys.CONTROL + "a");
-//		goButton.sendKeys(Keys.DELETE);
-//		goButton.sendKeys(date);
 		selectDate(date);
 	}
 
@@ -122,12 +119,6 @@ public class STR_Report_DataValidation_PageObjective {
 		if(!"null".equals(groupName)) {
 			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(group));
-//			String group = drpGroup.getAttribute("value");
-//			System.out.println(group);
-//			Thread.sleep(2500);
-//			if (!group.contains(groupName)) {
-//				result = false;
-//			}
 			drpGroup.click();
 			Thread.sleep(2500);
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
@@ -139,14 +130,6 @@ public class STR_Report_DataValidation_PageObjective {
 			Thread.sleep(1500);
 		}
 		if(!"null".equals(propertyName)) {
-//			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
-//					.until(ExpectedConditions.visibilityOf(property));
-//			String property = drpProperty.getAttribute("value");
-//			System.out.println(property);
-//			Thread.sleep(2500);
-//			if (!property.equalsIgnoreCase(propertyName)) {
-//				result = false;
-//			}
 
 			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(property));

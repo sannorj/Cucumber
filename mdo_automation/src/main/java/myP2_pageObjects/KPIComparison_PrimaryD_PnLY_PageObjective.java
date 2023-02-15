@@ -66,7 +66,6 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	List<WebElement> lstDropDowYear;
 
 
-//	String[] dateForPicker = configReader.getProp("KPI_Date").split("/");
 	String KPIs=configReader.getProp("KPI_List");
 	List<String> KPI_List=Arrays.asList(KPIs.split(","));
 	
@@ -83,7 +82,6 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 		for (int i = 0; i < KPI_List.size(); i++) {
 			String currentKPI= KPI_List.get(i);
 			int columnIndex=driver.findElements(By.xpath("//div[@aria-label='"+currentKPI+"']")).size();
-//			System.out.println("column index="+columnIndex);
 			if (1>columnIndex) {
 				flag=false;
 				System.out.println(currentKPI);
@@ -99,7 +97,6 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 			System.out.println(i);
 			String nextdate=getNextDate(currentDate);
 			Thread.sleep(2000);
-//			System.out.println("Next Date:= " + nextdate);
 			selectDate(currentDate);
 			currentDate=nextdate;
 			Thread.sleep(3000);
@@ -109,17 +106,11 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	}
 	
 	private void storeKPIs(String property,int month) {
-//		System.out.println("property="+property+" month="+month+" loopstart="+loopstart);
-//		System.out.println("KPI size== "+KPI_List.size());
 		for (int i = 0; i < KPI_List.size(); i++) {
 			String currentKPI= KPI_List.get(i);
 			String columnIndex=driver.findElement(By.xpath("//div[@aria-label='"+currentKPI+"']")).getAttribute("data-field");
 			String currentVal=driver.findElement(By.xpath("//button//span[text()='"+property+"']//following::div//div[@data-field='"+columnIndex+"']")).getText();
 			
-//			String[] columnIndexSplit=columnIndex.split("_");
-//			String currentMonthVal=columnIndexSplit[1];
-//			int curretMonth=Integer.parseInt(currentMonthVal);
-
 			PrimaryD_KPI_List.add(currentKPI);
 			PrimaryD_KPIValues_List.add(currentVal);
 			PrimaryD_KPIMonth_List.add(month);
@@ -179,10 +170,8 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 			String currentSelectedDate=txtDate.getAttribute("value"); //get no of month from current selected date
 			String[] currentDP = currentSelectedDate.split("/");
 			int monthInnum = Integer.parseInt(currentDP[0]);
-//			System.out.println("monthInnum="+monthInnum);
 
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
-//			System.out.println("monthDiff="+monthDiff);
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
@@ -242,7 +231,7 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	}
 	
 	public static String getNextDate(String date2) throws ParseException {
-		System.out.println("date:============="+date2);
+		System.out.println("date:="+date2);
 		
 		DateFormat userDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date date = userDateFormat.parse(date2);
@@ -254,7 +243,6 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	    Date nextDate = c.getTime();
 		String datettt = userDateFormat.format(nextDate);
 		System.out.println("**********************");
-//		System.out.println(datettt);
 	    return datettt;
 	    
 	}

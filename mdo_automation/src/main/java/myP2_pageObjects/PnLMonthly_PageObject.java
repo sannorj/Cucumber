@@ -583,11 +583,11 @@ public class PnLMonthly_PageObject {
 	public boolean verifyViewdrpFunc() throws InterruptedException {
 
 		Thread.sleep(4000);
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-		for (int x = 0; x < listDrpValueSize.size(); x++) {
+		ExpectedConditions.visibilityOf(listDrpSize.get(1));
+		for (int x = 0; x < listDrpSize.size(); x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("PnL_view_values").split(",");
-			String actual = listDrpValueSize.get(x).getText();
+			String actual = listDrpSize.get(x).getText();
 
 			String expected = a[x];
 
@@ -600,17 +600,17 @@ public class PnLMonthly_PageObject {
 
 		Thread.sleep(6000);
 		try {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-					ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					ExpectedConditions.visibilityOf(listDrpSize.get(0));
+					listDrpSize.get(i).click();
 				}
 			}
 		} catch (StaleElementReferenceException e) {
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-					ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-					listDrpValueSize.get(i).click();
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					ExpectedConditions.visibilityOf(listDrpSize.get(0));
+					listDrpSize.get(i).click();
 				}
 			}
 		}

@@ -95,7 +95,7 @@ public class PnLComparison_PageObject {
 		Thread.sleep(5000);
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 

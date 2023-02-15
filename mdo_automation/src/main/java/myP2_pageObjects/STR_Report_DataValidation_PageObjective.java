@@ -56,10 +56,10 @@ public class STR_Report_DataValidation_PageObjective {
 	@FindBy(xpath = "//label[text()='Property']//following-sibling::div//input")
 	WebElement property;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 	
 	String firstCellValue=null;
@@ -239,10 +239,14 @@ public class STR_Report_DataValidation_PageObjective {
 
 			Thread.sleep(2500);
 
-			int monthInnum = getMonth();
+			String currentSelectedDate=txtDate.getAttribute("value"); //get no of month from current selected date
+			String[] currentDP = currentSelectedDate.split("/");
+			int monthInnum = Integer.parseInt(currentDP[0]);
+			System.out.println("monthInnum="+monthInnum);
 
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
-
+			System.out.println("monthDiff="+monthDiff);
+			
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))

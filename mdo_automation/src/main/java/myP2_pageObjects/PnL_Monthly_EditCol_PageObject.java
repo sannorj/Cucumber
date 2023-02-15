@@ -34,8 +34,8 @@ public class PnL_Monthly_EditCol_PageObject {
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
 	
-	@FindBy(xpath = "//th[contains(@class,' sc-bCfvAP cCGURw css-164s97t')]/span")
-	List <WebElement> header;
+	@FindBy(xpath = "//th[contains(@class,'sc-bTTELM kCgBeu css-164s97t')]/span")
+	List <WebElement> mainHeader;
 	
 	@FindBy(xpath = "//button[@data-el='buttonFilter']")
 	WebElement btnFilter;
@@ -125,11 +125,11 @@ public class PnL_Monthly_EditCol_PageObject {
 	
 	public boolean verifyEditDrawerFunc() {
 		
-		for(int i=0 ; i<header.size()-1 ; i++) {
+		/*for(int i=0 ; i<mainHeader.size()-1 ; i++) {
 			if(i != 2) {
-				Headers.add(header.get(i).getText());
+				Headers.add(mainHeader.get(i).getText());
 			}
-		}
+		}*/
 		
 		drpColVal1=drpColumn1Value.getAttribute("value");
 		drpYearValue1 =drpYear1.getText();
@@ -150,9 +150,9 @@ public class PnL_Monthly_EditCol_PageObject {
 		btnClose.click();
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 		Thread.sleep(4500);
-		for (int i =0; i < header.size(); i++) {
+		for (int i =0; i < mainHeader.size(); i++) {
 			Thread.sleep(1500);
-			Headers.add(header.get(i).getText());
+			Headers.add(mainHeader.get(i).getText());
 		}
 		
 		
@@ -247,9 +247,9 @@ public class PnL_Monthly_EditCol_PageObject {
     
     public boolean verifyNewlyAddedColFunc() throws InterruptedException {
     	
-    	for(int i=0 ; i<header.size()-1 ; i++) {
+    	for(int i=0 ; i<mainHeader.size()-1 ; i++) {
 			if(i != 2 && i !=4) {
-				Headers.add(header.get(i).getText());
+				Headers.add(mainHeader.get(i).getText());
 			}
 		}
     	headerName = Headers.get(3).split("-")[0].trim();
@@ -288,7 +288,7 @@ public class PnL_Monthly_EditCol_PageObject {
     
    public boolean verifyRemovedColFunc() throws InterruptedException {
 		
-		if (header.size()==5) {
+		if (mainHeader.size()==5) {
 			flag = true;
 		} else {
 			flag = false;
@@ -445,8 +445,8 @@ public class PnL_Monthly_EditCol_PageObject {
 			Thread.sleep(7000);
 			Headers.clear();
 			
-			for (int n = 0; n < header.size(); n++) {
-				Headers.add(header.get(n).getText());
+			for (int n = 0; n < mainHeader.size(); n++) {
+				Headers.add(mainHeader.get(n).getText());
 			}
 				    
 			if(PnLE_Column_1.equalsIgnoreCase("FORECAST")|| PnLE_Column_1.equalsIgnoreCase("ACTUAL/FORECAST")) {

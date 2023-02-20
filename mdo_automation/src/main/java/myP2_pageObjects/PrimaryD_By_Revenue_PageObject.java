@@ -221,7 +221,7 @@ public class PrimaryD_By_Revenue_PageObject {
 		
 		WebElement displayEmptyMess = driver.findElement(By.xpath("//div[3]//div[text()='The widget does not support multiple properties']"));
 		
-		ElementUtils.waitForElementToDisplay(displayEmptyMess, 1000);
+		ElementUtils.waitForElementToDisplay(displayEmptyMess, 100);
 		
 		System.out.println(displayEmptyMess.getText());
 		
@@ -232,13 +232,13 @@ public class PrimaryD_By_Revenue_PageObject {
 		
 		Thread.sleep(5000);
 		
-		WebElement display1 = driver.findElement(By.xpath("//div[text()='Room Revenue']"));
-		WebElement display2 = driver.findElement(By.xpath("//div[text()='F&B Revenue']"));
-		WebElement display3 = driver.findElement(By.xpath("//div[text()='Other Revenue']"));
+		WebElement display1 = driver.findElement(By.xpath("//span[text()='Room Revenue']"));
+		WebElement display2 = driver.findElement(By.xpath("//span[text()='F&B Revenue']"));
+		WebElement display3 = driver.findElement(By.xpath("//span[text()='Other Revenue']"));
 		
-		ElementUtils.waitForElementToDisplay(display1, 1000);
-		ElementUtils.waitForElementToDisplay(display2, 1000);
-		ElementUtils.waitForElementToDisplay(display3, 1000);
+		ElementUtils.waitForElementToDisplay(display1, 100);
+		ElementUtils.waitForElementToDisplay(display2, 100);
+		ElementUtils.waitForElementToDisplay(display3, 100);
 		
 		System.out.println(display1.getText());
 		System.out.println(display2.getText());

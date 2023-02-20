@@ -155,6 +155,7 @@ public class PnL_Monthly_EditCol_PageObject {
 			Headers.add(mainHeader.get(i).getText());
 		}
 		
+		System.out.println("Main header size is "+Headers.size());
 		
 		headerName = Headers.get(0).split("-")[0].trim();
 		headerYear = Headers.get(0).split("-")[1].strip();
@@ -443,7 +444,7 @@ public class PnL_Monthly_EditCol_PageObject {
 			btnGo.click();
 			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 			Thread.sleep(7000);
-			Headers.clear();
+			//Headers.clear();
 			
 			for (int n = 0; n < mainHeader.size(); n++) {
 				Headers.add(mainHeader.get(n).getText());

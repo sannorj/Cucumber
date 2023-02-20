@@ -66,7 +66,7 @@ public class GL_Mapping_PageObjective {
 	@FindBy(xpath = "//div//label[text() = 'MDO GL Code']//following-sibling::div[contains(@class, 'MuiInputBase-adornedEnd')]")
 	WebElement MDOGLCodeDropDown;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//button[@data-el='buttonSave']")

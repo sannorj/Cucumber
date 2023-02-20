@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @ByRevenueP
+@myP2_Regression 
 
 Feature: Primary DashBoard - By Revenue Feature 
 

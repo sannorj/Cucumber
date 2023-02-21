@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression @pro
+@myP1_Regression @prop
 Feature: Property Dashboard Data Load functionality
 
   Scenario: Verify Property Dashboard Page Navigation

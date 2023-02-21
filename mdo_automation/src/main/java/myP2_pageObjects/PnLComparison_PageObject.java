@@ -106,15 +106,15 @@ public class PnLComparison_PageObject {
 				}
 			}
 		}
-		Thread.sleep(3500);
+		Thread.sleep(6500);
 		selectDate();
 
-		Thread.sleep(4000);
+		Thread.sleep(6500);
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(60))
 				.until(ExpectedConditions.visibilityOf(drpView));
 		drpViewEle.click();
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 		try {
 			for (int i = 0; i < listDrpView.size(); i++) {

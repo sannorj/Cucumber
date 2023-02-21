@@ -40,10 +40,6 @@ Background: Navigate to P&L Monthly report
     Scenario: Verify whether users should be allowed to choose Owners view from a dropdown menu.
      Then the P&L should show the relevent sections that belong to the Owner's view 
     
-    Scenario: Verify whether users should be allowed to choose Operators view from a dropdown menu.
-     When user selects the Operators View
-     Then the P&L should show the relevent sections that belong to the Operators View
-    
     Scenario: Verify whether users should be allowed to choose Room Revenue Detail view from a dropdown menu.
      When user selects the Room Revenue Detail View
      Then the P&L should show the relevent sections that belong to the Room Revenue Detail view

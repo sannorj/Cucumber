@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @EditColumn
+@myP2_Regression1 @PrimaryDash
 Feature: Primary DashBoard - Edit Columns Feature
 
 Background: Login to MYP2 application 

@@ -218,9 +218,9 @@ public class PnL_Monthly_EditCol_PageObject {
     	}
 
     	
-    	Thread.sleep(6000);
+    	Thread.sleep(10000);
     	drpYear4.click();
-    	Thread.sleep(6000);
+    	Thread.sleep(10000);
     	try {
     		for (int i = 0; i < listDrpValueSize.size(); i++) {
     			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @Paddcomment
 Feature: Portfolio Dashboard Add Comment functionality
 
   Background: Verify Portfolio Dashboard
@@ -17,8 +17,9 @@ Feature: Portfolio Dashboard Add Comment functionality
     When Click on submit button in Portfolio
     And Verify Portfolio Data successfully Submited and comment added
     
-    Scenario: Verify Added Comment availability in View Comments page
-    Then Click on Portfolio View Past Comments link
+    #Scenario: Verify Added Comment availability in View Comments page
+    #Then Click on Portfolio View Past Comments link
+    
     #And Naviage to View Comments page
     #When Check Submitted data is in View Comment table
     

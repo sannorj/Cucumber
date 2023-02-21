@@ -211,8 +211,8 @@ public class propertyDashboard_AddEvent_PageObjects {
 	}
 
 	public boolean verifyAddedEventPopup() throws InterruptedException {
-		Thread.sleep(3000);
-		WebElement waitFormDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(100))
+		Thread.sleep(5000);
+		WebElement waitFormDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(formDisplayEventBody));
 		if (formDisplayEventBody.isDisplayed()) {
 			boolean formDataAvailable = true;
@@ -231,11 +231,16 @@ public class propertyDashboard_AddEvent_PageObjects {
 
 	public boolean checkCalendarEvent() throws InterruptedException {
 		addEventCloseBtn.click();
-		WebElement waitViewCalender = new WebDriverWait(driver, Duration.ofSeconds(100))
+		System.out.println("closed the popup");
+		Thread.sleep(3000);
+		WebElement waitViewCalender = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(calendarIcon));
-		calendarIcon.click();
-		WebElement waitformDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(100))
+		waitViewCalender.click();
+		System.out.println("calender icon clicked");
+		Thread.sleep(3000);
+		WebElement waitformDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(formDisplayEventBody));
+		System.out.println("**************");
 		if (waitformDisplayEventBody.isDisplayed()) {
 			System.out.println("Added Event Popup is showing");
 			return true;

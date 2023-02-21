@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PAddEvent
 Feature: Property Dashboard Add Event functionality
 
   Background: Verify Property Dashboard Page Navigation

@@ -76,7 +76,7 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//th[text()='Property']")
 	WebElement lblProperty;
 		
-	@FindBy(xpath = "((//div[contains(@class, 'MuiDataGrid-columnHeaderTitle css-cc8tf1')])[4]")
+	@FindBy(xpath = "(//div[contains(@class, 'MuiDataGrid-columnHeaderTitle css-cc8tf1')])[4]")
 	WebElement lblEditedColumnHeader;
 	
 //	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")

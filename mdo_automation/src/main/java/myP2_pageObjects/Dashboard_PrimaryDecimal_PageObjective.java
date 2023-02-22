@@ -373,7 +373,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public void storeValues() throws InterruptedException {
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(60))
 				.until(ExpectedConditions.visibilityOf(txtProperty));
 
 		if (editPage.isDisplayed()) {

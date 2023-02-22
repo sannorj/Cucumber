@@ -42,7 +42,7 @@ public class Dashboard_AddColumn_PageObjective {
 	@FindBy(xpath = "//input[@name='kpiId']")
 	WebElement txtKpiId;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstKpi;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-valueDataType']")
@@ -111,8 +111,11 @@ public class Dashboard_AddColumn_PageObjective {
 		txtName.sendKeys(Keys.CONTROL + "a");
 		txtName.sendKeys(Keys.DELETE);
 		txtName.sendKeys(configReader.getProp("NameAddColumn"));
-
+		Thread.sleep(5000);
+		
 		txtKpiId.click();
+		
+		Thread.sleep(5000);
 
 		for (int i = 0; i < lstKpi.size(); i++) {
 			if (lstKpi.get(i).getText().equalsIgnoreCase(configReader.getProp("KPIAddColumn"))) {
@@ -120,18 +123,27 @@ public class Dashboard_AddColumn_PageObjective {
 
 			}
 		}
+		
+		Thread.sleep(5000);
+		txtName.sendKeys(Keys.CONTROL + "a");
+		txtName.sendKeys(Keys.DELETE);
+		txtName.sendKeys(configReader.getProp("NameAddColumn"));
 
 	}
 
 	public void setupAmountAndPeriod() throws InterruptedException {
 
+		Thread.sleep(5000);
 		btnAmount.click();
+		Thread.sleep(5000);
 		for (int i = 0; i < lstAmount.size(); i++) {
 			if (lstAmount.get(i).getText().equalsIgnoreCase(configReader.getProp("AmountTypeAddColumn"))) {
 				lstAmount.get(i).click();
 			}
 		}
+		
 		btnPeriod.click();
+		Thread.sleep(5000);
 		lstPeriod.get(1).click();
 	}
 
@@ -140,11 +152,12 @@ public class Dashboard_AddColumn_PageObjective {
 		toggleDecimalMaster.click();
 
 		btnDecimal.click();
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		lstDecimal.get(2).click();
 
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		btnPerfomanceIndicator.click();
+		Thread.sleep(5000);
 		lstPerfomanceIndicator.get(1).click();
 	}
 

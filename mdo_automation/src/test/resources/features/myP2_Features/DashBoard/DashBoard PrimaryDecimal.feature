@@ -13,7 +13,7 @@ Scenario: Verify whether user can able to set the custom decimal places in prima
     And I click the Setting icon on Rooms Revenue
     Then I am Overriding the Primary decimal values
 		Then I am storing the Room Availble and Rooms Revenue Values
-		And I am comparing decimal values    
+		And I am comparing decimal values
 
 		
  

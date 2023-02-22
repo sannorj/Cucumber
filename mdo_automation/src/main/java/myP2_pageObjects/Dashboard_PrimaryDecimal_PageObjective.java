@@ -34,13 +34,13 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//input[@name='porfolio-group']")
 	WebElement dropDownGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
 	@FindBy(xpath = "//input[@name='porfolio-hotel']")
 	WebElement dropDownProperty;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
@@ -49,7 +49,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//tbody//tr[@data-el='0']//td")
 	List<WebElement> lstRowValues;
 
-	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[1]//div[text()]")
+	@FindBy(xpath = "//div[text()='Property']")
 	WebElement txtRowField;
 
 	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']")
@@ -64,7 +64,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//button[@data-el='button-edit-Rooms Available']")
 	WebElement btnEditRoomAvailable;
 
-	@FindBy(xpath = "//button[@data-el='button-edit-Room Revenue ($)']")
+	@FindBy(xpath = "//button[@data-el='button-edit-Rooms Sold']")
 	WebElement btnEditRoomRevenue;
 
 	@FindBy(xpath = "//input[@name='overrideDecimalMaster']")
@@ -242,15 +242,17 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 					.until(ExpectedConditions.visibilityOf(dropDownGroup));
 
 			drpGroup.click();
+			Thread.sleep(5000);
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
 				if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
 					lstDropDowGroup.get(i).click();
 
 				}
 			}
-
+			Thread.sleep(5000);
 			dropDownProperty.click();
-			Thread.sleep(2500);
+			
+			Thread.sleep(7500);
 			lstDropDowProperty.get(1).click();
 
 			selectDate();
@@ -280,7 +282,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		drpDecimal.click();
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		for (int i = 0; i < lstDropDownDecimal.size(); i++) {
 			if (lstDropDownDecimal.get(i).getText().equalsIgnoreCase(value)) {
@@ -316,6 +318,8 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		editDecimal.click();
 
+		Thread.sleep(5000);
+
 		for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
 			if (lstdropDownEditDecimal.get(i).getText().equalsIgnoreCase(value)) {
 				lstdropDownEditDecimal.get(i).click();
@@ -324,7 +328,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			}
 		}
 
-		Thread.sleep(3500);
+		Thread.sleep(4000);
 		btnSave.click();
 
 	}

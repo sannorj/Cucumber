@@ -230,7 +230,7 @@ public class PrimaryD_By_Revenue_PageObject {
 	
 	public void verifyFirstColumnRec() throws InterruptedException {
 		
-		Thread.sleep(5000);
+		Thread.sleep(25000);
 		
 		WebElement display1 = driver.findElement(By.xpath("//span[text()='Room Revenue']"));
 		WebElement display2 = driver.findElement(By.xpath("//span[text()='F&B Revenue']"));

@@ -51,7 +51,10 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	@FindBy(xpath = "//div[text()='Property']")
 	WebElement txtRowField;
-
+	
+	@FindBy(xpath = "//th[text()='Property']")
+	WebElement txtProperty;
+	
 	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']")
 	WebElement btnEditColumn;
 
@@ -384,7 +387,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			roomRevenue = roomRevenueWE.getText();
 
-			//System.out.println("roomAvailable = " + roomAvailable + " roomRev = " + roomRevenue);
+			System.out.println("roomAvailable = " + roomAvailable + " roomRev = " + roomRevenue);
 
 			String roomAvailablespl[] = roomAvailable.split("\\.");
 			String roomRevenuespl[] = roomRevenue.split("\\.");

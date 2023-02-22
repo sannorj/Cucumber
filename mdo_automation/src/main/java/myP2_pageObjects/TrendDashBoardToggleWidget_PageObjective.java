@@ -46,7 +46,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement btnSave;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//div[@elevation='3']//h5")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//div[@elevation='3']//h5")
 	List<WebElement> headers;
 
 	@FindBy(xpath = "//input[@name='keyword']")
@@ -111,10 +111,11 @@ public class TrendDashBoardToggleWidget_PageObjective {
 		String listWidgetToTurnOff[] = widgetsToTurnOff.split("-");
 
 		for (int i = 0; i < listWidgetToTurnOff.length; i++) {
+			Thread.sleep(1500);
 			txtSearch.sendKeys(Keys.CONTROL + "a");
 			txtSearch.sendKeys(Keys.DELETE);
 			txtSearch.sendKeys(listWidgetToTurnOff[i]);
-			Thread.sleep(500);
+			Thread.sleep(1500);
 
 			if (listWidgets.size() > 0) {
 				WebElement btnSwitch = driver.findElement(By.xpath("//tr[" + 1 + "]//td//input[@type='checkbox']"));
@@ -122,21 +123,21 @@ public class TrendDashBoardToggleWidget_PageObjective {
 
 				turnedOffWidgets.add(widName.getText());
 				btnSwitch.click();
-				Thread.sleep(500);
+				Thread.sleep(2000);
 			}
 		}
 
 		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(btnSave));
 
 		Save.click();
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 	}
 
 	public boolean verifyTurnedOffWidgets() throws InterruptedException {
 		boolean flag = true;
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 
 		for (int i = 0; i < headers.size(); i++) {
 

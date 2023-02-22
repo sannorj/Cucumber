@@ -118,9 +118,9 @@ public class AR_Mapping_PageObjective {
 
 	public void setProperties() throws InterruptedException {
 
-		ElementUtils.waitForElementToDisplay(navigatedARMappingPage, 100);
+		ElementUtils.waitForElementToDisplay(navigatedARMappingPage, 200);
 
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(group));
 
 		drpGroup.click();
@@ -134,7 +134,7 @@ public class AR_Mapping_PageObjective {
 
 		Thread.sleep(1500);
 
-		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(property));
 		drpProperty.click();
 		Thread.sleep(2500);
@@ -179,7 +179,7 @@ public class AR_Mapping_PageObjective {
 
 		Thread.sleep(2000);
 
-		WebElement singleCheck = new WebDriverWait(driver, Duration.ofSeconds(1000)).until(ExpectedConditions
+		WebElement singleCheck = new WebDriverWait(driver, Duration.ofSeconds(200)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
 						+ "']//ancestor::td//following-sibling::td[@index='3']")));
 		singleCheck.click();
@@ -192,14 +192,14 @@ public class AR_Mapping_PageObjective {
 		}
 		Thread.sleep(6000);
 		System.out.println("check single Account");
-		WebElement WaitTODataLoad = new WebDriverWait(driver, Duration.ofSeconds(1000)).until(
+		WebElement WaitTODataLoad = new WebDriverWait(driver, Duration.ofSeconds(200)).until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Source Account')]")));
 
 	}
 
 	public boolean accountIsSelected() throws InterruptedException {
 		Thread.sleep(4000);
-		WebElement singleCheckSelectedValueView = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement singleCheckSelectedValueView = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[text()='" + configReader.getProp("AR_SingleAccount")
 								+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
@@ -335,7 +335,7 @@ public class AR_Mapping_PageObjective {
 
 	public void selectDropdownInMain(String groupName, String propertyName) throws InterruptedException {
 
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOf(group));
 
 		drpGroup.click();
@@ -347,7 +347,7 @@ public class AR_Mapping_PageObjective {
 		}
 		Thread.sleep(1500);
 
-		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
+		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOf(property));
 		drpProperty.click();
 		Thread.sleep(2500);
@@ -356,7 +356,7 @@ public class AR_Mapping_PageObjective {
 				lstDropDowProperty.get(i).click();
 			}
 		}
-		WebElement propertyDataView = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement propertyDataView = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Property']")));
 	}
 
@@ -365,28 +365,28 @@ public class AR_Mapping_PageObjective {
 		Thread.sleep(3000);
 	}
 	public void clckConfigurationMenu(String mainMenu) throws InterruptedException{
-		WebElement configuration = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement configuration = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+mainMenu+"']//ancestor::li")));
 		configuration.click();
 		Thread.sleep(3000);
 	}
 
 	public void clckAccountsMappingMenu(String subMenu) throws InterruptedException {
-		WebElement accountsMappingLink = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement accountsMappingLink = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+subMenu+"']//ancestor::li")));
 		accountsMappingLink.click();
 		Thread.sleep(3000);
 	}
 
 	public void clckARMappingMenu(String targetPage) throws InterruptedException {
-		WebElement targetPageLink = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement targetPageLink = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='"+targetPage+"']//ancestor::li")));
 		targetPageLink.click();
 		Thread.sleep(3000);
 	}
 
 	public boolean verifyARMapping(String pageName) {
-		boolean ARMappingPageLoad = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		boolean ARMappingPageLoad = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='"+pageName+"']")))
 				.isDisplayed();
 		return ARMappingPageLoad;
@@ -397,7 +397,7 @@ public class AR_Mapping_PageObjective {
 		System.out.println("groupName="+groupName);
 		System.out.println("propertyName="+propertyName);
 		if(!"null".equals(groupName)) {
-			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(100))
+			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(200))
 					.until(ExpectedConditions.visibilityOf(group));
 			String group = drpGroup.getAttribute("value");
 			System.out.println(group);
@@ -408,7 +408,7 @@ public class AR_Mapping_PageObjective {
 			Thread.sleep(1500);
 		}
 		if(!"null".equals(propertyName)) {
-			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
+			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(200))
 					.until(ExpectedConditions.visibilityOf(property));
 			String property = drpProperty.getAttribute("value");
 			System.out.println(property);
@@ -426,7 +426,7 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean verifyPropertiesFiltered(String propertyName) {
-		String propertyColIndexVal = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		String propertyColIndexVal = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Property']//parent::th")))
 				.getAttribute("index");
 		List<WebElement> propertyCellValues = driver.findElements(

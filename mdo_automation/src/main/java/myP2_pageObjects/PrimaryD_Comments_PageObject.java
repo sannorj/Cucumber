@@ -35,6 +35,8 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List <WebElement> listCommentDrp;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -295,12 +297,12 @@ public class PrimaryD_Comments_PageObject {
 		Thread.sleep(5000);
 		drpKpi.sendKeys(configReader.getProp("Kpi"));
 		
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		ExpectedConditions.visibilityOf(listCommentDrp.get(0));
 		
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Kpi"))) {
+		for (int i = 0; i < listCommentDrp.size(); i++) {
+			if (listCommentDrp.get(i).getText().equalsIgnoreCase(configReader.getProp("Kpi"))) {
 				Thread.sleep(1000);
-				listDrpValueSize.get(i).click();
+				listCommentDrp.get(i).click();
 			}
 		}
 		

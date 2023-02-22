@@ -91,10 +91,10 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstSwitch;
 
-	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[3]")
+	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[4]")
 	WebElement txtRoomAvailable;
 
-	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[6]")
+	@FindBy(xpath = "//tbody//tr[@data-el='0']//td[5]")
 	WebElement txtRoomRevenue;
 
 	@FindBy(xpath = "//button[@data-el='button-drag-Rooms Available']")
@@ -374,7 +374,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	public void storeValues() throws InterruptedException {
 
 		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(txtRowField));
+				.until(ExpectedConditions.visibilityOf(txtProperty));
 
 		if (editPage.isDisplayed()) {
 			WebElement roomAvailableWE = new WebDriverWait(driver, Duration.ofSeconds(20))

@@ -292,8 +292,11 @@ public class PrimaryD_Comments_PageObject {
 		
 		ElementUtils.waitForElementToDisplay(drpKpi, 100);
 		drpKpi.click();
+		Thread.sleep(5000);
 		drpKpi.sendKeys(configReader.getProp("Kpi"));
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+		
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Kpi"))) {
 				Thread.sleep(1000);

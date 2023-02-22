@@ -34,7 +34,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 	@FindBy(xpath = "//div[text()='Dashboard']//ancestor::li")
 	WebElement dashBoard;
 
-	@FindBy(xpath = "//div[contains(text(),'Trends Dashboard')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'Trends Dashboard (New)')]//ancestor::li")
 	WebElement trendDashboard;
 
 	@FindBy(xpath = "//h1[contains(text(),'Trends Dashboard')]")

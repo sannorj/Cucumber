@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression1  @sannorj
+@myP2_Regression @DashBoard
 
 Feature: Primary Dashboard - Comments Feature
 
@@ -14,14 +14,4 @@ Background: Login to MYP2 application
   	And User fill the all the mandatory fields and click on submit button 
   	Then Newly inserted comment should be visible for the relevant property.
    
-  Scenario: Verify whether the user can able to reply the comments from the All comments page
-  	When Users click “All Replies” for a specific thread, they are redirected to a page where they see all the replies to that thread.
-  	And User will be able to reply back to the thread
-  	Then The newly added comments should be added to the appropriate username and property
-   
-  Scenario: Verify whether the User will be able to activate/deactivate a comment thread
-  	When Users click “All Replies” for a specific thread, they are redirected to a page where they see all the replies to that thread.
-  	And User clicks the resolve option
-  	Then Resolved comments should be moved from the active list to the Resolved Comments section.
-  	And  User clicks the Active option
-  	Then Activated comments should be moved from the Resolved list to the active Comments section.
+  

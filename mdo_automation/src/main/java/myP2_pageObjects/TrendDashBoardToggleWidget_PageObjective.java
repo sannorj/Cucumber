@@ -62,7 +62,7 @@ public class TrendDashBoardToggleWidget_PageObjective {
 		WebElement trendDashboardEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(trendDashboard));
 		trendDashboardEle.click();
 
-		Thread.sleep(2500);
+		Thread.sleep(5000);
 		return trendDashboardPage.isDisplayed();
 
 	}

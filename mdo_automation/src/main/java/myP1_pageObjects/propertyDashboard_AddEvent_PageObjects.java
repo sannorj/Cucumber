@@ -255,11 +255,18 @@ public class propertyDashboard_AddEvent_PageObjects {
 			JavascriptExecutor executorcalendarIcon = (JavascriptExecutor) driver;
 			executorcalendarIcon.executeScript("arguments[0].click();", calendarIcon);
 			Thread.sleep(3000);
-			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
+			int NoOflstDropDowDisplayAddedEvent=lstDropDowDisplayAddedEvent.size();
+			for (int i = 0; i < NoOflstDropDowDisplayAddedEvent; i++) {
 				if(addedEvents.contains(lstDropDowDisplayAddedEvent.get(i).getText())) {
 					formDisplayDeleteLinks.get(i).click();
+					Thread.sleep(2000);
 					eventDeleteConfirmBtn.click();
 					System.out.println(lstDropDowDisplayAddedEvent.get(i).getText()+"- deleted");
+					if(i!=NoOflstDropDowDisplayAddedEvent) {
+						Thread.sleep(5000);
+						WebElement EventPopup = new WebDriverWait(driver, Duration.ofSeconds(1000))
+							.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']")));
+					}
 				}
 			}
 			Thread.sleep(7000);
@@ -269,7 +276,10 @@ public class propertyDashboard_AddEvent_PageObjects {
 	}
 
 	public boolean checkEventsDeleted() throws InterruptedException {
-		if(calendarIcon.isDisplayed()) {
+		WebElement EventPopup = new WebDriverWait(driver, Duration.ofSeconds(1000))
+			.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']")));
+		if(EventPopup.isDisplayed()) {
+			Thread.sleep(3500);
 		WebElement calendarDisplayed = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(calendarIcon));
 		calendarDisplayed.click();

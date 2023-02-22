@@ -318,7 +318,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		editDecimal.click();
 
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
 		for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
 			if (lstdropDownEditDecimal.get(i).getText().equalsIgnoreCase(value)) {

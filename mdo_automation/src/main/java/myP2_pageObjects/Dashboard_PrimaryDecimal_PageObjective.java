@@ -364,16 +364,19 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 		
 
 		dropDownMassterFeature.click();
+		Thread.sleep(5000);
 		lstSwitch.get(0).click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		btnSave.click();
 
 	}
 
 	public void storeValues() throws InterruptedException {
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(60))
+		Thread.sleep(4500);
+		
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(120))
 				.until(ExpectedConditions.visibilityOf(txtProperty));
 
 		if (editPage.isDisplayed()) {

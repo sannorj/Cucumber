@@ -214,7 +214,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 		Thread.sleep(5000);
 		WebElement waitFormDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(formDisplayEventBody));
-		if (formDisplayEventBody.isDisplayed()) {
+		if (waitFormDisplayEventBody.isDisplayed()) {
 			boolean formDataAvailable = true;
 			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
 				if (!addedEvents.contains(lstDropDowDisplayAddedEvent.get(i).getText())) {
@@ -275,15 +275,14 @@ public class propertyDashboard_AddEvent_PageObjects {
 		}
 	}
 
-	public boolean checkEventsDeleted() throws InterruptedException {
-		WebElement EventPopup = new WebDriverWait(driver, Duration.ofSeconds(1000))
-			.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']")));
-		if(EventPopup.isDisplayed()) {
+	public boolean checkEventsDeleted() throws InterruptedException {			
+		int EventPopup = driver.findElements(By.xpath("//div[@id='formDisplayEventBody']")).size();
+		if(EventPopup>0) {
 			Thread.sleep(3500);
-		WebElement calendarDisplayed = new WebDriverWait(driver, Duration.ofSeconds(700))
-				.until(ExpectedConditions.visibilityOf(calendarIcon));
-		calendarDisplayed.click();
-			Thread.sleep(2500);
+//		WebElement calendarDisplayed = new WebDriverWait(driver, Duration.ofSeconds(700))
+//				.until(ExpectedConditions.visibilityOf(calendarIcon));
+//		calendarDisplayed.click();
+//			Thread.sleep(2500);
 			String Add_Event_Name = configReader.getMYP1Prop("Add_Event_Name");
 			boolean firstEventDeleted=false;
 			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {

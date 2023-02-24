@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @DashBoard @Com
+@myP2_Regression @comments
 
 Feature: Primary Dashboard - Comments Feature
 
@@ -13,5 +13,3 @@ Background: Login to MYP2 application
   	Given User click on the Add Comments page
   	And User fill the all the mandatory fields and click on submit button 
   	Then Newly inserted comment should be visible for the relevant property.
-   
-  

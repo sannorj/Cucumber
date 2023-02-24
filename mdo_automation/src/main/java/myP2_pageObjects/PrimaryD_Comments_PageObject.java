@@ -71,7 +71,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[text()='Submit']//parent::button[contains(@class, 'MuiButton-root MuiButton-text')]")
 	WebElement btnSubmit;
 
-	@FindBy(xpath = "(//td[contains(@class,'MuiTableCell-root MuiTableCell-body')]//child::div)[18]")
+	@FindBy(xpath = "//button[@data-el='buttonComments']")
 	WebElement btnMainComment;
 	
 	@FindBy(xpath = "//h1[text()='Comments']")

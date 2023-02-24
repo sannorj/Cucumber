@@ -294,7 +294,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 				}
 			}
 			WebElement viewAdd_Event_NameRepeat = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getMYP1Prop("Add_Event_NameRepeat")+"]//following::div//a[@class='alnkdeleteevent']")));
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getMYP1Prop("Add_Event_NameRepeat")+"']//following::div//a[@class='alnkdeleteevent']")));
 			viewAdd_Event_NameRepeat.click();
 			System.out.println("Add_Event_NameRepeat also deleted!");
 			return firstEventDeleted;

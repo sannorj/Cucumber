@@ -17,7 +17,7 @@ Feature: Property Dashboard Add Event functionality
     Then Fill all Event Form Data with Repeat option
     When Click on submit button of Event
     And Verify repeated Data successfully Submited
-
+		
     Scenario: Verify Added Event Popup in Page Load and check added events
     Given Verify Added Events are popup
     Then Check the Events by clicking calendar

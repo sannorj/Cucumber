@@ -326,6 +326,7 @@ public class PrimaryD_Comments_PageObject {
 
 		/* waiting for Comment title to visible */
 		ElementUtils.waitForElementToDisplay(titleComment, 100);
+		Thread.sleep(15000);
 		String CommentContext = lblCommenttxt.getAttribute("label");
 
 		if (CommentContext.equals(configReader.getProp("Comment"))) {

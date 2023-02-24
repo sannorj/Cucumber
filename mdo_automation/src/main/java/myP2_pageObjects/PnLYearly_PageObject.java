@@ -135,7 +135,7 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(1500);
+			Thread.sleep(5000);
 			
 			dropDownHotel.click();
 			for (int i = 0; i < lstDropDownHotel.size(); i++) {
@@ -145,10 +145,10 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(1500);
+			Thread.sleep(5000);
 			
 			dropDownPeriod.click();
-			Thread.sleep(7500);
+			Thread.sleep(5000);
 			
 			for (int i = 0; i < lstDropDownPeriod.size(); i++) {
 				if (lstDropDownPeriod.get(i).getText().equals(year)) {
@@ -157,11 +157,11 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(7500);
+			Thread.sleep(15000);
 
 			dropDownView.click();
 			
-			Thread.sleep(3500);
+			Thread.sleep(5000);
 			
 			for (int i = 0; i < lstDropDownView.size(); i++) {
 				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {

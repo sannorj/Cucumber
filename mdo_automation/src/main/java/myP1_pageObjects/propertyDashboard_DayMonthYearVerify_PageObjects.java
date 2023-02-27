@@ -56,7 +56,7 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 
 	public void clickMonth() {
 		monthBtn.click();
-		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Week')]")));
 	}
 
@@ -70,6 +70,8 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 		Thread.sleep(6000);
 		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
+		propertyDB.click();
+		Thread.sleep(2000);
 		Select drpHotel = new Select(propertyDropdown);
 		Thread.sleep(10000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));

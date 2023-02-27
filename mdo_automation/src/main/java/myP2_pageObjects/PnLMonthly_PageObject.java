@@ -134,14 +134,12 @@ public class PnLMonthly_PageObject {
 
 	public boolean navigatePnLMonthlyPage() throws InterruptedException {
 
-		WebElement pnlMonthEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlMonthly));
+		WebElement pnlMonthEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthly));
 		pnlMonthEle.click();
 
 		Thread.sleep(3500);
 
-		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
+		WebElement pnlMothlyPageEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(pnlMonthlyPage));
 		return pnlMothlyPageEle.isDisplayed();
 
 	}
@@ -280,8 +278,7 @@ public class PnLMonthly_PageObject {
 
 	public boolean verifyAdrCalculationFunc() {
 
-		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(cellAdr));
+		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellAdr));
 		double adrValue = Double.parseDouble(adr.getText().replace(",", "").replaceAll("\\$", ""));
 		if (roundOffAdr == adrValue) {
 			return true;
@@ -584,19 +581,38 @@ public class PnLMonthly_PageObject {
 
 		Thread.sleep(4000);
 		ExpectedConditions.visibilityOf(listDrpSize.get(1));
-		for (int x = 0; x < listDrpSize.size(); x++) {
-			/* split and ready the data from property file */
-			String[] a = configReader.getProp("PnL_view_values").split(",");
-			String actual = listDrpSize.get(x).getText();
+	
+		if(listDrpSize.size()==4) {
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("PnL_month_view_values").split(",");
+				String actual = listDrpSize.get(x).getText();
 
-			String expected = a[x];
+				String expected = a[x];
 
-			if (expected.contains(actual)) {
-				flag = true;
-			} else {
-				flag = false;
+				if (expected.contains(actual)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
 			}
 		}
+		else {
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("PnL_view_values").split(",");
+				String actual = listDrpSize.get(x).getText();
+
+				String expected = a[x];
+
+				if (expected.contains(actual)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+		}
+	
 
 		Thread.sleep(6000);
 		try {

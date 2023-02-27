@@ -36,8 +36,12 @@ public class PnL_data_Validation_PageObject {
 	@FindBy(xpath = "//div[contains(text(),'P&L Monthly')]//ancestor::li")
 	WebElement pnlMonthly;
 
-	@FindBy(xpath = "//div/label[text()='Group']//following-sibling::div//input[@name='porfolio']")
+//	@FindBy(xpath = "//div/label[text()='Group']//following-sibling::div//input[@name='porfolio']")
+//	WebElement drpGroup;
+	
+	@FindBy(xpath = "//div/input[@name='portfolio-group']")
 	WebElement drpGroup;
+	
 
 	@FindBy(xpath = "//div/input[@name='portfolio-hotel']")
 	WebElement drpProperty;

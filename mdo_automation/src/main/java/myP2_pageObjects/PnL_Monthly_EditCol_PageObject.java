@@ -184,7 +184,7 @@ public class PnL_Monthly_EditCol_PageObject {
 	}
     
     public boolean verifyThridHeaderFunc() throws InterruptedException {
-		
+    	Thread.sleep(6000);
   		headerName = Headers.get(2).split("-")[0].trim();
   		headerYear =Headers.get(2).split("-")[2].strip();
   		

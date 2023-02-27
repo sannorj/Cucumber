@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression1
 
   Feature: Verify GSS Priority Set Priority Feature (Disabled in UAT & PROD)
 

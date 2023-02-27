@@ -1,6 +1,8 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -30,9 +32,11 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'porfolio-group')]")
 	WebElement drpGroup;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List <WebElement> listCommentDrp;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -58,7 +62,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//textarea[@name='message']")
 	WebElement txtCommentBox;
 	
-	@FindBy(xpath = "//th[text()='Property']")
+	@FindBy(xpath = "//div[text()='Property']")
 	WebElement lblProperty;
 	
 	@FindBy(xpath = "//th[text()='Groups']")
@@ -67,7 +71,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[text()='Submit']//parent::button[contains(@class, 'MuiButton-root MuiButton-text')]")
 	WebElement btnSubmit;
 
-	@FindBy(xpath = "(//td[contains(@class,'MuiTableCell-root MuiTableCell-body')]//child::div)[18]")
+	@FindBy(xpath = "//button[@data-el='buttonComments']")
 	WebElement btnMainComment;
 	
 	@FindBy(xpath = "//h1[text()='Comments']")
@@ -115,12 +119,123 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//label[@label='Mark Active'])[1]")
 	WebElement btnMarkActive;
 	
+	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
+	WebElement btnDatePicker;
+
+	@FindBy(xpath = "//div[@role='dialog']")
+	WebElement divCalender;
+
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
+	WebElement btnExpandYear;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+	WebElement btnPreviousMonth;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+	WebElement btnNextMonth;
+	
+	
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+
+		return month + 1;
+	}
+
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
+	public boolean selectDate() throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("Date").split("/");
+
+		txtDate.click();
+
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+
+			Thread.sleep(2500);
+
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+			pickYear.click();
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+
+		return flag;
+
+	}
 	
 	
 	public void selectParameters() throws InterruptedException {
 
-		ElementUtils.waitForElementToDisplay(lblGroup, 50);
+		//ElementUtils.waitForElementToDisplay(lblGroup, 50);
 
+		Thread.sleep(5000);
+		
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
@@ -149,9 +264,10 @@ public class PrimaryD_Comments_PageObject {
 		}
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
-		txtDate.sendKeys(Keys.CONTROL + "a");
+		/*txtDate.sendKeys(Keys.CONTROL + "a");
 		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("Date"));
+		txtDate.sendKeys(configReader.getProp("Date"));*/
+		selectDate();
 
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
@@ -178,12 +294,15 @@ public class PrimaryD_Comments_PageObject {
 		
 		ElementUtils.waitForElementToDisplay(drpKpi, 100);
 		drpKpi.click();
+		Thread.sleep(5000);
 		drpKpi.sendKeys(configReader.getProp("Kpi"));
-		ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Kpi"))) {
+		
+		ExpectedConditions.visibilityOf(listCommentDrp.get(0));
+		
+		for (int i = 0; i < listCommentDrp.size(); i++) {
+			if (listCommentDrp.get(i).getText().equalsIgnoreCase(configReader.getProp("Kpi"))) {
 				Thread.sleep(1000);
-				listDrpValueSize.get(i).click();
+				listCommentDrp.get(i).click();
 			}
 		}
 		
@@ -207,6 +326,7 @@ public class PrimaryD_Comments_PageObject {
 
 		/* waiting for Comment title to visible */
 		ElementUtils.waitForElementToDisplay(titleComment, 100);
+		Thread.sleep(15000);
 		String CommentContext = lblCommenttxt.getAttribute("label");
 
 		if (CommentContext.equals(configReader.getProp("Comment"))) {

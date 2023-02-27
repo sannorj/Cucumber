@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression @myp2Regression
 
   Feature: AR Aging Property - Outstanding valiadtion Functionality 
 

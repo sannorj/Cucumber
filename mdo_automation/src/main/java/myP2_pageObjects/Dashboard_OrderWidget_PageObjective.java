@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.ConfigReader;
+import utils.ElementUtils;
 
 public class Dashboard_OrderWidget_PageObjective {
 	private WebDriver driver;
@@ -41,11 +42,22 @@ public class Dashboard_OrderWidget_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement btnSave;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//div[@elevation='3']//h5")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//div[@elevation='3']//h5")
 	List<WebElement> listDasBoardHeaders;
+	
+	@FindBy(xpath = "//input[@name='porfolio-hotel']")
+	WebElement dropDownProperty;
 
+	@FindBy(xpath = "//div[@role='listbox']//li")
+	List<WebElement> lstDropDowProperty;
+
+	@FindBy(xpath = "//div[text()='Property']")
+	WebElement lblProperty;
+	
 	public boolean navigateToOrderWidget() throws InterruptedException {
 
+		Thread.sleep(5000);
+		
 		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(btnOrderButton));
 
@@ -73,6 +85,8 @@ public class Dashboard_OrderWidget_PageObjective {
 
 		}
 
+		System.out.print("Length "+widget.length);
+		
 		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
 				.until(ExpectedConditions.visibilityOf(btnSave));
 
@@ -87,6 +101,9 @@ public class Dashboard_OrderWidget_PageObjective {
 			dashBoardWidgets[i] = listDasBoardHeaders.get(i).getText();
 
 		}
+		
+		System.out.print("Dashbord Length "+dashBoardWidgets.length);
+
 	}
 
 	public boolean verifyOrderedWidgets() throws InterruptedException {
@@ -94,8 +111,12 @@ public class Dashboard_OrderWidget_PageObjective {
 		boolean flag = true;
 
 		if (widget.length == dashBoardWidgets.length) {
-
+			
+			System.out.println("Length "+ widget.length+" ---- "+dashBoardWidgets.length );			
+			
 			for (int i = 1; i < widget.length; i++) {
+				
+				System.out.println("Compare "+ widget[i]+" ---- "+dashBoardWidgets[i] );
 
 				if (widget[i].equalsIgnoreCase(dashBoardWidgets[i])) {
 					flag = true;
@@ -136,6 +157,26 @@ public class Dashboard_OrderWidget_PageObjective {
 
 			Thread.sleep(5000);
 		}
+
+	}
+
+	public void selectProperty() throws InterruptedException {
+
+		Thread.sleep(5000);
+
+		WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(dropDownProperty));
+		drpPropertyEle.click();
+
+		Thread.sleep(7500);
+		
+		lstDropDowProperty.get(1).click();
+		
+		Thread.sleep(5000);
+		
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
+	
+		Thread.sleep(3500);
 
 	}
 }

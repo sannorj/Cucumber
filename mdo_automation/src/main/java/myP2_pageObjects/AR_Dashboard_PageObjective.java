@@ -109,7 +109,8 @@ public class AR_Dashboard_PageObjective {
 		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
 
 		txtDate.click();
-		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
@@ -119,7 +120,8 @@ public class AR_Dashboard_PageObjective {
 
 		if (status == 1) {
 
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 			Thread.sleep(2500);
 
@@ -134,13 +136,15 @@ public class AR_Dashboard_PageObjective {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
@@ -148,24 +152,27 @@ public class AR_Dashboard_PageObjective {
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnNextMonth));
 
 					btnNext.click();
 					Thread.sleep(1500);
 				}
-				
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
-				
+
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-				btnDate.click();		
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
 				validateOkCancelandClick();
-				
+
 				flag = true;
 			}
 
@@ -178,23 +185,28 @@ public class AR_Dashboard_PageObjective {
 	}
 
 	public void expandAccountRecievable() {
-		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(selector));
+		WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(selector));
 		menu.click();
 
-		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(reports));
+		WebElement reportsEx = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(reports));
 		reportsEx.click();
 
-		WebElement accountRecievable = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(Ar));
+		WebElement accountRecievable = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(Ar));
 		accountRecievable.click();
 
 	}
 
 	public boolean navigateToARDahsboardPage() {
 
-		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(ArDashboard));
+		WebElement arDashBoardCL = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(ArDashboard));
 		arDashBoardCL.click();
 
-		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(ArDashboardPage));
+		WebElement arDashBoardPageCL = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(ArDashboardPage));
 		return arDashBoardPageCL.isDisplayed();
 
 	}
@@ -230,12 +242,12 @@ public class AR_Dashboard_PageObjective {
 		try {
 			int chartStatus = driver
 					.findElements(
-							By.xpath("//label[@data-el='labelswitchShowCharts']//span[contains(@class,'Mui-checked')]"))
+							By.xpath("//label[@data-el='switchShowChartsLabel']//span[contains(@class,'Mui-checked')]"))
 					.size();
 
 			if (chartStatus == 0) {
 				WebElement showChart = driver
-						.findElement(By.xpath("//label[@data-el='labelswitchShowCharts']//input[@type='checkbox']"));
+						.findElement(By.xpath("//label[@data-el='switchShowChartsLabel']//input[@type='checkbox']"));
 
 				showChart.click();
 
@@ -292,12 +304,12 @@ public class AR_Dashboard_PageObjective {
 		try {
 			int chartStatus = driver
 					.findElements(
-							By.xpath("//label[@data-el='labelswitchShowAtRisk']//span[contains(@class,'Mui-checked')]"))
+							By.xpath("//label[@data-el='switchShowAtRiskLabel']//span[contains(@class,'Mui-checked')]"))
 					.size();
 
 			if (chartStatus == 0) {
 				WebElement showChart = driver
-						.findElement(By.xpath("//label[@data-el='labelswitchShowAtRisk']//input[@type='checkbox']"));
+						.findElement(By.xpath("//label[@data-el='switchShowAtRiskLabel']//input[@type='checkbox']"));
 
 				showChart.click();
 
@@ -350,6 +362,10 @@ public class AR_Dashboard_PageObjective {
 		flag = false;
 		outstandingRedVal = (maxDataValue * 0.75);
 		outstandingYellow = (maxDataValue * 0.5);
+
+		System.out.println("Max" + maxDataValue + " Red" + outstandingRedVal);
+
+		System.out.println("Yel" + outstandingYellow + " Red" + outstandingRedVal);
 
 		for (int i = 0; i < dataRowCount.size() - 1; i++) {
 			for (int j = 2; j < 7; j++) {

@@ -64,8 +64,11 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement btnSave;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
+	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List <WebElement> listAmountType;
 	
 	@FindBy(xpath = "//button[@data-el='buttonFinishCustomization']")
 	WebElement btnImDone;
@@ -73,7 +76,7 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//th[text()='Property']")
 	WebElement lblProperty;
 		
-	@FindBy(xpath = "(//span[contains(@class, 'MuiButtonBase-root MuiTableSortLabel-root')])[1]")
+	@FindBy(xpath = "(//div[contains(@class, 'MuiDataGrid-columnHeaderTitle css-cc8tf1')])[4]")
 	WebElement lblEditedColumnHeader;
 	
 //	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
@@ -82,7 +85,7 @@ public class PrimaryD_Edit_PageObject {
 	@FindBy(xpath = "//button[text()='By Revenue']")
 	WebElement tabByRevenue;
 	
-	@FindBy(xpath = "//div//b[text()='Total']")
+	@FindBy(xpath = "//div//b[text()='Portfolio Total']")
 	WebElement lblTotal;
 	
 	
@@ -135,11 +138,11 @@ public class PrimaryD_Edit_PageObject {
 		int amountType =driver.findElements(By.xpath("//div[@id='mui-component-select-valueDataType']")).size();
 		if(amountType>0) {
 			drpAmountType.click();
-			ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Amount_Type"))) {
+			ElementUtils.waitForElementToDisplay(listAmountType.get(1), 100);
+			for (int i = 0; i < listAmountType.size(); i++) {
+				if (listAmountType.get(i).getText().equalsIgnoreCase(configReader.getProp("Amount_Type"))) {
 					Thread.sleep(4000);
-					listDrpValueSize.get(i).click();
+					listAmountType.get(i).click();
 					Thread.sleep(2000);
 				}
 			}
@@ -148,10 +151,10 @@ public class PrimaryD_Edit_PageObject {
 		int valueDateOffsetType =driver.findElements(By.xpath("//div[@id='mui-component-select-valueDateOffsetType']")).size();
 		if(valueDateOffsetType>0) {
 			drpValueDateOffsetType.click();
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Period"))) {
-					listDrpValueSize.get(i).click();
+			ExpectedConditions.visibilityOf(listAmountType.get(0));
+			for (int i = 0; i < listAmountType.size(); i++) {
+				if (listAmountType.get(i).getText().equalsIgnoreCase(configReader.getProp("Period"))) {
+					listAmountType.get(i).click();
 					Thread.sleep(2000);
 				}
 			}
@@ -165,10 +168,10 @@ public class PrimaryD_Edit_PageObject {
 		int PerformanceIndicator =driver.findElements(By.xpath("//div[@id='mui-component-select-performanceIndicatorMasterOverride']")).size();
 		if(PerformanceIndicator<0) {
 			drpPerformanceIndicatorMasterOverride.click();
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Porformance"))) {
-					listDrpValueSize.get(i).click();
+			ExpectedConditions.visibilityOf(listAmountType.get(0));
+			for (int i = 0; i < listAmountType.size(); i++) {
+				if (listAmountType.get(i).getText().equalsIgnoreCase(configReader.getProp("Porformance"))) {
+					listAmountType.get(i).click();
 					Thread.sleep(2000);
 				}
 			}
@@ -179,9 +182,10 @@ public class PrimaryD_Edit_PageObject {
 	public void clickOnSave() throws InterruptedException {
 		WebElement btnSaveEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnSave));
 		btnSaveEle.click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		
 		int Property =driver.findElements(By.xpath("//th[text()='Property']")).size();
+		
 		if (Property==1) {
 			ElementUtils.waitForElementToDisplay(lblProperty, 30);
 		} else {
@@ -194,7 +198,9 @@ public class PrimaryD_Edit_PageObject {
 	
 	public boolean verifyEditedColumn() throws InterruptedException  {
 	
-		int Property =driver.findElements(By.xpath("//th[text()='Property']")).size();
+		Thread.sleep(3500);
+		
+		int Property =driver.findElements(By.xpath("//div[text()='Property']")).size();
 		if (Property==1) {
 			ElementUtils.waitForElementToDisplay(lblProperty, 30);
 		} else {

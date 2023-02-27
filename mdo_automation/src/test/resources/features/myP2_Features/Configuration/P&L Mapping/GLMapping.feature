@@ -1,7 +1,7 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @GL_Mapping @pasindu
+@myP2_Regression @GL_Mappin
 
-Feature: Primary DashBoard - By Revenue Feature 
+Feature: Primary DashBoard - By Revenue Featur 
 
 Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site

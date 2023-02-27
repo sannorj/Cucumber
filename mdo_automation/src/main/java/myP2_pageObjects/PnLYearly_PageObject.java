@@ -53,37 +53,37 @@ public class PnLYearly_PageObject {
 	@FindBy(xpath = "//div[@id='mui-component-select-selectedYear']")
 	WebElement dropDownPeriod;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-customViewId']")
 	WebElement dropDownView;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownView;
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
 	WebElement btnGo;
 
-	@FindBy(xpath = "//label[@data-el='labelswitchDisableNullRecords']")
+	@FindBy(xpath = "//label[@data-el='switchDisableNullRecordsLabel']")
 	WebElement btnZeroValue;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[1]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[1]//td")
 	List<WebElement> lstRoomAvailable;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[2]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[2]//td")
 	List<WebElement> lstRoomSold;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[3]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[3]//td")
 	List<WebElement> lstOccupancy;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[4]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[4]//td")
 	List<WebElement> lstAdr;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[5]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[5]//td")
 	List<WebElement> lstRevPar;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//tbody//tr[6]//td")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//tbody//tr[6]//td")
 	List<WebElement> lstTotalRevPar;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV90']//td")
@@ -135,7 +135,7 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(1500);
+			Thread.sleep(5000);
 			
 			dropDownHotel.click();
 			for (int i = 0; i < lstDropDownHotel.size(); i++) {
@@ -145,10 +145,11 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(1500);
+			Thread.sleep(5000);
 			
 			dropDownPeriod.click();
-			Thread.sleep(1000);
+			Thread.sleep(5000);
+			
 			for (int i = 0; i < lstDropDownPeriod.size(); i++) {
 				if (lstDropDownPeriod.get(i).getText().equals(year)) {
 					lstDropDownPeriod.get(i).click();
@@ -156,9 +157,12 @@ public class PnLYearly_PageObject {
 				}
 			}
 
-			Thread.sleep(4500);
+			Thread.sleep(15000);
 
 			dropDownView.click();
+			
+			Thread.sleep(5000);
+			
 			for (int i = 0; i < lstDropDownView.size(); i++) {
 				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
 					lstDropDownView.get(i).click();
@@ -175,7 +179,10 @@ public class PnLYearly_PageObject {
 	public void loadPriorityReport() throws InterruptedException {
 
 		Thread.sleep(6000);
-		btnGo.click();
+		
+		WebElement btonGo = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(btnGo));
+		btonGo.click();
+		
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 200);
 		Thread.sleep(5000);
 		btnZeroValue.click();

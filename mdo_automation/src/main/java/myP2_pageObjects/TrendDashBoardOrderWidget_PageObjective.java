@@ -44,7 +44,7 @@ public class TrendDashBoardOrderWidget_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement btnSave;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//div[@elevation='3']//h5")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//div[@elevation='3']//h5")
 	List<WebElement> listDasBoardHeaders;
 
 	public void storeOrderedWidgets() throws InterruptedException {

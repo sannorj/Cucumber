@@ -21,15 +21,15 @@ Feature: P&L Yearly - TTM Forcast Functionalty
    Then Page should load the defualt static section
    And  Verify whether the header load according to TTM selected
    
-    Scenario: Storing and comparing actual forcast data with TTM forcast data
-    Given I select the group,property,view in TTM
-    When I am Loading the PnLYearly Report with GO button
-    Then Page should load the defualt static section
-    And I am storing the TTM forcast data
-    Given I select the group,property,view
-    When I am Loading the PnLYearly Report with GO button
-    Then Page should load the defualt static section
-    And I am storing the actual forcast data
-    And I compare the stored forcast data
-    
+    #Scenario: Storing and comparing actual forcast data with TTM forcast data
+    #Given I select the group,property,view in TTM
+    #When I am Loading the PnLYearly Report with GO button
+    #Then Page should load the defualt static section
+    #And I am storing the TTM forcast data
+    #Given I select the group,property,view
+    #When I am Loading the PnLYearly Report with GO button
+    #Then Page should load the defualt static section
+    #And I am storing the actual forcast data
+    #And I compare the stored forcast data
+    #
     

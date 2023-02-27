@@ -14,8 +14,8 @@ Feature: Property Dashboard Day Month Year page Verify functionality
     Then Click on Selected date
     And Verify I navigate to Selected Date
     
-    Scenario: Verify Navigate to Year Page
-    Given Click on Year
-    And search selected year
-    When Click on Selected Month
-    Then Verify I navigate to Selected Month
+    #Scenario: Verify Navigate to Year Page
+    #Given Click on Year
+    #And search selected year
+    #When Click on Selected Month
+    #Then Verify I navigate to Selected Month

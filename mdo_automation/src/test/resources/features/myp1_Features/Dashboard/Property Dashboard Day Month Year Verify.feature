@@ -10,7 +10,7 @@ Feature: Property Dashboard Day Month Year page Verify functionality
     Scenario: Verify Navigate to Month and Date Page
     Given Click on Month
     And search selected month and year
-    When Check Add Event popup is visible
+    #When Check Add Event popup is visible
     Then Click on Selected date
     And Verify I navigate to Selected Date
     

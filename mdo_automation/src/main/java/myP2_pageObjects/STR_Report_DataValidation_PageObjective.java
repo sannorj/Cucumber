@@ -98,7 +98,7 @@ public class STR_Report_DataValidation_PageObjective {
 		System.out.println(firstCell.isDisplayed());
 		
 		WebElement tableOverlay = new WebDriverWait(driver, Duration.ofSeconds(1000))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container']")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container']-1")));
 		System.out.println(tableOverlay.getCssValue("opacity"));
 		float tableOverlayVal=Float.parseFloat(tableOverlay.getCssValue("opacity"));
 		if(1>tableOverlayVal) {

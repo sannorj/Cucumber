@@ -88,11 +88,11 @@ public class GL_Hierarchy_PnL_Comparison_PageObject {
 	public boolean captureBottomChildModal() throws InterruptedException {
 		Thread.sleep(5000);
 
-		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(btnRoomRevenue));
+		WebElement btnRoomRev = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(btnRoomRevenue));
 		Thread.sleep(2000);
 		btnRoomRev.click();
 
-		WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
+		WebElement btnRoomRevBeofreOther = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(btnRoomRevenueBeforeOther));
 		btnRoomRevBeofreOther.click();
 
 		int status = driver.findElements(By.xpath("//tr[@data-el='RMREV01']")).size();

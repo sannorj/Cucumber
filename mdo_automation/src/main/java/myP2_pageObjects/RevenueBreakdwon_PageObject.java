@@ -35,7 +35,7 @@ public class RevenueBreakdwon_PageObject {
 	@FindBy(xpath = "//div[text()='Revenue']//ancestor::li")
 	WebElement revenueBreakdown;
 
-	@FindBy(xpath = "//div[contains(text(),'Revenue Breakdown Report')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'Revenue Breakdown Report (New)')]//ancestor::li")
 	WebElement revenueBreakdownPage;
 
 	@FindBy(xpath = "//tbody//tr[1]//td[1]")

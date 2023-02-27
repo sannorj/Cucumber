@@ -67,7 +67,7 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 
 		Select drpYear = new Select(selectYear);
 		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
 		propertyDB.click();

@@ -72,6 +72,7 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
 //		propertyDB.click();
 		Thread.sleep(10000);
+		Thread.sleep(5000);
 		Select drpHotel = new Select(propertyDropdown);
 		Thread.sleep(10000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));

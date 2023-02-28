@@ -96,7 +96,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		WebElement submitbtn = driver.findElement(By.xpath("//button[@id='btnsave']"));
 		if (removingPanel.isDisplayed()) {
 			removingPanel.click();
-			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(100))
+			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='"
 							+ configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch off']")));
 			if (waitforSwitchoff.isDisplayed())

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PEdit
 Feature: Property Dashboard Edit functionality
 
   Background: Verify Property Dashboard Page Navigation

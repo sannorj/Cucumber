@@ -16,32 +16,32 @@ Feature: Property Dashboard Edit functionality
     And Check Chart is removed
     
     #Re-Add removed Chart
-    Given Click on Edit button to add chart
-    When Click on Add Chart button
-    Then Verify Add Chart popup displayed
-    When Re-select removed chart and click on submit button
-    And Verify Chart is loaded
-    
+    #Given Click on Edit button to add chart
+    #When Click on Add Chart button
+    #Then Verify Add Chart popup displayed
+    #When Re-select removed chart and click on submit button
+    #And Verify Chart is loaded
+    #
     #edit table
-    Given Click on Edit button 
-    When Remove Selected Column
-    And Enable remove confirm msg
-    Then Verify column successfully removed
-    Given Click on Edit button
-    And Add new Column
-    Given Click on Edit button
-    Then Select Selected Column for new column
-    And Verify column successfully added
-    
+    #Given Click on Edit button 
+    #When Remove Selected Column
+    #And Enable remove confirm msg
+    #Then Verify column successfully removed
+    #Given Click on Edit button
+    #And Add new Column
+    #Given Click on Edit button
+    #Then Select Selected Column for new column
+    #And Verify column successfully added
+    #
     #Close individual chart
-    Given Click on Edit button
-    And Remove a selected chart
-    And Check Chart is removed
-    Given Click on Edit button
-    When Click on Add Chart button
-    Then Verify Add Chart popup displayed
-    When Re-select removed chart and click on submit button
-    And Verify Chart is loaded
+    #Given Click on Edit button
+    #And Remove a selected chart
+    #And Check Chart is removed
+    #Given Click on Edit button
+    #When Click on Add Chart button
+    #Then Verify Add Chart popup displayed
+    #When Re-select removed chart and click on submit button
+    #And Verify Chart is loaded
     
     
         

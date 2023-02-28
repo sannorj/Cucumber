@@ -135,12 +135,14 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 		Select drpYear = new Select(selectYear);
 		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
 
-		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
+		Thread.sleep(10000);
+		Thread.sleep(5000);
 		Select drpHotel = new Select(propertyDropdown);
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
-
+		Thread.sleep(2000);
 		searchBtn.click();
 		Thread.sleep(7000);
 

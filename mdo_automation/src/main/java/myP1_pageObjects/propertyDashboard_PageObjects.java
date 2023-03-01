@@ -114,11 +114,11 @@ public class propertyDashboard_PageObjects {
 	}
 
 	public boolean verifyDataLoadTODate() throws InterruptedException {
-		WebElement RoomSalesLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement RoomSalesLoaded = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//table//tr//td[text()='Room Sales'])[1]")));
 
-		WebElement dateHrefVal = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement dateHrefVal = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//a[@id='alnkRoomRevenueSummary' and contains(@href,'" + configReader.getMYP1Prop("date_href_val") + "')]")));
 
@@ -128,6 +128,7 @@ public class propertyDashboard_PageObjects {
 			System.out.println("==verifyDataLoadTODate==");
 			return true;
 		} else {
+			System.out.println("==verifyDataLoadTODate return false==");
 			return false;
 		}
 

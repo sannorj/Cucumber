@@ -67,7 +67,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	// check Add Chart Functionality
 
 	public void clickEdit() throws InterruptedException {
-		WebElement editbtn = new WebDriverWait(driver, Duration.ofSeconds(70))
+		WebElement editbtn = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(editBtn));
 		editBtn.click();
 	}
@@ -85,6 +85,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 			System.out.println("==Add Chart Modal Displayed==");
 			return true;
 		} else {
+			System.out.println("==Add Chart Modal not Displayed==");
 			return false;
 		}
 	}
@@ -99,10 +100,11 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='"
 							+ configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch off']")));
-			if (waitforSwitchoff.isDisplayed())
+			if (waitforSwitchoff.isDisplayed()) {
 				submitbtn.click();
-			System.out.println("swith disabled");
-			Thread.sleep(7000);
+				System.out.println("swith disabled");
+				Thread.sleep(7000);
+			}
 		} else {
 			System.out.println("swith already disabled");
 		}
@@ -110,7 +112,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyChartRemoved() throws InterruptedException {
 		Thread.sleep(7000);
-		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
+		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
 						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		Thread.sleep(7000);

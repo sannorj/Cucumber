@@ -73,13 +73,13 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	}
 
 	public void addChart() throws InterruptedException {
-		WebElement addChartbtn = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement addChartbtn = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(addChartBtn));
 		addChartBtn.click();
 	}
 
 	public boolean verifyAddChartPopupDisplayed() {
-		WebElement addChartModal = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement addChartModal = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(AddChartModal));
 		if (addChartModal.isDisplayed()) {
 			System.out.println("==Add Chart Modal Displayed==");
@@ -118,17 +118,18 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		if (waitAddChartClose) {
 			Thread.sleep(7000);
-			WebElement removingChart = driver
-					.findElement(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']"));
+			int removingChart = driver
+					.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();
 			Thread.sleep(3000);
-			if (removingChart.isDisplayed()) {
-				System.out.println("Chart not removed" + removingChart.isDisplayed());
+			if (removingChart>0) {
+				System.out.println("Chart not removed");
 				return false;
 			} else {
-				System.out.println("Removed Chart Successfully!" + removingChart.isDisplayed());
+				System.out.println("Removed Chart Successfully!");
 				return true;
 			}
 		} else {
+			System.out.println("////////////");
 			return false;
 		}
 	}

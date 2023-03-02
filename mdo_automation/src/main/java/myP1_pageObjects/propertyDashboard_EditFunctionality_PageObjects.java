@@ -114,7 +114,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+						By.xpath("//h4[text()='Add Chart']")));		
 		Thread.sleep(7000);
 		if (waitAddChartClose) {
 			Thread.sleep(7000);
@@ -162,16 +162,19 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 				.until(ExpectedConditions.invisibilityOfElementLocated(
 						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 
-		WebElement addingChart = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")));
+		int addingChart = driver
+				.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();
+		
+//		WebElement addingChart = new WebDriverWait(driver, Duration.ofSeconds(100))
+//				.until(ExpectedConditions.visibilityOfElementLocated(
+//						By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")));
 		Thread.sleep(7000);
 
-		if (addingChart.isDisplayed()) {
-			System.out.println("Chart Added Successfully! " + addingChart.isDisplayed());
+		if (addingChart>0) {
+			System.out.println("Chart Added Successfully!");
 			return true;
 		} else {
-			System.out.println("Chart not Loaded " + addingChart.isDisplayed());
+			System.out.println("Chart not Loaded");
 			return false;
 		}
 	}

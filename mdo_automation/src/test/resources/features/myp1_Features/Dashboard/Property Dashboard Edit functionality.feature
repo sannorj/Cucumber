@@ -16,11 +16,11 @@ Feature: Property Dashboard Edit functionality
     And Check Chart is removed
     
     #Re-Add removed Chart
-    #Given Click on Edit button to add chart
-    #When Click on Add Chart button
-    #Then Verify Add Chart popup displayed
-    #When Re-select removed chart and click on submit button
-    #And Verify Chart is loaded
+    Given Click on Edit button to add chart
+    When Click on Add Chart button
+    Then Verify Add Chart popup displayed
+    When Re-select removed chart and click on submit button
+    And Verify Chart is loaded
     #
     #edit table
     #Given Click on Edit button 

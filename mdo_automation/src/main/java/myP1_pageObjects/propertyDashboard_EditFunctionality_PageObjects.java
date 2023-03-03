@@ -158,9 +158,12 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public boolean verifyAddedChartIsLoaded() throws InterruptedException {
 		Thread.sleep(7000);
 //		driver.navigate().refresh();
+//		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
+//				.until(ExpectedConditions.invisibilityOfElementLocated(
+//						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+						By.xpath("//h4[text()='Add Chart']")));
 
 		int addingChart = driver
 				.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();

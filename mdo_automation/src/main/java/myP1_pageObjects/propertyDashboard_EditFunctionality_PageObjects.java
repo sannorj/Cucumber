@@ -212,9 +212,10 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyColRemoved() throws InterruptedException {
 		Thread.sleep(7000);
-		boolean waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.invisibilityOfElementLocated(
+		WebElement waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(900))
+				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+		
 		for (int i = 0; i < dashboardTblColumns.size(); i++) {
 			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
 				System.out.println("==Column already exists ==");

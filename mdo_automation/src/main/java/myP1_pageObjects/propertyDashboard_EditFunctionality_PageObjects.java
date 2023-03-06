@@ -49,10 +49,11 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	@FindBy(xpath = "//button[@id='btnsave']")
 	WebElement SubmitModalBtn;
 
-	@FindBy(xpath = "(//th[@class='center num sorting_disabled']//select)[1]")
+//	@FindBy(xpath = "(//th[@class='center num sorting_disabled']//select)[1]")
+	@FindBy(xpath = "(//th[contains(@class,'center')]//select)[1]")
 	WebElement dashboardTblColOptions;
 
-	@FindBy(xpath = "//th[@class='center num sorting_disabled']//span")
+	@FindBy(xpath = "//th[contains(@class,'center')]//span")
 	List<WebElement> dashboardTblColumns;
 
 	@FindBy(xpath = "(//button[text()='Confirm'])[1]")
@@ -213,8 +214,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public boolean verifyColRemoved() throws InterruptedException {
 		Thread.sleep(7000);
 		WebElement waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(900))
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		
 		for (int i = 0; i < dashboardTblColumns.size(); i++) {
 			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {

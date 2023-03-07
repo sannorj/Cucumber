@@ -189,7 +189,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
 		WebElement removingCol = driver
-				.findElement(By.xpath("(//th[@class='center num sorting_disabled']//span[text()='"
+				.findElement(By.xpath("(//th[contains(@class,'center')]//span[text()='"
 						+ configReader.getMYP1Prop("Remove_Column") + "']//following::a[@class='colRemove'])[1]"));
 		Thread.sleep(3000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;

@@ -53,7 +53,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	@FindBy(xpath = "(//th[contains(@class,'center')]//select)[1]")
 	WebElement dashboardTblColOptions;
 
-	@FindBy(xpath = "//th[contains(@class,'center')]//span")
+	@FindBy(xpath = "//th[contains(@class,'center')]/span[not(@id) and not(@class) and not(@style)]")
 	List<WebElement> dashboardTblColumns;
 
 	@FindBy(xpath = "(//button[text()='Confirm'])[1]")

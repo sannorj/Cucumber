@@ -93,21 +93,21 @@ public class propertyDashboard_PageObjects {
 
 	public boolean navigateToPropertyDashboard() throws InterruptedException {
 		boolean result = false;
-		WebElement waitpropertyDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement waitpropertyDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Property Dashboard']")));
 		System.out.println("===navigate to property db page===");
 		if (waitpropertyDashboardPage.isDisplayed()) {
 			System.out.println("==navigateToPropertyDashboard==");
 			result = true;
 		}
-		Thread.sleep(7000);
+		Thread.sleep(6000);
 		if(closeAddEventModal.isDisplayed()) {
 			closeAddEventModal.click();
 		}
 		datePickerVal.sendKeys(Keys.CONTROL + "a");
 		datePickerVal.sendKeys(Keys.DELETE);
 		datePickerVal.sendKeys(configReader.getMYP1Prop("date_href_val"));
-		Thread.sleep(7000);
+		Thread.sleep(6000);
 		searchBTN.click();
 
 		return result;

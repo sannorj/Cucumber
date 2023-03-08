@@ -188,7 +188,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void removeColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
-		WebElement removingCol = new WebDriverWait(driver, Duration.ofSeconds(500))
+		WebElement removingCol = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
 						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));
 		Thread.sleep(3000);

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @LinkVerify
 Feature: Property Dashboard Links Verify functionality
 
   Background: Verify Property Dashboard Page Navigation

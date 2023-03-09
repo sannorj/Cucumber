@@ -20,7 +20,4 @@ Feature: Property Dashboard Links Verify functionality
     Scenario: Verify Labor Dashboard Link functionality
     Given verify Labor page navigation
     
-    #Scenario: Verify Download Btn functionality
-    #Given verify download button functionality
-    
     

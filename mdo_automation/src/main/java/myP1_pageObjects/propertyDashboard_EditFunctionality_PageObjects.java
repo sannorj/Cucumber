@@ -70,9 +70,11 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void clickEdit() throws InterruptedException {
 		WebElement editbtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(editBtn));
-		Thread.sleep(1000);
+		System.out.println("==View edit button==");
+		Thread.sleep(2000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", editbtnView);
+		System.out.println("==clicked edit button==");
 		Thread.sleep(3000);
 	}
 

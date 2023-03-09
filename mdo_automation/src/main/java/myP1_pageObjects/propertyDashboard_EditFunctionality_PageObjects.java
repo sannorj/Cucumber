@@ -193,12 +193,16 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void removeColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
-		WebElement removingCol = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement removingCol_scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
-						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));
-		Thread.sleep(3000);
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", removingCol);
+						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));		
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		// Scroll Left
+		jse.executeScript("arguments[0].scrollIntoView()", removingCol_scroll_left);
+		Thread.sleep(25000);
+		removingCol_scroll_left.click();
+//		JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		executor.executeScript("arguments[0].click();", removingCol_scroll_left);
 		saveBtn.click();
 		Thread.sleep(7000);
 	}
@@ -246,7 +250,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		saveButton.click();
 		System.out.println("==New Column Added==");
 		Thread.sleep(7000);
-		boolean waitSaveBtnInvisible = new WebDriverWait(driver, Duration.ofSeconds(100))
+		boolean waitSaveBtnInvisible = new WebDriverWait(driver, Duration.ofSeconds(900))
 		.until(ExpectedConditions.invisibilityOfElementLocated(
 				By.xpath("//button[@id='btnSaveEditDashboard']")));
 		Thread.sleep(5000);

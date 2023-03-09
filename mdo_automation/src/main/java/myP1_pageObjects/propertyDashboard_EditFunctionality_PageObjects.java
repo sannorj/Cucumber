@@ -68,11 +68,12 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	// check Add Chart Functionality
 
 	public void clickEdit() throws InterruptedException {
-		WebElement editbtn = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement editbtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(editBtn));
 		Thread.sleep(1000);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", editBtn);
+		executor.executeScript("arguments[0].click();", editbtnView);
+		Thread.sleep(3000);
 	}
 
 	public void addChart() throws InterruptedException {

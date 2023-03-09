@@ -58,13 +58,13 @@ public class PnlTTM_PageObject {
 	@FindBy(xpath = "//div[@id='mui-component-select-selectedYear']")
 	WebElement dropDownPeriod;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownPeriod;
 
 	@FindBy(xpath = "//div[@id='mui-component-select-customViewId']")
 	WebElement dropDownView;
 
-	@FindBy(xpath = "//div[@role='listbox']//li")
+	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDownView;
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
@@ -89,8 +89,10 @@ public class PnlTTM_PageObject {
 	public void passParameteres() {
 
 		try {
+			Thread.sleep(5000);
+
 			dropDownGroup.click();
-			Thread.sleep(1500);
+			Thread.sleep(5000);
 			for (int i = 0; i < lstDropDownGroup.size(); i++) {
 				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMGroup"))) {
 					lstDropDownGroup.get(i).click();
@@ -98,20 +100,29 @@ public class PnlTTM_PageObject {
 				}
 			}
 
+			Thread.sleep(5000);
+
 			dropDownHotel.click();
-			Thread.sleep(1500);
+			Thread.sleep(7500);
+			
 			for (int i = 0; i < lstDropDownHotel.size(); i++) {
 				if (lstDropDownHotel.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMProperty"))) {
 					lstDropDownHotel.get(i).click();
 
 				}
 			}
+			Thread.sleep(7500);
+
 
 			dropDownPeriod.click();
-			Thread.sleep(2000);
+			Thread.sleep(7500);
 			lstDropDownPeriod.get(0).click();
+			Thread.sleep(7500);
 
+			
 			dropDownView.click();
+			Thread.sleep(7500);
+
 			for (int i = 0; i < lstDropDownView.size(); i++) {
 				if (lstDropDownView.get(i).getText().equalsIgnoreCase(configReader.getProp("TTMView"))) {
 					lstDropDownView.get(i).click();

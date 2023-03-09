@@ -27,7 +27,7 @@ public class KPILibrary_PageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[text()='KPI Library']//ancestor::li")
+	@FindBy(xpath = "//a[text()='KPI Library']//ancestor::li")
 	WebElement kpiLibrary;
 
 	@FindBy(xpath = "//h1[text()='KPI Library']")

@@ -40,7 +40,7 @@ public class IJ_Summary_StepDefinition {
 
 	@When("The newly added Income Journal Summary  should be visible on the home page.")
 	public void The_newly_added_Income_Journal_Summary_should_be_visible_on_the_page() throws InterruptedException {
-		IJSummary.selectParametersFunc();
+		//IJSummary.selectParameterAfterPageLoad();
 		assertTrue(IJSummary.verifyAddedRowFunc());
 		
 	}

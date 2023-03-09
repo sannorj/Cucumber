@@ -56,18 +56,15 @@ public class STR_Report_DataValidation_PageObjective {
 	@FindBy(xpath = "//label[text()='Property']//following-sibling::div//input")
 	WebElement property;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowGroup;
 
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 	
 	String firstCellValue=null;
 
 	public void selectCurrentDate(String date) throws InterruptedException {
-//		goButton.sendKeys(Keys.CONTROL + "a");
-//		goButton.sendKeys(Keys.DELETE);
-//		goButton.sendKeys(date);
 		selectDate(date);
 	}
 
@@ -101,7 +98,7 @@ public class STR_Report_DataValidation_PageObjective {
 		System.out.println(firstCell.isDisplayed());
 		
 		WebElement tableOverlay = new WebDriverWait(driver, Duration.ofSeconds(1000))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container']")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container']-1")));
 		System.out.println(tableOverlay.getCssValue("opacity"));
 		float tableOverlayVal=Float.parseFloat(tableOverlay.getCssValue("opacity"));
 		if(1>tableOverlayVal) {
@@ -122,12 +119,6 @@ public class STR_Report_DataValidation_PageObjective {
 		if(!"null".equals(groupName)) {
 			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(group));
-//			String group = drpGroup.getAttribute("value");
-//			System.out.println(group);
-//			Thread.sleep(2500);
-//			if (!group.contains(groupName)) {
-//				result = false;
-//			}
 			drpGroup.click();
 			Thread.sleep(2500);
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
@@ -139,14 +130,6 @@ public class STR_Report_DataValidation_PageObjective {
 			Thread.sleep(1500);
 		}
 		if(!"null".equals(propertyName)) {
-//			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
-//					.until(ExpectedConditions.visibilityOf(property));
-//			String property = drpProperty.getAttribute("value");
-//			System.out.println(property);
-//			Thread.sleep(2500);
-//			if (!property.equalsIgnoreCase(propertyName)) {
-//				result = false;
-//			}
 
 			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(property));
@@ -239,10 +222,14 @@ public class STR_Report_DataValidation_PageObjective {
 
 			Thread.sleep(2500);
 
-			int monthInnum = getMonth();
+			String currentSelectedDate=txtDate.getAttribute("value"); //get no of month from current selected date
+			String[] currentDP = currentSelectedDate.split("/");
+			int monthInnum = Integer.parseInt(currentDP[0]);
+			System.out.println("monthInnum="+monthInnum);
 
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
-
+			System.out.println("monthDiff="+monthDiff);
+			
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))

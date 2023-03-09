@@ -25,9 +25,8 @@ public class GL_Hierarchy_Mapping_PageObject {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//div/input[contains(@name, 'hotelId')]")

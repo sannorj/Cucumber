@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @TrendDashOrder
 
 Feature: Trend Dashboard Order Widgets Functionality Validation
 

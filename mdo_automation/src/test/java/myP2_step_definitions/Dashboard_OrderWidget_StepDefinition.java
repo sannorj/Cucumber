@@ -26,6 +26,11 @@ public class Dashboard_OrderWidget_StepDefinition {
 	public void i_am_verify_with_widgets_with_the_dashboard() throws InterruptedException {
 		assertTrue(dashboardPo.verifyOrderedWidgets());
 	}
+	
+	@And("Select the property")
+	public void Select_the_property_as() throws InterruptedException {
+		dashboardPo.selectProperty();
+	}
 
 	@And("I drag and drop the data")
 	public void i_drag_and_drop_the_data() throws InterruptedException {

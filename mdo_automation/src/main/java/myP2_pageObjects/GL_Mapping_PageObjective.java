@@ -66,7 +66,7 @@ public class GL_Mapping_PageObjective {
 	@FindBy(xpath = "//div//label[text() = 'MDO GL Code']//following-sibling::div[contains(@class, 'MuiInputBase-adornedEnd')]")
 	WebElement MDOGLCodeDropDown;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
 	
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
@@ -184,18 +184,19 @@ public class GL_Mapping_PageObjective {
 			mdoGLTextF.sendKeys(Keys.CONTROL + "a");
 			mdoGLTextF.sendKeys(Keys.DELETE);
 			mdoGLTextF.sendKeys(configReader.getProp("mdoGLCode_GLM"));
-			mdoGLTextF.sendKeys(Keys.ARROW_DOWN);
-			mdoGLTextF.sendKeys(Keys.ENTER);
+			//mdoGLTextF.sendKeys(Keys.ARROW_DOWN);
+			//mdoGLTextF.sendKeys(Keys.ENTER);
 			
+			listDrpValueSize.get(0).click();
 		}
 		
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		
 		WebElement saveB = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveButton));
 		saveB.click();
 		
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 		
 		
 	}

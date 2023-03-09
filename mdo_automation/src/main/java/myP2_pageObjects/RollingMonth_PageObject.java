@@ -40,7 +40,7 @@ public class RollingMonth_PageObject {
 	@FindBy(xpath = "//div[text()='Revenue']//ancestor::li")
 	WebElement reveneue;
 	
-	@FindBy(xpath = "//div[contains(text(),'30/60/90')]//ancestor::li")
+	@FindBy(xpath = "//a[contains(text(),'30/60/90')]//ancestor::li")
 	WebElement RollcalReport;
 	
 	@FindBy(xpath = "//div[text()='30/60/90 Rolling Month']//ancestor::li")
@@ -315,7 +315,9 @@ public class RollingMonth_PageObject {
 		String group = drpgroup.getAttribute("value");
 		String date = txtDate.getAttribute("value");
 
-		if (group.equals(configReader.getProp("RM_Group")) && date.equals(configReader.getProp("CM_Date"))) {
+		System.out.println("gr:"+group+" dt"+date+" aa"+configReader.getProp("RM_Group")+" bb"+configReader.getProp("CM_Date"));
+		
+		if (group.equals(configReader.getProp("RM_Group")) && date.equals(configReader.getProp("CM_Date1"))) {
 			flag = true;
 		} else {
 			flag = false;

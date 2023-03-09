@@ -45,7 +45,7 @@ public class Dashboard_ToggleWidget_PageObjective {
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement btnSave;
 
-	@FindBy(xpath = "//div[@data-el='data-container']//div[@elevation='3']//h5")
+	@FindBy(xpath = "//div[@data-el='data-container-1']//div[@elevation='3']//h5")
 	List<WebElement> headers;
 
 	@FindBy(xpath = "//input[@name='keyword']")
@@ -58,7 +58,7 @@ public class Dashboard_ToggleWidget_PageObjective {
 
 		btnEdit.click();
 
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 
 		WebElement togglePage = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(toggleWidgetPageEle));
@@ -86,12 +86,13 @@ public class Dashboard_ToggleWidget_PageObjective {
 						.findElement(By.xpath("//tr[" + (i + 1) + "]//td//input[@type='checkbox']"));
 
 				btnSwitch.click();
-				Thread.sleep(500);
+				Thread.sleep(1000);
 			}
 
 		}
 
-		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
+		Thread.sleep(2500);
+		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnSave));
 
 		Save.click();

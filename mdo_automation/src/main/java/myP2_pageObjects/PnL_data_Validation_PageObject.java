@@ -1,6 +1,5 @@
 package myP2_pageObjects;
 
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,27 +18,30 @@ import utils.ConstantsReader;
 import utils.ElementUtils;
 
 public class PnL_data_Validation_PageObject {
-	
-	
-	private WebDriver driver;	
+
+	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
-	List<String> all_elements_text ,all_ComparisionElements_text ,all_YearlyElements_text ;
+	List<String> all_elements_text, all_ComparisionElements_text, all_YearlyElements_text;
 	boolean flag;
-	 
+
 	public PnL_data_Validation_PageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		all_elements_text=new ArrayList<>();
-		all_ComparisionElements_text =new ArrayList<>();
-		all_YearlyElements_text =new ArrayList<>();
-		
+		all_elements_text = new ArrayList<>();
+		all_ComparisionElements_text = new ArrayList<>();
+		all_YearlyElements_text = new ArrayList<>();
+
 	}
-	
+
 	@FindBy(xpath = "//div[contains(text(),'P&L Monthly')]//ancestor::li")
 	WebElement pnlMonthly;
 
-	@FindBy(xpath = "//div/label[text()='Group']//following-sibling::div/input[@value='All groups']")
+//	@FindBy(xpath = "//div/label[text()='Group']//following-sibling::div//input[@name='porfolio']")
+//	WebElement drpGroup;
+	
+	@FindBy(xpath = "//div/input[@name='portfolio-group']")
 	WebElement drpGroup;
+	
 
 	@FindBy(xpath = "//div/input[@name='portfolio-hotel']")
 	WebElement drpProperty;
@@ -52,16 +54,19 @@ public class PnL_data_Validation_PageObject {
 
 	@FindBy(xpath = "//button//span[text()='Go']")
 	WebElement btnGo;
-	
+
 	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> listDrpValueSize;
 	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> listDrpView;
+
 	@FindBy(xpath = "//input[@name='nullRecords']")
 	WebElement btnZeroValue;
-	
+
 	@FindBy(xpath = "//div[text()='Rooms available']")
 	WebElement lblRoomAva;
-	
+
 	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")
 	WebElement btnDatePicker;
 
@@ -76,20 +81,19 @@ public class PnL_data_Validation_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
-	
+
 	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
 	WebElement txtDate;
-	
+
 	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+3]")
 	List<WebElement> lstFirstCol;
-	
+
 	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+27]")
 	List<WebElement> lstTotalCol;
-	
+
 	@FindBy(xpath = "//table/tbody/tr/td[count(//table/thead/tr/th[.='$columnName']/preceding-sibling::th)+4]")
 	List<WebElement> lstFebCol;
-	
-	
+
 	public int getMonth() {
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -115,7 +119,8 @@ public class PnL_data_Validation_PageObject {
 
 		txtDate.click();
 
-		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
@@ -124,11 +129,14 @@ public class PnL_data_Validation_PageObject {
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
 
 		if (status == 1) {
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
 
 			Thread.sleep(2500);
-			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
 			Thread.sleep(2500);
@@ -137,12 +145,14 @@ public class PnL_data_Validation_PageObject {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
@@ -150,19 +160,22 @@ public class PnL_data_Validation_PageObject {
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnNextMonth));
 					btnNext.click();
 					Thread.sleep(1500);
 				}
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
-				
+
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 				validateOkCancelandClick();
 				flag = true;
@@ -175,16 +188,18 @@ public class PnL_data_Validation_PageObject {
 		return flag;
 
 	}
-	
-	
+
 	public void selectParametersFunc(String grp, String property) throws InterruptedException {
 
-		Thread.sleep(9500);
+		Thread.sleep(12500);
 
 		/* Select the appropriate Group value from the drop-down menu. */
-		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpGroup));
+		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(45))
+				.until(ExpectedConditions.visibilityOf(drpGroup));
 		drpGroupEle.click();
 
+		Thread.sleep(5500);
+		
 		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(grp)) {
@@ -195,10 +210,12 @@ public class PnL_data_Validation_PageObject {
 		Thread.sleep(6500);
 		int Property = driver.findElements(By.xpath("//div/input[@name='portfolio-hotel']")).size();
 		if (Property > 0) {
-			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpProperty));
+			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(30))
+					.until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
 
 			Thread.sleep(6500);
+			
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(property)) {
 					listDrpValueSize.get(i).click();
@@ -206,59 +223,66 @@ public class PnL_data_Validation_PageObject {
 			}
 		}
 		Thread.sleep(20000);
+		
 		int date = driver.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
 		if (date > 0) {
 			selectDate();
 		}
 
 		Thread.sleep(1500);
+		
 		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30))
 				.until(ExpectedConditions.visibilityOf(drpView));
+		
 		drpViewEle.click();
+		
 		Thread.sleep(6500);
 
-		for (int i = 0; i < listDrpValueSize.size(); i++) {
-			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
-				ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-				listDrpValueSize.get(i).click();
+		for (int i = 0; i < listDrpView.size(); i++) {
+			if (listDrpView.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+				ExpectedConditions.visibilityOf(listDrpView.get(0));
+				listDrpView.get(i).click();
 			}
 		}
 
 		Thread.sleep(3500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+		
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
 	}
-	
+
 	public void storeMonthlyValuesFunc() throws InterruptedException {
 
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
-		
+
 		Thread.sleep(3500);
 
-	    for(int i=0; i<lstFirstCol.size(); i++){
-	        all_elements_text.add(lstFirstCol.get(i).getText());
-	        System.out.println("========Monthly======"+all_elements_text);
-	    }
+		for (int i = 0; i < lstFirstCol.size(); i++) {
+			all_elements_text.add(lstFirstCol.get(i).getText());
+			System.out.println("========Monthly======" + all_elements_text);
+		}
 	}
-	
+
 	public void storeComparisionValuesFunc() throws InterruptedException {
-		
+
 		Thread.sleep(6500);
-		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnGo));
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(30))
+				.until(ExpectedConditions.visibilityOf(btnGo));
 		btnGO.click();
 		Thread.sleep(3500);
 
-	    for(int x=0; x<lstTotalCol.size(); x++){
-	    	all_ComparisionElements_text.add(lstTotalCol.get(x).getText());
-	    	System.out.println("========com======"+all_ComparisionElements_text);
-	    }
-	    Thread.sleep(3500);
+		for (int x = 0; x < lstTotalCol.size(); x++) {
+			all_ComparisionElements_text.add(lstTotalCol.get(x).getText());
+			System.out.println("========com======" + all_ComparisionElements_text);
+		}
+		Thread.sleep(3500);
 	}
-	
+
 	public boolean verifyMonthValueFunc() throws InterruptedException {
 		if (all_elements_text.equals(all_ComparisionElements_text)) {
 			flag = true;
@@ -267,27 +291,27 @@ public class PnL_data_Validation_PageObject {
 		}
 		Thread.sleep(3500);
 		return flag;
-		
+
 	}
-	
+
 	public void storeYearlyValuesFunc() throws InterruptedException {
 		Thread.sleep(3500);
 
-	    for(int x=0; x<lstFebCol.size(); x++){
-	    	all_YearlyElements_text.add(lstFebCol.get(x).getText());
-	        System.out.println(lstFebCol.get(x).getText());
-	    }
-	    Thread.sleep(3500);
+		for (int x = 0; x < lstFebCol.size(); x++) {
+			all_YearlyElements_text.add(lstFebCol.get(x).getText());
+			System.out.println(lstFebCol.get(x).getText());
+		}
+		Thread.sleep(3500);
 	}
-	
+
 	public boolean verifyYearlyValueFunc() throws InterruptedException {
-	    if (all_elements_text.equals(all_YearlyElements_text)) {
+		if (all_elements_text.equals(all_YearlyElements_text)) {
 			flag = true;
 		} else {
 			flag = false;
 		}
 		return flag;
-		
+
 	}
 
 }

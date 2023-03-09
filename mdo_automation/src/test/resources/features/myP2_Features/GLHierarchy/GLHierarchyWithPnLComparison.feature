@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression
 Feature: GL Hierarchy Toggle button Validation With PnL Comparison
 
 	Background: Navigate to P&L Property Comparison report

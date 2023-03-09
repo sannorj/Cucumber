@@ -70,7 +70,9 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void clickEdit() throws InterruptedException {
 		WebElement editbtn = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(editBtn));
-		editBtn.click();
+		Thread.sleep(1000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", editBtn);
 	}
 
 	public void addChart() throws InterruptedException {

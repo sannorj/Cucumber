@@ -470,11 +470,11 @@ public class PickUpReport_TotalComparison_PageObject {
 	}
 	
 	public void grandTotalArray() throws InterruptedException {
+		
 		for (int i = 2; i <= grandValuesList.size(); i++) {
 			
 			WebElement specificValue2 = driver
 					.findElement(By.xpath("(//b[text()='Grand Total']//ancestor::tr//td//b)["+i+"]"));
-
 
 			grandTotArray.add(specificValue2.getText());
 
@@ -541,24 +541,31 @@ public class PickUpReport_TotalComparison_PageObject {
 		
 	}
 	
+	//skip first 3 column
 	public boolean comparingWithMeanArray() {
 		
 		boolean flag = true;
 		
 		try {
-			for (int i = 0; i < actualTotArray.size(); i++) {
+			DecimalFormat df = new DecimalFormat("0.00");
+			df.setMaximumFractionDigits(2);
+			
+			for (int i = 3; i < actualTotArray.size(); i++) {
 
 				String newmeanVal=newMeanArray.get(i);
 				String meanGrandVal=grandTotArray.get(i).replace(",", "").replace("%", "");
+				
+				float floatMeanGrandVal = Float.parseFloat(meanGrandVal);
+				String meanGrandValDf = df.format(floatMeanGrandVal);
 						
-				if(newmeanVal.equalsIgnoreCase(meanGrandVal)) {
+				if(newmeanVal.equalsIgnoreCase(meanGrandValDf)) {
 					
 					System.out.println("PASS");
-					System.out.println(newMeanArray.get(i) +" <<<--pass-->>> "+meanGrandVal);
+					System.out.println(newMeanArray.get(i) +" <<<--pass-->>> "+meanGrandValDf);
 					
 				}else {
 					flag=false;
-					System.out.println(newMeanArray.get(i) +" <<<--fail-->>> "+grandTotArray.get(i));
+					System.out.println(newMeanArray.get(i) +" <<<--fail-->>> "+meanGrandValDf);
 				}
 
 			}

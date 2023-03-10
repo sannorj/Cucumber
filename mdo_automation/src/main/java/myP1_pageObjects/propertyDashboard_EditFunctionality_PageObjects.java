@@ -199,8 +199,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
 		WebElement scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
-						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));	
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]")));	
 		
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		// Scroll Left

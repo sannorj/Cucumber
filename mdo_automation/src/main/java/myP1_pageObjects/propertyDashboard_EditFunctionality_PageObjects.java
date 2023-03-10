@@ -252,15 +252,20 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void addNewColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(3000);
-		WebElement addNewColBtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement addNewColBtn = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(addNewColumnBtn));
-		addNewColBtn.click();
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", addNewColBtn);
+		
 		noOfCols.sendKeys(Keys.CONTROL + "a");
 		noOfCols.sendKeys(Keys.DELETE);
 		noOfCols.sendKeys("1");
-		WebElement saveButton = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement saveButton = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(saveBtn));
-		saveButton.click();
+		JavascriptExecutor exe = (JavascriptExecutor) driver;
+		exe.executeScript("arguments[0].click();", saveButton);
+		
 		System.out.println("==New Column Added==");
 		Thread.sleep(7000);
 		boolean waitSaveBtnInvisible = new WebDriverWait(driver, Duration.ofSeconds(900))

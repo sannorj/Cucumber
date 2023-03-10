@@ -77,8 +77,19 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		System.out.println("==clicked edit button==");
 		int editButtonView = driver.findElements(By.xpath("//button[@id='btnEditDashboard']")).size();
 		if(editButtonView>0) {
-			JavascriptExecutor exe = (JavascriptExecutor) driver;
-			exe.executeScript("arguments[0].click();", editbtnView);
+			WebElement refreshButton = driver.findElement(By.xpath("//button[@title='Refresh']"));
+			refreshButton.click();
+			Thread.sleep(3000);
+			WebElement editbtnWait = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions.visibilityOf(editBtn));
+			try {
+				JavascriptExecutor exe = (JavascriptExecutor) driver;
+				exe.executeScript("arguments[0].click();", editbtnView);
+			} catch (Exception e) {
+				JavascriptExecutor exe = (JavascriptExecutor) driver;
+				exe.executeScript("arguments[0].click();", editbtnView);
+			}
+			
 		}
 		Thread.sleep(3000);
 	}
@@ -168,10 +179,6 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyAddedChartIsLoaded() throws InterruptedException {
 		Thread.sleep(7000);
-//		driver.navigate().refresh();
-//		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
-//				.until(ExpectedConditions.invisibilityOfElementLocated(
-//						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
 						By.xpath("//h4[text()='Add Chart']")));
@@ -179,9 +186,6 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		int addingChart = driver
 				.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();
 		
-//		WebElement addingChart = new WebDriverWait(driver, Duration.ofSeconds(100))
-//				.until(ExpectedConditions.visibilityOfElementLocated(
-//						By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")));
 		Thread.sleep(7000);
 
 		if (addingChart>0) {
@@ -199,7 +203,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
 		WebElement scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]")));	
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//th[last()])[1]")));	
 		
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		// Scroll Left

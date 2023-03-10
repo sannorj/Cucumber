@@ -198,17 +198,21 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void removeColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
-		WebElement removingCol_scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
-						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));		
-				
+						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));	
+		
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		// Scroll Left
-		jse.executeScript("arguments[0].scrollIntoView()", removingCol_scroll_left);
+		jse.executeScript("arguments[0].scrollIntoView()", scroll_left);
 		Thread.sleep(25000);
-		removingCol_scroll_left.click();
-//		JavascriptExecutor executor = (JavascriptExecutor) driver;
-//		executor.executeScript("arguments[0].click();", removingCol_scroll_left);
+		
+		WebElement removingCol = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
+						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));		
+			
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", removingCol);
 		saveBtn.click();
 		Thread.sleep(7000);
 	}

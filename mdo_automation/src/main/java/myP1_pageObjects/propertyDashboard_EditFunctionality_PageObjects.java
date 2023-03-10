@@ -75,6 +75,11 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", editbtnView);
 		System.out.println("==clicked edit button==");
+		int editButtonView = driver.findElements(By.xpath("//button[@id='btnEditDashboard']")).size();
+		if(editButtonView>0) {
+			JavascriptExecutor exe = (JavascriptExecutor) driver;
+			exe.executeScript("arguments[0].click();", editbtnView);
+		}
 		Thread.sleep(3000);
 	}
 
@@ -196,6 +201,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		WebElement removingCol_scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
 						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));		
+				
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		// Scroll Left
 		jse.executeScript("arguments[0].scrollIntoView()", removingCol_scroll_left);

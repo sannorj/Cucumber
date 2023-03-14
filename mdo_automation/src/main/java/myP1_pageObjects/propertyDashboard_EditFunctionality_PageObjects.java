@@ -306,7 +306,9 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 //		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
 //				.until(ExpectedConditions.invisibilityOfElementLocated(
 //						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+		System.out.println("no of col== "+noOfCol);
 		for (int i = 1; i <= noOfCol; i++) {
+			System.out.println(dashboardTblColumns.get(i).getText()+" =====================");
 			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
 				System.out.println("==Column added successfully==");
 				return true;

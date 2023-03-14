@@ -301,7 +301,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyColAdded() throws InterruptedException {
 		Thread.sleep(7000);
-		WebElement waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(500))
+		WebElement waitTablePreview = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'DTFC_LeftBodyLiner')]/table/tbody/tr/td[text()='Total Property']")));
 		int noOfCol=dashboardTblColumns.size()/2;
 		System.out.println(noOfCol);

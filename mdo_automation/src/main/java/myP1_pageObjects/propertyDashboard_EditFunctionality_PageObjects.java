@@ -301,11 +301,10 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyColAdded() throws InterruptedException {
 		Thread.sleep(7000);
+		WebElement waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(500))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'DTFC_LeftBodyLiner')]/table/tbody/tr/td[text()='Total Property']")));
 		int noOfCol=dashboardTblColumns.size()/2;
 		System.out.println(noOfCol);
-//		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
-//				.until(ExpectedConditions.invisibilityOfElementLocated(
-//						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
 		System.out.println("no of col== "+noOfCol);
 		for (int i = 1; i <= noOfCol; i++) {
 			System.out.println(dashboardTblColumns.get(i).getText()+" =====================");

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PropNavToChart
 Feature: Property Dashboard Navigate to Chart Pages functionality
 
   Background: Verify Property Dashboard Page Navigation

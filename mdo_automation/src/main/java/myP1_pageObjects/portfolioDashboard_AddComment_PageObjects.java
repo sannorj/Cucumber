@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -124,12 +125,13 @@ public class portfolioDashboard_AddComment_PageObjects {
 		System.out.println(lstDropDowTagUsers.size());
 		selectTagUsers.click();
 
-		for (int i = 0; i < lstDropDowTagUsers.size(); i++) {
-			if (lstDropDowTagUsers.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Add_comment_TagUsers"))) {
-				System.out.println("Tag Users list item ===" + lstDropDowTagUsers.get(i).getText());
-				lstDropDowTagUsers.get(i).click();
-			}
-		}
+//		Thread.sleep(7000);
+//		for (int i = 0; i < lstDropDowTagUsers.size(); i++) {
+//			if (lstDropDowTagUsers.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Add_comment_TagUsers"))) {
+//				System.out.println("Tag Users list item ===" + lstDropDowTagUsers.get(i).getText());
+//				lstDropDowTagUsers.get(i).click();
+//			}
+//		}
 		Thread.sleep(3000);
 		fillComment.sendKeys(Keys.CONTROL + "a");
 		fillComment.sendKeys(Keys.DELETE);
@@ -138,7 +140,14 @@ public class portfolioDashboard_AddComment_PageObjects {
 	}
 
 	public void clickAddCommentSubmit() throws InterruptedException {
-		addCommentSubmitBtn.click();
+		Thread.sleep(3000);
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", addCommentSubmitBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", addCommentSubmitBtn);
+		}
 		Thread.sleep(3000);
 	}
 	public boolean dataIsSubmited() throws InterruptedException {

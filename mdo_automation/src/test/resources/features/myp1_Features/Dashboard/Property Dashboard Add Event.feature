@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PAddEvent
 Feature: Property Dashboard Add Event functionality
 
   Background: Verify Property Dashboard Page Navigation
@@ -17,7 +17,7 @@ Feature: Property Dashboard Add Event functionality
     Then Fill all Event Form Data with Repeat option
     When Click on submit button of Event
     And Verify repeated Data successfully Submited
-
+		
     Scenario: Verify Added Event Popup in Page Load and check added events
     Given Verify Added Events are popup
     Then Check the Events by clicking calendar

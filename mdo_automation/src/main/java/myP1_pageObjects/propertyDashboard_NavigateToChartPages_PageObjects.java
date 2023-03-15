@@ -165,11 +165,10 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean marketSuiteShopIsDisplayed() throws InterruptedException {
 		Thread.sleep(7000);
-//		WebElement RBDPageHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
-//				.until(ExpectedConditions.visibilityOf(revenueBreakdownPageHeader));
-//		System.out.println("Navigate to Market/Suite shop page: " + RBDPageHeader.isDisplayed());
-//		return RBDPageHeader.isDisplayed();
-		return false;
+		WebElement RBDPageHeader = new WebDriverWait(driver, Duration.ofSeconds(900))
+				.until(ExpectedConditions.visibilityOf(revenueBreakdownPageHeader));
+		System.out.println("Navigate to Market/Suite shop page: " + RBDPageHeader.isDisplayed());
+		return RBDPageHeader.isDisplayed();
 	}
 
 	// Total Expense Breakdown Page
@@ -189,10 +188,9 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean totalExpenseBreakdownIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement totalExpenseBreakdownPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			WebElement totalExpenseBreakdownPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(totalExpenseBreakdownPageHeader));
-			System.out.println(
-					"Navigate to Total Expense Breakdown Page: " + totalExpenseBreakdownPgHeader.isDisplayed());
+			System.out.println("Navigate to Total Expense Breakdown Page: " + totalExpenseBreakdownPgHeader.isDisplayed());
 			return totalExpenseBreakdownPgHeader.isDisplayed();
 		} else {
 			System.out.println("Total Expense Breakdown Card is not enabled to navigate to page");

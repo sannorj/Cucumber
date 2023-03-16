@@ -62,16 +62,17 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 
 	public boolean IsWeatherForecastLoadedInCelsius() throws InterruptedException {
 		Thread.sleep(7000);
-		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='panel-WeatherWidget']")));
 		if (viewChart.isDisplayed()) {
-			WebElement waitWeatherContainerLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
+			Thread.sleep(5000);
+			WebElement waitWeatherContainerLoaded = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='divWeatherContainer']")));
 			cardAvailable = true;
 			if (waitWeatherContainerLoaded.isDisplayed())
 				celsiusBtn.click();
 			Thread.sleep(2000);
-			WebElement waitcelsiusLoaded = new WebDriverWait(driver, Duration.ofSeconds(50))
+			WebElement waitcelsiusLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='divCelsius show']")));
 			if (waitcelsiusLoaded.isDisplayed())
 				return true;

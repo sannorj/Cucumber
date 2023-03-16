@@ -3,6 +3,7 @@ package myP1_pageObjects;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,8 +70,10 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 			WebElement waitWeatherContainerLoaded = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='divWeatherContainer']")));
 			cardAvailable = true;
-			if (waitWeatherContainerLoaded.isDisplayed())
-				celsiusBtn.click();
+			if (waitWeatherContainerLoaded.isDisplayed()) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", celsiusBtn);
+			}
 			Thread.sleep(2000);
 			WebElement waitcelsiusLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='divCelsius show']")));

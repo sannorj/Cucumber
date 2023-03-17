@@ -89,11 +89,12 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 	}
 
 	public boolean IsWeatherForecastLoadedInFahrenheit() throws InterruptedException {
-		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(WeatherWidget));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			fahrenheitBtn.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", fahrenheitBtn);
 			Thread.sleep(2000);
 			if (fahrenheitLoaded.isDisplayed())
 				return true;

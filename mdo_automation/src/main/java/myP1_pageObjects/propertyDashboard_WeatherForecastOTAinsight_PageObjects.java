@@ -114,9 +114,15 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewTbl.isDisplayed()) {
 			cardAvailable = true;
-			OTAtbl.click();
-			OTAchart.click();
-			OTAtbl.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAtbl);
+			
+			JavascriptExecutor executor2 = (JavascriptExecutor) driver;
+			executor2.executeScript("arguments[0].click();", OTAchart);
+			
+			JavascriptExecutor executor3 = (JavascriptExecutor) driver;
+			executor3.executeScript("arguments[0].click();", OTAtbl);
+			
 			Thread.sleep(2000);
 			if (OTAtblDisplay.isDisplayed())
 				return true;
@@ -134,7 +140,8 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			OTAchart.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAchart);
 			Thread.sleep(2000);
 			if (OTAchartDisplay.isDisplayed()) {
 				return true;
@@ -153,7 +160,8 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			OTAchartGotoDetails.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAchartGotoDetails);
 		} else {
 			cardAvailable = false;
 			System.out.println("OTA Insight Card is not awailable");

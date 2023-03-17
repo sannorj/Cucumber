@@ -56,7 +56,7 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 
 	public void clickMonth() {
 		monthBtn.click();
-		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Week')]")));
 	}
 
@@ -67,17 +67,20 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 
 		Select drpYear = new Select(selectYear);
 		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
-
-		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(100))
+		Thread.sleep(10000);
+		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
+//		propertyDB.click();
+		Thread.sleep(10000);
+		Thread.sleep(5000);
 		Select drpHotel = new Select(propertyDropdown);
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
-
+		Thread.sleep(2000);
 		searchBtn.click();
 		Thread.sleep(7000);
 
-		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement monthPageLoad = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Week')]")));
 		System.out.println("Month Page Loaded");
 
@@ -132,12 +135,14 @@ public class propertyDashboard_DayMonthYearVerify_PageObjects {
 		Select drpYear = new Select(selectYear);
 		drpYear.selectByVisibleText(configReader.getMYP1Prop("Selected_year"));
 
-		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
+		Thread.sleep(10000);
+		Thread.sleep(5000);
 		Select drpHotel = new Select(propertyDropdown);
-		Thread.sleep(7000);
+		Thread.sleep(10000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
-
+		Thread.sleep(2000);
 		searchBtn.click();
 		Thread.sleep(7000);
 

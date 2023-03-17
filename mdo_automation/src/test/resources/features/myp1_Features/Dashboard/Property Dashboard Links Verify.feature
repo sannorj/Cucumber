@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @LinkVerify
 Feature: Property Dashboard Links Verify functionality
 
   Background: Verify Property Dashboard Page Navigation
@@ -19,8 +19,5 @@ Feature: Property Dashboard Links Verify functionality
     
     Scenario: Verify Labor Dashboard Link functionality
     Given verify Labor page navigation
-    
-    #Scenario: Verify Download Btn functionality
-    #Given verify download button functionality
     
     

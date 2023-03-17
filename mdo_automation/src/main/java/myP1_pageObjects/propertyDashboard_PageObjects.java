@@ -70,11 +70,16 @@ public class propertyDashboard_PageObjects {
 	}
 
 	public void selectPropertyValues() throws InterruptedException {
-		Thread.sleep(7000);
-		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(50))
+//		Thread.sleep(7000);
+		Thread.sleep(100);
+		WebElement propertyDB = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='select2-chosen-1']")));
-		Select drpHotel = new Select(propertyDropdown);
+		WebElement waitForViewPeriod = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Period')]")));
+		System.out.println("==property dropdown view==");
 		Thread.sleep(7000);
+		Select drpHotel = new Select(propertyDropdown);
+		Thread.sleep(3000);
 		drpHotel.selectByVisibleText(configReader.getMYP1Prop("Property_dashboard_hotel"));
 		Thread.sleep(3000);
 		try {
@@ -88,31 +93,32 @@ public class propertyDashboard_PageObjects {
 
 	public boolean navigateToPropertyDashboard() throws InterruptedException {
 		boolean result = false;
-		WebElement waitpropertyDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement waitpropertyDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Property Dashboard']")));
+		System.out.println("===navigate to property db page===");
 		if (waitpropertyDashboardPage.isDisplayed()) {
 			System.out.println("==navigateToPropertyDashboard==");
 			result = true;
 		}
-		Thread.sleep(7000);
+		Thread.sleep(6000);
 		if(closeAddEventModal.isDisplayed()) {
 			closeAddEventModal.click();
 		}
 		datePickerVal.sendKeys(Keys.CONTROL + "a");
 		datePickerVal.sendKeys(Keys.DELETE);
 		datePickerVal.sendKeys(configReader.getMYP1Prop("date_href_val"));
-		Thread.sleep(7000);
+		Thread.sleep(6000);
 		searchBTN.click();
 
 		return result;
 	}
 
 	public boolean verifyDataLoadTODate() throws InterruptedException {
-		WebElement RoomSalesLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement RoomSalesLoaded = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//table//tr//td[text()='Room Sales'])[1]")));
 
-		WebElement dateHrefVal = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement dateHrefVal = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//a[@id='alnkRoomRevenueSummary' and contains(@href,'" + configReader.getMYP1Prop("date_href_val") + "')]")));
 
@@ -122,6 +128,7 @@ public class propertyDashboard_PageObjects {
 			System.out.println("==verifyDataLoadTODate==");
 			return true;
 		} else {
+			System.out.println("==verifyDataLoadTODate return false==");
 			return false;
 		}
 

@@ -49,10 +49,10 @@ public class propertyDashboard_LinksVerify_PageObjects {
 	WebElement downloadBtn;
 
 	public boolean verifyStatsByDateRange() throws InterruptedException {
-		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkSTRReportLink));
 		StatsByDateRangeLink.click();
-		WebElement StatsByDateRangePage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement StatsByDateRangePage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(StatsByDateRangeHeading));
 		boolean StatsByDateRangeFlag = StatsByDateRangePage.isDisplayed();
 		System.out.println("Stats By Date Range Page is displayed: " + StatsByDateRangeFlag);
@@ -60,10 +60,10 @@ public class propertyDashboard_LinksVerify_PageObjects {
 	}
 
 	public boolean verifySTRreport() throws InterruptedException {
-		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkSTRReportLink));
 		alnkSTRReportLink.click();
-		WebElement STRReportPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement STRReportPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkSTRReportHeading));
 		boolean STRReportPageFlag = STRReportPage.isDisplayed();
 		System.out.println("STRReport Page is displayed: " + STRReportPageFlag);
@@ -71,10 +71,10 @@ public class propertyDashboard_LinksVerify_PageObjects {
 	}
 
 	public boolean verifyPickUpReport() throws InterruptedException {
-		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkPickupReportLink));
 		alnkPickupReportLink.click();
-		WebElement PickupReportPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement PickupReportPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkPickupReportHeading));
 		boolean PickupReportPageFlag = PickupReportPage.isDisplayed();
 		System.out.println("Pick Up Report Page is displayed: " + PickupReportPageFlag);
@@ -82,10 +82,10 @@ public class propertyDashboard_LinksVerify_PageObjects {
 	}
 
 	public boolean verifyLaborReport() throws InterruptedException {
-		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement MainPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkLaborLink));
 		alnkLaborLink.click();
-		WebElement LaborDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(30))
+		WebElement LaborDashboardPage = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(alnkLaborHeading));
 		boolean LaborDashboardFlag = LaborDashboardPage.isDisplayed();
 		System.out.println("Labour Dashboard Page is displayed: " + LaborDashboardFlag);

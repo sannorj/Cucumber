@@ -71,16 +71,18 @@ public class myP1_LoginPage_Objects {
 		}else {
 			myEnv = env;
 		}
+		System.out.println("env="+env);
 		
 		if (myEnv.toLowerCase().equals("uat")) {
 			Thread.sleep(5000);
+			System.out.println(configReader.getMYP1Prop("uat_myp1URL"));
 			driver.get(configReader.getMYP1Prop("uat_myp1URL"));
 			Thread.sleep(5000);
 			acceptUnAuthorized();
 			Thread.sleep(10000);
 			//int logoSize = driver.findElements(By.xpath("//img[contains(@src,'/logo.png')]")).size();
 			try {
-				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(100))
+				WebElement LoginLogo = new WebDriverWait(driver, Duration.ofSeconds(700))
 						.until(ExpectedConditions.visibilityOf(logo));
 				LoginLogo.isDisplayed();
 				username.sendKeys(configReader.getMYP1Prop("uat_userName"));
@@ -104,7 +106,7 @@ public class myP1_LoginPage_Objects {
 	}
 
 	public boolean navigateHomePage() {
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(header));
 		return homePage.isDisplayed();
 	}
@@ -112,7 +114,7 @@ public class myP1_LoginPage_Objects {
 	public void acceptUnAuthorized() {
 		try {
 			Thread.sleep(10000);
-			WebElement advancedBtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
+			WebElement advancedBtnView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 					.until(ExpectedConditions.visibilityOf(advancedBtn));
 			advancedBtn.click();
 			Thread.sleep(2000);

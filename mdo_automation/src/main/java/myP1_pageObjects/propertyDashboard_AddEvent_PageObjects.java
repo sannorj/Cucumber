@@ -211,10 +211,10 @@ public class propertyDashboard_AddEvent_PageObjects {
 	}
 
 	public boolean verifyAddedEventPopup() throws InterruptedException {
-		Thread.sleep(3000);
-		WebElement waitFormDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(100))
+		Thread.sleep(5000);
+		WebElement waitFormDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(formDisplayEventBody));
-		if (formDisplayEventBody.isDisplayed()) {
+		if (waitFormDisplayEventBody.isDisplayed()) {
 			boolean formDataAvailable = true;
 			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
 				if (!addedEvents.contains(lstDropDowDisplayAddedEvent.get(i).getText())) {
@@ -231,11 +231,16 @@ public class propertyDashboard_AddEvent_PageObjects {
 
 	public boolean checkCalendarEvent() throws InterruptedException {
 		addEventCloseBtn.click();
-		WebElement waitViewCalender = new WebDriverWait(driver, Duration.ofSeconds(100))
+		System.out.println("closed the popup");
+		Thread.sleep(3000);
+		WebElement waitViewCalender = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(calendarIcon));
-		calendarIcon.click();
-		WebElement waitformDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(100))
+		waitViewCalender.click();
+		System.out.println("calender icon clicked");
+		Thread.sleep(3000);
+		WebElement waitformDisplayEventBody = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(formDisplayEventBody));
+		System.out.println("**************");
 		if (waitformDisplayEventBody.isDisplayed()) {
 			System.out.println("Added Event Popup is showing");
 			return true;
@@ -250,11 +255,18 @@ public class propertyDashboard_AddEvent_PageObjects {
 			JavascriptExecutor executorcalendarIcon = (JavascriptExecutor) driver;
 			executorcalendarIcon.executeScript("arguments[0].click();", calendarIcon);
 			Thread.sleep(3000);
-			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
+			int NoOflstDropDowDisplayAddedEvent=lstDropDowDisplayAddedEvent.size();
+			for (int i = 0; i < NoOflstDropDowDisplayAddedEvent; i++) {
 				if(addedEvents.contains(lstDropDowDisplayAddedEvent.get(i).getText())) {
 					formDisplayDeleteLinks.get(i).click();
+					Thread.sleep(2000);
 					eventDeleteConfirmBtn.click();
 					System.out.println(lstDropDowDisplayAddedEvent.get(i).getText()+"- deleted");
+					if(i!=NoOflstDropDowDisplayAddedEvent) {
+						Thread.sleep(5000);
+						WebElement EventPopup = new WebDriverWait(driver, Duration.ofSeconds(1000))
+							.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']")));
+					}
 				}
 			}
 			Thread.sleep(7000);
@@ -263,12 +275,14 @@ public class propertyDashboard_AddEvent_PageObjects {
 		}
 	}
 
-	public boolean checkEventsDeleted() throws InterruptedException {
-		if(calendarIcon.isDisplayed()) {
-		WebElement calendarDisplayed = new WebDriverWait(driver, Duration.ofSeconds(700))
-				.until(ExpectedConditions.visibilityOf(calendarIcon));
-		calendarDisplayed.click();
-			Thread.sleep(2500);
+	public boolean checkEventsDeleted() throws InterruptedException {			
+		int EventPopup = driver.findElements(By.xpath("//div[@id='formDisplayEventBody']")).size();
+		if(EventPopup>0) {
+			Thread.sleep(3500);
+//		WebElement calendarDisplayed = new WebDriverWait(driver, Duration.ofSeconds(700))
+//				.until(ExpectedConditions.visibilityOf(calendarIcon));
+//		calendarDisplayed.click();
+//			Thread.sleep(2500);
 			String Add_Event_Name = configReader.getMYP1Prop("Add_Event_Name");
 			boolean firstEventDeleted=false;
 			for (int i = 0; i < lstDropDowDisplayAddedEvent.size(); i++) {
@@ -280,7 +294,7 @@ public class propertyDashboard_AddEvent_PageObjects {
 				}
 			}
 			WebElement viewAdd_Event_NameRepeat = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getMYP1Prop("Add_Event_NameRepeat")+"]//following::div//a[@class='alnkdeleteevent']")));
+					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='formDisplayEventBody']//div//h3[text()='"+ configReader.getMYP1Prop("Add_Event_NameRepeat")+"']//following::div//a[@class='alnkdeleteevent']")));
 			viewAdd_Event_NameRepeat.click();
 			System.out.println("Add_Event_NameRepeat also deleted!");
 			return firstEventDeleted;

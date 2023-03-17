@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @prop
 Feature: Property Dashboard Data Load functionality
 
   Scenario: Verify Property Dashboard Page Navigation
@@ -9,6 +9,6 @@ Feature: Property Dashboard Data Load functionality
   	#Verify Data Loaded successfully
     Given Check data load according to selected date
     When Verify First table is loaded
-    And Verify all the Chartes Loaded    
+    And Verify all the Chartes Loaded
     
     

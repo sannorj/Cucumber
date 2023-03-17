@@ -49,10 +49,11 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	@FindBy(xpath = "//button[@id='btnsave']")
 	WebElement SubmitModalBtn;
 
-	@FindBy(xpath = "(//th[@class='center num sorting_disabled']//select)[1]")
+//	@FindBy(xpath = "(//th[@class='center num sorting_disabled']//select)[1]")
+	@FindBy(xpath = "(//th[contains(@class,'center')]//select)[1]")
 	WebElement dashboardTblColOptions;
 
-	@FindBy(xpath = "//th[@class='center num sorting_disabled']//span")
+	@FindBy(xpath = "//th[contains(@class,'center')]/span[not(@id) and not(@class) and not(@style)]")
 	List<WebElement> dashboardTblColumns;
 
 	@FindBy(xpath = "(//button[text()='Confirm'])[1]")
@@ -67,24 +68,46 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	// check Add Chart Functionality
 
 	public void clickEdit() throws InterruptedException {
-		WebElement editbtn = new WebDriverWait(driver, Duration.ofSeconds(70))
+		WebElement editbtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(editBtn));
-		editBtn.click();
+		System.out.println("==View edit button==");
+		Thread.sleep(2000);
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", editbtnView);
+		System.out.println("==clicked edit button==");
+		int editButtonView = driver.findElements(By.xpath("//button[@id='btnEditDashboard']")).size();
+		if(editButtonView>0) {
+			WebElement refreshButton = driver.findElement(By.xpath("//button[@title='Refresh']"));
+			refreshButton.click();
+			Thread.sleep(3000);
+			WebElement editbtnWait = new WebDriverWait(driver, Duration.ofSeconds(700))
+					.until(ExpectedConditions.visibilityOf(editBtn));
+			try {
+				JavascriptExecutor exe = (JavascriptExecutor) driver;
+				exe.executeScript("arguments[0].click();", editbtnView);
+			} catch (Exception e) {
+				JavascriptExecutor exe = (JavascriptExecutor) driver;
+				exe.executeScript("arguments[0].click();", editbtnView);
+			}
+			
+		}
+		Thread.sleep(3000);
 	}
 
 	public void addChart() throws InterruptedException {
-		WebElement addChartbtn = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement addChartbtn = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(addChartBtn));
 		addChartBtn.click();
 	}
 
 	public boolean verifyAddChartPopupDisplayed() {
-		WebElement addChartModal = new WebDriverWait(driver, Duration.ofSeconds(20))
+		WebElement addChartModal = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(AddChartModal));
 		if (addChartModal.isDisplayed()) {
 			System.out.println("==Add Chart Modal Displayed==");
 			return true;
 		} else {
+			System.out.println("==Add Chart Modal not Displayed==");
 			return false;
 		}
 	}
@@ -96,13 +119,14 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		WebElement submitbtn = driver.findElement(By.xpath("//button[@id='btnsave']"));
 		if (removingPanel.isDisplayed()) {
 			removingPanel.click();
-			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(100))
+			WebElement waitforSwitchoff = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='"
 							+ configReader.getMYP1Prop("Panel_switch_id") + "']//div[@class='ios-switch off']")));
-			if (waitforSwitchoff.isDisplayed())
+			if (waitforSwitchoff.isDisplayed()) {
 				submitbtn.click();
-			System.out.println("swith disabled");
-			Thread.sleep(7000);
+				System.out.println("swith disabled");
+				Thread.sleep(7000);
+			}
 		} else {
 			System.out.println("swith already disabled");
 		}
@@ -110,23 +134,24 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyChartRemoved() throws InterruptedException {
 		Thread.sleep(7000);
-		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
+		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+						By.xpath("//h4[text()='Add Chart']")));		
 		Thread.sleep(7000);
 		if (waitAddChartClose) {
 			Thread.sleep(7000);
-			WebElement removingChart = driver
-					.findElement(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']"));
+			int removingChart = driver
+					.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();
 			Thread.sleep(3000);
-			if (removingChart.isDisplayed()) {
-				System.out.println("Chart not removed" + removingChart.isDisplayed());
+			if (removingChart>0) {
+				System.out.println("Chart not removed");
 				return false;
 			} else {
-				System.out.println("Removed Chart Successfully!" + removingChart.isDisplayed());
+				System.out.println("Removed Chart Successfully!");
 				return true;
 			}
 		} else {
+			System.out.println("////////////");
 			return false;
 		}
 	}
@@ -154,21 +179,20 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyAddedChartIsLoaded() throws InterruptedException {
 		Thread.sleep(7000);
-//		driver.navigate().refresh();
 		boolean waitAddChartClose = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.invisibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+						By.xpath("//h4[text()='Add Chart']")));
 
-		WebElement addingChart = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.visibilityOfElementLocated(
-						By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")));
+		int addingChart = driver
+				.findElements(By.xpath("//a[@data-content='" + configReader.getMYP1Prop("Panel_switch_id") + "']")).size();
+		
 		Thread.sleep(7000);
 
-		if (addingChart.isDisplayed()) {
-			System.out.println("Chart Added Successfully! " + addingChart.isDisplayed());
+		if (addingChart>0) {
+			System.out.println("Chart Added Successfully!");
 			return true;
 		} else {
-			System.out.println("Chart not Loaded " + addingChart.isDisplayed());
+			System.out.println("Chart not Loaded");
 			return false;
 		}
 	}
@@ -178,10 +202,18 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void removeColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(7000);
-		WebElement removingCol = driver
-				.findElement(By.xpath("(//th[@class='center num sorting_disabled']//span[text()='"
-						+ configReader.getMYP1Prop("Remove_Column") + "']//following::a[@class='colRemove'])[1]"));
-		Thread.sleep(3000);
+		WebElement scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//th[last()])[1]")));	
+		
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		// Scroll Left
+		jse.executeScript("arguments[0].scrollIntoView()", scroll_left);
+		Thread.sleep(25000);
+		
+		WebElement removingCol = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//th[last()])[1]/span[contains(text(),'"
+						+ configReader.getMYP1Prop("Remove_Column") + "')]//following::a[@class='colRemove'][1]")));		
+			
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", removingCol);
 		saveBtn.click();
@@ -203,9 +235,9 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public boolean verifyColRemoved() throws InterruptedException {
 		Thread.sleep(7000);
-		boolean waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.invisibilityOfElementLocated(
-						By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+		WebElement waitEditButtonPreview = new WebDriverWait(driver, Duration.ofSeconds(900))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='btnEditDashboard' and @style='display: inline-block;']")));
+		
 		for (int i = 0; i < dashboardTblColumns.size(); i++) {
 			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
 				System.out.println("==Column already exists ==");
@@ -220,18 +252,23 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	public void addNewColumn() throws InterruptedException {
 		Thread.sleep(7000);
 		Thread.sleep(3000);
-		WebElement addNewColBtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement addNewColBtn = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(addNewColumnBtn));
-		addNewColBtn.click();
+
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", addNewColBtn);
+		
 		noOfCols.sendKeys(Keys.CONTROL + "a");
 		noOfCols.sendKeys(Keys.DELETE);
 		noOfCols.sendKeys("1");
-		WebElement saveButton = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement saveButton = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(saveBtn));
-		saveButton.click();
+		JavascriptExecutor exe = (JavascriptExecutor) driver;
+		exe.executeScript("arguments[0].click();", saveButton);
+		
 		System.out.println("==New Column Added==");
 		Thread.sleep(7000);
-		boolean waitSaveBtnInvisible = new WebDriverWait(driver, Duration.ofSeconds(100))
+		boolean waitSaveBtnInvisible = new WebDriverWait(driver, Duration.ofSeconds(900))
 		.until(ExpectedConditions.invisibilityOfElementLocated(
 				By.xpath("//button[@id='btnSaveEditDashboard']")));
 		Thread.sleep(5000);

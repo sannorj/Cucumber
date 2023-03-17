@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @Portfolio
 Feature: Portfolio Dashboard functionality
 
   Scenario: Verify Portfolio Dashboard

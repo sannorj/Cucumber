@@ -27,3 +27,5 @@ Background: Login to MYP2 application
   And User capture the Records from graph and save it in an array
   And User comparing the two arrays
   And User delete the occupancy column
+  
+  #test

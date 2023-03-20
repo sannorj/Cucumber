@@ -126,7 +126,7 @@ public class portfolioDashboard_PageObjects {
 		searchToDate.click();
 		Thread.sleep(5000);
 
-		WebElement hotelName = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement hotelName = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOf(hotelNameHeader));
 		if (hotelName.isDisplayed()) {
 			result = true;

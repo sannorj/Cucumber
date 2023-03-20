@@ -174,6 +174,7 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 	// Total Expense Breakdown Page
 
 	public void totalExpenseBreakdownGotoDetails() throws InterruptedException {
+		Thread.sleep(5000);
 		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(totalExpenseBreakdownGotoDetails));
 		if (viewChart.isDisplayed()) {

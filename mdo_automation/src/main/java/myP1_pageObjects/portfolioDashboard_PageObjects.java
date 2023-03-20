@@ -202,6 +202,7 @@ public class portfolioDashboard_PageObjects {
 		for (int i = 1; i < 4; i++) {
 			String sortValues = driver.findElement(By.xpath("(//table[@id='adminPortfolio']//tr/td[text()='" + configReader.getMYP1Prop("Portfolio_HotelGrp")
 						+ "']//ancestor::tr//following-sibling::tr[contains(@class,'odd')]/td[3]/span)["+i+"]")).getAttribute("innerText");
+			System.out.println(Float.parseFloat(sortValues));
 			if(i==1) {
 				try{
 					val=Float.parseFloat(sortValues);

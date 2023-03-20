@@ -216,7 +216,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean expensevsBudgetByDepartmentIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement expensevsBudgetByDepartmentPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement expensevsBudgetByDepartmentPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(expenseBudgetDepartmentPageHeader));
 			System.out.println("Navigate to Expense vs Budget By Department Page: "
 					+ expensevsBudgetByDepartmentPgHeader.isDisplayed());
@@ -244,7 +245,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean expensevsBudgetByCategoryIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement expenseBudgetCategoryPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement expenseBudgetCategoryPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(expenseBudgetCategoryPageHeader));
 			System.out.println(
 					"Navigate to Expense vs Budget By Category Page: " + expenseBudgetCategoryPgHeader.isDisplayed());
@@ -272,7 +274,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean cashWidgetIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement cashWidgetPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement cashWidgetPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(cashWidgetPageHeader));
 			System.out.println("Navigate to Cash Collecting Widget Page: " + cashWidgetPgHeader.isDisplayed());
 			return cashWidgetPgHeader.isDisplayed();

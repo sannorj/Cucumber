@@ -20,7 +20,12 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 
 	@Then("User select All properties in property dropdown section")
 	public void user_select_all_properties_in_property_dropdown_section() throws InterruptedException {
-		widgetsCalculator.selectProperty(); 
+		widgetsCalculator.selectProperty();
+	}
+	
+	@Then("Check and Verify the widgets order")
+	public void Check_and_Verify_the_widgets_order() throws InterruptedException {
+		widgetsCalculator.verifyWidgetsOrder(); 
 	}
 
 	@Then("User setup a specific date")

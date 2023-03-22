@@ -33,11 +33,16 @@ public class DriverFactory {
 		getDriver().manage().window().maximize();
 		return getDriver();
 	}
-	
+
 	public WebDriver setDriverLocal(String browser) {
 		if (browser.toLowerCase().equals("chrome")) {
+			// WebDriverManager.chromedriver().setup();
+			// tlDriver.set(new ChromeDriver());
 			WebDriverManager.chromedriver().setup();
-			tlDriver.set(new ChromeDriver());
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
+			tlDriver.set(new ChromeDriver(options));
+
 		} else if (browser.toLowerCase().equals("edge")) {
 			WebDriverManager.edgedriver().setup();
 			tlDriver.set(new EdgeDriver());
@@ -52,8 +57,7 @@ public class DriverFactory {
 	public static synchronized WebDriver getDriver() {
 		return tlDriver.get();
 	}
-	
-	
+
 	public WebDriver setDriverDockerLocal(String browser) throws MalformedURLException {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
@@ -67,7 +71,6 @@ public class DriverFactory {
 		return getDriver();
 	}
 
-	
 	public WebDriver setDriverDockerJenkin(String browser) throws MalformedURLException {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
@@ -80,9 +83,5 @@ public class DriverFactory {
 		getDriver().manage().window().maximize();
 		return getDriver();
 	}
-	
-	
-	
-
 
 }

@@ -43,6 +43,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 	}
 	
+	@FindBy(xpath = "//span[text()='Order Widgets']")
+	WebElement orderWidgetButt;
+	
+	@FindBy(xpath = "//div[2]/li//div[text()='Occupancy']")
+	WebElement orderOfOccWidget;
+	
+	@FindBy(xpath = "//div[3]/li//div[text()='ADR (Average Daily Rate)']")
+	WebElement orderOfAdrWidget;
+	
+	@FindBy(xpath = "//div[4]/li//div[text()='RevPAR (Revenue Per Available Room)']")
+	WebElement orderOfRevParWidget;
+	
 	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']/ancestor::div[4]//div[@data-el='selectorPeriod']")
 	WebElement byPropertyWidgetPeriod;
 	
@@ -58,22 +70,22 @@ public class Dashboard_WidgetsCalculator_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']")
 	WebElement editBtt;
 	
-	@FindBy(xpath = "(//button[@data-el='button-edit-Occupancy'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-edit-Occupancy_Test'])[last()]")
 	WebElement lastEditButton;
 	
-	@FindBy(xpath = "(//button[@data-el='button-edit-ADR'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-edit-ADR_Test'])[last()]")
 	WebElement lastEditButtonADR;
 	
-	@FindBy(xpath = "(//button[@data-el='button-edit-RevPAR'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-edit-RevPAR_Test'])[last()]")
 	WebElement lastEditButtonRevPar;
 	
-	@FindBy(xpath = "(//button[@data-el='button-delete-Occupancy'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-delete-Occupancy_Test'])[last()]")
 	WebElement lastDeleteButton;
 	
-	@FindBy(xpath = "(//button[@data-el='button-delete-ADR'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-delete-ADR_Test'])[last()]")
 	WebElement lastDeleteButtonADR;
 	
-	@FindBy(xpath = "(//button[@data-el='button-delete-RevPAR'])[last()]")
+	@FindBy(xpath = "(//button[@data-el='button-delete-RevPAR_Test'])[last()]")
 	WebElement lastDeleteButtonRevPar;
 	
 	@FindBy(xpath = "//div[text()='Edit Column']")
@@ -94,13 +106,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonFinishCustomization']")
 	WebElement imDoneButt;
 	
-	@FindBy(xpath = "//th[last()]//span[text()='Occupancy']")
+	@FindBy(xpath = "//th[last()]//span[text()='Occupancy_Test']")
 	WebElement occupancyHeader;
 	
-	@FindBy(xpath = "//th[last()]//span[text()='ADR']")
+	@FindBy(xpath = "//th[last()]//span[text()='ADR_Test']")
 	WebElement adrHeader;
 	
-	@FindBy(xpath = "//th[last()]//span[text()='RevPAR']")
+	@FindBy(xpath = "//th[last()]//span[text()='RevPAR_Test']")
 	WebElement revParHeader;
 	
 	@FindBy(xpath = "//div[@data-el='chartCardTitleDiv']//div[text()='Occupancy']")
@@ -160,6 +172,39 @@ public class Dashboard_WidgetsCalculator_PageObject {
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
 		
+	
+	public void verifyWidgetsOrder() throws InterruptedException {
+		
+		Thread.sleep(3000);
+		
+		WebElement orderWidgetButton = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderWidgetButt));
+		ElementUtils.waitForElementToDisplay(orderWidgetButton, 1000);
+		orderWidgetButton.click();
+		
+		Thread.sleep(3000);
+		
+		WebElement occWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfOccWidget));
+		ElementUtils.waitForElementToDisplay(occWidgetOrder, 1000);
+			
+		Thread.sleep(3000);
+		
+		WebElement adrWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfAdrWidget));
+		ElementUtils.waitForElementToDisplay(adrWidgetOrder, 1000);
+			
+		Thread.sleep(3000);
+		
+		WebElement revParWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfRevParWidget));
+		ElementUtils.waitForElementToDisplay(revParWidgetOrder, 1000);
+		
+		Thread.sleep(3000);
+		
+		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveBtt));
+		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+		clickSaveBtt.click();
+		
+		Thread.sleep(3000);
+			
+	}
 	
 	public int getMonth() {
 		Date date = new Date();
@@ -554,7 +599,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(6000);
 		
-		WebElement occupancyPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy']/preceding-sibling::*)+1]"));
+		WebElement occupancyPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
 		ElementUtils.waitForElementToDisplay(occupancyPortfolioTotal, 1000);
 		byProTableArray.add(occupancyPortfolioTotal.getText());
 		
@@ -601,7 +646,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(7000);
 		
-		WebElement occupancyPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy']/preceding-sibling::*)+1]"));
+		WebElement occupancyPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
 		byProTableArray.add(occupancyPortfolioTotal.getText());
 		
 	}
@@ -858,7 +903,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(6000);
 		
-		WebElement adrPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR']/preceding-sibling::*)+1]"));
+		WebElement adrPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
 		ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 1000);
 		adrByProTableArray.add(adrPortfolioTotal.getText());
 		
@@ -905,7 +950,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(7000);
 		
-		WebElement adrPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR']/preceding-sibling::*)+1]"));
+		WebElement adrPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
 		ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 1000);
 		adrByProTableArray.add(adrPortfolioTotal.getText());
 		
@@ -1302,7 +1347,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(6000);
 		
-		WebElement revParPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR']/preceding-sibling::*)+1]"));
+		WebElement revParPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
 		ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 1000);
 		revParByProTableArray.add(revParPortfolioTotal.getText());
 		
@@ -1349,7 +1394,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(7000);
 		
-		WebElement revParPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR']/preceding-sibling::*)+1]"));
+		WebElement revParPortfolioTotal = driver.findElement(By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
 		ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 1000);
 		revParByProTableArray.add(revParPortfolioTotal.getText());
 		

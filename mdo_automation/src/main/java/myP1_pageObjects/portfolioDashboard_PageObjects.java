@@ -155,10 +155,11 @@ public class portfolioDashboard_PageObjects {
 		return false;
 	}
 
-	public boolean filterPeriod() {
+	public boolean filterPeriod() throws InterruptedException {
 		Select periodSelectOpt = new Select(periodSelect);
 		periodSelectOpt.selectByVisibleText(configReader.getMYP1Prop("Portfolio_PeriodYTD"));
-
+		
+		Thread.sleep(7000);		
 		WebElement hotelNameHeaderView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(hotelNameHeader));
 

@@ -53,7 +53,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 	@FindBy(xpath = "(//th[contains(@class,'center')]//select)[1]")
 	WebElement dashboardTblColOptions;
 
-	@FindBy(xpath = "//th[contains(@class,'center')]/span[not(@id) and not(@class) and not(@style)]")
+	@FindBy(xpath = "//th[contains(@class,'center num sorting_disabled')]/span[not(@id)]")
 	List<WebElement> dashboardTblColumns;
 
 	@FindBy(xpath = "(//button[text()='Confirm'])[1]")
@@ -276,26 +276,27 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 
 	public void selectColumn() throws InterruptedException {
 		Thread.sleep(7000);
-		int noOfCol=(dashboardTblColumns.size()/2)-1;
-		System.out.println("====no of cols===="+dashboardTblColumns.size());
+		int noOfCol=(dashboardTblColumns.size())-1;
+		System.out.println("====noofcols===="+dashboardTblColumns.size());
+		System.out.println("====col class no===="+noOfCol);
 		List<WebElement> removingCol = driver.findElements(By
 				.xpath("(//select[@id='ddlCols"+ noOfCol + "'])[1]//option"));
+
+		WebElement waitToViewAddChart = new WebDriverWait(driver, Duration.ofSeconds(500))
+				.until(ExpectedConditions.visibilityOf(saveBtn));
+		
 		for (int i = 0; i < removingCol.size(); i++) {
 			if (removingCol.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
 				System.out.println("add tags list item ===" + removingCol.get(i).getText());
 				removingCol.get(i).click();
 			}
 		}
-		System.out.println(1);
+		System.out.println("after removing column");
 		Thread.sleep(7000);
-//		WebElement addNewColBtn = new WebDriverWait(driver, Duration.ofSeconds(100))
-//				.until(ExpectedConditions.visibilityOf(saveBtn));
-//		boolean waitColVisible = new WebDriverWait(driver, Duration.ofSeconds(100))
-//				.until(ExpectedConditions.invisibilityOfElementLocated(
-//						By.xpath("(//th//span[text()='"+configReader.getMYP1Prop("Remove_Column")+"'] )[1]")));
-//		System.out.println(2);
 		saveBtn.click();
-		System.out.println(3);
+		WebElement waitTablePreview = new WebDriverWait(driver, Duration.ofSeconds(900))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//td[text()='Total Property'])[1]")));
+		System.out.println("save button clicked");
 		Thread.sleep(7000);
 	}
 
@@ -303,7 +304,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		Thread.sleep(7000);
 		WebElement waitTablePreview = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'DTFC_LeftBodyLiner')]/table/tbody/tr/td[text()='Total Property']")));
-		int noOfCol=dashboardTblColumns.size()/2;
+		int noOfCol=dashboardTblColumns.size();
 		System.out.println(noOfCol);
 		System.out.println("no of col== "+noOfCol);
 		for (int i = 1; i <= noOfCol; i++) {

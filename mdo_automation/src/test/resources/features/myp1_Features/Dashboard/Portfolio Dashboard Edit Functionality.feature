@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PortfolioEdit
 Feature: Portfolio Dashboard Edit Functionality
 
   Background: Verify Portfolio Dashboard

@@ -307,7 +307,7 @@ public class propertyDashboard_EditFunctionality_PageObjects {
 		int noOfCol=dashboardTblColumns.size();
 		System.out.println(noOfCol);
 		System.out.println("no of col== "+noOfCol);
-		for (int i = 1; i <= noOfCol; i++) {
+		for (int i = 0; i <= noOfCol; i++) {
 			System.out.println(dashboardTblColumns.get(i).getText()+" =====================");
 			if (dashboardTblColumns.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("Remove_Column"))) {
 				System.out.println("==Column added successfully==");

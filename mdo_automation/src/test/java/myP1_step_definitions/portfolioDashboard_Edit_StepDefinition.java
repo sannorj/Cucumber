@@ -30,7 +30,7 @@ public class portfolioDashboard_Edit_StepDefinition {
 	}
 
 	@And("Delete an selected column")
-	public void delete_an_selected_column() {
+	public void delete_an_selected_column() throws InterruptedException {
 		dashboardEditPo.deleteColumn();
 	}
 

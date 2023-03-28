@@ -31,6 +31,7 @@ Feature: Property Dashboard Edit functionality
     And Add new Column
     Given Click on Edit button
     Then Select Selected Column for new column
+    #Given Click on Edit button
     And Verify column successfully added
     #
     #Close individual chart

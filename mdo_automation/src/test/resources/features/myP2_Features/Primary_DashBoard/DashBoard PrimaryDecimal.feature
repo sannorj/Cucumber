@@ -1,5 +1,6 @@
 #Author: haniffa@mydigitaloffice.ca 
-@myP2_Regression @DashBoard
+@myP2_Regression @PrimaryDashBoard
+
 Feature: Primary Dashboard - Custom Decimal Places Features
 
 Scenario: Verify whether user can able to set the custom decimal places in primary dashboard

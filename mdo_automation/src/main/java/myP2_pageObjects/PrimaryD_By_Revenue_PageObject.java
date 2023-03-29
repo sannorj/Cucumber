@@ -146,7 +146,7 @@ public class PrimaryD_By_Revenue_PageObject {
 
 	}
 	
-	public void clickByRevenueButt() throws InterruptedException {
+	public void clickByRevenueButton() throws InterruptedException {
 		
 		Thread.sleep(5000);
 		

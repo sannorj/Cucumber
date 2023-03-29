@@ -15,7 +15,7 @@ public class PrimaryD_By_Revenue_StepDefinition {
 
 	@When("User click the By Revenue section")
 	public void User_click_the_by_revenue_section() throws InterruptedException {
-		primaryDByRevenue.clickByRevenueButt(); 
+		primaryDByRevenue.clickByRevenueButton(); 
 	}
 	
 	@Then("User select All properties from the property dropdown")
@@ -28,7 +28,7 @@ public class PrimaryD_By_Revenue_StepDefinition {
 		primaryDByRevenue.selectSingleProperty(); 
 	}
 
-	@And("Verify table is empty")
+	@And("Review the default warning message that appears in the By Revenue table")
 	public void Verify_table_is_empty() throws InterruptedException {
 		primaryDByRevenue.verifyEmptyMessage(); 
 	}

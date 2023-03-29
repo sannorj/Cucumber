@@ -1,8 +1,8 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @DashBoard
+@myP2_Regression @PrimaryDashBoard
 Feature: Primary DashBoard - Edit Columns Feature
 
-Background: Login to MYP2 application 
+Background: Login to myP2 application 
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "Beck Legacy Group" 

@@ -1,8 +1,9 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @DashBoard
-Feature: Primary Dashboard - Re arrange the widgets and verify
+@myP2_Regression @PrimaryDashBoard
 
-Scenario: Verify whether Ordered Widgets are in the correct order
+Feature: Primary Dashboard - Reposition the widgets and check the ordering feature
+
+Scenario: Verify the widgets are in the correct order when the user modifies the order form Order widgets on the dashboard page  
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group"

@@ -1172,7 +1172,17 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		boolean flag = false;
 		String[] dateForPicker = configReader.getProp("widgetsCal_Last_Year_Date_ADR").split("/");
 
-		txtDate.click();
+		int datePickerReClickToClose = driver.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+		
+		if(datePickerReClickToClose>0)
+		{
+			txtDate.click();
+		}
+		else
+		{
+			validateOkCancelandClick();
+		}
+		
 
 		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 

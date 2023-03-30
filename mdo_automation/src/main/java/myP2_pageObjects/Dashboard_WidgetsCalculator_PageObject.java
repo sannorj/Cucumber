@@ -1010,7 +1010,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement adrPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 150);
+			ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 1000);
 			adrByProTableArray.add(adrPortfolioTotal.getText());
 
 		}

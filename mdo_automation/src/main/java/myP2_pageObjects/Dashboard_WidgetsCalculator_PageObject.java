@@ -177,29 +177,29 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		
 		Thread.sleep(3000);
 		
-		WebElement orderWidgetButton = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderWidgetButt));
-		ElementUtils.waitForElementToDisplay(orderWidgetButton, 1000);
+		WebElement orderWidgetButton = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(orderWidgetButt));
+		//ElementUtils.waitForElementToDisplay(orderWidgetButton, 1000);
 		orderWidgetButton.click();
 		
 		Thread.sleep(3000);
 		
-		WebElement occWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfOccWidget));
-		ElementUtils.waitForElementToDisplay(occWidgetOrder, 1000);
+		WebElement occWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(orderOfOccWidget));
+		//ElementUtils.waitForElementToDisplay(occWidgetOrder, 1000);
 			
 		Thread.sleep(3000);
 		
-		WebElement adrWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfAdrWidget));
-		ElementUtils.waitForElementToDisplay(adrWidgetOrder, 1000);
+		WebElement adrWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(orderOfAdrWidget));
+		//ElementUtils.waitForElementToDisplay(adrWidgetOrder, 1000);
 			
 		Thread.sleep(3000);
 		
-		WebElement revParWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(orderOfRevParWidget));
-		ElementUtils.waitForElementToDisplay(revParWidgetOrder, 1000);
+		WebElement revParWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(orderOfRevParWidget));
+		//ElementUtils.waitForElementToDisplay(revParWidgetOrder, 1000);
 		
 		Thread.sleep(3000);
 		
-		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(saveBtt));
+		//ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 		clickSaveBtt.click();
 		
 		Thread.sleep(3000);

@@ -33,6 +33,13 @@ public class Dashboard_DrowpdownValidation_StepDefinition {
 		assertTrue(dashBoardPo.compareStoredGroupsAndProperties());
 	}
 	
+	@When("I am storing property list when group more than two")
+	public void I_am_storing_property_list_when_group_more_than_two() throws InterruptedException {
+		//assertTrue(dashBoardPo.compareStoredGroupsAndProperties());
+	}
+	
+	
+	
 	
 	
 	

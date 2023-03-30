@@ -948,7 +948,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		}
 
-		WebElement adrTableHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
+		WebElement adrTableHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(adrHeader));
 		ElementUtils.waitForElementToDisplay(adrTableHeader, 1000);
 

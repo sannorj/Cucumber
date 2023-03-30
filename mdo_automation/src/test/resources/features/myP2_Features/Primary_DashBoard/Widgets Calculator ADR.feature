@@ -8,8 +8,7 @@ Background: Login to MYP2 application
   And System navigate to the home page
   And Select the organization as "Insignia Hospitality Group"
   When I Am navigate to toggle widget page by clicking ToggleWidget Icon
-  Then I turn on all the widgets 
-  And verify whthere all the widgets are available
+  Then I turn on all the widgets
   And Check and Verify the widgets order
   
   Scenario: The user add ADR column and compares the recorded graph value array with the recorded portfolio total value array to see if they are equivalent.

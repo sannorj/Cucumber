@@ -961,7 +961,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			Thread.sleep(3000);
 
 			if (lastEditButtonADR.isEnabled()) {
-				WebElement lstEditBttADR = new WebDriverWait(driver, Duration.ofSeconds(10))
+				WebElement lstEditBttADR = new WebDriverWait(driver, Duration.ofSeconds(25))
 						.until(ExpectedConditions.visibilityOf(lastEditButtonADR));
 				lstEditBttADR.click();
 			}
@@ -969,7 +969,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			Thread.sleep(3000);
 
 			if (verifyEditColum.isEnabled()) {
-				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
+				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(25))
 						.until(ExpectedConditions.visibilityOf(verifyEditColum));
 				ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
 
@@ -989,18 +989,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(saveBtt));
-			ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+			ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 			clickSaveBtt.click();
 
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-			ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+			ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 			Thread.sleep(6000);
 
 			WebElement adrPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 1000);
+			ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 100);
 			adrByProTableArray.add(adrPortfolioTotal.getText());
 
 		}
@@ -1022,7 +1022,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifyEditColum.isEnabled()) {
 			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifyEditColum));
-			ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
+			ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 		}
 
@@ -1042,18 +1042,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(7000);
 
 		WebElement adrPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-		ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 1000);
+		ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 100);
 		adrByProTableArray.add(adrPortfolioTotal.getText());
 
 	}
@@ -1065,7 +1065,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (adrWidgetHeader.isEnabled()) {
 			WebElement adrWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(adrWidgetHeader));
-			ElementUtils.waitForElementToDisplay(adrWidget, 1000);
+			ElementUtils.waitForElementToDisplay(adrWidget, 100);
 
 		}
 
@@ -1073,35 +1073,35 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement actualVal = driver.findElement(
 				By.xpath("(//div[3]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[1]"));
-		ElementUtils.waitForElementToDisplay(actualVal, 1000);
+		ElementUtils.waitForElementToDisplay(actualVal, 100);
 		adrWidgetArray.add(actualVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement budgetVal = driver.findElement(
 				By.xpath("(//div[3]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[4]"));
-		ElementUtils.waitForElementToDisplay(budgetVal, 1000);
+		ElementUtils.waitForElementToDisplay(budgetVal, 100);
 		adrWidgetArray.add(budgetVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement forecastVal = driver.findElement(
 				By.xpath("(//div[3]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[5]"));
-		ElementUtils.waitForElementToDisplay(forecastVal, 1000);
+		ElementUtils.waitForElementToDisplay(forecastVal, 100);
 		adrWidgetArray.add(forecastVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement lastYearVal = driver.findElement(
 				By.xpath("(//div[3]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[2]"));
-		ElementUtils.waitForElementToDisplay(lastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(lastYearVal, 100);
 		adrWidgetArray.add(lastYearVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement pastYearVal = driver.findElement(
 				By.xpath("(//div[3]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[3]"));
-		ElementUtils.waitForElementToDisplay(pastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(pastYearVal, 100);
 		adrWidgetArray.add(pastYearVal.getText());
 
 	}
@@ -1153,7 +1153,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifydeleteColum.isEnabled()) {
 			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 1000);
+			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 100);
 
 		}
 
@@ -1165,14 +1165,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
+			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
 
 		}
 
@@ -1398,7 +1398,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (addColumnBtt.isEnabled()) {
 			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 1000);
+			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 100);
 			clickAddColumnBtt.click();
 
 		}
@@ -1447,25 +1447,25 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
+			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
 
 		}
 
 		WebElement revParTableHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(revParHeader));
-		ElementUtils.waitForElementToDisplay(revParTableHeader, 1000);
+		ElementUtils.waitForElementToDisplay(revParTableHeader, 100);
 
 	}
 
@@ -1486,7 +1486,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			if (verifyEditColum.isEnabled()) {
 				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
 						.until(ExpectedConditions.visibilityOf(verifyEditColum));
-				ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
+				ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 			}
 
@@ -1504,18 +1504,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(saveBtt));
-			ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+			ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 			clickSaveBtt.click();
 
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-			ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+			ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 			Thread.sleep(6000);
 
 			WebElement revParPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 1000);
+			ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 100);
 			revParByProTableArray.add(revParPortfolioTotal.getText());
 
 		}
@@ -1537,7 +1537,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifyEditColum.isEnabled()) {
 			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifyEditColum));
-			ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
+			ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 		}
 
@@ -1557,18 +1557,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
+		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(7000);
 
 		WebElement revParPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
-		ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 1000);
+		ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 100);
 		revParByProTableArray.add(revParPortfolioTotal.getText());
 
 	}
@@ -1580,7 +1580,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (revParWidgetHeader.isEnabled()) {
 			WebElement revParWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(revParWidgetHeader));
-			ElementUtils.waitForElementToDisplay(revParWidget, 1000);
+			ElementUtils.waitForElementToDisplay(revParWidget, 100);
 
 		}
 
@@ -1588,35 +1588,35 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement actualVal = driver.findElement(
 				By.xpath("(//div[4]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[1]"));
-		ElementUtils.waitForElementToDisplay(actualVal, 1000);
+		ElementUtils.waitForElementToDisplay(actualVal, 100);
 		revParWidgetArray.add(actualVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement budgetVal = driver.findElement(
 				By.xpath("(//div[4]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[4]"));
-		ElementUtils.waitForElementToDisplay(budgetVal, 1000);
+		ElementUtils.waitForElementToDisplay(budgetVal, 100);
 		revParWidgetArray.add(budgetVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement forecastVal = driver.findElement(
 				By.xpath("(//div[4]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[5]"));
-		ElementUtils.waitForElementToDisplay(forecastVal, 1000);
+		ElementUtils.waitForElementToDisplay(forecastVal, 100);
 		revParWidgetArray.add(forecastVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement lastYearVal = driver.findElement(
 				By.xpath("(//div[4]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[2]"));
-		ElementUtils.waitForElementToDisplay(lastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(lastYearVal, 100);
 		revParWidgetArray.add(lastYearVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement pastYearVal = driver.findElement(
 				By.xpath("(//div[4]//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[3]"));
-		ElementUtils.waitForElementToDisplay(pastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(pastYearVal, 100);
 		revParWidgetArray.add(pastYearVal.getText());
 
 	}
@@ -1669,7 +1669,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifydeleteColum.isEnabled()) {
 			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 1000);
+			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 100);
 
 		}
 
@@ -1681,14 +1681,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
+		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
+			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
 
 		}
 

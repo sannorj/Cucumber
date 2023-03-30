@@ -18,7 +18,7 @@ public class portfolioDashboard_DayMonthYearVerify_StepDefinition {
 	}
 
 	@And("Verify navigate to Month page")
-	public void verify_navigate_to_month_page() {
+	public void verify_navigate_to_month_page() throws InterruptedException {
 		assertTrue(dashboardDayMonthYearVerifyPo.navigateToMonthPg());
 	}
 

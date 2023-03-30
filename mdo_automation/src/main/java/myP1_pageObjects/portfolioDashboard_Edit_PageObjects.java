@@ -101,7 +101,8 @@ public class portfolioDashboard_Edit_PageObjects {
 		saveBtn.click();
 	}
 
-	public void clickRemoveConfirm() {
+	public void clickRemoveConfirm() throws InterruptedException {
+		Thread.sleep(3000);
 		WebElement waitcolumnRmvConfirmBtnView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(columnRmvConfirmBtn));
 		columnRmvConfirmBtn.click();

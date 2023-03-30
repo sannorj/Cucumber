@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @portfolioDMY
 Feature: Portfolio Dashboard Day Month Year Verify functionality
 
   Background: Verify Portfolio Dashboard

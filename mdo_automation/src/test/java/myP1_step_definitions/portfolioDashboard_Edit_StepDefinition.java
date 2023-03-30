@@ -35,7 +35,7 @@ public class portfolioDashboard_Edit_StepDefinition {
 	}
 
 	@When("Click remove confirm")
-	public void click_remove_confirm() {
+	public void click_remove_confirm() throws InterruptedException {
 		dashboardEditPo.clickRemoveConfirm();
 	}
 

@@ -37,13 +37,16 @@ public class portfolioDashboard_DayMonthYearVerify_PageObjects {
 
 	public void clickMonthBtn() throws InterruptedException {
 		try {
-			monthBtn.click();
+//			monthBtn.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", monthBtn);
 		} catch (TimeoutException e) {
 //			System.out.println("errorrrrrrrrrrrr"+ e);
 		}
 	}
 
-	public boolean navigateToMonthPg() {
+	public boolean navigateToMonthPg() throws InterruptedException {
+		Thread.sleep(3000);
 		WebElement weekHeading = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'Week')]")));
 		System.out.println("Month Page Landed!");

@@ -1324,7 +1324,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClse = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClse > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 

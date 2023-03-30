@@ -498,9 +498,9 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement byPropertyPeriodW = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(byPropertyWidgetPeriod));
-		byPropertyPeriodW.click();
+		//byPropertyPeriodW.click();
 
-		drpValueListSize.get(1).click();
+		//drpValueListSize.get(1).click();
 
 		/*
 		 * for (int i = 0; i < drpValueListSize.size(); i++) { if

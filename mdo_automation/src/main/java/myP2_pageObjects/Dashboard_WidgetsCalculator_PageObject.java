@@ -413,7 +413,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 
@@ -431,7 +438,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		if (drpGroup.isEnabled()) {
 
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 
@@ -1263,7 +1270,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 

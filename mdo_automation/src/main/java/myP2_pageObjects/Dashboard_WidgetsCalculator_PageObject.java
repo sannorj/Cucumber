@@ -333,7 +333,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 
@@ -373,7 +380,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 
@@ -1786,7 +1800,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 
@@ -1826,7 +1847,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			txtDate.click();
+			int datePickerReClickToClose = driver
+					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+
+			if (datePickerReClickToClose > 0) {
+				txtDate.click();
+			} else {
+				validateOkCancelandClick();
+			}
 
 			flag = true;
 

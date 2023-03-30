@@ -1,8 +1,9 @@
 #Author: haniffa@mydigitaloffice.ca 
-@myP2_Regression @DashBoardt
+@myP2_Regression @PrimaryDashBoard
+
 Feature: Primary Dashboard - Toggle Widgets
 
-	Scenario: Verify whether turned off widgets are not exist in the dashboard 
+	Scenario: Verify whether turned off widgets are not exist in the  Primary Dashboard 
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group"

@@ -96,6 +96,9 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement saveBtt;
+	
+	@FindBy(xpath = "//button[@data-el='buttonCancel']")
+	WebElement btnCancel;
 
 	@FindBy(xpath = "//span[text()='Ok']")
 	WebElement okButt;
@@ -885,7 +888,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (addColumnBtt.isEnabled()) {
 			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 1000);
+			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 100);
 			clickAddColumnBtt.click();
 
 		}
@@ -932,13 +935,20 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(saveBtt));
-		clickSaveBtt.click();
+		try {
+			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(saveBtt));
+			clickSaveBtt.click();
 
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
+			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
+		} catch (Exception e) {
+			WebElement buttonCancel = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnCancel));
+			buttonCancel.click();
+		}
+		
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {

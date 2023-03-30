@@ -496,14 +496,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		WebElement byPropertyPeriodW = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(byPropertyWidgetPeriod));
 		byPropertyPeriodW.click();
-		
+
 		drpValueListSize.get(1).click();
 
-		/*for (int i = 0; i < drpValueListSize.size(); i++) {
-			if (drpValueListSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_MTD"))) {
-				drpValueListSize.get(i).click();
-			}
-		}*/
+		/*
+		 * for (int i = 0; i < drpValueListSize.size(); i++) { if
+		 * (drpValueListSize.get(i).getText().equalsIgnoreCase(configReader.getProp(
+		 * "widgetsCal_MTD"))) { drpValueListSize.get(i).click(); } }
+		 */
 
 	}
 
@@ -934,12 +934,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 
 		Thread.sleep(3000);
 

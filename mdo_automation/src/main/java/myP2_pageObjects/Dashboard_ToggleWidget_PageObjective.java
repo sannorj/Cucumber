@@ -101,7 +101,7 @@ public class Dashboard_ToggleWidget_PageObjective {
 
 	public boolean verifyAllTheWidgets() throws InterruptedException {
 
-		Thread.sleep(5000);
+		Thread.sleep(25000);
 
 		if (widgetName.size() == headers.size()) {
 

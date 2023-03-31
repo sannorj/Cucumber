@@ -34,7 +34,7 @@ public class scorecardDashboard_pageObjects {
 	@FindBy(xpath = "//a//span[text()='Dashboard']")
 	WebElement dashboardLink;
 
-	@FindBy(xpath = "//a//span[text()='Scorecard']")
+	@FindBy(xpath = "//a//span[contains(text(),'Scorecard')]")
 	WebElement scorecardLink;
 
 	@FindBy(xpath = "//h2[text()='Scorecard']")

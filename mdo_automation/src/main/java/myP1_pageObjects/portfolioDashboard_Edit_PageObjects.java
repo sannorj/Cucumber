@@ -99,6 +99,7 @@ public class portfolioDashboard_Edit_PageObjects {
 				.until(ExpectedConditions.visibilityOf(closeColBtn));
 		closeColBtn.click();
 		saveBtn.click();
+		Thread.sleep(3000);
 	}
 
 	public void clickRemoveConfirm() throws InterruptedException {

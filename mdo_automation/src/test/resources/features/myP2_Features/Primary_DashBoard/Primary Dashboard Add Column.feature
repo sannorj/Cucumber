@@ -7,7 +7,7 @@ Feature: Primary Dashboard - Add Column Feature
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group"
-    When I select the group,property and Date
+    And Select the appropriate group and property
 
 	Scenario: Navigate To Add Column 
     Then I am navigate to Add column page

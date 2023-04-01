@@ -163,9 +163,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			Thread.sleep(2500);
 
-			WebElement pickYear = driver
-					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
-							+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'MuiPickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
 

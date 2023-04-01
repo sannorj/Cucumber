@@ -6,8 +6,8 @@ Background: Login to myP2 application
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "Beck Legacy Group" 
-  And select the Group ,Property and Date 
-  
+  And Select the appropriate group and property
+
   Scenario: Verify whether a user is able to edit the column in the By Property table
   When User clicks Edit icon in By Property table
   Then The table goes into the editable mode

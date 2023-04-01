@@ -78,15 +78,53 @@ public class PrimaryD_Edit_PageObject {
 		
 	@FindBy(xpath = "(//div[contains(@class, 'MuiDataGrid-columnHeaderTitle css-cc8tf1')])[4]")
 	WebElement lblEditedColumnHeader;
+
+	@FindBy(xpath = "//div/input[contains(@name, 'porfolio-group')]")
+	WebElement drpGroup;
 	
-//	@FindBy(xpath = "//button[@data-el='toggleCustomTable1']")
-//	WebElement tabByRanvanue;
+	@FindBy(xpath = "//div/input[@name='porfolio-hotel']")
+	WebElement drpProperty;
 	
 	@FindBy(xpath = "//button[text()='By Revenue']")
 	WebElement tabByRevenue;
 	
 	@FindBy(xpath = "//div//b[text()='Portfolio Total']")
 	WebElement lblTotal;
+	
+	public void selectParameters() throws InterruptedException {
+
+		Thread.sleep(5000);
+		
+		if (drpGroup.isEnabled()) {
+			/* Select the appropriate Group value from the drop-down menu. */
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
+			drpGroupEle.click();
+
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		}
+
+		Thread.sleep(5000);
+
+		if (drpProperty.isEnabled()) {
+			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
+			drpPropertyEle.click();
+
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		}
+		ElementUtils.waitForElementToDisplay(lblProperty, 100);
+
+
+	}
 	
 	
 	public void clickOnEdit() throws InterruptedException {

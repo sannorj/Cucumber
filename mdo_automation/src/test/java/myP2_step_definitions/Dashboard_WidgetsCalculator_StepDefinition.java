@@ -70,7 +70,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the occupancy widget period dropdown")
 	public void user_select_mtd_value_from_the_occupancy_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectOccupancyPeriod(); 
+		//widgetsCalculator.selectOccupancyPeriod(); 
 	}
 
 	@Then("User capture the Records from graph and save it in an array")

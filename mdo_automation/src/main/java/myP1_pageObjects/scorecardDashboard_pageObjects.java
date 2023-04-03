@@ -135,7 +135,7 @@ public class scorecardDashboard_pageObjects {
 	}
 
 	public boolean IsCardsViews() {
-		boolean isCardDisplayed = false;
+		boolean isCardDisplayed = true;
 		for (int i = 0; i < enabledChartsLst.size(); i++) {
 			String cardFullName = enabledChartsLst.get(i).getAttribute("name");
 			String cardName = cardFullName.replace("Scorecard", "");
@@ -152,6 +152,10 @@ public class scorecardDashboard_pageObjects {
 //
 		 isCardDisplayed = new WebDriverWait(driver, Duration.ofSeconds(300)).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//div[@id='sortablescorecard']//div//section[@id='panel-" + cardName +"' and @class='panel panel-primary panel-collapsed']//a"))).isDisplayed();
+		 
+		 if(!isCardDisplayed) {
+			 isCardDisplayed = false;
+		 }
 		}
 		return isCardDisplayed;
 	}

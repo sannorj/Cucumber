@@ -96,7 +96,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 	@FindBy(xpath = "//button[@data-el='buttonSave']")
 	WebElement saveBtt;
-	
+
 	@FindBy(xpath = "//button[@data-el='buttonCancel']")
 	WebElement btnCancel;
 
@@ -430,13 +430,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClose = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;
@@ -498,9 +498,9 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement byPropertyPeriodW = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(byPropertyWidgetPeriod));
-		//byPropertyPeriodW.click();
+		// byPropertyPeriodW.click();
 
-		//drpValueListSize.get(1).click();
+		// drpValueListSize.get(1).click();
 
 		/*
 		 * for (int i = 0; i < drpValueListSize.size(); i++) { if
@@ -948,7 +948,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 					.until(ExpectedConditions.visibilityOf(btnCancel));
 			buttonCancel.click();
 		}
-		
+
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
@@ -1292,13 +1292,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClose = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;
@@ -1320,8 +1320,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		if (datePickerReClickToClose > 0) {
 			txtDate.click();
-		} else {
-			validateOkCancelandClick();
 		}
 
 		int btnDatePickforLocal = driver
@@ -1346,13 +1344,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClse = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClse > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;

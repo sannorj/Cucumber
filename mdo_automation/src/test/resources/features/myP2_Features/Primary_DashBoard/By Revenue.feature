@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @PrimaryDashBoard
+@myP2_Regression @PrimaryDashBoard @byRev
 
 Feature: Primary DashBoard - By Revenue default Data Validation Function 
 

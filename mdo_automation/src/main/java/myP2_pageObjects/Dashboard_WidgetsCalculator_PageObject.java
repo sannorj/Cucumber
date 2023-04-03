@@ -521,6 +521,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement occupancyPeriod = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(occupancyPeriodDropdown));
 			occupancyPeriod.click();
+			
+			Thread.sleep(5000);
 
 			for (int i = 0; i < drpValueListSize.size(); i++) {
 				if (drpValueListSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_MTD"))) {
@@ -838,6 +840,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement adrPeriod = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(adrPeriodDropdown));
 			adrPeriod.click();
+			
+			Thread.sleep(5000);
 
 			for (int i = 0; i < drpValueListSize.size(); i++) {
 				if (drpValueListSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_MTD"))) {

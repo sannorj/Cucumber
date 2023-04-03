@@ -150,8 +150,8 @@ public class scorecardDashboard_pageObjects {
 //			
 //			cardMinimize.click();
 //
-//		 isCardDisplayed = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions
-//					.visibilityOfElementLocated(By.xpath("//div[@id='sortablescorecard']//div//section[@id='" + cardName + "']//div[@class='panel-body']"))).isDisplayed();
+		 isCardDisplayed = new WebDriverWait(driver, Duration.ofSeconds(300)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//div[@id='sortablescorecard']//div//section[@id='panel-" + cardName +"' and @class='panel panel-primary panel-collapsed']//a"))).isDisplayed();
 		}
 		return isCardDisplayed;
 	}

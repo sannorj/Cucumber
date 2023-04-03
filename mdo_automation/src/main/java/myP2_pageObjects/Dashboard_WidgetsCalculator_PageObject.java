@@ -375,6 +375,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
 							+ dateForPicker[2] + "')]"));
 
+			
 			pickYear.click();
 			Thread.sleep(5000);
 

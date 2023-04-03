@@ -7,7 +7,7 @@ Background: Login to MYP2 application
   Given I am login to the myp2 site
   And System navigate to the home page
   And Select the organization as "Beck Legacy Group" 
-  And select the Group ,Property and Date 
+  And Select the appropriate group and property 
    
   Scenario: Verify whether the user has the ability to add their first comment
   	Given User click on the Add Comments page

@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -232,8 +231,6 @@ public class PrimaryD_Comments_PageObject {
 	
 	public void selectParameters() throws InterruptedException {
 
-		//ElementUtils.waitForElementToDisplay(lblGroup, 50);
-
 		Thread.sleep(5000);
 		
 		if (drpGroup.isEnabled()) {
@@ -263,12 +260,7 @@ public class PrimaryD_Comments_PageObject {
 			}
 		}
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
-
-		/*txtDate.sendKeys(Keys.CONTROL + "a");
-		txtDate.sendKeys(Keys.DELETE);
-		txtDate.sendKeys(configReader.getProp("Date"));*/
 		selectDate();
-
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
 
 	}

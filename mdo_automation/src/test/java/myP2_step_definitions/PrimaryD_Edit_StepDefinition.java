@@ -3,6 +3,7 @@ package myP2_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import myP2_pageObjects.PrimaryD_Edit_PageObject;
@@ -10,6 +11,11 @@ import myP2_pageObjects.PrimaryD_Edit_PageObject;
 public class PrimaryD_Edit_StepDefinition {
 	
 	private PrimaryD_Edit_PageObject primaryDEdit = new PrimaryD_Edit_PageObject(DriverFactory.getDriver());
+	
+	@Given("Select the appropriate group and property")
+	public void select_the_appropriate_group_and_property() throws InterruptedException {
+		primaryDEdit.selectParameters();
+	}
 	
 	@When("User clicks Edit icon in By Property table")
 	public void user_clicks_edit_icon_in_by_property_table() throws InterruptedException {

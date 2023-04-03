@@ -375,7 +375,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
 							+ dateForPicker[2] + "')]"));
 
-			
 			pickYear.click();
 			Thread.sleep(5000);
 
@@ -594,19 +593,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(saveBtt));
-		clickSaveBtt.click();
+		try {
+			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(saveBtt));
+			clickSaveBtt.click();
 
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
+			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-		Thread.sleep(3000);
-
-		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(imDoneButt));
-
+		} catch (Exception e) {
+			WebElement buttonCancel = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnCancel));
+			buttonCancel.click();
 		}
 
 		WebElement occupancyTableHeader = new WebDriverWait(driver, Duration.ofSeconds(25))

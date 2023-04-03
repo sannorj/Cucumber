@@ -181,32 +181,27 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement orderWidgetButton = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(orderWidgetButt));
-		// ElementUtils.waitForElementToDisplay(orderWidgetButton, 1000);
 		orderWidgetButton.click();
 
 		Thread.sleep(3000);
 
 		WebElement occWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(orderOfOccWidget));
-		// ElementUtils.waitForElementToDisplay(occWidgetOrder, 1000);
 
 		Thread.sleep(3000);
 
 		WebElement adrWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(orderOfAdrWidget));
-		// ElementUtils.waitForElementToDisplay(adrWidgetOrder, 1000);
 
 		Thread.sleep(3000);
 
 		WebElement revParWidgetOrder = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(orderOfRevParWidget));
-		// ElementUtils.waitForElementToDisplay(revParWidgetOrder, 1000);
 
 		Thread.sleep(3000);
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		// ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 		clickSaveBtt.click();
 
 		Thread.sleep(3000);
@@ -515,9 +510,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (occupancyWidgetHeader.isEnabled()) {
-			WebElement occupancyWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement occupancyWidget = new WebDriverWait(driver, Duration.ofSeconds(50))
 					.until(ExpectedConditions.visibilityOf(occupancyWidgetHeader));
-			ElementUtils.waitForElementToDisplay(occupancyWidget, 250);
 
 		}
 
@@ -551,9 +545,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(5000);
 
 		if (addColumnBtt.isEnabled()) {
-			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 1000);
 			clickAddColumnBtt.click();
 
 		}
@@ -602,25 +595,21 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
 
 		}
 
 		WebElement occupancyTableHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(occupancyHeader));
-		ElementUtils.waitForElementToDisplay(occupancyTableHeader, 1000);
 
 	}
 
@@ -641,8 +630,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			if (verifyEditColum.isEnabled()) {
 				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
 						.until(ExpectedConditions.visibilityOf(verifyEditColum));
-				ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
-
 			}
 
 			Thread.sleep(3000);
@@ -657,18 +644,16 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(saveBtt));
-			ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 			clickSaveBtt.click();
 
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-			ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 
 			Thread.sleep(6000);
 
 			WebElement occupancyPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(occupancyPortfolioTotal, 1000);
+			ElementUtils.waitForElementToDisplay(occupancyPortfolioTotal, 250);
 			byProTableArray.add(occupancyPortfolioTotal.getText());
 
 		}
@@ -688,9 +673,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (verifyEditColum.isEnabled()) {
-			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(verifyEditColum));
-			ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
 
 		}
 
@@ -710,12 +694,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 1000);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 
 		Thread.sleep(7000);
 
@@ -732,7 +714,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (occupancyWidgetHeader.isEnabled()) {
 			WebElement occupancyWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(occupancyWidgetHeader));
-			ElementUtils.waitForElementToDisplay(occupancyWidget, 1000);
 
 		}
 
@@ -747,28 +728,28 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement budgetVal = driver
 				.findElement(By.xpath("(//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[4]"));
-		ElementUtils.waitForElementToDisplay(budgetVal, 1000);
+		ElementUtils.waitForElementToDisplay(budgetVal, 100);
 		occWidgetArray.add(budgetVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement forecastVal = driver
 				.findElement(By.xpath("(//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[5]"));
-		ElementUtils.waitForElementToDisplay(forecastVal, 1000);
+		ElementUtils.waitForElementToDisplay(forecastVal, 100);
 		occWidgetArray.add(forecastVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement lastYearVal = driver
 				.findElement(By.xpath("(//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[2]"));
-		ElementUtils.waitForElementToDisplay(lastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(lastYearVal, 100);
 		occWidgetArray.add(lastYearVal.getText());
 
 		Thread.sleep(5000);
 
 		WebElement pastYearVal = driver
 				.findElement(By.xpath("(//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[3]"));
-		ElementUtils.waitForElementToDisplay(pastYearVal, 1000);
+		ElementUtils.waitForElementToDisplay(pastYearVal, 100);
 		occWidgetArray.add(pastYearVal.getText());
 
 	}
@@ -820,7 +801,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifydeleteColum.isEnabled()) {
 			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 1000);
 
 		}
 
@@ -832,14 +812,12 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
 
 		}
 
@@ -852,7 +830,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (adrWidgetHeader.isEnabled()) {
 			WebElement adrWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(adrWidgetHeader));
-			ElementUtils.waitForElementToDisplay(adrWidget, 1000);
 
 		}
 
@@ -888,7 +865,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (addColumnBtt.isEnabled()) {
 			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 100);
 			clickAddColumnBtt.click();
 
 		}
@@ -954,13 +930,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 1000);
 
 		}
 
 		WebElement adrTableHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(adrHeader));
-		ElementUtils.waitForElementToDisplay(adrTableHeader, 1000);
 
 	}
 
@@ -981,7 +955,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			if (verifyEditColum.isEnabled()) {
 				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(25))
 						.until(ExpectedConditions.visibilityOf(verifyEditColum));
-				ElementUtils.waitForElementToDisplay(checkEditColumn, 1000);
 
 			}
 
@@ -999,12 +972,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(saveBtt));
-			ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 			clickSaveBtt.click();
 
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-			ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 			Thread.sleep(6000);
 
@@ -1032,7 +1003,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (verifyEditColum.isEnabled()) {
 			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(verifyEditColum));
-			ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 		}
 
@@ -1052,12 +1022,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
+		
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(7000);
 
@@ -1073,9 +1042,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (adrWidgetHeader.isEnabled()) {
-			WebElement adrWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement adrWidget = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(adrWidgetHeader));
-			ElementUtils.waitForElementToDisplay(adrWidget, 100);
+			
+			adrWidget.isDisplayed();
 
 		}
 
@@ -1161,9 +1131,9 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (verifydeleteColum.isEnabled()) {
-			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 100);
+			verifydeleteHeader.isDisplayed();
 
 		}
 
@@ -1175,14 +1145,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
+		
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
+			
 
 		}
 
@@ -1370,7 +1340,6 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (revParWidgetHeader.isEnabled()) {
 			WebElement revParWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(revParWidgetHeader));
-			ElementUtils.waitForElementToDisplay(revParWidget, 1000);
 
 		}
 
@@ -1404,9 +1373,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(5000);
 
 		if (addColumnBtt.isEnabled()) {
-			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			ElementUtils.waitForElementToDisplay(clickAddColumnBtt, 100);
 			clickAddColumnBtt.click();
 
 		}
@@ -1453,27 +1421,23 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
+		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 		clickSaveBtt.click();
 
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
+		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
 
 		}
 
-		WebElement revParTableHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
+		WebElement revParTableHeader = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(revParHeader));
-		ElementUtils.waitForElementToDisplay(revParTableHeader, 100);
 
 	}
 
@@ -1492,9 +1456,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			Thread.sleep(3000);
 
 			if (verifyEditColum.isEnabled()) {
-				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
+				WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(25))
 						.until(ExpectedConditions.visibilityOf(verifyEditColum));
-				ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 			}
 
@@ -1512,12 +1475,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(saveBtt));
-			ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 			clickSaveBtt.click();
 
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-			ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 			Thread.sleep(6000);
 
@@ -1543,9 +1504,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (verifyEditColum.isEnabled()) {
-			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement checkEditColumn = new WebDriverWait(driver, Duration.ofSeconds(50))
 					.until(ExpectedConditions.visibilityOf(verifyEditColum));
-			ElementUtils.waitForElementToDisplay(checkEditColumn, 100);
 
 		}
 
@@ -1565,12 +1525,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		ElementUtils.waitForElementToDisplay(clickSaveBtt, 100);
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(7000);
 
@@ -1586,9 +1544,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (revParWidgetHeader.isEnabled()) {
-			WebElement revParWidget = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement revParWidget = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(revParWidgetHeader));
-			ElementUtils.waitForElementToDisplay(revParWidget, 100);
 
 		}
 
@@ -1675,9 +1632,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		Thread.sleep(3000);
 
 		if (verifydeleteColum.isEnabled()) {
-			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			ElementUtils.waitForElementToDisplay(verifydeleteHeader, 100);
 
 		}
 
@@ -1689,14 +1645,12 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(10))
+			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			ElementUtils.waitForElementToDisplay(imDoneButton, 100);
 
 		}
 

@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @PrimaryDashBoard @adrCalc
+@myP2_Regression @PrimaryDashBoard @FinalTest
 
 Feature: Primary DashBoard - widgets calculation (ADR)
 

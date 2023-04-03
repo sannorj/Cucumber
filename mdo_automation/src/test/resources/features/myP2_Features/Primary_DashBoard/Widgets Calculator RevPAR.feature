@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @PrimaryDashBoard @revParCal
+@myP2_Regression @PrimaryDashBoard @FinalTest
 
 Feature: Primary DashBoard - widgets calculation (RevPAR)
 

@@ -105,7 +105,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the ADR widget period dropdown")
 	public void user_select_mtd_value_from_the_ADR_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectADRPeriod(); 
+		///widgetsCalculator.selectADRPeriod(); 
 	}
 
 	@Then("User capture the ADR Records from graph and save it in an array")

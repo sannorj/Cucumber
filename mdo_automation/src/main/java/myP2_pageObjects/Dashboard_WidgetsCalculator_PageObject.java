@@ -1764,10 +1764,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			int datePickerReClickToClose = driver
 					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;
@@ -1808,13 +1811,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClose = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;

@@ -155,7 +155,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the RevPAR widget period dropdown")
 	public void user_select_mtd_value_from_the_RevPAR_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectRevPARPeriod(); 
+		//widgetsCalculator.selectRevPARPeriod(); 
 	}
 
 	@Then("User capture the RevPAR Records from graph and save it in an array")

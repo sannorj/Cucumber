@@ -521,7 +521,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement occupancyPeriod = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(occupancyPeriodDropdown));
 			occupancyPeriod.click();
-			
+
 			Thread.sleep(5000);
 
 			for (int i = 0; i < drpValueListSize.size(); i++) {
@@ -840,7 +840,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement adrPeriod = new WebDriverWait(driver, Duration.ofSeconds(10))
 					.until(ExpectedConditions.visibilityOf(adrPeriodDropdown));
 			adrPeriod.click();
-			
+
 			Thread.sleep(5000);
 
 			for (int i = 0; i < drpValueListSize.size(); i++) {
@@ -1422,19 +1422,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.visibilityOf(saveBtt));
-		clickSaveBtt.click();
+		try {
+			WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(saveBtt));
+			clickSaveBtt.click();
 
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(100))
-				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
+			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-		Thread.sleep(3000);
-
-		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(imDoneButt));
-
+		} catch (Exception e) {
+			WebElement buttonCancel = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnCancel));
+			buttonCancel.click();
 		}
 
 		WebElement revParTableHeader = new WebDriverWait(driver, Duration.ofSeconds(100))
@@ -1481,11 +1480,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-			Thread.sleep(6000);
+			Thread.sleep(10000);
 
 			WebElement revParPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 100);
+
 			revParByProTableArray.add(revParPortfolioTotal.getText());
 
 		}

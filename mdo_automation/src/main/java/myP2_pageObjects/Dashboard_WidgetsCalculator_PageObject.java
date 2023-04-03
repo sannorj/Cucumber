@@ -331,13 +331,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClose = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;
@@ -378,13 +378,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			pickYear.click();
 			Thread.sleep(5000);
 
-			int datePickerReClickToClose = driver
-					.findElements(By.xpath("//div//label[text() = 'Date'] /following-sibling::div//input")).size();
+			int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
 
-			if (datePickerReClickToClose > 0) {
-				txtDate.click();
+			if (btnStatus > 0) {
+				WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+				btnOk.click();
 			} else {
-				validateOkCancelandClick();
+				txtDate.click();
 			}
 
 			flag = true;
@@ -1022,7 +1022,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement clickSaveBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(saveBtt));
-		
+
 		clickSaveBtt.click();
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
@@ -1044,7 +1044,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		if (adrWidgetHeader.isEnabled()) {
 			WebElement adrWidget = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(adrWidgetHeader));
-			
+
 			adrWidget.isDisplayed();
 
 		}
@@ -1145,14 +1145,12 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		
 
 		Thread.sleep(3000);
 
 		if (imDoneButt.isEnabled()) {
 			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(imDoneButt));
-			
 
 		}
 

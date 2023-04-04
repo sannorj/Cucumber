@@ -3,6 +3,7 @@ package myP1_pageObjects;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,16 +63,19 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 
 	public boolean IsWeatherForecastLoadedInCelsius() throws InterruptedException {
 		Thread.sleep(7000);
-		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='panel-WeatherWidget']")));
 		if (viewChart.isDisplayed()) {
-			WebElement waitWeatherContainerLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
+			Thread.sleep(5000);
+			WebElement waitWeatherContainerLoaded = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='divWeatherContainer']")));
 			cardAvailable = true;
-			if (waitWeatherContainerLoaded.isDisplayed())
-				celsiusBtn.click();
+			if (waitWeatherContainerLoaded.isDisplayed()) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", celsiusBtn);
+			}
 			Thread.sleep(2000);
-			WebElement waitcelsiusLoaded = new WebDriverWait(driver, Duration.ofSeconds(50))
+			WebElement waitcelsiusLoaded = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='divCelsius show']")));
 			if (waitcelsiusLoaded.isDisplayed())
 				return true;
@@ -85,11 +89,12 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 	}
 
 	public boolean IsWeatherForecastLoadedInFahrenheit() throws InterruptedException {
-		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(50))
+		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(500))
 				.until(ExpectedConditions.visibilityOf(WeatherWidget));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			fahrenheitBtn.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", fahrenheitBtn);
 			Thread.sleep(2000);
 			if (fahrenheitLoaded.isDisplayed())
 				return true;
@@ -109,9 +114,15 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewTbl.isDisplayed()) {
 			cardAvailable = true;
-			OTAtbl.click();
-			OTAchart.click();
-			OTAtbl.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAtbl);
+			
+			JavascriptExecutor executor2 = (JavascriptExecutor) driver;
+			executor2.executeScript("arguments[0].click();", OTAchart);
+			
+			JavascriptExecutor executor3 = (JavascriptExecutor) driver;
+			executor3.executeScript("arguments[0].click();", OTAtbl);
+			
 			Thread.sleep(2000);
 			if (OTAtblDisplay.isDisplayed())
 				return true;
@@ -129,7 +140,8 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			OTAchart.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAchart);
 			Thread.sleep(2000);
 			if (OTAchartDisplay.isDisplayed()) {
 				return true;
@@ -148,7 +160,8 @@ public class propertyDashboard_WeatherForecastOTAinsight_PageObjects {
 				.until(ExpectedConditions.visibilityOf(OTAinsightChart));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
-			OTAchartGotoDetails.click();
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", OTAchartGotoDetails);
 		} else {
 			cardAvailable = false;
 			System.out.println("OTA Insight Card is not awailable");

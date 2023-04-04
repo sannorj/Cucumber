@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PropWeatherOTA
 Feature: Property Dashboard Weather Forecast & Verify Navigate to OTA Insight functionality
 
   Background: Verify Property Dashboard Page Navigation

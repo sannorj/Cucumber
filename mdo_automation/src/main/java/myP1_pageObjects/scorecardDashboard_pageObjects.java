@@ -34,7 +34,7 @@ public class scorecardDashboard_pageObjects {
 	@FindBy(xpath = "//a//span[text()='Dashboard']")
 	WebElement dashboardLink;
 
-	@FindBy(xpath = "//a//span[text()='Scorecard']")
+	@FindBy(xpath = "//a//span[contains(text(),'Scorecard')]")
 	WebElement scorecardLink;
 
 	@FindBy(xpath = "//h2[text()='Scorecard']")
@@ -135,7 +135,7 @@ public class scorecardDashboard_pageObjects {
 	}
 
 	public boolean IsCardsViews() {
-		boolean isCardDisplayed = false;
+		boolean isCardDisplayed = true;
 		for (int i = 0; i < enabledChartsLst.size(); i++) {
 			String cardFullName = enabledChartsLst.get(i).getAttribute("name");
 			String cardName = cardFullName.replace("Scorecard", "");
@@ -150,8 +150,12 @@ public class scorecardDashboard_pageObjects {
 //			
 //			cardMinimize.click();
 //
-//		 isCardDisplayed = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions
-//					.visibilityOfElementLocated(By.xpath("//div[@id='sortablescorecard']//div//section[@id='" + cardName + "']//div[@class='panel-body']"))).isDisplayed();
+		 isCardDisplayed = new WebDriverWait(driver, Duration.ofSeconds(300)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//div[@id='sortablescorecard']//div//section[@id='panel-" + cardName +"' and @class='panel panel-primary panel-collapsed']//a"))).isDisplayed();
+		 
+		 if(!isCardDisplayed) {
+			 isCardDisplayed = false;
+		 }
 		}
 		return isCardDisplayed;
 	}

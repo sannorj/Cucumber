@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -86,16 +87,23 @@ public class portfolioDashboard_Edit_PageObjects {
 
 	// Remove Column
 
-	public void deleteColumn() {
+	public void deleteColumn() throws InterruptedException {
+		WebElement scroll_left = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//th[last()])[1]")));	
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].scrollIntoView()", scroll_left);
+		Thread.sleep(3000);
 		int currentCol = currentNoOfCol + 1;
 		WebElement closeColBtn = driver.findElement(By.xpath("//th[@data-name='" + currentCol + "']//div//a"));
 		WebElement waitcloseColBtnView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(closeColBtn));
 		closeColBtn.click();
 		saveBtn.click();
+		Thread.sleep(3000);
 	}
 
-	public void clickRemoveConfirm() {
+	public void clickRemoveConfirm() throws InterruptedException {
+		Thread.sleep(3000);
 		WebElement waitcolumnRmvConfirmBtnView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(columnRmvConfirmBtn));
 		columnRmvConfirmBtn.click();

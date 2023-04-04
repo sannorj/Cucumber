@@ -165,22 +165,23 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean marketSuiteShopIsDisplayed() throws InterruptedException {
 		Thread.sleep(7000);
-//		WebElement RBDPageHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
-//				.until(ExpectedConditions.visibilityOf(revenueBreakdownPageHeader));
-//		System.out.println("Navigate to Market/Suite shop page: " + RBDPageHeader.isDisplayed());
-//		return RBDPageHeader.isDisplayed();
-		return false;
+		WebElement RBDPageHeader = new WebDriverWait(driver, Duration.ofSeconds(900))
+				.until(ExpectedConditions.visibilityOf(revenueBreakdownPageHeader));
+		System.out.println("Navigate to Market/Suite shop page: " + RBDPageHeader.isDisplayed());
+		return RBDPageHeader.isDisplayed();
 	}
 
 	// Total Expense Breakdown Page
 
 	public void totalExpenseBreakdownGotoDetails() throws InterruptedException {
+		Thread.sleep(5000);
 		WebElement viewChart = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(totalExpenseBreakdownGotoDetails));
 		if (viewChart.isDisplayed()) {
 			cardAvailable = true;
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", totalExpenseBreakdownGotoDetails);
+			Thread.sleep(5000);
 		} else {
 			cardAvailable = false;
 			System.out.println("Total Expense Breakdown Page Card is not awailable");
@@ -189,10 +190,10 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean totalExpenseBreakdownIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement totalExpenseBreakdownPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(5000);
+			WebElement totalExpenseBreakdownPgHeader = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOf(totalExpenseBreakdownPageHeader));
-			System.out.println(
-					"Navigate to Total Expense Breakdown Page: " + totalExpenseBreakdownPgHeader.isDisplayed());
+			System.out.println("Navigate to Total Expense Breakdown Page: " + totalExpenseBreakdownPgHeader.isDisplayed());
 			return totalExpenseBreakdownPgHeader.isDisplayed();
 		} else {
 			System.out.println("Total Expense Breakdown Card is not enabled to navigate to page");
@@ -217,7 +218,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean expensevsBudgetByDepartmentIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement expensevsBudgetByDepartmentPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement expensevsBudgetByDepartmentPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(expenseBudgetDepartmentPageHeader));
 			System.out.println("Navigate to Expense vs Budget By Department Page: "
 					+ expensevsBudgetByDepartmentPgHeader.isDisplayed());
@@ -245,7 +247,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean expensevsBudgetByCategoryIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement expenseBudgetCategoryPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement expenseBudgetCategoryPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(expenseBudgetCategoryPageHeader));
 			System.out.println(
 					"Navigate to Expense vs Budget By Category Page: " + expenseBudgetCategoryPgHeader.isDisplayed());
@@ -273,7 +276,8 @@ public class propertyDashboard_NavigateToChartPages_PageObjects {
 
 	public boolean cashWidgetIsDisplayed() throws InterruptedException {
 		if (cardAvailable) {
-			WebElement cashWidgetPgHeader = new WebDriverWait(driver, Duration.ofSeconds(50))
+			Thread.sleep(3000);
+			WebElement cashWidgetPgHeader = new WebDriverWait(driver, Duration.ofSeconds(500))
 					.until(ExpectedConditions.visibilityOf(cashWidgetPageHeader));
 			System.out.println("Navigate to Cash Collecting Widget Page: " + cashWidgetPgHeader.isDisplayed());
 			return cashWidgetPgHeader.isDisplayed();

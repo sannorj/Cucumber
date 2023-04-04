@@ -126,7 +126,7 @@ public class portfolioDashboard_PageObjects {
 		searchToDate.click();
 		Thread.sleep(5000);
 
-		WebElement hotelName = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement hotelName = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOf(hotelNameHeader));
 		if (hotelName.isDisplayed()) {
 			result = true;
@@ -155,10 +155,11 @@ public class portfolioDashboard_PageObjects {
 		return false;
 	}
 
-	public boolean filterPeriod() {
+	public boolean filterPeriod() throws InterruptedException {
 		Select periodSelectOpt = new Select(periodSelect);
 		periodSelectOpt.selectByVisibleText(configReader.getMYP1Prop("Portfolio_PeriodYTD"));
-
+		
+		Thread.sleep(7000);		
 		WebElement hotelNameHeaderView = new WebDriverWait(driver, Duration.ofSeconds(1000))
 				.until(ExpectedConditions.visibilityOf(hotelNameHeader));
 
@@ -202,6 +203,7 @@ public class portfolioDashboard_PageObjects {
 		for (int i = 1; i < 4; i++) {
 			String sortValues = driver.findElement(By.xpath("(//table[@id='adminPortfolio']//tr/td[text()='" + configReader.getMYP1Prop("Portfolio_HotelGrp")
 						+ "']//ancestor::tr//following-sibling::tr[contains(@class,'odd')]/td[3]/span)["+i+"]")).getAttribute("innerText");
+			System.out.println(Float.parseFloat(sortValues));
 			if(i==1) {
 				try{
 					val=Float.parseFloat(sortValues);

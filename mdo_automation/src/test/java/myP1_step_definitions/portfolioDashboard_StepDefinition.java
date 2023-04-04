@@ -32,7 +32,7 @@ public class portfolioDashboard_StepDefinition {
 	}
 
 	@And("Verify filter Period option")
-	public void verify_filter_period_option() {
+	public void verify_filter_period_option() throws InterruptedException {
 		assertTrue(dashboardPo.filterPeriod());
 	}
 

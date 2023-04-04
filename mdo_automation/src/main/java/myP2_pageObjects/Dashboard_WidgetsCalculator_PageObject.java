@@ -650,11 +650,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-			Thread.sleep(6000);
+			Thread.sleep(15000);
 
 			WebElement occupancyPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
-			ElementUtils.waitForElementToDisplay(occupancyPortfolioTotal, 250);
+			
 			byProTableArray.add(occupancyPortfolioTotal.getText());
 
 		}
@@ -700,7 +700,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-		Thread.sleep(7000);
+		Thread.sleep(15000);
 
 		WebElement occupancyPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
@@ -1031,11 +1031,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-		Thread.sleep(7000);
+		Thread.sleep(15000);
 
 		WebElement adrPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-		ElementUtils.waitForElementToDisplay(adrPortfolioTotal, 100);
+		
 		adrByProTableArray.add(adrPortfolioTotal.getText());
 
 	}
@@ -1480,7 +1480,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 			WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-			Thread.sleep(10000);
+			Thread.sleep(15000);
 
 			WebElement revParPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
@@ -1530,11 +1530,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 
-		Thread.sleep(7000);
+		Thread.sleep(15000);
 
 		WebElement revParPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='RevPAR_Test']/preceding-sibling::*)+1]"));
-		ElementUtils.waitForElementToDisplay(revParPortfolioTotal, 100);
 		revParByProTableArray.add(revParPortfolioTotal.getText());
 
 	}

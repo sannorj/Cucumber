@@ -23,7 +23,18 @@ public class Dashboard_PrimaryDecimal_StepDefinition {
 	public void I_click_the_edit_column_icon(String string) throws InterruptedException {
 		dashBoardPo.setupPrimaryDecimalValue(string);
 	}
+	
+	@And("I delete the column {string} if exist")
+	public void I_delete_the_column_Rooms_Available_if_exist(String string) throws InterruptedException {
+		dashBoardPo.deleteColumnIfExist(string);
+	}
+	
+	@Then("I add new column {string}")
+	public void I_add_new_column(String string) throws InterruptedException {
+		dashBoardPo.addColumn(string);
+	}
 
+	
 	@Then("I click the Setting icon on Rooms Available")
 	public void I_click_the_Setting_icon_on_Rooms_Available() throws InterruptedException {
 		assertTrue(dashBoardPo.navigateToSetupPermenantDecimal());

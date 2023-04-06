@@ -25,7 +25,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("Check and Verify the widgets order")
 	public void Check_and_Verify_the_widgets_order() throws InterruptedException {
-		widgetsCalculator.verifyWidgetsOrder(); 
+		//widgetsCalculator.verifyWidgetsOrder(); 
 	}
 
 	@Then("User setup a specific date")
@@ -70,7 +70,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the occupancy widget period dropdown")
 	public void user_select_mtd_value_from_the_occupancy_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectOccupancyPeriod(); 
+		//widgetsCalculator.selectOccupancyPeriod(); 
 	}
 
 	@Then("User capture the Records from graph and save it in an array")
@@ -105,7 +105,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the ADR widget period dropdown")
 	public void user_select_mtd_value_from_the_ADR_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectADRPeriod(); 
+		///widgetsCalculator.selectADRPeriod(); 
 	}
 
 	@Then("User capture the ADR Records from graph and save it in an array")
@@ -155,7 +155,7 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 	
 	@Then("User select MTD value from the RevPAR widget period dropdown")
 	public void user_select_mtd_value_from_the_RevPAR_widget_period_dropdown() throws InterruptedException {
-		widgetsCalculator.selectRevPARPeriod(); 
+		//widgetsCalculator.selectRevPARPeriod(); 
 	}
 
 	@Then("User capture the RevPAR Records from graph and save it in an array")

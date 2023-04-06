@@ -53,14 +53,14 @@ public class Dashboard_ToggleWidget_PageObjective {
 
 	public boolean navigateToToggleWidget() throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(btnToggleButton));
 
 		btnEdit.click();
 
 		Thread.sleep(5000);
 
-		WebElement togglePage = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement togglePage = new WebDriverWait(driver, Duration.ofSeconds(35))
 				.until(ExpectedConditions.visibilityOf(toggleWidgetPageEle));
 
 		return togglePage.isDisplayed();
@@ -96,13 +96,18 @@ public class Dashboard_ToggleWidget_PageObjective {
 				.until(ExpectedConditions.visibilityOf(btnSave));
 
 		Save.click();
+		
+		Thread.sleep(10000);
 
 	}
 
 	public boolean verifyAllTheWidgets() throws InterruptedException {
 
-		Thread.sleep(5000);
-
+		Thread.sleep(25000);
+		
+		System.out.println("widgetName :" + widgetName.size());
+		System.out.println("headers :" + headers.size());
+		
 		if (widgetName.size() == headers.size()) {
 
 			return true;

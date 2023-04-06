@@ -87,7 +87,7 @@ public class Dashboard_OrderWidget_PageObjective {
 
 		System.out.print("Length "+widget.length);
 		
-		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement Save = new WebDriverWait(driver, Duration.ofSeconds(60))
 				.until(ExpectedConditions.visibilityOf(btnSave));
 
 		Save.click();

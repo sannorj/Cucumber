@@ -485,11 +485,13 @@ public class PnLMonthly_PageObject {
 		if (status == 1) {
 
 			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			Thread.sleep(1500);
 			expandYear.click();
 			Thread.sleep(2500);
 
 			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
 
+			Thread.sleep(1500);
 			pickYear.click();
 			Thread.sleep(2500);
 
@@ -500,12 +502,15 @@ public class PnLMonthly_PageObject {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
+					Thread.sleep(1500);
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
 				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				Thread.sleep(1500);
 				btnDate.click();
+				Thread.sleep(1500);
 				validateOkCancelandClick();
 
 				flag = true;
@@ -515,11 +520,13 @@ public class PnLMonthly_PageObject {
 				for (int i = 0; i > monthDiff; i--) {
 					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 
+					Thread.sleep(1500);
 					btnNext.click();
 					Thread.sleep(1500);
 				}
 
 				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				Thread.sleep(1500);
 				btnDate.click();
 				validateOkCancelandClick();
 
@@ -528,6 +535,7 @@ public class PnLMonthly_PageObject {
 
 			else {
 				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				Thread.sleep(1500);
 				btnDate.click();
 				validateOkCancelandClick();
 

@@ -156,9 +156,7 @@ public class PnlTTM_PageObject {
 	public boolean verifyDisabledColumn() throws InterruptedException {
 
 		Thread.sleep(2500);
-		int status = driver
-				.findElements(By.xpath("//div[@data-el='selectorColumnYear0'][contains(@class, 'Mui-disabled')]"))
-				.size();
+		int status = driver.findElements(By.xpath("//div[@data-el='selectorColumnYear0'][contains(@class, 'Mui-disabled')]")).size();
 
 		if (status > 0) {
 			return true;
@@ -207,11 +205,9 @@ public class PnlTTM_PageObject {
 	}
 
 	public void selectYear(String yearOption) throws InterruptedException {
-		WebElement yearOptions = driver
-				.findElement(By.xpath("//label[text()='Year']//following::div[@data-el='selectorYear']/div[@role='button']"));
+		WebElement yearOptions = driver.findElement(By.xpath("//label[text()='Year']//following::div[@data-el='selectorYear']/div[@role='button']"));
 		yearOptions.click();
-		WebElement yearOptionclick = driver
-				.findElement(By.xpath("//div[@role='listbox']//li[text()='TTM']"));
+		WebElement yearOptionclick = driver.findElement(By.xpath("//div[@role='listbox']//li[text()='TTM']"));
 		yearOptionclick.click();
 		Thread.sleep(2500);
 	}

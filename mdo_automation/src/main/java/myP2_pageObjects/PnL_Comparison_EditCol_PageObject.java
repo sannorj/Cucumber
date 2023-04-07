@@ -183,7 +183,7 @@ public class PnL_Comparison_EditCol_PageObject {
 		try {
 			drpColumn3.click();
 		} catch (StaleElementReferenceException e) {
-			Thread.sleep(5000);
+			Thread.sleep(15000);
 			drpColumn3.click();
 		}
 

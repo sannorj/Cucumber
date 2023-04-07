@@ -188,7 +188,7 @@ public class PnLComparison_PageObject {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
-					Thread.sleep(4000);
+					Thread.sleep(7500);
 					btnPrevious.click();
 					Thread.sleep(1500);
 

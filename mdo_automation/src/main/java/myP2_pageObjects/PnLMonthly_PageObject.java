@@ -502,7 +502,7 @@ public class PnLMonthly_PageObject {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
-					Thread.sleep(1500);
+					Thread.sleep(3000);
 					btnPrevious.click();
 					Thread.sleep(1500);
 
@@ -520,7 +520,7 @@ public class PnLMonthly_PageObject {
 				for (int i = 0; i > monthDiff; i--) {
 					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 
-					Thread.sleep(1500);
+					Thread.sleep(3000);
 					btnNext.click();
 					Thread.sleep(1500);
 				}

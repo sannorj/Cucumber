@@ -18,7 +18,7 @@ Background: Navigate to P&L Monthly report
      Then Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL/FORECAST
      And  Year  dropdown should contain the current year at the top and the past 4 years in descending order
     
-    #Scenario: Verify the Static section 
+    Scenario: Verify the Static section 
      Then Page should load the defualt static section 
     
     #Scenario: Verify that the occupancy calculations are correct

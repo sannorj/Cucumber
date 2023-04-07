@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity @sannorj @PnL
+@myP2_Regression  @myP2_Smoke @PnL
  
 Feature:  P&L Reports - Data validation across the P&L pages
 

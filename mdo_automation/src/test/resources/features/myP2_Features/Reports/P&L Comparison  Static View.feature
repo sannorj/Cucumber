@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2Sanity
+@myP2_Regression  @myP2_Smoke @PnL
 
 Feature: P&L Property Comparison - View Feature Validation and Static Calculation
 

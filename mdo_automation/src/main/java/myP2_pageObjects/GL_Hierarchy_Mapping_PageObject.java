@@ -142,7 +142,7 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyAddLebelFunc() throws InterruptedException {
 
-		Thread.sleep(2000);
+		Thread.sleep(7500);
 		String ManageGLCodelbl = btnManageGLlbl.getText();
 
 		if (ManageGLCodelbl.equals("Manage GL Codes")) {

@@ -463,7 +463,7 @@ public class Sales_Mapping_PageObjective {
 
 	public boolean selectSubMenu(String ARMapping) throws InterruptedException {
 		WebElement selectSubMenu = new WebDriverWait(driver, Duration.ofSeconds(250))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+ARMapping+"']//ancestor::li")));
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='"+ARMapping+"']//ancestor::li")));
 		selectSubMenu.click();
 		Thread.sleep(3000);
 		return true;

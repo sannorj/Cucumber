@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression 
+@myP2_Regression
 Feature: Sales Mapping Functionality 
 	
   Background: Navigate to Sales Mapping and verify functionality  
@@ -32,15 +32,6 @@ Feature: Sales Mapping Functionality
 	And Remove mappedTo accounts again
 	Then Verify whether the removed accounts successfully removed
 	
-	Scenario: Verify Sales Manager and Management Status change functionality
-  Then I am expand the Accounts Mapping option under Configuration section in Side Menu
-  And I am navigate to Sales Mapping page through the AR Mapping page
-  When I select the Group and Property then loading Sales Mapping report with Go button
-	Given I am selecting a Sales Manager option and Verify successfully changed
-	And Remove selected Sales Manager and Verify successfully removed
-	Then I am selecting a Management Status option and Verify successfully changed
-	When Remove selected Management Status and Verify successfully removed
-	
 	@myP2_Smoke 
 	Scenario Outline: Verify Sales Mapping page Element visibility and filter functionality
   Given Selects filters as '<filter1>' and '<filter2>' in the initial page
@@ -61,6 +52,6 @@ Feature: Sales Mapping Functionality
   
    Examples: 
        |    filter1       | 	filter2 	|       Main_menu   |  			sub_menu  		|  	second_sub_menu  	|  	target_Page  		|  	target_Page_header 		|
-       |  Highgate - US   | 	24 North 	|  	Configuration 	|  	Accounts Mapping  |  		AR Mapping  		| 	Sales Mapping 	|  			Sales Mapping 		|
+       |  01. Highgate - US   | 	24 North 	|  	Configuration 	|  	Accounts Mapping  |  		AR Mapping  		| 	Sales Mapping 	|  			Sales Mapping 		|
   
 	

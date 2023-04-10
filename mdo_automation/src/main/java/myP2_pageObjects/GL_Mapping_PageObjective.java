@@ -290,7 +290,7 @@ public class GL_Mapping_PageObjective {
 		Thread.sleep(2500);
 		
 		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
-		ElementUtils.waitForElementToDisplay(GLCodeH, 1000);
+		GLCodeH.isDisplayed();
 		
 		WebElement searchEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(SearchFeild));
 		searchEle.isDisplayed();

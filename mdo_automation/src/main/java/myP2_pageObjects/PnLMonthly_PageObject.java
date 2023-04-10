@@ -198,6 +198,61 @@ public class PnLMonthly_PageObject {
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
 	}
+	
+	public void selectParametersWithoutDate() throws InterruptedException {
+
+		Thread.sleep(10000);
+
+		if (drpGroup.isEnabled()) {
+			/* Select the appropriate Group value from the drop-down menu. */
+			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpGroup));
+			drpGroupEle.click();
+
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		}
+
+		Thread.sleep(5000);
+		if (drpProperty.isEnabled()) {
+			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpProperty));
+			drpPropertyEle.click();
+
+			ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+			for (int i = 0; i < listDrpValueSize.size(); i++) {
+				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Propery"))) {
+					listDrpValueSize.get(i).click();
+				}
+			}
+		}
+		Thread.sleep(4000);
+	
+		//selectDate();
+		Thread.sleep(2500);
+		
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
+		drpViewEle.click();
+		Thread.sleep(1500);
+	
+
+		for (int i = 0; i < listDrpSize.size(); i++) {
+			if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+				ExpectedConditions.visibilityOf(listDrpSize.get(0));
+				listDrpSize.get(i).click();
+			}
+		}
+
+		Thread.sleep(4500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(60))
+				.until(ExpectedConditions.visibilityOf(btnGo));
+		btnGO.click();
+
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		btnZeroValue.click();
+	}
 
 	public boolean verifyStaticSection() throws InterruptedException {
 

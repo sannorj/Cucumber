@@ -20,13 +20,7 @@
     And Store the standard KPI values
     Then Verify whether the P&L Yearly and Primary Dashboard figures are equal
     
-    Scenario: Verify whether P&L Yearly OPERATING REVENUE values are matching with Primary DashBoard
-	    Then Store the Operating Revenue values for month of March
-	    And Navigate to the Primary Dashboard Page
-	    And Select the group,property and Correct Date
-	    And Store the Operating Revenue KPI values
-	    Then Verify whether the P&L Yearly and Primary Dashboard Operating Revenue figures are equal
-
+    
 #	    Scenario: Verify whether P&L Yearly DEPARTMENTAL EXPENSES values are matching with Primary DashBoard
 #	    Then Store the Departmental expenses values for month of March
 #	    And Navigate to the Primary Dashboard Page

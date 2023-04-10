@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @kpi
+@myP2_Regression @kpiVal
 Feature: Compare KPI values between Primary Dashboard and PnL Yearly Report according to selected property 
 
    Scenario Outline: Compare KIP Values of Primary Dashboard and PnL Yearly Report

@@ -24,6 +24,11 @@ public class PnLMonthlyStaticView_StepDefinition {
 		pnlMonthly.selectParameters();
 	}
 	
+	@When("select the Group ,Propery,View and Click on GO button")
+	public void select_the_group_propery__view_and_click_on_go_button() throws InterruptedException {
+		pnlMonthly.selectParameters();
+	}
+	
 	@Then("Page should load the defualt static section")
 	public void page_should_load_the_defualt_static_section() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyStaticSection());

@@ -46,7 +46,7 @@ public class STR_Report_DataValidation_PageObjective {
 
 	@FindBy(xpath = "//label[text()='Date']//following::input")
 	WebElement goButton;
-
+	
 	@FindBy(xpath = "//tbody//tr[2]/td[2]/div/div/div/div/div")
 	WebElement firstCell;
 
@@ -62,90 +62,61 @@ public class STR_Report_DataValidation_PageObjective {
 	@FindBy(xpath = "//div[@role='listbox']//li")
 	List<WebElement> lstDropDowProperty;
 	
-	@FindBy(xpath = "//span[text()='Go']")
-	WebElement btnGo;
-
-	String firstCellValue = null;
+	String firstCellValue=null;
 
 	public void selectCurrentDate(String date) throws InterruptedException {
 		selectDate(date);
 	}
 
 	public void selectWeekButton(String weekVal) throws InterruptedException {
-		WebElement selectWeekBtn = new WebDriverWait(driver, Duration.ofSeconds(1000)).until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//button/div[text()='" + weekVal + "']")));
+		WebElement selectWeekBtn = new WebDriverWait(driver, Duration.ofSeconds(1000))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button/div[text()='"+weekVal+"']")));
 		selectWeekBtn.click();
 		Thread.sleep(3000);
 	}
 
 	public void storeCell() {
-		firstCellValue = firstCell.getText();
-		System.out.println("First cell value of 4 week = " + firstCellValue);
+		firstCellValue=firstCell.getText();
+		System.out.println("First cell value of 4 week = "+firstCellValue);
 	}
 
 	public boolean compareCellValues() throws InterruptedException {
-		String secondVal = firstCell.getText();
+		String secondVal=firstCell.getText();
 		if (secondVal.equalsIgnoreCase(firstCellValue)) {
-			System.out.println(
-					"Both 4 week & 52 week first values are equals ==== " + secondVal + " /// " + firstCellValue);
+			System.out.println("Both 4 week & 52 week first values are equals ==== " + secondVal +" /// "+ firstCellValue);
 			Thread.sleep(3000);
 			return true;
-		} else {
-			System.out.println(
-					"Both 4 week & 52 week first values are not equals ==== " + secondVal + " /// " + firstCellValue);
+		}else {
+			System.out.println("Both 4 week & 52 week first values are not equals ==== " + secondVal +" /// "+ firstCellValue);
 			Thread.sleep(3000);
-			return false;
+			return false; 
 		}
 	}
 
 	public boolean compareDifPropertyValues() throws InterruptedException {
-		
-		boolean flag = false;
-		String secondVal = firstCell.getText();
+		String secondVal=firstCell.getText();
 		System.out.println(firstCell.isDisplayed());
-
-		try {
-			WebElement tableOverlay = new WebDriverWait(driver, Duration.ofSeconds(250)).until(
-					ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container-1]")));
-			System.out.println(tableOverlay.getCssValue("opacity"));
-			float tableOverlayVal = Float.parseFloat(tableOverlay.getCssValue("opacity"));
-			if (1 > tableOverlayVal) {
-				System.out.println("Table view is Blurred.");
-				Thread.sleep(3500);
-				flag =  true;
-			} else {
-				System.out.println("Table previous view is still display");
-				Thread.sleep(3500);
-				flag =  false;
-			}
-		} catch (Exception e) {
-			
-			btnGo.click();
-			
-			WebElement tableOverlay = new WebDriverWait(driver, Duration.ofSeconds(250)).until(
-					ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container-1]")));
-			System.out.println(tableOverlay.getCssValue("opacity"));
-			float tableOverlayVal = Float.parseFloat(tableOverlay.getCssValue("opacity"));
-			if (1 > tableOverlayVal) {
-				System.out.println("Table view is Blurred.");
-				Thread.sleep(3500);
-				flag =  true;
-			} else {
-				System.out.println("Table previous view is still display");
-				Thread.sleep(3500);
-				flag =  false;
-			}
-		}
 		
-		return flag;
-
+		WebElement tableOverlay = new WebDriverWait(driver, Duration.ofSeconds(250))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-el='data-container-1']")));
+		System.out.println(tableOverlay.getCssValue("opacity"));
+		float tableOverlayVal=Float.parseFloat(tableOverlay.getCssValue("opacity"));
+		if(1>tableOverlayVal) {
+			System.out.println("Table view is Blurred.");
+			Thread.sleep(3500);
+			return true;
+		}else {
+			System.out.println("Table previous view is still display");
+			Thread.sleep(3500);
+			return false;
+		}
 	}
 
 	public boolean selectOptions(String groupName, String propertyName) throws InterruptedException {
 		boolean result = true;
-		System.out.println("groupName==" + groupName);
-		System.out.println("propertyName==" + propertyName);
-		if (!"null".equals(groupName)) {
+		System.out.println("groupName=="+groupName);
+		System.out.println("propertyName=="+propertyName);
+		if(!"null".equals(groupName)) {
 			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(group));
 			drpGroup.click();
@@ -155,10 +126,10 @@ public class STR_Report_DataValidation_PageObjective {
 					lstDropDowGroup.get(i).click();
 				}
 			}
-
+			
 			Thread.sleep(1500);
 		}
-		if (!"null".equals(propertyName)) {
+		if(!"null".equals(propertyName)) {
 
 			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5000))
 					.until(ExpectedConditions.visibilityOf(property));
@@ -219,7 +190,7 @@ public class STR_Report_DataValidation_PageObjective {
 		}
 
 	}
-
+	
 	public boolean selectDate(String date) throws InterruptedException {
 		boolean flag = false;
 		String[] dateForPicker = date.split("/");
@@ -251,14 +222,14 @@ public class STR_Report_DataValidation_PageObjective {
 
 			Thread.sleep(2500);
 
-			String currentSelectedDate = txtDate.getAttribute("value"); // get no of month from current selected date
+			String currentSelectedDate=txtDate.getAttribute("value"); //get no of month from current selected date
 			String[] currentDP = currentSelectedDate.split("/");
 			int monthInnum = Integer.parseInt(currentDP[0]);
-			System.out.println("monthInnum=" + monthInnum);
+			System.out.println("monthInnum="+monthInnum);
 
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
-			System.out.println("monthDiff=" + monthDiff);
-
+			System.out.println("monthDiff="+monthDiff);
+			
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
 					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -286,14 +257,14 @@ public class STR_Report_DataValidation_PageObjective {
 					btnNext.click();
 					Thread.sleep(1500);
 				}
-
+				
 				WebElement btnDate = driver
 						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
 				validateOkCancelandClick();
-
+				
 				flag = true;
 			}
 
@@ -302,9 +273,9 @@ public class STR_Report_DataValidation_PageObjective {
 						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
-
+				
 				validateOkCancelandClick();
-
+				
 				flag = true;
 			}
 
@@ -315,5 +286,5 @@ public class STR_Report_DataValidation_PageObjective {
 		return flag;
 
 	}
-
+	
 }

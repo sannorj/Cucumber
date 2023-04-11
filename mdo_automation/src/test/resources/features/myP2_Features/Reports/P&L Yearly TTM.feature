@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @PnLTTM
+@myP2_Regression  @myP2_Smoke @PnL
 
 Feature: P&L Yearly - TTM Validation
 

@@ -27,7 +27,7 @@ public class Sales_Mapping_PageObjective {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//div[text()='AR Mapping']//ancestor::li")
+	@FindBy(xpath = "//a[text()='AR Mapping']//ancestor::li")
 	WebElement ARMapping;
 
 	@FindBy(xpath = "//span[text()='Source Account']//following::tbody//tr//td")
@@ -94,12 +94,14 @@ public class Sales_Mapping_PageObjective {
 		WebElement ARMappingEle = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOf(ARMapping));
 		ARMappingEle.click();
-//		Thread.sleep(1500);
+		
 		WebElement SalesMappingBtnView = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOf(SalesMappingBtn));
-		SalesMappingBtn.click();
+		SalesMappingBtnView.click();
+		
 		WebElement SalesMappingPage = new WebDriverWait(driver, Duration.ofSeconds(10))
 				.until(ExpectedConditions.visibilityOf(navigatedSalesMappingPage));
+		
 		return SalesMappingPage.isDisplayed();
 	}
 
@@ -107,11 +109,19 @@ public class Sales_Mapping_PageObjective {
 
 		ElementUtils.waitForElementToDisplay(navigatedSalesMappingPage, 100);
 
-		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(group));
 
 		drpGroup.click();
+		
+		group.sendKeys(Keys.CONTROL + "a");
+		Thread.sleep(1500);
+		group.sendKeys(Keys.DELETE);
+		Thread.sleep(1500);
+		group.sendKeys(configReader.getProp("Sales_Group"));
+		
 		Thread.sleep(2500);
+		
 		for (int i = 0; i < lstDropDowGroup.size(); i++) {
 			if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("Sales_Group"))) {
 				lstDropDowGroup.get(i).click();
@@ -121,18 +131,29 @@ public class Sales_Mapping_PageObjective {
 
 		Thread.sleep(1500);
 
-		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(5))
+		WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(property));
+		
 		drpProperty.click();
+		
+		property.sendKeys(Keys.CONTROL + "a");
+		Thread.sleep(1500);
+		property.sendKeys(Keys.DELETE);
+		Thread.sleep(1500);
+		property.sendKeys(configReader.getProp("Sales_Property"));
+		
 		Thread.sleep(2500);
+		
 		for (int i = 0; i < lstDropDowProperty.size(); i++) {
 			if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("Sales_Property"))) {
 				lstDropDowProperty.get(i).click();
 
 			}
 		}
+		
 		goButton.click();
-		Thread.sleep(2500);
+		
+		Thread.sleep(3500);
 	}
 
 /////////////////Verify the search option functionality
@@ -149,9 +170,11 @@ public class Sales_Mapping_PageObjective {
 		WebElement searchValue = driver.findElement(By.xpath("//div[contains(text(),'"
 				+ configReader.getProp("Sales_Search") + "')]//parent::div"));
 
-		WebElement ARMappingPage = new WebDriverWait(driver, Duration.ofSeconds(300))
+		WebElement ARMappingPage = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(searchValue));
+		
 		System.out.println("search value is diaplayed ======= " + ARMappingPage.isDisplayed());
+		
 		return ARMappingPage.isDisplayed();
 	}
 
@@ -171,6 +194,7 @@ public class Sales_Mapping_PageObjective {
 		WebElement singleCheck = driver
 				.findElement(By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//input)[1]"));
 		singleCheck.click();
+		
 		Thread.sleep(3000);
 
 		singleMapOpt = lstDropDowMappingTolst.get(1).getText();
@@ -181,7 +205,7 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public boolean checkAccountMapped() throws InterruptedException {
-		WebElement singleCheckSelectedVal = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement singleCheckSelectedVal = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//child::input)[1]")));
 		String singleCheckSelectedValue = singleCheckSelectedVal.getAttribute("value");
@@ -206,7 +230,7 @@ public class Sales_Mapping_PageObjective {
 		Thread.sleep(5000);
 		singleRemovebtn.click();
 		Thread.sleep(5000);
-		WebElement currentValueOfRemovedAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement currentValueOfRemovedAccView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='3']//child::input)[1]")));
 		String currentValueOfRemovedAcc = currentValueOfRemovedAccView.getAttribute("value");
@@ -249,11 +273,11 @@ public class Sales_Mapping_PageObjective {
 
 	public boolean verifyAccChanged() throws InterruptedException {
 		Thread.sleep(3000);
-		WebElement sourceAccountView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement sourceAccountView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOf(sourceAccount));
 		boolean flag = true;
 		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
-			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(250))
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
 									+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
@@ -275,7 +299,7 @@ public class Sales_Mapping_PageObjective {
 
 	public void removeAccounts() throws InterruptedException {
 		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
-			WebElement removebtnView = new WebDriverWait(driver, Duration.ofSeconds(700))
+			WebElement removebtnView = new WebDriverWait(driver, Duration.ofSeconds(250))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"
 							+ salesBulkAccountsArray.get(i) + "']//ancestor::td//following-sibling::td[@index='6']")));
 			WebElement removebtn = driver.findElement(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
@@ -290,7 +314,7 @@ public class Sales_Mapping_PageObjective {
 		Thread.sleep(4000);
 		boolean flag = true;
 		for (int i = 0; i < salesBulkAccountsArray.size(); i++) {
-			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(700))
+			WebElement currentValueOfAccView = new WebDriverWait(driver, Duration.ofSeconds(250))
 					.until(ExpectedConditions
 							.visibilityOfElementLocated(By.xpath("//div[text()='" + salesBulkAccountsArray.get(i)
 									+ "']//ancestor::td//following-sibling::td[@index='3']//child::input")));
@@ -315,7 +339,7 @@ public class Sales_Mapping_PageObjective {
 
 	public boolean selectSalesManager() throws InterruptedException {
 		Thread.sleep(7000);
-		WebElement salesManagerView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement salesManagerView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 						"(//div//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button)[1]")));
 		Thread.sleep(7000);
@@ -326,7 +350,7 @@ public class Sales_Mapping_PageObjective {
 		lstDropDowSalesManager.get(1).click();
 
 		Thread.sleep(4000);
-		WebElement selectedSalesManagerView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement selectedSalesManagerView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='4']//child::input)[1]")));
 		String selectedSalesManager = selectedSalesManagerView.getAttribute("value");
@@ -345,7 +369,7 @@ public class Sales_Mapping_PageObjective {
 
 	public boolean removeSalesManager() throws InterruptedException {
 		Thread.sleep(5000);
-		WebElement salesManager = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement salesManager = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 						"(//div//ancestor::td//following-sibling::td[@index='4']//child::input//following-sibling::div//button)[1]")));
 		salesManager.click();
@@ -356,7 +380,7 @@ public class Sales_Mapping_PageObjective {
 				lstDropDowSalesManager.get(i).click();
 			}
 		}
-		String currentSalesManager = new WebDriverWait(driver, Duration.ofSeconds(700))
+		String currentSalesManager = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='4']//child::input)[1]")))
 				.getAttribute("value");
@@ -375,7 +399,7 @@ public class Sales_Mapping_PageObjective {
 	//////////////////// Management Status change
 
 	public boolean selectManagementStatus() throws InterruptedException {
-		WebElement managementStatus = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement managementStatus = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 						"(//div//ancestor::td//following-sibling::td[@index='5']//child::input//following-sibling::div//button)[1]")));
 		Thread.sleep(4000);
@@ -388,7 +412,7 @@ public class Sales_Mapping_PageObjective {
 			}
 		}
 		Thread.sleep(4000);
-		WebElement selectedManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement selectedManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='5']//child::input)[1]")));
 		String selectedManagementStatus = selectedManagementStatusView.getAttribute("value");
@@ -417,7 +441,7 @@ public class Sales_Mapping_PageObjective {
 				lstDropDowManagementStatus.get(i).click();
 			}
 		}
-		WebElement currentManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(700))
+		WebElement currentManagementStatusView = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("(//div//ancestor::td//following-sibling::td[@index='5']//child::input)[1]")));
 		
@@ -438,15 +462,15 @@ public class Sales_Mapping_PageObjective {
 	}
 
 	public boolean selectSubMenu(String ARMapping) throws InterruptedException {
-		WebElement selectSubMenu = new WebDriverWait(driver, Duration.ofSeconds(1000))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+ARMapping+"']//ancestor::li")));
+		WebElement selectSubMenu = new WebDriverWait(driver, Duration.ofSeconds(250))
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='"+ARMapping+"']//ancestor::li")));
 		selectSubMenu.click();
 		Thread.sleep(3000);
 		return true;
 	}
 
 	public boolean navigateSalesMapping(String salesMapping) {
-		WebElement salesMappingBtn = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement salesMappingBtn = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button//div[text()='"+salesMapping+"']")));
 		salesMappingBtn.click();
 		return true;

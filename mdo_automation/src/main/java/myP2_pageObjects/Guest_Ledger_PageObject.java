@@ -311,7 +311,7 @@ public class Guest_Ledger_PageObject {
 		ElementUtils.waitForElementToDisplay(lblmyP2, 100);
 		WebElement lblGrp = driver.findElement(By.xpath("//label[contains(text(),'Group')]"));
 		ElementUtils.waitForElementToDisplay(lblGrp, 100);
-		Thread.sleep(3500);
+		Thread.sleep(3600);
 	}
 	}
 	
@@ -345,8 +345,10 @@ public class Guest_Ledger_PageObject {
 	
 	public void clickOnFilterFunc() throws InterruptedException {
 		
-		Thread.sleep(3000);
-		btnFilter.click();
+		Thread.sleep(5000);
+		WebElement buttonFilter = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnFilter));
+
+		buttonFilter.click();
 		ElementUtils.waitForElementToDisplay(lblFilters, 100);
 		
 	}

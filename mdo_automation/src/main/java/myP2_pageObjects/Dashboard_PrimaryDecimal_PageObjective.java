@@ -4,10 +4,7 @@ import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -169,7 +166,6 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		int month = cal.get(Calendar.MONTH);
-
 		return month + 1;
 	}
 
@@ -189,8 +185,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		txtDate.click();
 
-		int btnDatePickforLocal = driver
-				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
 			btnDatePicker.click();
@@ -200,38 +195,28 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		if (status == 1) {
 
-			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
 			expandYear.click();
-
 			Thread.sleep(2500);
 
-			WebElement pickYear = driver
-					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
-							+ dateForPicker[2] + "')]"));
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
 
 			pickYear.click();
-
 			Thread.sleep(2500);
 
 			int monthInnum = getMonth();
-
 			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
 
 				flag = true;
@@ -239,29 +224,22 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 
 					btnNext.click();
 					Thread.sleep(1500);
 				}
 
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
 
 				flag = true;
 			}
 
 			else {
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
-
 				validateOkCancelandClick();
 
 				flag = true;
@@ -279,16 +257,13 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		boolean flag = false;
 
-		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(header));
-
+		WebElement homePage = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(header));
 		if (homePage.isDisplayed()) {
 
-			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(15))
-					.until(ExpectedConditions.visibilityOf(dropDownGroup));
-
+			WebElement drpGroup = new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(dropDownGroup));
 			drpGroup.click();
 			Thread.sleep(5000);
+			
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
 				if (lstDropDowGroup.get(i).getText().equalsIgnoreCase(configReader.getProp("Group"))) {
 					lstDropDowGroup.get(i).click();
@@ -300,12 +275,9 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			Thread.sleep(7500);
 			lstDropDowProperty.get(1).click();
-
 			selectDate();
 
-			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(35))
-					.until(ExpectedConditions.visibilityOf(txtRowField));
-
+			WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(35)).until(ExpectedConditions.visibilityOf(txtRowField));
 			return txtProperty.isDisplayed();
 
 		} else {
@@ -316,18 +288,12 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public void setupPrimaryDecimalValue(String value) throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnEditColumn));
-
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(btnEditColumn));
 		btnEdit.click();
 
-		WebElement drpDecimal = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(dropDownDecimal));
-
+		WebElement drpDecimal = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(dropDownDecimal));
 		drpDecimal.isDisplayed();
-
 		drpDecimal.click();
-
 		Thread.sleep(5000);
 
 		for (int i = 0; i < lstDropDownDecimal.size(); i++) {
@@ -354,14 +320,11 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 		 * if (sizeOfAddingColumn == 0) { addColumn("Rooms Available"); }
 		 */
 
-		WebElement editRoomAvailable = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(btnEditRoomAvailable));
+		WebElement editRoomAvailable = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnEditRoomAvailable));
 		editRoomAvailable.click();
-
 		Thread.sleep(6500);
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(editPageEle));
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(editPageEle));
 		return editPage.isDisplayed();
 
 	}
@@ -369,21 +332,15 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	public void assignPermenantDecimal(String value) throws InterruptedException {
 		Thread.sleep(5000);
 
-		int status = driver.findElements(By.xpath(
-				"//label[@data-el='Switch-overrideDecimalMasterLabel']//span[@data-el='Switch-overrideDecimalMaster'][contains(@class,'Mui-checked')]"))
-				.size();
+		int status = driver.findElements(By.xpath("//label[@data-el='Switch-overrideDecimalMasterLabel']//span[@data-el='Switch-overrideDecimalMaster'][contains(@class,'Mui-checked')]")).size();
 		if (status == 0) {
 
-			WebElement overrideCheckBox = driver.findElement(By.xpath(
-					"//label[@data-el='Switch-overrideDecimalMasterLabel']//span[@data-el='Switch-overrideDecimalMaster']"));
+			WebElement overrideCheckBox = driver.findElement(By.xpath("//label[@data-el='Switch-overrideDecimalMasterLabel']//span[@data-el='Switch-overrideDecimalMaster']"));
 
 			overrideCheckBox.click();
 
-			WebElement editDecimal = new WebDriverWait(driver, Duration.ofSeconds(35))
-					.until(ExpectedConditions.visibilityOf(dropDownEditDecimal));
-
+			WebElement editDecimal = new WebDriverWait(driver, Duration.ofSeconds(35)).until(ExpectedConditions.visibilityOf(dropDownEditDecimal));
 			editDecimal.click();
-
 			Thread.sleep(5000);
 
 			for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
@@ -420,23 +377,18 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 		Thread.sleep(4000);
 
-		int sizeOfAddingColumn = driver
-				.findElements(By.xpath("//button[@data-el='button-edit-Total Room Revenue Decimal Validation']"))
-				.size();
-
+		int sizeOfAddingColumn = driver.findElements(By.xpath("//button[@data-el='button-edit-Total Room Revenue Decimal Validation']")).size();
 		System.out.println("Total room revenue column " + sizeOfAddingColumn);
 
 		if (sizeOfAddingColumn == 0) {
 			addColumn("Total Room Revenue");
 		}
 
-		WebElement editRoomRevenue = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnEditRoomRevenue));
+		WebElement editRoomRevenue = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(btnEditRoomRevenue));
 		editRoomRevenue.click();
 		Thread.sleep(2500);
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(editPageEle));
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(editPageEle));
 		return editPage.isDisplayed();
 
 	}
@@ -465,8 +417,7 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 		int indexOfColumnRoomAvialable = 0;
 		int indexOfColumnRoomRevenue = 0;
 
-		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(120))
-				.until(ExpectedConditions.visibilityOf(txtProperty));
+		WebElement editPage = new WebDriverWait(driver, Duration.ofSeconds(120)).until(ExpectedConditions.visibilityOf(txtProperty));
 
 		editPage.isDisplayed();
 
@@ -482,14 +433,10 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			}
 		}
 
-		WebElement roomAvailableWE = driver
-				.findElement(By.xpath("//tbody//tr[@data-el='0']//td[" + indexOfColumnRoomAvialable + "]"));
-
+		WebElement roomAvailableWE = driver.findElement(By.xpath("//tbody//tr[@data-el='0']//td[" + indexOfColumnRoomAvialable + "]"));
 		roomAvailable = roomAvailableWE.getText();
 
-		WebElement roomRevenueWE = driver
-				.findElement(By.xpath("//tbody//tr[@data-el='0']//td[" + indexOfColumnRoomRevenue + "]"));
-
+		WebElement roomRevenueWE = driver.findElement(By.xpath("//tbody//tr[@data-el='0']//td[" + indexOfColumnRoomRevenue + "]"));
 		roomRevenue = roomRevenueWE.getText();
 
 		System.out.println("roomAvailable = " + roomAvailable + " roomRev = " + roomRevenue);
@@ -528,31 +475,22 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 	public void addColumn(String kpi) {
 		try {
 
-			WebElement btnAddcol = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(btnAddColumn));
+			WebElement btnAddcol = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(btnAddColumn));
 			btnAddcol.click();
 
-			WebElement lblAddPageEle = new WebDriverWait(driver, Duration.ofSeconds(60))
-					.until(ExpectedConditions.visibilityOf(addPageEle));
-
+			WebElement lblAddPageEle = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(addPageEle));
 			lblAddPageEle.isDisplayed();
-
 			Thread.sleep(2000);
 
-			WebElement txtKpiname = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(kpiName));
+			WebElement txtKpiname = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(kpiName));
 			txtKpiname.click();
 
 			txtKpiname.sendKeys(kpi + " Decimal Validation");
-
 			Thread.sleep(2500);
-
-			WebElement drpKpiId = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(kpiID));
+			WebElement drpKpiId = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(kpiID));
 			drpKpiId.click();
 
 			drpKpiId.sendKeys(kpi);
-
 			Thread.sleep(2000);
 
 			for (int i = 0; i < lstDropDowGroup.size(); i++) {
@@ -563,24 +501,19 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 			Thread.sleep(2000);
 
-			WebElement drpAmountType = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(amountType));
+			WebElement drpAmountType = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(amountType));
 			drpAmountType.click();
 
 			Thread.sleep(2000);
 
-			WebElement lstBtnActual = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(actual));
+			WebElement lstBtnActual = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(actual));
 			lstBtnActual.click();
-
 			Thread.sleep(2000);
 
-			WebElement chkOverride = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(checBoxOverride));
+			WebElement chkOverride = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(checBoxOverride));
 			chkOverride.click();
 
-			WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(addBtn));
+			WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(addBtn));
 			btnAdd.click();
 
 		} catch (Exception e) {
@@ -592,31 +525,21 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 
 	public void deleteColumnIfExist(String columnName) throws InterruptedException {
 		Thread.sleep(10000);
-
-		int sizeOfAddingColumn = driver
-				.findElements(By.xpath("//button[@data-el='button-delete-" + columnName + " Decimal Validation']"))
-				.size();
+		int sizeOfAddingColumn = driver.findElements(By.xpath("//button[@data-el='button-delete-" + columnName + " Decimal Validation']")).size();
 
 		if (sizeOfAddingColumn == 1) {
-			WebElement btnDelete = driver
-					.findElement(By.xpath("//button[@data-el='button-delete-" + columnName + " Decimal Validation']"));
+			WebElement btnDelete = driver.findElement(By.xpath("//button[@data-el='button-delete-" + columnName + " Decimal Validation']"));
 
 			btnDelete.click();
 
 			Thread.sleep(2500);
 
-			WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(dialogBox));
-
+			WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(dialogBox));
 			dialogBoxEle.isDisplayed();
-
 			Thread.sleep(2500);
 
-			WebElement btnOkEle = new WebDriverWait(driver, Duration.ofSeconds(100))
-					.until(ExpectedConditions.visibilityOf(btnDeleteConfirmation));
-
+			WebElement btnOkEle = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(btnDeleteConfirmation));
 			btnOkEle.click();
-
 			Thread.sleep(10000);
 
 		}

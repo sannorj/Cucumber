@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @LaborMain
 Feature: Labor Dashboard Main Functionality
 
   Background: Verify Labor Dashboard

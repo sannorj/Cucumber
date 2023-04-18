@@ -99,6 +99,7 @@ public class laborDashboard_PageObjects {
 							By.xpath("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions']//a[contains(@class,'panel-action panel-action-toggle')])["
 									+ val + "]")));
 //			js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
+			Thread.sleep(3000);
 			System.out.println("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions'])["+ val + "]");
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;

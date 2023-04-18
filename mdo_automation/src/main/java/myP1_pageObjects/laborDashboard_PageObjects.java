@@ -99,7 +99,7 @@ public class laborDashboard_PageObjects {
 							By.xpath("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions']//a[contains(@class,'panel-action panel-action-toggle')])["
 									+ val + "]")));
 //			js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
-			Thread.sleep(3000);
+//			Thread.sleep(3000);
 			System.out.println("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions'])["+ val + "]");
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -114,7 +114,15 @@ public class laborDashboard_PageObjects {
 			WebElement viewChartCollapsed = new WebDriverWait(driver, Duration.ofSeconds(700))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 							"//header[@class='panel-heading portlet-handler']//ancestor::section[@class='panel panel-primary panel-collapsed']")));
-			cardMinimize.click();
+			try {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			} catch (Exception e) {
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			}
 			Thread.sleep(3000);
 			
 		}

@@ -39,7 +39,7 @@ public class laborRollupDashboard_PageObjects {
 	@FindBy(xpath = "//a//span[text()='Dashboard']")
 	WebElement dashboardLink;
 
-	@FindBy(xpath = "//a//span[text()='Labor RollUp']")
+	@FindBy(xpath = "//a//span[contains(text(),'Labor RollUp')]")
 	WebElement laborRollupLink;
 
 	@FindBy(xpath = "//h2[text()='Labor Rollup']")

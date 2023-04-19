@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression 
+@myP1_Regression  @LaborRollup
 Feature: Labor Rollup Dashboard Functionality
 
   Background: Verify Labor Rollup Dashboard

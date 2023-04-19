@@ -36,8 +36,11 @@ public class laborRollupDashboard_PageObjects {
 	@FindBy(xpath = "//div[@class='sidebar-header']")
 	WebElement navigationLink;
 
-	@FindBy(xpath = "//a//span[text()='Dashboard']")
-	WebElement dashboardLink;
+	@FindBy(xpath = "//a//span[text()='Reports']")
+	WebElement reportLink;
+	
+	@FindBy(xpath = "//a//span[text()='Labor Report']")
+	WebElement laborReportLink;
 
 	@FindBy(xpath = "//a//span[contains(text(),'Labor RollUp')]")
 	WebElement laborRollupLink;
@@ -98,12 +101,18 @@ public class laborRollupDashboard_PageObjects {
 	
 	public void navigatetoLaborRollup() {
 		navigationLink.click();
-		WebElement dashboardLinkView = new WebDriverWait(driver, Duration.ofSeconds(700))
-				.until(ExpectedConditions.visibilityOf(dashboardLink));
-		dashboardLinkView.click();
+		WebElement reportLinkView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOf(reportLink));
+		reportLinkView.click();
+		
+		WebElement laborReportLinkView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOf(laborReportLink));
+		laborReportLinkView.click();
+		
 		WebElement laborRollupLinkView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(laborRollupLink));
 		laborRollupLinkView.click();
+		
 		WebElement laborRollupTitleView = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(laborRollupTitle));
 	}

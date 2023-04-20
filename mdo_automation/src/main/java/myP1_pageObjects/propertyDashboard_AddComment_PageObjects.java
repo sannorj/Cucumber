@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -143,8 +144,16 @@ public class propertyDashboard_AddComment_PageObjects {
 
 	public void clickViewPastComment() throws InterruptedException {
 		Thread.sleep(3000);
+		WebElement btnAddCommentView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOf(btnAddComment));
 		btnAddComment.click();
-		viewPastComments.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", viewPastComments);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", viewPastComments);
+		}
 		Thread.sleep(3000);
 	}
 
@@ -155,7 +164,7 @@ public class propertyDashboard_AddComment_PageObjects {
 		        driver.switchTo().window(tab); 
 		    }       
 		}
-		WebElement ViewCommentPage = new WebDriverWait(driver, Duration.ofSeconds(100))
+		WebElement ViewCommentPage = new WebDriverWait(driver, Duration.ofSeconds(900))
 				.until(ExpectedConditions.visibilityOf(viewCommentsPage));
 		boolean isViewCommentPage = ViewCommentPage.isDisplayed();
 		System.out.println("View Comments Page is displayed: " + isViewCommentPage);

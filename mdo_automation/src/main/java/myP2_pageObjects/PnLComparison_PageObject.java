@@ -59,7 +59,7 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//h3[text()='Loading...']")
 	WebElement lblLoading;
 
-	@FindBy(xpath = "//div[text()='Rooms available']")
+	@FindBy(xpath = "//span[text()='Rooms available']")
 	WebElement lblRoomAva;
 
 	@FindBy(xpath = "//div//label[text() = 'Date'] //following-sibling::div//button")

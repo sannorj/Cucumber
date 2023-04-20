@@ -196,8 +196,7 @@ public class GL_Mapping_PageObjective {
 		saveB.click();
 		
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 100);
-		
+		Thread.sleep(7500);		
 		
 	}
 	
@@ -207,7 +206,6 @@ public class GL_Mapping_PageObjective {
 		Thread.sleep(2500);
 		
 		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
-		ElementUtils.waitForElementToDisplay(GLCodeH, 1000);
 		
 		WebElement searchEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(SearchFeild));
 		searchEle.isDisplayed();
@@ -256,7 +254,6 @@ public class GL_Mapping_PageObjective {
 		Thread.sleep(5000);
 		
 		WebElement propertyText = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(propertyTextDisplay));
-		ElementUtils.waitForElementToDisplay(propertyText, 1000);
 		
 		WebElement glCodeFeildClick = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glCodeFeild));
 		glCodeFeildClick.click();
@@ -280,7 +277,6 @@ public class GL_Mapping_PageObjective {
 		saveB.click();
 		
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 		
 		
 	}
@@ -344,7 +340,6 @@ public class GL_Mapping_PageObjective {
 		}
 		
 		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		ElementUtils.waitForElementToDisplay(popupMessage, 1000);
 		
 		Thread.sleep(2500);
 		
@@ -358,7 +353,6 @@ public class GL_Mapping_PageObjective {
 		Thread.sleep(2500);
 		
 		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
-		ElementUtils.waitForElementToDisplay(GLCodeH, 1000);
 
 		
 	}

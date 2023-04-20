@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @PnL @comparisonEdi
+@myP2_Regression1
 
 Feature:  P&L Comparison Report - Edit Column functionality  
 
@@ -25,6 +25,7 @@ Feature:  P&L Comparison Report - Edit Column functionality
     And Select column and year from the dropdown and click on apply button in Comparison page 
     Then Table should show the newly inserted column in Comparison page 
     
+    @abu
   Scenario: Verify whether user can remove the newly inserted column
     And I am expand the P&L Statement option under Reports section in Side Menu
     And go to the P&L Property Comparison

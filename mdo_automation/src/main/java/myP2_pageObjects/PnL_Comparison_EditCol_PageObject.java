@@ -39,7 +39,7 @@ public class PnL_Comparison_EditCol_PageObject {
 	@FindBy(xpath = "//th[contains(@class,'sc-ckEbSK dnVoLZ css-164s97t')]")
 	List<WebElement> subHeader;
 
-	@FindBy(xpath = "//div[text()='Rooms available']")
+	@FindBy(xpath = "//span[text()='Rooms available']")
 	WebElement lblRoomAva;
 
 	@FindBy(xpath = "//h3[text()='Edit Columns']")

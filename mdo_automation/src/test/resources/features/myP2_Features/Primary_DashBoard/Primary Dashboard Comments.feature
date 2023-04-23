@@ -9,11 +9,11 @@ Background: Login to MYP2 application
   And Select the organization as "Beck Legacy Group" 
   And Select the appropriate group and property 
    
-  #Scenario: Verify whether the user has the ability to add their first comment
-  #	Given User click on the Add Comments page
-  #	And User fill the all the mandatory fields and click on submit button 
-  #	Then Newly inserted comment should be visible for the relevant property.
-  #	
+  Scenario: Verify whether the user has the ability to add their first comment
+  	Given User click on the Add Comments page
+  	And User fill the all the mandatory fields and click on submit button 
+  	Then Newly inserted comment should be visible for the relevant property.
+  	
 
   Scenario: Verify whether the user can able to reply the comments from the All comments page
   	When Users click “All Replies” for a specific thread, they are redirected to a page where they see all the replies to that thread.

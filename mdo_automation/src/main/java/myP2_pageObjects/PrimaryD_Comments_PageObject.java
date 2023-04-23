@@ -46,7 +46,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//label[text()='To Date']//parent::div//input")
 	WebElement txtEndDate;
 	
-	@FindBy(xpath = "//div/input[@name='porfolio-hotel']")
+	@FindBy(xpath = "//div/input[@name='hotelId']")
 	WebElement drpProperty;
 	
 	@FindBy(xpath = "//button[@title='Add Comment']")
@@ -85,7 +85,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
 	WebElement btnViewAllComment;
 	
-	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
+	@FindBy(xpath = "(//div[@data-el='mainLayoutCardContainer']//descendant::label/span)[6]")
 	WebElement lblLatestComment;
 	
 	@FindBy(xpath = "//h1[text()='Comments']")
@@ -345,10 +345,12 @@ public class PrimaryD_Comments_PageObject {
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
+		
+		/******************************************************************/
 		Thread.sleep(5000);
-		String LatestComment = lblLatestComment.getAttribute("label");
+//		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
-		if (LatestComment.equals(configReader.getProp("Comment"))&& drpProperty.equals(configReader.getProp("Propery"))) {
+		if (lblLatestComment.getText().equals(configReader.getProp("Comment")) && drpProperty.equals(configReader.getProp("Propery"))) {
 			return true;
 		} else {
 			return false;

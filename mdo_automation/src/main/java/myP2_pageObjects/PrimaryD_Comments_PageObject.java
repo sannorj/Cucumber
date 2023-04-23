@@ -73,6 +73,9 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonComments']")
 	WebElement btnMainComment;
 	
+	@FindBy(xpath = "(//*[local-name()='svg' and @data-testid=\"CommentIcon\"])[2]")
+	WebElement btnPropertyComment;
+	
 	@FindBy(xpath = "//h1[text()='Comments']")
 	WebElement titleComment;
 	
@@ -334,8 +337,8 @@ public class PrimaryD_Comments_PageObject {
 		/* Click on view comment icon next to the searched single property   */
 		Thread.sleep(3000);
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
-		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
-		btnMainCommentEle.click();
+		WebElement btnPropertyCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnPropertyComment));
+		btnPropertyCommentEle.click();
 
 		Thread.sleep(5000);
 		/* Click on view All comment linked-label in Comment model   */

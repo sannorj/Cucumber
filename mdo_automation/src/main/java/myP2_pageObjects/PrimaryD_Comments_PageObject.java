@@ -94,7 +94,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//div/input[@name='hotelId']")
 	WebElement drpViewAllCommentProperty;
 	
-	@FindBy(xpath = "(//input[@name='reply'])[1]")
+	@FindBy(xpath = "(//div[@data-el='inputFieldAddComment'])[1]")
 	WebElement txtReplyBox;
 	
 	@FindBy(xpath = "(//div[contains(text(),'BSB - Feature of a')])[1]")
@@ -359,6 +359,7 @@ public class PrimaryD_Comments_PageObject {
 	
 	public boolean AddReplyFunc() throws InterruptedException {
 
+		Thread.sleep(5000);
 		txtReplyBox.sendKeys(configReader.getProp("Reply_Comment"));
 
 		ExpectedConditions.elementToBeClickable(btnReplySubmint);

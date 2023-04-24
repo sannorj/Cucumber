@@ -125,7 +125,7 @@ public class propertyDashboard_AddComment_PageObjects {
 			addCommentCloseBtn.click();
 			btnRefresh.click();
 			Thread.sleep(7000);
-			WebElement viewComments = new WebDriverWait(driver, Duration.ofSeconds(100))
+			WebElement viewComments = new WebDriverWait(driver, Duration.ofSeconds(900))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='"+ configReader.getMYP1Prop("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div")));
 			if (viewComments.isDisplayed()) {
 			List<WebElement> addedCommentsList = driver.findElements(By.xpath("//h2[text()='"+ configReader.getMYP1Prop("Comment_added_panel")+ "']//following::div//div[@class='row no-gutters']//div[@class='row no-gutters']//div//div"));

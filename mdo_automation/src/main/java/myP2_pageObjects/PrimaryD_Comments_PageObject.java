@@ -413,7 +413,7 @@ public class PrimaryD_Comments_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
-		ElementUtils.waitForElementToDisplay(lblLatestComment, 100);
+		Thread.sleep(5000);
 		String LatestComment = lblLatestComment.getText();
 		if (LatestComment.equals(configReader.getProp("Comment"))) {
 			return true;

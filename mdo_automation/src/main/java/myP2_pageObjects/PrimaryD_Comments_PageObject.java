@@ -423,8 +423,9 @@ public class PrimaryD_Comments_PageObject {
 		
 	}
 	
-	public boolean MarkAsActivateFunc() {
-
+	public boolean MarkAsActivateFunc() throws InterruptedException {
+		
+		Thread.sleep(5000);
 		String resolvedStatus = drpStatus.getText();
 		if (resolvedStatus.equals(configReader.getProp("Resolved_Comments"))) {
 			btnActive.click();

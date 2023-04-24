@@ -121,7 +121,7 @@ public class laborRollupDashboard_PageObjects {
 	public void loadData(String hotelGroup, String period) throws InterruptedException {
 		Thread.sleep(3000);
 		WebElement panelLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 		Select drpPeriod = new Select(periodDropdown);
 		WebElement waitPeriodLoad = new WebDriverWait(driver, Duration.ofSeconds(100))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='ddlPeriod']//option")));

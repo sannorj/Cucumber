@@ -112,7 +112,13 @@ public class propertyDashboard_AddComment_PageObjects {
 	}
 
 	public void clickAddCommentSubmit() throws InterruptedException {
-		addCommentSubmitBtn.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", addCommentSubmitBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", addCommentSubmitBtn);
+		}
 		Thread.sleep(3000);
 	}
 

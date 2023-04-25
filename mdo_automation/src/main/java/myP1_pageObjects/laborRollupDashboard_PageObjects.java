@@ -72,7 +72,7 @@ public class laborRollupDashboard_PageObjects {
 	@FindBy(xpath = "//input[@placeholder='Search']")
 	WebElement searchInput;
 	
-	@FindBy(xpath = "(//div[@class='dataTables_scrollBody']/table)[1]/tbody/tr")
+	@FindBy(xpath = "//table[@id='LaborActualTable']//tbody/tr")
 	List<WebElement> actualTblRows;
 	
 	@FindBy(xpath = "//div[@id='LaborPOR']//table//tbody//tr")
@@ -159,7 +159,6 @@ public class laborRollupDashboard_PageObjects {
 			addColBtn.click();
 			Thread.sleep(3000);
 			for (int i = 0; i < offSwitchList.size(); i++) {
-//				System.out.println("///////////////////////");
 				offSwitchList.get(i).click();
 			}
 			submitBtn.click();
@@ -176,20 +175,20 @@ public class laborRollupDashboard_PageObjects {
 		float totSecondCol=0;
 		for (int i = 0; i < actualTblRows.size(); i++) {	
 			int val=i+1;
-			WebElement firstColValue = driver.findElement(By.xpath("((//div[@class='dataTables_scrollBody']/table)[1]/tbody/tr/td[2])["+val+"]"));
+			WebElement firstColValue = driver.findElement(By.xpath("//table[@id='LaborActualTable']//tbody/tr["+val+"]/td[2]"));
 			float colVal1=Float.parseFloat(firstColValue.getText().replace(",", ""));
 			System.out.println("1st col val==="+colVal1);
 			totFirstCol =totFirstCol+colVal1;
 			System.out.println("*******************==="+totFirstCol);
-			WebElement secondColValue = driver.findElement(By.xpath("((//div[@class='dataTables_scrollBody']/table)[1]/tbody/tr/td[3])["+val+"]"));
+			WebElement secondColValue = driver.findElement(By.xpath("//table[@id='LaborActualTable']//tbody/tr["+val+"]/td[3]"));
 			float colVal2=Float.parseFloat(secondColValue.getText().replace(",", ""));
 			System.out.println("2nd col val==="+colVal2);
 			totSecondCol =totSecondCol+colVal2;
 			System.out.println("*******************==="+totSecondCol);
 		}
 		
-		float FirstColTotalVal=Float.parseFloat(driver.findElement(By.xpath("//div[@id='LaborActual']//div[contains(@class,'dataTables_scrollFoot')]//tr//td[2]")).getText().replace(",", ""));
-		float SecondColTotalVal=Float.parseFloat(driver.findElement(By.xpath("//div[@id='LaborActual']//div[contains(@class,'dataTables_scrollFoot')]//tr//td[3]")).getText().replace(",", ""));
+		float FirstColTotalVal=Float.parseFloat(driver.findElement(By.xpath("//table[@id='LaborActualTable']//tfoot/tr/td[2]")).getText().replace(",", ""));
+		float SecondColTotalVal=Float.parseFloat(driver.findElement(By.xpath("//table[@id='LaborActualTable']//tfoot/tr/td[3]")).getText().replace(",", ""));
 		System.out.println("1st val==="+FirstColTotalVal);
 		System.out.println("2nd val==="+SecondColTotalVal);
 		

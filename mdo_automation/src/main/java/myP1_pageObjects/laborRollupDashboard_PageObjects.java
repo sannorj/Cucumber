@@ -145,7 +145,7 @@ public class laborRollupDashboard_PageObjects {
 	
 	public void verifyActual() {
 		WebElement searchTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 		actualBtn.click();
 		WebElement actualTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//th[text()='Department Name'])[1]")));
@@ -166,7 +166,7 @@ public class laborRollupDashboard_PageObjects {
 			Thread.sleep(3000);
 		}
 		WebElement tblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 	}
 	
 	public boolean actualTotal() {
@@ -364,7 +364,7 @@ public class laborRollupDashboard_PageObjects {
 	
 	public void disableCols() throws InterruptedException {
 		WebElement searchTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 		editBtn.click();
 		Thread.sleep(2000);
 		addColBtn.click();
@@ -384,8 +384,9 @@ public class laborRollupDashboard_PageObjects {
 
 
 	public boolean verifyColsDisabled() throws InterruptedException {
+		Thread.sleep(6000);
 		WebElement tblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 		for (int i = 0; i < mulColList.size(); i++) {
 			String turnOffColumn=mulColList.get(i).split("/")[1];
 			try {
@@ -436,7 +437,8 @@ public class laborRollupDashboard_PageObjects {
 
 	public boolean verifyColEnabled() throws InterruptedException {
 		WebElement tblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
+		Thread.sleep(6000);
 		for (int i = 0; i < mulColList.size(); i++) {
 			String turnOffColumn=mulColList.get(i).split("/")[1];
 				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborActual']//div[@class='dataTables_scrollHead']//tr[@class='secondRow'][1]//th[text()='"+turnOffColumn+"']")).isDisplayed();

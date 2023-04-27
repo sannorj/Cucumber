@@ -32,7 +32,7 @@ public class ARDashboard_Slot_PageObject {
 	@FindBy(xpath = "//div[@data-el='chartCard'][2]//div//*[local-name()='text' and @overflow='hidden']")
 	List<WebElement> lstchartValueDistributionDaySlots;
 
-	@FindBy(xpath = "//div[@data-el='chartCard'][1]//div//*[local-name()='g' and @transform='translate(-19,10)' or @transform='translate(-22,10)' or @transform='translate(-24.5,10)']//*[local-name()='tspan']")
+	@FindBy(xpath = "//div[@data-el='chartCard'][1]//div//*[local-name()='g' and @transform='translate(-19,10)' or @transform='translate(-22,10)' or @transform='translate(-24.5,10)' or @transform='translate(-25,10)']//*[local-name()='tspan']")
 	List<WebElement> lstchartValueGrpahDaySlots;
 
 	@FindBy(xpath = "//div[@data-el='chartCard'][2]//div//*[local-name()='text' and @y='13.333333969116211' or @y='14']")

@@ -12,7 +12,7 @@ Feature: Labor Rollup Dashboard Functionality
     Scenario: Verify Labor Rollup Actual button functionality
     Given Verify Actual buttons
     And Verify columns Total values of Actual
-    		#Then Verify actual data sorted
+    		#Then Verify actual data sorted   //not available this feature in current screen
     		#And Verify filtered Actual Search data
    	
     Scenario: Verify Labor Rollup POR button functionality

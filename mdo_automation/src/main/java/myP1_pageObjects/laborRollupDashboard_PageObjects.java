@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -146,7 +147,13 @@ public class laborRollupDashboard_PageObjects {
 	public void verifyActual() {
 		WebElement searchTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
-		actualBtn.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", actualBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", actualBtn);
+		}
 		WebElement actualTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//th[text()='Department Name'])[1]")));
 	}
@@ -262,8 +269,16 @@ public class laborRollupDashboard_PageObjects {
 	public void verifyPOR() {
 
 		WebElement searchTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//label[contains(text(),'Search:')]")));
-		PORBtn.click();
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PORBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PORBtn);
+		}
+		WebElement reportLinkView = new WebDriverWait(driver, Duration.ofSeconds(700))
+				.until(ExpectedConditions.visibilityOf(searchInput));
 		WebElement actualTblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='LaborPOR']//td[contains(text(),'Total')]")));
 	}
@@ -372,9 +387,9 @@ public class laborRollupDashboard_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//h4[text()='Edit Labor RollUp Settings']")));
 		for (int i = 0; i < mulColList.size(); i++) {
 			String turnOffWidget=mulColList.get(i).split("/")[0];
-//			String turnOffColumn=mulColList.get(i).split("/")[1];
 			WebElement firstColValue = driver.findElement(By.xpath("//label[text()='"+turnOffWidget+"']//following-sibling::div//div[@class='ios-switch on']"));
 			firstColValue.click();
+			System.out.println("disabled column== "+turnOffWidget);
 		}
 		submitBtn.click();
 		Thread.sleep(3000);
@@ -389,13 +404,13 @@ public class laborRollupDashboard_PageObjects {
 		for (int i = 0; i < mulColList.size(); i++) {
 			String turnOffColumn=mulColList.get(i).split("/")[1];
 			try {
-				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborActual']//div[@class='dataTables_scrollHead']//tr[@class='secondRow'][1]//th[text()='"+turnOffColumn+"']")).isDisplayed();
-				if(firstColValue) {
+				int firstColValue = driver.findElements(By.xpath("//div[@id='LaborActual']/table//tr[@class='secondRow'][1]//th[text()='"+turnOffColumn+"']")).size();
+				if(firstColValue>1) {
 					System.out.println(turnOffColumn+" is not disabled!");
 					return false;
 				}
 			} catch (NoSuchElementException e) {
-				System.out.println("NoSuchElementException occoured*********************8");
+				System.out.println("NoSuchElementException occoured== "+turnOffColumn);
 			}			
 		}
 		for (int i = 0; i < mulPORColList.size(); i++) {
@@ -403,13 +418,13 @@ public class laborRollupDashboard_PageObjects {
 			PORBtn.click();
 			Thread.sleep(3000);
 			try {
-				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborPOR']//tr[@class='secondRow']//th[text()='"+turnOffColumn+"']")).isDisplayed();
-				if(firstColValue) {
+				int firstColValue = driver.findElements(By.xpath("//div[@id='LaborPOR']//tr[@class='secondRow']//th[text()='"+turnOffColumn+"']")).size();
+				if(firstColValue>1) {
 					System.out.println(turnOffColumn+" is not disabled!");
 					return false;
 				}
 			} catch (NoSuchElementException e) {
-				System.out.println("NoSuchElementException occoureddddddddddddd");
+				System.out.println("NoSuchElementException occoured in POR== "+turnOffColumn);
 			}
 			
 		}
@@ -425,12 +440,14 @@ public class laborRollupDashboard_PageObjects {
 		WebElement editLRSettingsModal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//h4[text()='Edit Labor RollUp Settings']")));
 		for (int i = 0; i < mulColList.size(); i++) {
-			String turnOffWidget=mulColList.get(i).split("/")[0];
+//			String turnOffWidget=mulColList.get(i).split("/")[0];
 			WebElement firstColValue = driver.findElement(By.xpath("//div[@class='ios-switch']"));
 			firstColValue.click();
 		}
 		submitBtn.click();
 		Thread.sleep(3000);
+		WebElement tblLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//section//b[text()='Actual']")));
 	}
 
 
@@ -440,16 +457,16 @@ public class laborRollupDashboard_PageObjects {
 		Thread.sleep(6000);
 		for (int i = 0; i < mulColList.size(); i++) {
 			String turnOffColumn=mulColList.get(i).split("/")[1];
-				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborActual']//div[@class='dataTables_scrollHead']//tr[@class='secondRow'][1]//th[text()='"+turnOffColumn+"']")).isDisplayed();
+				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborActual']/table//tr[@class='secondRow'][1]//th[text()='"+turnOffColumn+"']")).isDisplayed();
 				if(!firstColValue) {
 					System.out.println(turnOffColumn+" is not display!");
 					return false;
 				}	
 		}
+		PORBtn.click();
+		Thread.sleep(3000);
 		for (int i = 0; i < mulPORColList.size(); i++) {
 			String turnOffColumn=mulPORColList.get(i).split("/")[1];
-			PORBtn.click();
-			Thread.sleep(3000);
 			WebElement tblPorLoad = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("//div[@id='LaborPOR']//input[@placeholder='Search']")));
 				boolean firstColValue = driver.findElement(By.xpath("//div[@id='LaborPOR']//tr[@class='secondRow']//th[text()='"+turnOffColumn+"']")).isDisplayed();

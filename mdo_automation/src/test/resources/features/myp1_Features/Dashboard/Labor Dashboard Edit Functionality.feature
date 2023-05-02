@@ -1,6 +1,6 @@
 #Author: madushika@mydigitaloffice.ca
 @myP1_Regression @LaborMain
-Feature: Labor Dashboard Main Functionality
+Feature: Labor Dashboard Edit Functionality
 
   Background: Verify Labor Dashboard
     Given I am login to the myp1 site

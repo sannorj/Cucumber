@@ -167,15 +167,13 @@ public class IJ_Summary_PageObject {
 
 			if (monthDiff > 0) {
 				for (int i = 0; i < monthDiff; i++) {
-					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
 
 					btnPrevious.click();
 					Thread.sleep(1500);
 
 				}
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 
 				btnDate.click();
 
@@ -186,16 +184,13 @@ public class IJ_Summary_PageObject {
 
 			else if (monthDiff < 0) {
 				for (int i = 0; i > monthDiff; i--) {
-					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
-							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
 
 					btnNext.click();
 					Thread.sleep(1500);
 				}
 
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 
 				validateOkCancelandClick();
@@ -204,9 +199,7 @@ public class IJ_Summary_PageObject {
 			}
 
 			else {
-				WebElement btnDate = driver
-						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
-
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
 				btnDate.click();
 
 				validateOkCancelandClick();
@@ -225,15 +218,13 @@ public class IJ_Summary_PageObject {
 	public void expandForms() {
 
 		try {
-			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(mainMenuButton));
+			WebElement menu = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(mainMenuButton));
 			menu.click();
 
 			/* mandatory pause */
 			Thread.sleep(1500);
 
-			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-					.until(ExpectedConditions.visibilityOf(menuIJ));
+			WebElement reportsEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(menuIJ));
 			reportsEle.click();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -243,14 +234,12 @@ public class IJ_Summary_PageObject {
 
 	public boolean navigateIJSummaryFunc() throws InterruptedException {
 
-		WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(20))
-				.until(ExpectedConditions.visibilityOf(subMenuIJSummary));
+		WebElement pnlStatementEle = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(subMenuIJSummary));
 		pnlStatementEle.click();
 
 		ElementUtils.waitForElementToDisplay(h1IncomeJournalSummary, 100);
 
-		WebElement h1IJSummary = new WebDriverWait(driver, Duration.ofSeconds(10))
-				.until(ExpectedConditions.visibilityOf(h1IncomeJournalSummary));
+		WebElement h1IJSummary = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(h1IncomeJournalSummary));
 		return h1IJSummary.isDisplayed();
 
 	}
@@ -272,8 +261,7 @@ public class IJ_Summary_PageObject {
 		Thread.sleep(5000);
 		
 		/* Select the appropriate Property value from the drop-down menu. */
-		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(drpPeriod));
+		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpPeriod));
 		drpPeriodEle.click();
 		
 		Thread.sleep(3000);
@@ -309,8 +297,7 @@ public class IJ_Summary_PageObject {
 		}
 
 		/* Select the appropriate Property value from the drop-down menu. */
-		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(drpPeriod));
+		WebElement drpPeriodEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpPeriod));
 		drpPeriodEle.click();
 		
 		Thread.sleep(3000);
@@ -347,9 +334,7 @@ public class IJ_Summary_PageObject {
 
 		Thread.sleep(5000);
 		/* Select the appropriate PMS Type from the drop-down menu. */
-		WebElement drpPMStypeEle = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(drpPMStype));
-		
+		WebElement drpPMStypeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpPMStype));
 		drpPMStypeEle.click();
 		
 		Thread.sleep(3500);
@@ -359,9 +344,11 @@ public class IJ_Summary_PageObject {
 				listDrpPeriod.get(i).click();
 			}
 		}
-		Thread.sleep(3500);
+		Thread.sleep(4500);
 
 		/* enter the Amount */
+		WebElement txtAmountEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(txtAmount));
+		txtAmountEle.click();
 		txtAmount.sendKeys(configReader.getProp("IJ_Amount"));
 
 		Thread.sleep(3500);
@@ -370,8 +357,7 @@ public class IJ_Summary_PageObject {
 		txtAdjustment.sendKeys(configReader.getProp("IJ_adjustment"));
 
 		/* Select the appropriate GL code from the drop-down menu. */
-		WebElement drpGlCodeEle = new WebDriverWait(driver, Duration.ofSeconds(30))
-				.until(ExpectedConditions.visibilityOf(drpGlCode));
+		WebElement drpGlCodeEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpGlCode));
 		drpGlCodeEle.click();
 		
 		Thread.sleep(3000);
@@ -391,8 +377,7 @@ public class IJ_Summary_PageObject {
 	public boolean verifyAddedRowFunc() throws InterruptedException {
 
 		/* expand the icon */
-		WebElement expandIcon = driver.findElement(By.xpath("//div[text()='" + "Total "
-				+ (configReader.getProp("IJ_PMSType")) + "']/../../button"));
+		WebElement expandIcon = driver.findElement(By.xpath("//div[text()='" + "Total "+ (configReader.getProp("IJ_PMSType")) + "']/../../button"));
 		expandIcon.click();
 		Thread.sleep(1500);
 
@@ -413,9 +398,7 @@ public class IJ_Summary_PageObject {
 		boolean rawExist = true;
 		for (int i = 0; i < descriptionList.size(); i++) {
 			System.out.println(descriptionList.get(i));
-			int rawVisible = driver
-					.findElements(By.xpath("//table/tbody/tr/td[1]//div[text()='" + descriptionList.get(i) + "']"))
-					.size();
+			int rawVisible = driver.findElements(By.xpath("//table/tbody/tr/td[1]//div[text()='" + descriptionList.get(i) + "']")).size();
 			if (rawVisible < 1)
 				rawExist = false;
 		}

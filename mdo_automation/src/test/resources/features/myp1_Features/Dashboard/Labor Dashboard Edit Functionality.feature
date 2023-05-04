@@ -10,8 +10,7 @@ Feature: Labor Dashboard Edit Functionality
     And Filter all data
     
     Scenario: Labor dashboard edit functionality
-    Given Close a single card manualy
-    And Enable card again
-    When Desable card from add chat
-    Then Enable acrd again
-    And Verify All enabled card visible
+    When Desable card from add chart
+    And Verify card desable
+    Then Enable card again
+    And Verify card enable

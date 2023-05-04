@@ -46,7 +46,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//label[text()='To Date']//parent::div//input")
 	WebElement txtEndDate;
 	
-	@FindBy(xpath = "//div/input[@name='porfolio-hotel']")
+	@FindBy(xpath = "//div/input[@name='hotelId']")
 	WebElement drpProperty;
 	
 	@FindBy(xpath = "//button[@title='Add Comment']")
@@ -73,6 +73,9 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//button[@data-el='buttonComments']")
 	WebElement btnMainComment;
 	
+	@FindBy(xpath = "(//*[local-name()='svg' and @data-testid=\"CommentIcon\"])[2]")
+	WebElement btnPropertyComment;
+	
 	@FindBy(xpath = "//h1[text()='Comments']")
 	WebElement titleComment;
 	
@@ -82,7 +85,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//span[@data-el='linkActionsView All Comments']")
 	WebElement btnViewAllComment;
 	
-	@FindBy(xpath = "(//label[@class='sc-bjUoiL nDYYA'])[1]")
+	@FindBy(xpath = "(//div[@data-el='mainLayoutCardContainer']//descendant::label/span)[6]")
 	WebElement lblLatestComment;
 	
 	@FindBy(xpath = "//h1[text()='Comments']")
@@ -91,7 +94,7 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "//div/input[@name='hotelId']")
 	WebElement drpViewAllCommentProperty;
 	
-	@FindBy(xpath = "(//input[@name='reply'])[1]")
+	@FindBy(xpath = "(//div[@data-el='inputFieldAddComment']//input)[1]")
 	WebElement txtReplyBox;
 	
 	@FindBy(xpath = "(//div[contains(text(),'BSB - Feature of a')])[1]")
@@ -100,10 +103,10 @@ public class PrimaryD_Comments_PageObject {
 	@FindBy(xpath = "(//button[@data-el='buttonSubmitReply'])[1]")
 	WebElement btnReplySubmint;
 	
-	@FindBy(xpath = "(//label[@class='sc-bjUoiL gyZfAO'])[1]")
+	@FindBy(xpath = "(//div[@data-el='mainLayoutCardContainer']//descendant::label/span)[1]")
 	WebElement lblReplyUser;
 	
-	@FindBy(xpath = "(//label[@class='sc-bjUoiL ebTZpj'])[1]")
+	@FindBy(xpath = "(//div[@data-el='mainLayoutCardContainer']//descendant::label/span)[4]")
 	WebElement lblReplyProperty;
 	
 	@FindBy(xpath = "//div[@id='mui-component-select-commentStatusId']")
@@ -334,18 +337,20 @@ public class PrimaryD_Comments_PageObject {
 		/* Click on view comment icon next to the searched single property   */
 		Thread.sleep(3000);
 		ElementUtils.waitForElementToDisplay(lblProperty, 100);
-		WebElement btnMainCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnMainComment));
-		btnMainCommentEle.click();
+		WebElement btnPropertyCommentEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(btnPropertyComment));
+		btnPropertyCommentEle.click();
 
 		Thread.sleep(5000);
 		/* Click on view All comment linked-label in Comment model   */
 		ElementUtils.waitForElementToDisplay(btnViewAllComment, 100);
 		btnViewAllComment.click();
 
+		
+		/******************************************************************/
 		Thread.sleep(5000);
-		String LatestComment = lblLatestComment.getAttribute("label");
+//		String LatestComment = lblLatestComment.getAttribute("label");
 		String drpProperty = drpViewAllCommentProperty.getAttribute("value");
-		if (LatestComment.equals(configReader.getProp("Comment"))&& drpProperty.equals(configReader.getProp("Propery"))) {
+		if (lblLatestComment.getText().equals(configReader.getProp("Comment")) && drpProperty.equals(configReader.getProp("Propery"))) {
 			return true;
 		} else {
 			return false;
@@ -354,6 +359,8 @@ public class PrimaryD_Comments_PageObject {
 	
 	public boolean AddReplyFunc() throws InterruptedException {
 
+		Thread.sleep(5000);
+		txtReplyBox.click();
 		txtReplyBox.sendKeys(configReader.getProp("Reply_Comment"));
 
 		ExpectedConditions.elementToBeClickable(btnReplySubmint);
@@ -372,8 +379,10 @@ public class PrimaryD_Comments_PageObject {
 	
 	public boolean verifyRepliedUserDetailsFunc() throws InterruptedException {
 		
-		String user = lblReplyUser.getAttribute("label");
-		String property = lblReplyProperty.getAttribute("label");
+		//String user = lblReplyUser.getAttribute("label");
+		Thread.sleep(5000);
+		String user = lblReplyUser.getText();
+		String property = lblReplyProperty.getText();
 		if (user.equals(configReader.getLoginProp("dev_userName")) &&  property.equals(configReader.getProp("Propery"))) {
 			return true;
 		} else {
@@ -382,8 +391,9 @@ public class PrimaryD_Comments_PageObject {
 		
 	}
 	
-	public boolean MarkAsResolvedFunc() {
-
+	public boolean MarkAsResolvedFunc() throws InterruptedException {
+		
+		Thread.sleep(5000);
 		String resolvedStatus = drpStatus.getText();
 		if (resolvedStatus.equals(configReader.getProp("Active_Status"))) {
 			btnResolve.click();
@@ -395,16 +405,16 @@ public class PrimaryD_Comments_PageObject {
 	}
 	
 	public boolean verifyResolvedCommentFunc() throws InterruptedException {
+		Thread.sleep(5000);
 		drpStatus.click();
-		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
 		Thread.sleep(4500);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {
 			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Resolved_Comments"))) {
 				listDrpValueSize.get(i).click();
 			}
 		}
-		ElementUtils.waitForElementToDisplay(lblLatestComment, 100);
-		String LatestComment = lblLatestComment.getAttribute("label");
+		Thread.sleep(5000);
+		String LatestComment = lblLatestComment.getText();
 		if (LatestComment.equals(configReader.getProp("Comment"))) {
 			return true;
 		} else {
@@ -413,8 +423,9 @@ public class PrimaryD_Comments_PageObject {
 		
 	}
 	
-	public boolean MarkAsActivateFunc() {
-
+	public boolean MarkAsActivateFunc() throws InterruptedException {
+		
+		Thread.sleep(5000);
 		String resolvedStatus = drpStatus.getText();
 		if (resolvedStatus.equals(configReader.getProp("Resolved_Comments"))) {
 			btnActive.click();
@@ -426,6 +437,7 @@ public class PrimaryD_Comments_PageObject {
 	}
 
 	public boolean verifyActivatedCommentFunc() throws InterruptedException {
+		Thread.sleep(5000);
 		drpStatus.click();
 		ElementUtils.waitForElementToDisplay(listDrpValueSize.get(1), 100);
 		for (int i = 0; i < listDrpValueSize.size(); i++) {

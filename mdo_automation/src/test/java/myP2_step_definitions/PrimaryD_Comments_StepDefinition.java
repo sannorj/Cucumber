@@ -49,7 +49,7 @@ public class PrimaryD_Comments_StepDefinition {
 	}
 
 	@And("User clicks the resolve option")
-	public void user_clicks_the_resolve_option() {
+	public void user_clicks_the_resolve_option() throws InterruptedException {
 		assertTrue(primaryDComments.MarkAsResolvedFunc());
 	}
 
@@ -59,7 +59,7 @@ public class PrimaryD_Comments_StepDefinition {
 	}
 
 	@Then("User clicks the Active option")
-	public void user_clicks_the_active_option() {
+	public void user_clicks_the_active_option() throws InterruptedException {
 		assertTrue(primaryDComments.MarkAsActivateFunc());
 	}
 

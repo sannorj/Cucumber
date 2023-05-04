@@ -3,6 +3,7 @@ package myP1_pageObjects;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +42,13 @@ public class laborDashboard_Edit_PageObjects {
 		offColumn.click();
 		System.out.println("disabled column== "+configReader.getMYP1Prop("Labor_Edit_AddChart"));
 		
-		submitBtn.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", submitBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", submitBtn);
+		}
 		Thread.sleep(3000);
 	}
 

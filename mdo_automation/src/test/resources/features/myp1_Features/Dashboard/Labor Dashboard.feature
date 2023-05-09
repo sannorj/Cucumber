@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @LaborMain
 Feature: Labor Dashboard Main Functionality
 
   Background: Verify Labor Dashboard
@@ -14,9 +14,3 @@ Feature: Labor Dashboard Main Functionality
     And Verify "Payroll Actual vs Budget (" hour and minute buttons
     When Verify "Payroll Actual vs Budget" Go to detail page view
     
-    #Scenario: Labor dashboard edit functionality
-    #Given Close a single card manualy
-    #And Enable card again
-    #When Desable card from add chat
-    #Then Enable acrd again
-    #And Verify All enabled card visible

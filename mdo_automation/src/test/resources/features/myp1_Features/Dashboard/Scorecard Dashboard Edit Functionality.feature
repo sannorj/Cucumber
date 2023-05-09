@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @ScorecardEdit
 Feature: Scorecard Dashboard Edit Functionality
 
   Background: Verify Scorecard Dashboard Main Functionality

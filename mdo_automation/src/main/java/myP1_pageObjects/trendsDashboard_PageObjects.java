@@ -33,7 +33,7 @@ public class trendsDashboard_PageObjects {
 	@FindBy(xpath = "//a//span[text()='Dashboard']")
 	WebElement dashboardLink;
 
-	@FindBy(xpath = "//a//span[text()='Trends']")
+	@FindBy(xpath = "//a//span[contains(text(),'Trends')]")
 	WebElement trendsLink;
 
 	@FindBy(xpath = "//h2[text()='Trends']")

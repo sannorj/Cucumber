@@ -1,21 +1,21 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression 
+@myP1_Regression  @LaborRollup
 Feature: Labor Rollup Dashboard Functionality
 
   Background: Verify Labor Rollup Dashboard
     Given I am login to the myp1 site
     And System navigate to the dashboard
     When Navigate to Labor Rollup page
+    When I turn on all the columns
     Then Select a date and hotel as "Gateway" and period as "MTD" to filter table
     
     Scenario: Verify Labor Rollup Actual button functionality
     Given Verify Actual buttons
-    #When I turn on all the columns
     And Verify columns Total values of Actual
-    Then Verify actual data sorted
-    And Verify filtered Actual Search data
+    		#Then Verify actual data sorted   //not available this feature in current screen
+    		#And Verify filtered Actual Search data
    	
-   	Scenario: Verify Labor Rollup POR button functionality
+    Scenario: Verify Labor Rollup POR button functionality
     Given Verify POR buttons
     And Verify columns Total values of POR
     Then Verify POR data sorted

@@ -1,8 +1,6 @@
 package myP2_pageObjects;
 
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -99,23 +97,28 @@ public class GL_Mapping_PageObjective {
 	@FindBy(xpath = "//span[text()='Ok']")
 	WebElement deleteBt;
 	
+	@FindBy(xpath = "//th[text()='GL Code']")
+	WebElement lblGLCode;
+	
 	
 	public boolean navigateToGLMapping() {
 		
-		WebElement glMappingEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(glMapping));
+		WebElement glMappingEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glMapping));
 		glMappingEle.click();
 
-		WebElement glMappingPageEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(glMappingPage));
-		
+		WebElement glMappingPageEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glMappingPage));
 		return glMappingPageEle.isDisplayed();
 
 	}
 	
 	public void selectingSingleProperty() throws InterruptedException {
 		
+		
+		
 		Thread.sleep(5000);
+		
+		WebElement elelblGLCode = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(lblGLCode));
+		elelblGLCode.isDisplayed();
 
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpProperty));
@@ -136,8 +139,8 @@ public class GL_Mapping_PageObjective {
 		
 		Thread.sleep(5000);
 		
-		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
-		ElementUtils.waitForElementToDisplay(GLCodeH, 1000);
+		WebElement eleGLCodeH = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
+		eleGLCodeH.isDisplayed();
 		
 		
 		if (glCodeAddBt.isEnabled()) {
@@ -194,8 +197,6 @@ public class GL_Mapping_PageObjective {
 		
 		WebElement saveB = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveButton));
 		saveB.click();
-		
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
 		Thread.sleep(7500);		
 		
 	}
@@ -203,9 +204,7 @@ public class GL_Mapping_PageObjective {
 	
 	public boolean verifySavedGl() throws InterruptedException {
 
-		Thread.sleep(2500);
-		
-		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
+		Thread.sleep(3500);
 		
 		WebElement searchEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(SearchFeild));
 		searchEle.isDisplayed();
@@ -253,8 +252,6 @@ public class GL_Mapping_PageObjective {
 
 		Thread.sleep(5000);
 		
-		WebElement propertyText = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(propertyTextDisplay));
-		
 		WebElement glCodeFeildClick = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(glCodeFeild));
 		glCodeFeildClick.click();
 		
@@ -276,14 +273,12 @@ public class GL_Mapping_PageObjective {
 		WebElement saveB = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveButton));
 		saveB.click();
 		
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		
 		
 	}
 	
 	public boolean verifyEditedGl() throws InterruptedException {
 
-		Thread.sleep(2500);
+		Thread.sleep(3500);
 		
 		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
 		GLCodeH.isDisplayed();
@@ -339,9 +334,7 @@ public class GL_Mapping_PageObjective {
 			deleteGlBut.click();
 		}
 		
-		WebElement popupMessage = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(popupMsgDisplay));
-		
-		Thread.sleep(2500);
+		Thread.sleep(3500);
 		
 		WebElement searchEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(SearchFeild));
 		searchEle.isDisplayed();
@@ -350,9 +343,7 @@ public class GL_Mapping_PageObjective {
 		txtSearch.sendKeys(Keys.CONTROL + "a");
 		txtSearch.sendKeys(Keys.DELETE);
 
-		Thread.sleep(2500);
-		
-		WebElement GLCodeH = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(GLCodeHeader));
+		Thread.sleep(3500);
 
 		
 	}

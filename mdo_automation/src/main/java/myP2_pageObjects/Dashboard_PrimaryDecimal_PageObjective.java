@@ -358,14 +358,28 @@ public class Dashboard_PrimaryDecimal_PageObjective {
 			editDecimal.click();
 
 			Thread.sleep(5000);
+			
+			try {
+				for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
+					if (lstdropDownEditDecimal.get(i).getText().equalsIgnoreCase(value)) {
+						lstdropDownEditDecimal.get(i).click();
 
-			for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
-				if (lstdropDownEditDecimal.get(i).getText().equalsIgnoreCase(value)) {
-					lstdropDownEditDecimal.get(i).click();
-
-					primaryDecimal = Integer.parseInt(value);
+						primaryDecimal = Integer.parseInt(value);
+					}
 				}
-			}
+		      } catch (org.openqa.selenium.StaleElementReferenceException e) {
+		         // the element is stale, try to locate it again
+		    	  for (int i = 0; i < lstdropDownEditDecimal.size(); i++) {
+						if (lstdropDownEditDecimal.get(i).getText().equalsIgnoreCase(value)) {
+							lstdropDownEditDecimal.get(i).click();
+
+							primaryDecimal = Integer.parseInt(value);
+						}
+					}
+		      }
+			
+
+			
 		}
 
 		Thread.sleep(4000);

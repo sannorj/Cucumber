@@ -4,7 +4,6 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,6 +54,9 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	@FindBy(xpath = "//*[local-name()='svg' and @data-testid='CancelIcon']/*[local-name()='path']/..")
 	List<WebElement> listGlcode;
+	
+	@FindBy(xpath = "//th[text()='MDO GL Code']")
+	WebElement lblMDOGlCode;
 	
 	
 	public void selectParametersFunc() throws InterruptedException {
@@ -142,6 +144,9 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyAddLebelFunc() throws InterruptedException {
 
+		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
+		elelblMDOGL.isDisplayed();
+		
 		Thread.sleep(7500);
 		String ManageGLCodelbl = btnManageGLlbl.getText();
 

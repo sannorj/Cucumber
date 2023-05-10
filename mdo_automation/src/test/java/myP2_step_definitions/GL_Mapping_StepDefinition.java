@@ -2,8 +2,6 @@ package myP2_step_definitions;
 
 import static org.junit.Assert.assertTrue;
 import factory.DriverFactory;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import myP2_pageObjects.GL_Mapping_PageObjective;

@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @ScorecardAddComment
 Feature: Scorecard Dashboard Add Comment Functionality
 
   Background: Verify Scorecard Dashboard Main Functionality

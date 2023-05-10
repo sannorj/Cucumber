@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression @PropertyAddComment
 Feature: Property Dashboard Add Comment functionality
 
   Background: Verify Property Dashboard Page Navigation

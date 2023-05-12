@@ -20,6 +20,11 @@ public class PnLComparison_PageObject {
 
 	private WebDriver driver;
 	private ConstantsReader configReader = new ConstantsReader();
+	boolean flag;
+	double roundOffOcc;
+	double roundOffAdr;
+	double roundOffrevPar;
+	double roundOffTotalRevPar;
 
 	public PnLComparison_PageObject(WebDriver driver) {
 		this.driver = driver;
@@ -76,6 +81,69 @@ public class PnLComparison_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
+	
+	@FindBy(xpath = "//div/input[@name='portfolio-hotel']")
+	WebElement drpProperty;
+
+	@FindBy(xpath = "//div/label[text()='Date']//following-sibling::div/input[@name='date']")
+	WebElement txtDrp;
+
+	@FindBy(xpath = "(//div/button[@title='Go']/span)[2]")
+	WebElement btnGo1;
+
+	@FindBy(xpath = "//button[@title='Refresh']")
+	WebElement btnRefresh;
+	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> listDrpSize;
+
+	@FindBy(xpath = "//h1[text()='Profit & Loss Monthly Report']")
+	WebElement pnlMonthlyPage;
+
+	@FindBy(xpath = "//div[@role='row'][@aria-selected='false']")
+	List<WebElement> listStaticValues;
+
+	@FindBy(xpath = "//tr[@data-el='Occupancy']/td[3]")
+	WebElement cellOccupancy;
+
+	@FindBy(xpath = "//tr[@data-el='Rooms sold']/td[3]")
+	WebElement cellCRoomSold;
+
+	@FindBy(xpath = "//tr[@data-el='Rooms available']/td[3]")
+	WebElement cellRoomsAvailable;
+
+	@FindBy(xpath = "//tr[@data-el='RMREV90']/td[3]")
+	WebElement cellTotalRoomsRevenue;
+
+	@FindBy(xpath = "//tr[@data-el='ADR']/td[3]")
+	WebElement cellAdr;
+
+	@FindBy(xpath = "//tr[@data-el='REV-PAR']/td[3]")
+	WebElement cellRevPar;
+
+	@FindBy(xpath = "//tr[@data-el='Total Operating Revenue']/td[3]")
+	WebElement cellTotalOperatingRevenue;
+
+	@FindBy(xpath = "//tr[@data-el='Total REV-PAR']/td[3]")
+	WebElement cellTotalRevPar;
+
+	@FindBy(xpath = "//div[@id='mui-component-select-columns[0].dataType']")
+	WebElement drpColumn1;
+
+	@FindBy(xpath = "//input[@name='columns[0].dataType']")
+	WebElement drpColumn1Value;
+
+	@FindBy(xpath = "//div[@id='mui-component-select-columns[0].yearOffest']")
+	WebElement drpYear1;
+
+	@FindBy(xpath = "//input[@name='columns[0].yearOffest']")
+	WebElement drpYear1Value;
+	
+	@FindBy(xpath = "//button[@data-el='buttonFilter']")
+	WebElement btnFilter;
+	
+	@FindBy(xpath = "//h3[text()='Edit Columns']")
+	WebElement lblEdit;
 
 	public boolean navigatePnLComparison() throws InterruptedException {
 
@@ -232,4 +300,251 @@ public class PnLComparison_PageObject {
 
 	}
 
+	public void clickOnViewDrpFunc() throws InterruptedException {
+
+		Thread.sleep(8500);
+		WebElement drpViewEle = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(drpView));
+		drpViewEle.click();
+		Thread.sleep(3500);
+
+	}
+	
+	public boolean verifyViewdrpFunc() throws InterruptedException {
+
+		Thread.sleep(4000);
+		ExpectedConditions.visibilityOf(listDrpSize.get(1));
+	
+		if(listDrpSize.size()==4) {
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("PnL_month_view_values").split(",");
+				String actual = listDrpSize.get(x).getText();
+
+				String expected = a[x];
+
+				if (expected.contains(actual)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+		}
+		else {
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("PnL_view_values").split(",");
+				String actual = listDrpSize.get(x).getText();
+
+				String expected = a[x];
+
+				if (expected.contains(actual)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+		}
+	
+
+		Thread.sleep(6000);
+		try {
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					ExpectedConditions.visibilityOf(listDrpSize.get(0));
+					listDrpSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("View"))) {
+					ExpectedConditions.visibilityOf(listDrpSize.get(0));
+					listDrpSize.get(i).click();
+				}
+			}
+		}
+
+		Thread.sleep(6500);
+		int Org = driver.findElements(By.xpath("//button[@title='Refresh']")).size();
+
+		if (Org > 0) {
+			Thread.sleep(3500);
+			WebElement Refresh = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(btnRefresh));
+			Refresh.click();
+			Thread.sleep(4000);
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		} else {
+			Thread.sleep(3500);
+			WebElement GO = new WebDriverWait(driver, Duration.ofSeconds(30))
+					.until(ExpectedConditions.visibilityOf(btnGo));
+			GO.click();
+			Thread.sleep(4000);
+			ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		}
+		return flag;
+	}
+	
+	public void clickOnEditFunc() throws InterruptedException {
+		//ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		
+		Thread.sleep(14500);
+		
+		btnFilter.click();
+		ElementUtils.waitForElementToDisplay(lblEdit, 100);
+		Thread.sleep(4500);
+	}
+	
+	public boolean verifyCucstomCol1drpFunc() throws InterruptedException {
+
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+
+		Thread.sleep(4000);
+		drpColumn1.click();
+		Thread.sleep(6000);
+
+		ExpectedConditions.visibilityOf(listDrpSize.get(1));
+		for (int x = 0; x < listDrpSize.size(); x++) {
+			/* split and ready the data from property file */
+			String[] a = configReader.getProp("Custom_col1").split(",");
+			String expected = a[x];
+			String actual = listDrpSize.get(x).getText();
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+
+		}
+		Thread.sleep(6000);
+
+		try {
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpSize.get(i).click();
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < listDrpSize.size(); i++) {
+				if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Column"))) {
+					listDrpSize.get(i).click();
+				}
+			}
+		}
+
+		Thread.sleep(2000);
+		return flag;
+	}
+	
+	public boolean verifyCucstomYeardrpFunc() throws InterruptedException {
+
+		Thread.sleep(4000);
+		drpYear1.click();
+		Thread.sleep(8000);
+		int y = listDrpValueSize.size();
+
+		if (y < 0) {
+			drpYear1.click();
+			Thread.sleep(8000);
+			ExpectedConditions.visibilityOf(listDrpSize.get(1));
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
+				String expected = a[x];
+				String actual = listDrpSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+
+			try {
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
+					}
+				}
+			}
+
+			Thread.sleep(2000);
+		} else {
+			ExpectedConditions.visibilityOf(listDrpSize.get(1));
+			for (int x = 0; x < listDrpSize.size(); x++) {
+				/* split and ready the data from property file */
+				String[] a = configReader.getProp("Custom_Year").split(",");
+				String expected = a[x];
+				String actual = listDrpSize.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+
+			try {
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < listDrpSize.size(); i++) {
+					if (listDrpSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnLE_Year"))) {
+						listDrpSize.get(i).click();
+					}
+				}
+			}
+
+			Thread.sleep(2000);
+		}
+
+		return flag;
+	}
+
+	public boolean verifyStaticSection() throws InterruptedException {
+
+		Thread.sleep(7500);
+		/* capture/go though the 5 static section */
+			String[] a = configReader.getProp("Static_Names").split(",");
+			/* Get the 5 static section form property file */
+			for (int i = 0; i < 5; i++) {
+				String expected = a[i];
+				String actual = listStaticValues.get(i).getText();
+				
+				System.out.println("Expectded : "+expected+" Actual : "+actual);
+				
+				if (actual.equalsIgnoreCase(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+					break;
+				}
+		}
+		return flag;
+
+	}
+
+	public boolean verifyOwnersViewSection() {
+
+		ExpectedConditions.visibilityOf(listSection.get(1));
+		for (int x = 0; x < listStaticValues.size(); x++) {
+			/* split and ready the data from property file */
+			String[] a = configReader.getProp("Owner_Section").split(",");
+			for (int i = 0; i < a.length; i++) {
+				String expected = a[i];
+				String actual = listSection.get(x).getText();
+				if (actual.contains(expected)) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			}
+		}
+		return flag;
+	}
 }

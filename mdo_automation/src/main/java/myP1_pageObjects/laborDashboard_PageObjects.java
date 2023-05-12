@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +30,7 @@ public class laborDashboard_PageObjects {
 	@FindBy(xpath = "//a//span[text()='Dashboard']")
 	WebElement dashboardLink;
 
-	@FindBy(xpath = "//a//span[text()='Labor']")
+	@FindBy(xpath = "//a//span[contains(text(),'Labor (Classic)')]")
 	WebElement laborLink;
 
 	@FindBy(xpath = "//h2[text()='Labor']")
@@ -92,16 +93,36 @@ public class laborDashboard_PageObjects {
 		System.out.println("panelLst.size()==="+panelLst.size());
 		for (int i = 0; i < panelLst.size(); i++) {
 			int val = i + 1;
+//			JavascriptExecutor js = (JavascriptExecutor) driver;
 			WebElement cardMinimize = new WebDriverWait(driver, Duration.ofSeconds(700))
 					.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions']//a[contains(@class,'panel-action panel-action-toggle')])["
 									+ val + "]")));
+//			js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
+//			Thread.sleep(3000);
 			System.out.println("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions'])["+ val + "]");
-			cardMinimize.click();
+			try {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			} catch (Exception e) {
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			}
+			Thread.sleep(2000);
 			WebElement viewChartCollapsed = new WebDriverWait(driver, Duration.ofSeconds(700))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 							"//header[@class='panel-heading portlet-handler']//ancestor::section[@class='panel panel-primary panel-collapsed']")));
-			cardMinimize.click();
+			try {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			} catch (Exception e) {
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", cardMinimize);
+			}
 			Thread.sleep(3000);
 			
 		}

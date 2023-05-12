@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression
+@myP1_Regression	@ScorecardFilter
 Feature: Scorecard Dashboard Filter Functionality
 
   Background: Verify Scorecard Dashboard Main Functionality

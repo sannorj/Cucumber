@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @GL_Mappin
+@myP2_Regression 
 
 Feature: GL code Add Edit Delete Functionality
 

@@ -50,7 +50,7 @@ public class propertyDashboard_AddComment_StepDefinition {
 
 	@When("Check Submitted data is in View Comment table")
 	public void check_submitted_data_is_in_view_comment_table() throws InterruptedException {
-//		assertTrue(dashboardAddCommentPo.checkSubmittedData());
+		assertTrue(dashboardAddCommentPo.checkSubmittedData());
 	}
 
 }

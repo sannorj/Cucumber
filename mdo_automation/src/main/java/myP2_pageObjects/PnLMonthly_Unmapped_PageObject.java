@@ -52,22 +52,8 @@ public class PnLMonthly_Unmapped_PageObject {
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> listDrpValueSize2;
 	
-	
-
-	@FindBy(xpath = "//div[text()='Occupancy']/ancestor::div[4]//div[@data-el='selectorPeriod']")
-	WebElement occupancyPeriodDropdown;
-
-	@FindBy(xpath = "//div[text()='ADR (Average Daily Rate)']/ancestor::div[4]//div[@data-el='selectorPeriod']")
-	WebElement adrPeriodDropdown;
-
-	@FindBy(xpath = "//div[text()='RevPAR (Revenue Per Available Room)']/ancestor::div[4]//div[@data-el='selectorPeriod']")
-	WebElement revParPeriodDropdown;
-
-	@FindBy(xpath = "//button[@data-el='buttonCustomizeTable']")
-	WebElement editBtt;
-
-	@FindBy(xpath = "(//button[@data-el='button-edit-Occupancy_Test'])[last()]")
-	WebElement lastEditButton;
+	@FindBy(xpath = "//button[@data-el='buttonGo']")
+	WebElement goButton;
 
 	
 	public void selectPnLunmappedOpt() throws InterruptedException {
@@ -91,7 +77,7 @@ public class PnLMonthly_Unmapped_PageObject {
 		Thread.sleep(2000);
 
 		WebElement verifyUnmappedPageEle = driver
-				.findElement(By.xpath("(//h1[text()='Profit & Loss Monthly Report']"));
+				.findElement(By.xpath("//h1[text()='Profit & Loss Unmapped']"));
 		ElementUtils.waitForElementToDisplay(verifyUnmappedPageEle, 100);
 
 		Thread.sleep(5000);
@@ -117,7 +103,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			}
 		}
 
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		
 		if (yearDropdown.isEnabled()) {
 			WebElement yearDropdownEle = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -125,7 +111,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			yearDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int n = 0; n < listDrpValueSize.size(); n++) {
+			for (int n = 0; n < listDrpValueSize2.size(); n++) {
 				if (listDrpValueSize2.get(n).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_year_1"))) {
 					listDrpValueSize2.get(n).click();
@@ -133,7 +119,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			}
 		}
 		
-		Thread.sleep(3000);
+		Thread.sleep(8000);
 		
 		if (unmappedSelectorDropdown.isEnabled()) {
 			WebElement unmappedSelectorDropdownEle = new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -141,7 +127,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			unmappedSelectorDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int k = 0; k < listDrpValueSize.size(); k++) {
+			for (int k = 0; k < listDrpValueSize2.size(); k++) {
 				if (listDrpValueSize2.get(k).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_selector_1"))) {
 					listDrpValueSize2.get(k).click();
@@ -150,6 +136,15 @@ public class PnLMonthly_Unmapped_PageObject {
 		}
 		
 		Thread.sleep(3000);
+		
+		if (goButton.isEnabled()) {
+			WebElement goButtonEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(goButton));
+			goButtonEle.click();
+			
+			}
+			
+		Thread.sleep(5000);
 
 	}
 	
@@ -180,7 +175,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			yearDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int n = 0; n < listDrpValueSize.size(); n++) {
+			for (int n = 0; n < listDrpValueSize2.size(); n++) {
 				if (listDrpValueSize2.get(n).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_year_2"))) {
 					listDrpValueSize2.get(n).click();
@@ -196,7 +191,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			unmappedSelectorDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int k = 0; k < listDrpValueSize.size(); k++) {
+			for (int k = 0; k < listDrpValueSize2.size(); k++) {
 				if (listDrpValueSize2.get(k).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_selector_2"))) {
 					listDrpValueSize2.get(k).click();
@@ -205,6 +200,15 @@ public class PnLMonthly_Unmapped_PageObject {
 		}
 		
 		Thread.sleep(3000);
+		
+		if (goButton.isEnabled()) {
+			WebElement goButtonEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(goButton));
+			goButtonEle.click();
+			
+			}
+			
+		Thread.sleep(5000);
 
 	}
 	
@@ -235,7 +239,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			yearDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int n = 0; n < listDrpValueSize.size(); n++) {
+			for (int n = 0; n < listDrpValueSize2.size(); n++) {
 				if (listDrpValueSize2.get(n).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_year_3"))) {
 					listDrpValueSize2.get(n).click();
@@ -251,7 +255,7 @@ public class PnLMonthly_Unmapped_PageObject {
 			unmappedSelectorDropdownEle.click();
 
 			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int k = 0; k < listDrpValueSize.size(); k++) {
+			for (int k = 0; k < listDrpValueSize2.size(); k++) {
 				if (listDrpValueSize2.get(k).getText()
 						.equalsIgnoreCase(configReader.getProp("PnLunmapped_selector_3"))) {
 					listDrpValueSize2.get(k).click();
@@ -260,7 +264,15 @@ public class PnLMonthly_Unmapped_PageObject {
 		}
 		
 		Thread.sleep(3000);
-
+		
+		if (goButton.isEnabled()) {
+			WebElement goButtonEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+					.until(ExpectedConditions.visibilityOf(goButton));
+			goButtonEle.click();
+			
+			}
+			
+		Thread.sleep(5000);
 	}
 	
 	
@@ -275,6 +287,8 @@ public class PnLMonthly_Unmapped_PageObject {
 			WebElement verifyTableHaderEle = driver
 					.findElement(By.xpath("//th[text()='Description']"));
 			ElementUtils.waitForElementToDisplay(verifyTableHaderEle, 100);
+			
+			Thread.sleep(3000);
 			
 		} else {
 			

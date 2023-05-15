@@ -191,9 +191,9 @@ public class GL_Hierarchy_Mapping_PageObject {
 		String ManageGLCodelbl = btnManageGLlbl.getText();
 
 		if (ManageGLCodelbl.equals("GL Codes")) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 	

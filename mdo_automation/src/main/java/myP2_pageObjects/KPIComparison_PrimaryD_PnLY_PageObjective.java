@@ -94,7 +94,7 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 
 
 	public boolean VerifyKPIAvailble() throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		System.out.println("These KPI not exist in Primary Dashboard Page =");
 		boolean flag = true;
 		for (int i = 0; i < KPI_List.size(); i++) {

@@ -20,6 +20,7 @@ import java.util.Properties;
 import org.apache.commons.compress.harmony.pack200.NewAttribute.PassAttribute;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,7 +65,24 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 
 	@FindBy(xpath = "//ul[@role='listbox']//li")
 	List<WebElement> lstDropDowYear;
+	
+	@FindBy(xpath = "//button[@title='Edit']")
+	WebElement editBtn;
+	
+	@FindBy(xpath = "//span[contains(text(),'Alohilani Resort Waikiki Beach')]")
+	WebElement hgELBeforeEdit;
+	
+	@FindBy(xpath = "//div[@id='mui-component-select-selectorDecimalValue']")
+	WebElement btnOverrideDecimal;
+	
+	@FindBy(xpath = "//ul[@role='listbox']//li")
+	List<WebElement> lstDecimal;
+	
+	@FindBy(xpath = "//button[@data-el='buttonFinishCustomization']")
+	WebElement iamDoneBtn;
 
+	@FindBy(xpath = "//div[contains(text(),'Alohilani Resort Waikiki Beach')]")
+	WebElement hgEL;
 
 	String KPIs=configReader.getProp("KPI_List");
 	List<String> KPI_List=Arrays.asList(KPIs.split(","));
@@ -91,7 +109,11 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	}
 	
 	public void storePrimaryDKPI(String property,String Date) throws ParseException, InterruptedException {
-		Thread.sleep(3000);System.out.println("KPI size== "+KPI_List.size());
+		
+		changeDecimal();
+		
+		Thread.sleep(3000);
+		System.out.println("KPI size== "+KPI_List.size());
 		String currentDate=Date;
 		for (int i = 0; i <= 11; i++) {
 			System.out.println(i);
@@ -105,9 +127,10 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 		}
 	}
 	
-	private void storeKPIs(String property,int month) {
+	private void storeKPIs(String property,int month) throws InterruptedException {
 		for (int i = 0; i < KPI_List.size(); i++) {
 			String currentKPI= KPI_List.get(i);
+			Thread.sleep(5000);
 			String columnIndex=driver.findElement(By.xpath("//div[@aria-label='"+currentKPI+"']")).getAttribute("data-field");
 			String currentVal=driver.findElement(By.xpath("//button//span[text()='"+property+"']//following::div//div[@data-field='"+columnIndex+"']")).getText();
 			
@@ -263,13 +286,20 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 	}
 
 	public boolean verifyKPIinPnL() throws InterruptedException {
-		WebElement waitToDataLoad = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		WebElement waitToDataLoad = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//th[text()='Name']")));
-		WebElement switchDisableNullRecords = new WebDriverWait(driver, Duration.ofSeconds(1000))
+		
+		waitToDataLoad.isDisplayed();
+		
+		WebElement switchDisableNullRecords = new WebDriverWait(driver, Duration.ofSeconds(250))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@data-el='switchDisableNullRecords']")));
+		
 		switchDisableNullRecords.click();
+		
 		Thread.sleep(3500);
+		
 		System.out.println("These KPI not exist in Profit & Loss Yearly Report Page =");
+		
 		boolean flag = true;
 		for (int i = 0; i < KPI_List.size(); i++) {
 			String currentKPI= KPI_List.get(i);
@@ -298,15 +328,59 @@ public class KPIComparison_PrimaryD_PnLY_PageObjective {
 			WebElement PnLY_KPIVal = driver.findElement(By.xpath("//div[text()='"+PrimaryD_KPI_List.get(i)+"']//following::td[@index='"+indexVal+"'][1]"));
 			String currentKPIValue=PnLY_KPIVal.getText();
 			if (!currentKPIValue.equalsIgnoreCase(PrimaryD_KPIValues_List.get(i))){
-				flag = false;
+				
 				System.out.println("These values are not equal");
 				System.out.println("KPI= "+PrimaryD_KPI_List.get(i));
 				System.out.println("Month= "+cuurentMonth);
 				System.out.println("Primary Dashboard Value= "+PrimaryD_KPIValues_List.get(i));
 				System.out.println("PnL Value= "+currentKPIValue);
+				flag = false;
 			}
 		}
 		return flag;
+	}
+	
+	public void changeDecimal() throws InterruptedException
+	{
+		WebElement firstRow = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(hgELBeforeEdit));
+
+		firstRow.isDisplayed();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+		wait.until(ExpectedConditions.elementToBeClickable(editBtn));
+		
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", editBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].c6lick();", editBtn);
+			executor.executeScript("arguments[0].click();", editBtn);
+		}
+
+		WebElement firstRowCheck = new WebDriverWait(driver, Duration.ofSeconds(150))
+				.until(ExpectedConditions.visibilityOf(hgEL));
+
+		firstRowCheck.isDisplayed();
+		
+		WebElement btnDecimal = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(btnOverrideDecimal));
+
+		btnDecimal.click();
+
+		Thread.sleep(2500);
+
+		lstDecimal.get(2).click();
+		
+		Thread.sleep(2500);
+		
+		WebElement btnDone = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(iamDoneBtn));
+
+		btnDone.click();
+		
+		Thread.sleep(2500);
 	}
 
 

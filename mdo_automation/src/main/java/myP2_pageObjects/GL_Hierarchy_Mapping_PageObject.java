@@ -133,7 +133,16 @@ public class GL_Hierarchy_Mapping_PageObject {
 	public void selectSingleGlcodeFunc() throws InterruptedException {
 	
 		Thread.sleep(5000);
-	
+		
+		//remove selected GL codes before add them
+		int x = driver.findElements(By.xpath("//*[local-name()='svg' and @data-testid='CancelIcon']/*[local-name()='path']")).size();
+		
+		for (int i = 0; i < x; i++) {
+			Thread.sleep(2000); 
+			driver.findElement(By.xpath("(//*[local-name()='svg' and @data-testid='CancelIcon']/*[local-name()='path']/..)[1]")).click();	
+			Thread.sleep(2000);
+		}
+		
 		WebElement singleGlEle= driver.findElement(By.xpath("//span[contains(text(),'"+configReader.getProp("GL_Map_S_Gl_code")+"')]/..//span/input"));
 		singleGlEle.click();
 		Thread.sleep(2000);

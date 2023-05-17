@@ -144,7 +144,7 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyAddLebelFunc() throws InterruptedException {
 
-		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
+		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
 		elelblMDOGL.isDisplayed();
 		
 		Thread.sleep(7500);
@@ -187,7 +187,9 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyManageLebelFunc() throws InterruptedException {
 
-		Thread.sleep(7500);
+		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
+		elelblMDOGL.isDisplayed();
+		
 		String ManageGLCodelbl = btnManageGLlbl.getText();
 
 		if (ManageGLCodelbl.equals("GL Codes")) {

@@ -536,21 +536,11 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		if (editBtt.isEnabled()) {
-			WebElement clickEditBt = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(editBtt));
-			clickEditBt.click();
+		deleteColumnIfExist("Occupancy_Test");
 
-		}
-
-		Thread.sleep(5000);
-
-		if (addColumnBtt.isEnabled()) {
-			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			clickAddColumnBtt.click();
-
-		}
+		WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(addColumnBtt));
+		clickAddColumnBtt.click();
 
 		Thread.sleep(3000);
 
@@ -1139,7 +1129,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(imDoneButt));
-		
+
 		imDoneButton.isDisplayed();
 
 	}

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -174,6 +175,18 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
 	WebElement btnNextMonth;
+
+	@FindBy(xpath = "//button[@title='Edit']")
+	WebElement editBtn;
+
+	@FindBy(xpath = "//div[contains(text(),'CNMTS')]")
+	WebElement insigniaEL;
+
+	@FindBy(xpath = "//div[@role='dialog']//h3[contains(text(),'Delete column')]")
+	WebElement dialogBox;
+
+	@FindBy(xpath = "//button[@mdo_variant='success']//span[text()='Ok']")
+	WebElement btnDeleteConfirmation;
 
 	public void verifyWidgetsOrder() throws InterruptedException {
 
@@ -448,18 +461,15 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(5000);
 
-		if (drpGroup.isEnabled()) {
+		WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(drpGroup));
+		drpGroupEle.click();
 
-			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(drpGroup));
-			drpGroupEle.click();
-
-			Thread.sleep(5000);
-			// ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_Group"))) {
-					listDrpValueSize.get(i).click();
-				}
+		Thread.sleep(5000);
+		// ExpectedConditions.visibilityOf(listDrpValueSize.get(1));
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_Group"))) {
+				listDrpValueSize.get(i).click();
 			}
 		}
 
@@ -469,17 +479,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(5000);
 
-		if (drpProperty.isEnabled()) {
-			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(drpProperty));
-			drpPropertyEle.click();
+		WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(drpProperty));
+		drpPropertyEle.click();
 
-			// ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
-			for (int i = 0; i < listDrpValueSize.size(); i++) {
-				if (listDrpValueSize.get(i).getText()
-						.equalsIgnoreCase(configReader.getProp("widgetsCal_All_Property"))) {
-					listDrpValueSize.get(i).click();
-				}
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("widgetsCal_All_Property"))) {
+				listDrpValueSize.get(i).click();
 			}
 		}
 
@@ -493,15 +499,8 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement byPropertyPeriodW = new WebDriverWait(driver, Duration.ofSeconds(25))
 				.until(ExpectedConditions.visibilityOf(byPropertyWidgetPeriod));
-		// byPropertyPeriodW.click();
 
-		// drpValueListSize.get(1).click();
-
-		/*
-		 * for (int i = 0; i < drpValueListSize.size(); i++) { if
-		 * (drpValueListSize.get(i).getText().equalsIgnoreCase(configReader.getProp(
-		 * "widgetsCal_MTD"))) { drpValueListSize.get(i).click(); } }
-		 */
+		byPropertyPeriodW.isDisplayed();
 
 	}
 
@@ -654,7 +653,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement occupancyPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='Occupancy_Test']/preceding-sibling::*)+1]"));
-			
+
 			byProTableArray.add(occupancyPortfolioTotal.getText());
 
 		}
@@ -856,21 +855,13 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		if (editBtt.isEnabled()) {
-			WebElement clickEditBt = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(editBtt));
-			clickEditBt.click();
-
-		}
+		deleteColumnIfExist("ADR_Test");
 
 		Thread.sleep(5000);
 
-		if (addColumnBtt.isEnabled()) {
-			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(addColumnBtt));
-			clickAddColumnBtt.click();
-
-		}
+		WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(addColumnBtt));
+		clickAddColumnBtt.click();
 
 		Thread.sleep(3000);
 
@@ -984,7 +975,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 			WebElement adrPortfolioTotal = driver.findElement(
 					By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-		
+
 			adrByProTableArray.add(adrPortfolioTotal.getText());
 
 		}
@@ -1035,7 +1026,7 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		WebElement adrPortfolioTotal = driver.findElement(
 				By.xpath("//table//tr[last()]//td[count(//table//th[.='ADR_Test']/preceding-sibling::*)+1]"));
-		
+
 		adrByProTableArray.add(adrPortfolioTotal.getText());
 
 	}
@@ -1125,20 +1116,15 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		if (lastDeleteButtonADR.isEnabled()) {
-			WebElement lastDeleteButADR = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(lastDeleteButtonADR));
-			lastDeleteButADR.click();
-		}
+		WebElement lastDeleteButADR = new WebDriverWait(driver, Duration.ofSeconds(10))
+				.until(ExpectedConditions.visibilityOf(lastDeleteButtonADR));
+		lastDeleteButADR.click();
 
 		Thread.sleep(3000);
 
-		if (verifydeleteColum.isEnabled()) {
-			WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(verifydeleteColum));
-			verifydeleteHeader.isDisplayed();
-
-		}
+		WebElement verifydeleteHeader = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(verifydeleteColum));
+		verifydeleteHeader.isDisplayed();
 
 		Thread.sleep(3000);
 
@@ -1151,11 +1137,10 @@ public class Dashboard_WidgetsCalculator_PageObject {
 
 		Thread.sleep(3000);
 
-		if (imDoneButt.isEnabled()) {
-			WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
-					.until(ExpectedConditions.visibilityOf(imDoneButt));
-
-		}
+		WebElement imDoneButton = new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.visibilityOf(imDoneButt));
+		
+		imDoneButton.isDisplayed();
 
 	}
 
@@ -1825,6 +1810,61 @@ public class Dashboard_WidgetsCalculator_PageObject {
 		}
 
 		return flag;
+
+	}
+
+	public void deleteColumnIfExist(String columnName) throws InterruptedException {
+		Thread.sleep(10000);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+		wait.until(ExpectedConditions.elementToBeClickable(editBtn));
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", editBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].c6lick();", editBtn);
+			executor.executeScript("arguments[0].click();", editBtn);
+		}
+
+		WebElement insigniaELView = new WebDriverWait(driver, Duration.ofSeconds(150))
+				.until(ExpectedConditions.visibilityOf(insigniaEL));
+
+		insigniaELView.isDisplayed();
+
+		int sizeOfAddingColumn = driver.findElements(By.xpath("//button[@data-el='button-delete-" + columnName + "']"))
+				.size();
+
+		System.out.println("size of column is " + sizeOfAddingColumn);
+
+		if (sizeOfAddingColumn == 1) {
+			WebElement btnDelete = driver
+					.findElement(By.xpath("//button[@data-el='button-delete-" + columnName + "']"));
+
+			btnDelete.click();
+
+			Thread.sleep(2500);
+
+			WebElement dialogBoxEle = new WebDriverWait(driver, Duration.ofSeconds(100))
+					.until(ExpectedConditions.visibilityOf(dialogBox));
+
+			dialogBoxEle.isDisplayed();
+
+			Thread.sleep(2500);
+
+			WebElement btnOkEle = new WebDriverWait(driver, Duration.ofSeconds(100))
+					.until(ExpectedConditions.visibilityOf(btnDeleteConfirmation));
+
+			btnOkEle.click();
+
+			WebElement insigniaELViewRe = new WebDriverWait(driver, Duration.ofSeconds(300))
+					.until(ExpectedConditions.visibilityOf(insigniaEL));
+
+			insigniaELViewRe.isDisplayed();
+
+			Thread.sleep(5000);
+
+		}
 
 	}
 

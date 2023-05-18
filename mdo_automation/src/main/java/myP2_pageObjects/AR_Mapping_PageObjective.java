@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -80,6 +81,12 @@ public class AR_Mapping_PageObjective {
 
 	@FindBy(xpath = "//button[@mdo_variant='success']")
 	WebElement saveBtn;
+	
+	@FindBy(xpath = "//div[text()='Dashboard']//ancestor::li")
+	WebElement dashboard;
+
+	@FindBy(xpath = "//a[text()='Primary Dashboard (New)']//ancestor::li")
+	WebElement primaryDashboard;
 
 	public void expandAccountsMapping() {
 
@@ -364,6 +371,26 @@ public class AR_Mapping_PageObjective {
 		mainMenuButton.click();
 		Thread.sleep(3000);
 	}
+	
+	//navigate to primary dash board when background got execution part in feature
+	public void navigateToPrimaryDashboard() throws InterruptedException {
+		mainMenuButton.click();
+		
+		WebElement btnDashboard = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(dashboard));
+		
+		btnDashboard.click();
+		
+		Thread.sleep(1500);
+		
+		WebElement waitPrimaryDashboard = new WebDriverWait(driver, Duration.ofSeconds(100))
+				.until(ExpectedConditions.visibilityOf(primaryDashboard));
+	
+		waitPrimaryDashboard.click();
+		
+		Thread.sleep(5000);
+	}
+	
 	public void clckConfigurationMenu(String mainMenu) throws InterruptedException{
 		WebElement configuration = new WebDriverWait(driver, Duration.ofSeconds(200))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='"+mainMenu+"']//ancestor::li")));

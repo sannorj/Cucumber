@@ -11,17 +11,19 @@ Background: Navigate to P&L Monthly report
     And I am navigate to GL Hierarchy page
     When user selects the property form property dropdown
     Then based on the property page should load the MDO gl codes
-    And  clicks on the Manage GL Codes button from the UI
     
    Scenario: Verify whether user can map a single available hmg code to a mdo gl code
+   And  clicks on the Manage GL Codes button from the UI
    And  select one single available hmg gl code from the pop-up and click on save button 
    Then Add GL Codes text should change to Manage GL Codes
    
    Scenario: Verify whether user can remove the mapped hmg code from the pop-up
+   And  clicks on the Manage GL Codes button from the UI
    And  Remove the all mapped hmg GL codes 
    Then Manage GL Codes GL Codes text should change to Add GL Codes
    
    Scenario: Verify whether user can map a multiple available hmg code to a mdo gl code
+   And  clicks on the Manage GL Codes button from the UI
    And  select multiple available hmg gl code from the pop-up and click on save button 
    Then Add GL Codes text should change to Manage GL Codes
    

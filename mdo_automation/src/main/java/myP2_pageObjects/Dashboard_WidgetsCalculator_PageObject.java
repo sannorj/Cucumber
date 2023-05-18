@@ -1338,22 +1338,14 @@ public class Dashboard_WidgetsCalculator_PageObject {
 	public void addNewRevPARRecord() throws InterruptedException {
 
 		Thread.sleep(3000);
-
-		if (editBtt.isEnabled()) {
-			WebElement clickEditBt = new WebDriverWait(driver, Duration.ofSeconds(10))
-					.until(ExpectedConditions.visibilityOf(editBtt));
-			clickEditBt.click();
-
-		}
-
+		
+		deleteColumnIfExist("RevPAR_Test");
+		
 		Thread.sleep(5000);
 
-		if (addColumnBtt.isEnabled()) {
 			WebElement clickAddColumnBtt = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(addColumnBtt));
 			clickAddColumnBtt.click();
-
-		}
 
 		Thread.sleep(3000);
 

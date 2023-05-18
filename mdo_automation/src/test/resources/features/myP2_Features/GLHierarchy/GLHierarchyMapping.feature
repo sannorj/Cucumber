@@ -25,4 +25,18 @@ Background: Navigate to P&L Monthly report
    And  select multiple available hmg gl code from the pop-up and click on save button 
    Then Add GL Codes text should change to Manage GL Codes
    
+  Scenario Outline: Verify GL Hierarchy page Element visibility and filter functionality
+	  When Click on the Menu bar and navigate to primary dashboard
+	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
+	  And Click on the Menu bar
+	  When Expand the '<Main_menu>' menu 
+	  Then Expand the '<sub_menu>' menu option
+	  And Select the '<target_Page>' option
+	  Given Check the header of the navigated page '<target_Page_header>'
+	  And Verify Group was selected as '<nullVal>' and Property was selected as '<filter2>'
   
+   Examples: 
+       |    filter1         | filter2 													| 	 Main_menu  |  sub_menu  | target_Page  | target_Page_header 	| nullVal |
+       |  Beck Legacy Group | Days Inn & Suites Page Lake Powell| Configuration | P&L Mapping| GL Hierarchy |     GL Hierarchy    | null		|
+	
+	

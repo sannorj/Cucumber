@@ -116,8 +116,8 @@ public class PnLMonthlyStaticView_StepDefinition {
 		assertTrue(pnlMonthly.verifyCucstomCol1drpFunc());
 	}
 
-	@Then("Year  dropdown should contain the current year at the top and the past {int} years in descending order")
-	public void year_dropdown_should_contain_the_current_year_at_the_top_and_the_past_years_in_descending_order(Integer int1) throws InterruptedException {
+	@Then("Year  dropdown should contain the current year at the top and the past four years in descending order")
+	public void year_dropdown_should_contain_the_current_year_at_the_top_and_the_past_years_in_descending_order() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyCucstomYeardrpFunc());
 	}
 

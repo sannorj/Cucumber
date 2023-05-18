@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnLMonthly
+@myP2_Regression  @myP2_Smoke @PnLMonthlyFix
 
 Feature:  P&L Monthly Report - View Feature Validation and Static Calculation
 

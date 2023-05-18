@@ -449,7 +449,7 @@ public class AR_Mapping_PageObjective {
 
 	public void clckGoBtn() throws InterruptedException {
 		goButton.click();
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 	}
 
 	public boolean verifyPropertiesFiltered(String propertyName) {

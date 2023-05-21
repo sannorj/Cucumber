@@ -17,7 +17,7 @@ public class PickUpReport_EdiColumn_StepDefinition {
 	}
 
 	@Given("I am navigate to edit column page")
-	public void i_am_navigate_to_edit_column_page() {
+	public void i_am_navigate_to_edit_column_page() throws InterruptedException {
 		assertTrue(pickupReport.navigateToEditColumn());
 	}
 

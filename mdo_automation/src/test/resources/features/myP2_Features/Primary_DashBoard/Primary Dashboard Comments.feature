@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @PrimaryDashBoard1
+@myP2_Regression @PrimaryDashBoardComments
 
 Feature: Primary Dashboard - Comments Feature
 

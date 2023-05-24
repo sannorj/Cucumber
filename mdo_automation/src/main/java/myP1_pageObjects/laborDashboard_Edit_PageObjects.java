@@ -49,11 +49,9 @@ public class laborDashboard_Edit_PageObjects {
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", submitBtn);
-			System.out.println("submit btn click");
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", submitBtn);
-			System.out.println("submit btn clickkkkkkkkk");
 		}
 		Thread.sleep(3000);
 	}
@@ -112,11 +110,9 @@ public class laborDashboard_Edit_PageObjects {
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", submitBtn);
-			System.out.println("submit btn clickss");
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", submitBtn);
-			System.out.println("submit btn clickkkkkkkkksss");
 		}
 		Thread.sleep(3000);
 	}
@@ -127,7 +123,6 @@ public class laborDashboard_Edit_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//button[@title='Edit']")));
 		Thread.sleep(3000);
 		try {
-			System.out.println("#####################");
 				int findCard = driver.findElements(By.xpath("//h2[text()='"+configReader.getMYP1Prop("Labor_Edit_CloseCard")+"']")).size();
 				if(findCard>0) {
 					System.out.println(configReader.getMYP1Prop("Labor_Edit_CloseCard")+" is available!");

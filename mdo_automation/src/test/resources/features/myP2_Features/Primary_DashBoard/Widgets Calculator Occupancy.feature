@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @PrimaryDashBoard 
+@myP2_Regression @PrimaryDashBoard @OccWidgetCalcFix
 
 Feature: Primary DashBoard - widgets calculation (Occupancy)
 

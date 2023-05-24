@@ -139,6 +139,12 @@ public class AR_Mapping_StepDefinition {
 	public void verify_remove_Mapping_link_under_the_Actions_header() {
 		assertTrue(ARmappingPo.verifyRemoveMapping());
 	}
+	
+	
+	@And("Click on the Menu bar and navigate to primary dashboard")
+	public void Click_on_the_Menu_bar_and_navigate_to_primary_dashboard() throws InterruptedException {
+		ARmappingPo.navigateToPrimaryDashboard();
+	}
 
 	
 }

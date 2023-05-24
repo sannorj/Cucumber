@@ -18,8 +18,9 @@ Feature: P&L Yearly - TTM Validation
    And  Verify whether the header load according to TTM selected
     
    Scenario: Verify whether the Edit Column first year dropdown disabled
-   And I am navigate to PnL Yearly Edit Column
- 	 And Verify whether the year drodwon disabled
+   When I am navigate to PnL Yearly Edit Column
+   Then I am verify whether the edit column dropdown count in one
+ 	 And I am Verify whether the column dropdwon value is disabled
  	 
  	 Scenario: Verify whether the month header is located correctly 
    Then Page should load the defualt static section

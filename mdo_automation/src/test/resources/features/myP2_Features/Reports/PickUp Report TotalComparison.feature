@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @pickUpTotalC @pasindu
+@myP2_Regression @pickUpTotalCalc
 
 Feature: Pickup report - Total values comparison 
 

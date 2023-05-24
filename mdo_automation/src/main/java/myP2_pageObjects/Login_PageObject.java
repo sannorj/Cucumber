@@ -66,9 +66,9 @@ public class Login_PageObject {
 			Thread.sleep(5000);
 			username.sendKeys(configReader.getProp("dev_userName"));
 			password.sendKeys(configReader.getProp("dev_password"));
-			passwordReset.isDisplayed();
+			//passwordReset.isDisplayed();
 			Thread.sleep(12000);
-			// loginButton.click();
+			 loginButton.isDisplayed();
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("arguments[0].click();", loginButton);
@@ -87,8 +87,8 @@ public class Login_PageObject {
 
 			username.sendKeys(configReader.getProp("uat_userName"));
 			password.sendKeys(configReader.getProp("uat_password"));
-			passwordReset.isDisplayed();
-			// loginButton.click();
+			//passwordReset.isDisplayed();
+			loginButton.isDisplayed();
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("arguments[0].click();", loginButton);

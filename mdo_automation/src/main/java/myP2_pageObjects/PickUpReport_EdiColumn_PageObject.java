@@ -51,13 +51,13 @@ public class PickUpReport_EdiColumn_PageObject {
 	@FindBy(xpath = "//h1[text()='Pickup Report']")
 	WebElement navigatedReportPage;
 
-	@FindBy(xpath = "//input[@name='businessDate']")
+	@FindBy(xpath = "//div//label[text() = 'Business Date'] /following-sibling::div//input")
 	WebElement txtBusinessDate;
 
-	@FindBy(xpath = "//input[@name='startDate']")
+	@FindBy(xpath = "//div//label[text() = 'Start Date'] /following-sibling::div//input")
 	WebElement txtStartDate;
 
-	@FindBy(xpath = "//input[@name='endDate']")
+	@FindBy(xpath = "//div//label[text() = 'End Date'] /following-sibling::div//input")
 	WebElement txtEndDate;
 
 	@FindBy(xpath = "//button[@data-el='buttonGo']")
@@ -77,7 +77,7 @@ public class PickUpReport_EdiColumn_PageObject {
 
 	@FindBy(xpath = "//button[@type='button']//span[text() = 'Apply']")
 	WebElement btnApply;
-	
+
 	@FindBy(xpath = "//div//label[text() = 'Business Date'] //following-sibling::div//button")
 	WebElement btnBusinessDatePicker;
 
@@ -366,15 +366,17 @@ public class PickUpReport_EdiColumn_PageObject {
 		}
 
 	}
-	
-	
-	public boolean navigateToEditColumn() {
+
+	public boolean navigateToEditColumn() throws InterruptedException {
 		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(btnEditColumn));
 		btnEdit.click();
 
 		WebElement pageSetting = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(settingPage));
+
+		Thread.sleep(5000);
+
 		return pageSetting.isDisplayed();
 	}
 
@@ -392,7 +394,10 @@ public class PickUpReport_EdiColumn_PageObject {
 
 			Thread.sleep(5000);
 
-			btngo.click();
+			WebElement buttonGo = new WebDriverWait(driver, Duration.ofSeconds(50))
+					.until(ExpectedConditions.visibilityOf(btngo));
+
+			buttonGo.click();
 
 			Thread.sleep(2500);
 
@@ -418,23 +423,24 @@ public class PickUpReport_EdiColumn_PageObject {
 					.size();
 
 			if (status == 0) {
-				
+
 				WebElement btnSwitch = driver
 						.findElement(By.xpath("//div//h3[text() = 'Occupancy']/following-sibling::div//label[@label ='"
 								+ columnName.get(i) + "']"));
-				
-				
 
 				btnSwitch.click();
 				Thread.sleep(1500);
 			}
 		}
 
-		btnApply.click();
-		Thread.sleep(3000);
+		WebElement applyButton = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(btnApply));
 
+		applyButton.click();
+
+		Thread.sleep(5000);
 	}
-	
+
 	public void switchOffSomeColumns() throws InterruptedException {
 		for (int i = 0; i < listColumn.size(); i++) {
 
@@ -444,8 +450,7 @@ public class PickUpReport_EdiColumn_PageObject {
 
 		for (int i = 0; i < columnName.size(); i++) {
 
-			if(i==0 || i==2)
-			{
+			if (i == 0 || i == 2) {
 				int status = driver
 						.findElements(By.xpath("//div//h3[text() = 'Occupancy']/following-sibling::div//label[@label ='"
 								+ columnName.get(i) + "']//span[contains(@class,'Mui-checked')]"))
@@ -453,22 +458,24 @@ public class PickUpReport_EdiColumn_PageObject {
 
 				if (status == 1) {
 					System.out.println("AA" + columnName.get(i));
-					WebElement btnSwitch = driver
-							.findElement(By.xpath("//div//h3[text() = 'Occupancy']/following-sibling::div//label[@label ='"
+					WebElement btnSwitch = driver.findElement(
+							By.xpath("//div//h3[text() = 'Occupancy']/following-sibling::div//label[@label ='"
 									+ columnName.get(i) + "']"));
 					offColumnName.add(btnSwitch.getText());
 					btnSwitch.click();
 					Thread.sleep(1500);
-					
+
 				}
 			}
-			
+
 		}
 
-		btnApply.click();
-		Thread.sleep(3000);
-		
-		
+		WebElement applyButton = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(btnApply));
+
+		applyButton.click();
+
+		Thread.sleep(5000);
 
 	}
 

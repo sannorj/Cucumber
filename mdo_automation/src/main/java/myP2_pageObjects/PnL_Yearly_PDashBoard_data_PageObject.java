@@ -185,7 +185,7 @@ public class PnL_Yearly_PDashBoard_data_PageObject {
 		public void StorePnLStaticValueFunc() throws InterruptedException {
 
 			Thread.sleep(3500);
-		    for(int x=0; x<4; x++){
+		    for(int x=0; x<3; x++){
 		    	PnL_Yearly_elements.add(lstMarchValue.get(x).getText());
 		        System.out.println(lstMarchValue.get(x).getText());
 		    }
@@ -221,7 +221,7 @@ public class PnL_Yearly_PDashBoard_data_PageObject {
         public void StorePrimarydashBoardStaticValueFunc() throws InterruptedException {
 
 			Thread.sleep(3500);
-		    for(int x=3; x<7; x++){
+		    for(int x=3; x<6; x++){
 		    	PDashBoard_elements.add(listRow.get(x).getText());
 		        System.out.println(listRow.get(x).getText());
 		    }

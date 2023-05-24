@@ -133,7 +133,16 @@ public class GL_Hierarchy_Mapping_PageObject {
 	public void selectSingleGlcodeFunc() throws InterruptedException {
 	
 		Thread.sleep(5000);
-	
+		
+		//remove selected GL codes before add them
+		int x = driver.findElements(By.xpath("//*[local-name()='svg' and @data-testid='CancelIcon']/*[local-name()='path']")).size();
+		
+		for (int i = 0; i < x; i++) {
+			Thread.sleep(2000); 
+			driver.findElement(By.xpath("(//*[local-name()='svg' and @data-testid='CancelIcon']/*[local-name()='path']/..)[1]")).click();	
+			Thread.sleep(2000);
+		}
+		
 		WebElement singleGlEle= driver.findElement(By.xpath("//span[contains(text(),'"+configReader.getProp("GL_Map_S_Gl_code")+"')]/..//span/input"));
 		singleGlEle.click();
 		Thread.sleep(2000);
@@ -144,7 +153,7 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyAddLebelFunc() throws InterruptedException {
 
-		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
+		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
 		elelblMDOGL.isDisplayed();
 		
 		Thread.sleep(7500);
@@ -187,7 +196,9 @@ public class GL_Hierarchy_Mapping_PageObject {
 	
 	public boolean verifyManageLebelFunc() throws InterruptedException {
 
-		Thread.sleep(7500);
+		WebElement elelblMDOGL = new WebDriverWait(driver, Duration.ofSeconds(60)).until(ExpectedConditions.visibilityOf(lblMDOGlCode));
+		elelblMDOGL.isDisplayed();
+		
 		String ManageGLCodelbl = btnManageGLlbl.getText();
 
 		if (ManageGLCodelbl.equals("GL Codes")) {

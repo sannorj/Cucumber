@@ -51,10 +51,9 @@ public class TrialBalance_Breakdown_StepDefinition {
 		assertTrue(tbBreakdownPo.verifyCreditDebit());
 	}
 
-	@Then("Verify Type column values are stats when filter Has Stat")
-	public void verify_type_column_values_are_stats_when_filter_has_stat() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Then("Verify Stat {string} column values are greater than zero when filter Has Stat")
+	public void verify_stat_column_values_are_greater_than_zero_when_filter_has_stat(String stat) throws InterruptedException {
+		assertTrue(tbBreakdownPo.verifyHasStatFilter(stat));
 	}
 
 	@And("Verify GL Code values are greater than zero when filter Has GLCode")

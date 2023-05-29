@@ -19,8 +19,8 @@ Feature: TrialBalance Breakdown Functionality
     And Verify Amount "Amount" values greater than zero when filter Has Amount
     Given Verify Credit & Debit Total values are equal when filter Has Amount
     
-    #Scenario: Verify Has Stat filter option
-    #Then Verify Type column values are stats when filter Has Stat
+    Scenario: Verify Has Stat filter option
+    Then Verify Stat "Stat" column values are greater than zero when filter Has Stat
     
     #Scenario: Verify Has GLCode filter option
     #And Verify GL Code values are greater than zero when filter Has GLCode

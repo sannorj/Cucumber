@@ -57,7 +57,7 @@ public class TrialBalance_Breakdown_PageObjects {
 	@FindBy(xpath = "//div[@id='tblTBContainer']//table/thead/tr/th")
 	List<WebElement> lstHeader;
 	
-	@FindBy(xpath = "//div[@id='tblTBContainer']//table/tbody/tr")
+	@FindBy(xpath = "//div[@id='tblTBContainer']//table/tbody/tr[contains(@class,'Data') and not(contains(@class,'SuspenseData')) and not(contains(@class,'IgnoreData'))]")
 	List<WebElement> lstRow;
 	
 	@FindBy(xpath = "//h5[text()='Has Amount:']//following::div[contains(@class,'ios-switch')][1]")
@@ -301,5 +301,59 @@ public class TrialBalance_Breakdown_PageObjects {
 			}
 		}
 		return isAllColNotEqual;
+	}
+
+	public boolean verifyHasStatFilter(String stat) throws InterruptedException {
+
+		if(driver.findElements(By.xpath("//h5[text()='Has Amount:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasAmountBtn.click();
+		}
+		if(driver.findElements(By.xpath("//h5[text()='Has Stat:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasStatBtn.click();		
+		}
+		if(driver.findElements(By.xpath("//h5[text()='Has GLCode:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasGLCodeBtn.click();
+		}
+		
+		hasStatBtn.click();
+		System.out.println("hasStatBtn clicked");
+		updateBtn.click();
+		System.out.println("updatebtn clicked");
+		Thread.sleep(3000);
+		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		System.out.println("table loaded");
+		
+		boolean isColumnsAmountNotZero=true;
+		int statHColPos=0;
+		if(waitToLoadTblData) {
+			for (int i = 0; i < lstHeader.size(); i++) {
+				System.out.println(i+"--"+lstHeader.get(i).getText());
+				if (stat.equals(lstHeader.get(i).getText())) {
+					statHColPos =i+1;
+	    		}
+			}
+			
+			System.out.println("lstRow.size()=="+lstRow.size());
+			for (int x = 0; x < lstRow.size(); x++) {
+				int row=x+1;
+				if (driver.findElements(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+statHColPos+"]")).size()>0) {
+					WebElement AmountHeaderCol = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+statHColPos+"]")));
+					String AmountCurrentVal=AmountHeaderCol.getText().replaceAll(",", "");
+					System.out.println("Stat current Value====="+AmountCurrentVal);
+					if(!AmountCurrentVal.equals("---")) {
+						System.out.println("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+statHColPos+"]");
+						Float Amount = Float.parseFloat(AmountCurrentVal);
+						System.out.println("Stat amount="+Amount);
+						if(Amount==0) {
+							System.out.println("Stat value zerooooo");
+							isColumnsAmountNotZero=false;
+						}
+					}
+				}
+			}
+		}
+		return isColumnsAmountNotZero;
 	}
 }

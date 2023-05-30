@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnL
+@myP2_Regression  @myP2_Smoke @PnLYearly
 
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
@@ -16,7 +16,7 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
      Then View dropdown should contains Owners View , Operators View, Room Revenue Detail, Add Custom View
      When User clicks on edit column option 
      Then Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL/FORECAST
-     And  Year  dropdown should contain the current year at the top and the past 4 years in descending order
+     And  Year  dropdown should contain the current year at the top and the past four years in descending order
      
      
 	Scenario: Validation of P&L Yearly Static section KPI

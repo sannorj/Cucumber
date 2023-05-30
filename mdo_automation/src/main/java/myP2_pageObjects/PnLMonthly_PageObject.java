@@ -739,7 +739,7 @@ public class PnLMonthly_PageObject {
 		int y = listDrpValueSize.size();
 
 		if (y < 0) {
-			drpYear1.click();
+			//drpYear1.click();
 			Thread.sleep(8000);
 			ExpectedConditions.visibilityOf(listDrpSize.get(1));
 			for (int x = 0; x < listDrpSize.size(); x++) {

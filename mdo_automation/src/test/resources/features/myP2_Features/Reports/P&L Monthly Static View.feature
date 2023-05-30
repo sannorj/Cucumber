@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnLMonthly
+@myP2_Regression  @myP2_Smoke @PnLMonthlyFix
 
 Feature:  P&L Monthly Report - View Feature Validation and Static Calculation
 
@@ -16,7 +16,7 @@ Background: Navigate to P&L Monthly report
      Then View dropdown should contains Owners View , Operators View, Room Revenue Detail, Add Custom View
      When User clicks on edit column option 
      Then Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL/FORECAST
-     And  Year  dropdown should contain the current year at the top and the past 4 years in descending order
+     And  Year  dropdown should contain the current year at the top and the past four years in descending order
     
     Scenario: Verify the Static section 
      Then Page should load the defualt static section 
@@ -43,3 +43,27 @@ Background: Navigate to P&L Monthly report
     #Scenario: Verify whether users should be allowed to choose Room Revenue Detail view from a dropdown menu.
      When user selects the Room Revenue Detail View
      Then the P&L should show the relevent sections that belong to the Room Revenue Detail view
+
+   @myP2_Smoke 
+   Scenario Outline: Verify P&L Monthly page Element visibility and filter functionality
+   
+    When Click on the Menu bar and navigate to primary dashboard
+	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
+	  And Click on the Menu bar
+	  When Expand the '<Main_menu_1>' menu 
+	  Then Expand the '<sub_menu_1>' menu option
+	  And Select the '<target_Page_1>' option
+	  And Click on the Menu bar
+	  When Expand the '<Main_menu>' menu 
+	  Then Expand the '<sub_menu>' menu option
+	  And Select the '<target_Page>' option
+	  Given Check the header of the navigated page '<target_Page_header>'
+	  And Verify Group was selected as '<filter1>' and Property was selected as '<filter2>'
+	  When Click on the Go button
+  
+   Examples: 
+       |    filter1         | filter2 													| Main_menu |  sub_menu  |      target_Page  				|     target_Page_header 			| nullVal |  Main_menu_1  |  	 sub_menu_1    |  target_Page_1 |
+       |  Beck Legacy Group | Days Inn & Suites Page Lake Powell|  Reports  | P&L Reports| P&L Monthly Report (New) | Profit & Loss Monthly Report| null		| Configuration | Accounts Mapping | 	 AR Mapping   |
+       
+     
+     

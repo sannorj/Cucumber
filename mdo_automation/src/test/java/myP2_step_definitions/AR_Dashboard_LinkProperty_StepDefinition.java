@@ -50,7 +50,7 @@ public class AR_Dashboard_LinkProperty_StepDefinition {
 	@Then("User compares the two arrays to check whether they are equal")
 	public void user_compares_the_two_arrays_to_check_whether_they_are_equal() throws InterruptedException {
 		assertTrue(ARdashboardLP.comparingTwoRecArrays());
-	}
+	} 
 
 
 }

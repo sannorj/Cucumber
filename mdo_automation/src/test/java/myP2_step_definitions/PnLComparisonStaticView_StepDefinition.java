@@ -53,4 +53,24 @@ public class PnLComparisonStaticView_StepDefinition {
 		assertTrue(pnlComparison.verifyStaticSection());
 	}
 	
+	@When("ROOMS SOLD divided by ROOMS AVAILABLE in PnL Comparison")
+	public void rooms_sold_divided_by_rooms_available() {
+		pnlComparison.occupancyCalFunc();
+	}
+
+	@Then("Calculated value should be match with OCCUPANCY in PnL Comparison")
+	public void calculated_value_should_be_match_with_occupancy() {
+		assertTrue(pnlComparison.verifyOccCalculationFunc());
+	}
+	
+	@When("Total Rooms Revenue divided by ROOMS SOLD in PnL Comparison")
+	public void total_rooms_revenue_divided_by_rooms_sold() {
+		//pnlMonthly.adrCalFunc();
+	}
+
+	@Then("Calculated value should be match with ADR in PnL Comparison")
+	public void calculated_value_should_be_match_with_adr() {
+		//assertTrue(pnlMonthly.verifyAdrCalculationFunc());
+	}
+	
 }

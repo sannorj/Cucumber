@@ -3,7 +3,7 @@
 
 Feature: GL Hierarchy - hmg gl code  mapping validation
 
-Background: Navigate to P&L Monthly report
+   Background: Navigate to P&L Monthly report
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group" 
@@ -24,5 +24,3 @@ Background: Navigate to P&L Monthly report
    Scenario: Verify whether user can map a multiple available hmg code to a mdo gl code
    And  select multiple available hmg gl code from the pop-up and click on save button 
    Then Add GL Codes text should change to Manage GL Codes
-   
-  

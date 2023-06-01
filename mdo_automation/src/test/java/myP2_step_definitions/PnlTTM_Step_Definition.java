@@ -25,9 +25,14 @@ public class PnlTTM_Step_Definition {
 		PnLTTMPo.navigateToEditColumn();
 	}
 
-	@Then("Verify whether the year drodwon disabled")
-	public void Verify_whether_the_year_drodwon_disabled() throws InterruptedException {
-		assertTrue(PnLTTMPo.verifyDisabledColumn());
+	@Then("I am verify whether the edit column dropdown count in one")
+	public void I_am_verify_whether_the_edit_column_dropdown_count_in_one() throws InterruptedException {
+		assertTrue(PnLTTMPo.verifyColumnDropdownCount());
+	}
+	
+	@Then("I am Verify whether the month selected as previous month")
+	public void I_am_Verify_whether_the_month_selected_as_previous_month() throws InterruptedException {
+		assertTrue(PnLTTMPo.verifySelectedMonth());
 	}
 
 	@Then("I am validating the month header")

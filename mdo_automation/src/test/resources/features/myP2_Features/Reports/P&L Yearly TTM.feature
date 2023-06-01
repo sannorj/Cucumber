@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnL
+@myP2_Regression  @myP2_Smoke @PnLTTM
 
 Feature: P&L Yearly - TTM Validation
 
@@ -13,21 +13,22 @@ Feature: P&L Yearly - TTM Validation
    And I am Loading the PnLYearly Report with GO button
    Then Page should load the defualt static section   
    
-   Scenario: Verify whethere Page load according to TTM Year function
-   Then Page should load the defualt static section
-   And  Verify whether the header load according to TTM selected
-    
    Scenario: Verify whether the Edit Column first year dropdown disabled
    When I am navigate to PnL Yearly Edit Column
    Then I am verify whether the edit column dropdown count in one
- 	 And I am Verify whether the column dropdwon value is disabled
+ 	 And I am Verify whether the month selected as previous month
  	 
+   Scenario: Verify whethere Page load according to TTM Year function
+   Then Page should load the defualt static section
+   And  Verify whether the header load according to TTM selected
+   
  	 Scenario: Verify whether the month header is located correctly 
    Then Page should load the defualt static section
    And I am validating the month header
     
   @myP2_Smoke
   Scenario Outline: Verify P&L Yearly page Element visibility and filter functionality
+	  When Click on the Menu bar and navigate to primary dashboard
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar
 	  When Expand the '<Main_menu>' menu 

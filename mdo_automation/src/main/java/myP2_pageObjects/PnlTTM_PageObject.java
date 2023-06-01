@@ -236,6 +236,9 @@ public class PnlTTM_PageObject {
 		WebElement yearOptions = driver.findElement(
 				By.xpath("//label[text()='Year']//following::div[@data-el='selectorYear']/div[@role='button']"));
 		yearOptions.click();
+		
+		Thread.sleep(7500);
+		
 		WebElement yearOptionclick = driver.findElement(By.xpath("//div[@role='listbox']//li[text()='TTM']"));
 		yearOptionclick.click();
 		Thread.sleep(2500);

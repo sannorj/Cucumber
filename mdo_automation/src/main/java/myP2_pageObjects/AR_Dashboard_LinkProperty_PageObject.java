@@ -195,15 +195,17 @@ public class AR_Dashboard_LinkProperty_PageObject {
 	
 	public boolean comparingTwoRecArrays() throws InterruptedException {
 
-		boolean flag = true;
+		boolean flag = false;
 
 		try {
-			for (int i = 0; i <= firstArray.size(); i++) {
+			for (int i = 0; i < firstArray.size(); i++) {
 
 				String firstArrayVal = firstArray.get(i);
 				String secondArrayVal = secondArray.get(i);
 
 				if (firstArrayVal.equalsIgnoreCase(secondArrayVal)) {
+					
+					flag = true;
 
 					System.out.println("PASS");
 					System.out.println(firstArray.get(i) + " <<<--////Pass////-->>> " + secondArray.get(i));
@@ -213,12 +215,14 @@ public class AR_Dashboard_LinkProperty_PageObject {
 					System.out.println("Fail");
 					System.out.println(firstArray.get(i) + " <<<--////fail////-->>> " + secondArray.get(i));
 
-					//break;
+					break;
 				}
 
 			}
 
 		} catch (Exception e) {
+			flag = false;
+			
 			e.printStackTrace();
 		}
 		return flag;

@@ -3,8 +3,10 @@ package myP1_pageObjects;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,6 +70,9 @@ public class TrialBalance_Breakdown_PageObjects {
 
 	@FindBy(xpath = "//h5[text()='Has GLCode:']//following::div[contains(@class,'ios-switch')][1]")
 	WebElement hasGLCodeBtn;
+	
+	@FindBy(xpath = "//input[@id='btnAddRow']")
+	WebElement addRowBtn;
 	
 	public void navigateTBBreakdown() {
 		navigationLink.click();
@@ -355,5 +360,229 @@ public class TrialBalance_Breakdown_PageObjects {
 			}
 		}
 		return isColumnsAmountNotZero;
+	}
+
+	public boolean verifyGLCodeFilter(String gLCode) throws InterruptedException {
+
+		if(driver.findElements(By.xpath("//h5[text()='Has Amount:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasAmountBtn.click();
+		}
+		if(driver.findElements(By.xpath("//h5[text()='Has Stat:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasStatBtn.click();		
+		}
+		if(driver.findElements(By.xpath("//h5[text()='Has GLCode:']//following::div[@class='ios-switch on'][1]")).size()>1) {
+			hasGLCodeBtn.click();
+		}
+		
+		hasGLCodeBtn.click();
+		System.out.println("hasGLCodeBtn clicked");
+		updateBtn.click();
+		System.out.println("updatebtn clicked");
+		Thread.sleep(3000);
+		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		System.out.println("table loaded");
+		
+		boolean isColumnsAmountNotZero=true;
+		int GLCodeHColPos=0;
+		if(waitToLoadTblData) {
+			for (int i = 0; i < lstHeader.size(); i++) {
+				System.out.println(i+"--"+lstHeader.get(i).getText());
+				if (gLCode.equals(lstHeader.get(i).getText())) {
+					GLCodeHColPos =i+1;
+	    		}
+			}
+			
+			System.out.println("lstRow.size()=="+lstRow.size());
+			for (int x = 0; x < lstRow.size(); x++) {
+				int row=x+1;
+				if (driver.findElements(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+GLCodeHColPos+"]")).size()>0) {
+					WebElement AmountHeaderCol = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+GLCodeHColPos+"]")));
+					String AmountCurrentVal=AmountHeaderCol.getText();
+					if(!AmountCurrentVal.equals("---")) {
+						System.out.println("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+GLCodeHColPos+"]");
+						System.out.println("Stat amount="+AmountCurrentVal);
+						if(AmountCurrentVal=="000000") {
+							System.out.println("Stat value zerooooo");
+							isColumnsAmountNotZero=false;
+						}
+					}
+				}
+			}
+		}
+		return isColumnsAmountNotZero;
+	}
+
+	public boolean TBModelView() throws InterruptedException {
+		Thread.sleep(3000);
+		boolean inputValuesLoaded=true;
+		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		System.out.println("table loaded");
+		WebElement editIcon = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("(//div[@id='tblTBContainer']//table/tbody/tr[contains(@class,'Data') and not(contains(@class,'SuspenseData')) and not(contains(@class,'IgnoreData'))]/td/a/i[@class='fa fa-pencil'])[1]")));
+//		editIcon.click();
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", editIcon);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", editIcon);
+		} catch (Exception e) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", editIcon);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", editIcon);
+		}
+		System.out.println("edit icon clicked");
+
+		WebElement editTBModelView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@class='modal-dialog']//h4[text()='Edit TrailBalance']")));
+		Thread.sleep(3000);
+		
+		WebElement DisplayPMSCodeView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[text()='Display PMSCode']//following-sibling::div/div")));
+		DisplayPMSCodeView.click();
+		Thread.sleep(2000);
+		List<WebElement> PMSCodeList = driver.findElements(By.xpath("//label[text()='Display PMSCode']//following-sibling::div/select/option"));
+		if (2>PMSCodeList.size()) {
+			inputValuesLoaded=false;
+		}
+		PMSCodeList.get(1).click();
+		
+		WebElement TypeView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[text()='Type']//following-sibling::div/div")));
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", TypeView);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", TypeView);
+		}
+		Thread.sleep(2000);
+		List<WebElement> TypeList = driver.findElements(By.xpath("//label[text()='Type']//following-sibling::div/select/option"));
+		if (2>TypeList.size()) {
+			inputValuesLoaded=false;
+		}
+		TypeList.get(1).click();
+		
+		
+		WebElement GLAccountView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[text()='GL Account']//following-sibling::div/div")));
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", GLAccountView);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", GLAccountView);
+		}
+		Thread.sleep(2000);
+		List<WebElement> GLAccountList = driver.findElements(By.xpath("//label[text()='GL Account']//following-sibling::div/select/option"));
+		if (2>GLAccountList.size()) {
+			inputValuesLoaded=false;
+		}
+		
+		return inputValuesLoaded;
+	}
+
+	public boolean closeModel() {
+		try {
+
+			WebElement closeBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//div[@class='modal-dialog']//button[text()='Close'])[1]")));
+			closeBtn.click();
+			return true;
+		} catch (Exception e) {
+			System.out.println("Close model btn not clicked");
+			return false;
+		}
+	}
+
+	public void addRow() throws InterruptedException {
+		Thread.sleep(3000);
+		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		System.out.println("table loaded");
+		addRowBtn.click();
+
+		WebElement txtDescription = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table//input[@name='Description']")));
+		txtDescription.sendKeys(Keys.CONTROL + "a");
+		txtDescription.sendKeys(Keys.DELETE);
+		txtDescription.sendKeys("test description");
+
+		WebElement txtDisplayDescription = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table//input[@name='DisplayDescription']")));
+		txtDisplayDescription.sendKeys(Keys.CONTROL + "a");
+		txtDisplayDescription.sendKeys(Keys.DELETE);
+		txtDisplayDescription.sendKeys("test Display Description");
+
+		List<WebElement> selectTypeList = driver.findElements(By.xpath("//table//select[@name='PMSType']//option"));
+		
+		for (int i = 0; i < selectTypeList.size(); i++) {
+			if (selectTypeList.get(i).getText().equalsIgnoreCase("Stat")) {
+				System.out.println("Type list item ===" + selectTypeList.get(i).getText());
+				selectTypeList.get(i).click();
+			}
+		}
+		WebElement GLCodeSelect = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table//select[@name='GLCode']//option")));
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", GLCodeSelect);
+		} catch (Exception e) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", GLCodeSelect);
+		}
+		
+		List<WebElement> GLCodeList = driver.findElements(By.xpath("//table//select[@name='GLCode']//option"));
+//		for (int i = 0; i < GLCodeList.size(); i++) {
+//			if (GLCodeList.get(i).getText().equalsIgnoreCase("Stat")) {
+//				System.out.println("GLCode list item ===" + GLCodeList.get(i).getText());
+//				GLCodeList.get(i).click();
+//			}
+//		}
+		GLCodeList.get(1).click();
+		WebElement saveBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//td//a[@id='btnSaveTB']")));
+		saveBtn.click();
+		
+		Thread.sleep(3000);
+		Boolean waitsaveTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		
+	}
+
+	public boolean verifyRowAdded() throws InterruptedException {
+		Thread.sleep(3000);
+		Boolean waitsaveTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		
+		int isRowAvailable =driver.findElements(By.xpath("//tr//td[text()='test description']")).size();
+		if(isRowAvailable>0) {
+			System.out.println("newly added row is available!");
+			return true;
+		}
+		else {
+			System.out.println("newly added row is not available!");
+			return false;
+		}
+	}
+
+	public boolean deleteAddedRow() throws InterruptedException {
+		Thread.sleep(3000);
+		WebElement deleteBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("(//tr//td[text()='test description']//following::td/a[@title='Delete'])[1]")));
+		deleteBtn.click();
+		
+		Thread.sleep(1500);
+		WebElement deleteModelYesBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@role='dialog']//h4[text()='Delete']//following::button[text()='Yes']")));
+		deleteModelYesBtn.click();
+		
+		Thread.sleep(3000);
+		Boolean waitdeleteTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		return true;
 	}
 }

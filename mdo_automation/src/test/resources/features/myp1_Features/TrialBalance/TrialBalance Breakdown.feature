@@ -22,16 +22,17 @@ Feature: TrialBalance Breakdown Functionality
     Scenario: Verify Has Stat filter option
     Then Verify Stat "Stat" column values are greater than zero when filter Has Stat
     
-    #Scenario: Verify Has GLCode filter option
-    #And Verify GL Code values are greater than zero when filter Has GLCode
+    Scenario: Verify Has GLCode filter option
+    And Verify GL Code "GL Code" column values are greater than zero when filter Has GLCode
     
-    #Scenario: Verify TrialBalance model main functionality
-    #Given Verify Edit TrialBalance model view options
-    #Then Verify close model option
+    Scenario: Verify TrialBalance model main functionality
+    Given Verify Edit TrialBalance model view options
+    Then Verify close model option
     
-    #Scenario: Verify Add and Delete row section functionality
-    #And Verify Add Row section
-    #When Verify Delete Row section
+    Scenario: Verify Add and Delete row section functionality
+    And Verify Add Row section
+    Then Verify Row added
+    When Verify Delete Row section
     
     
     

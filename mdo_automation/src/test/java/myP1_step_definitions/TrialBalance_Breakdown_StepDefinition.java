@@ -56,33 +56,33 @@ public class TrialBalance_Breakdown_StepDefinition {
 		assertTrue(tbBreakdownPo.verifyHasStatFilter(stat));
 	}
 
-	@And("Verify GL Code values are greater than zero when filter Has GLCode")
-	public void verify_gl_code_values_are_greater_than_zero_when_filter_has_gl_code() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@And("Verify GL Code {string} column values are greater than zero when filter Has GLCode")
+	public void verify_gl_code_values_are_greater_than_zero_when_filter_has_gl_code(String GLCode) throws InterruptedException {
+		assertTrue(tbBreakdownPo.verifyGLCodeFilter(GLCode));
 	}
 
 	@Given("Verify Edit TrialBalance model view options")
-	public void verify_edit_trial_balance_model_view_options() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void verify_edit_trial_balance_model_view_options() throws InterruptedException {
+		assertTrue(tbBreakdownPo.TBModelView());
 	}
 
 	@Then("Verify close model option")
 	public void verify_close_model_options() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+		assertTrue(tbBreakdownPo.closeModel());
 	}
 
 	@And("Verify Add Row section")
-	public void verify_add_row_section() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void verify_add_row_section() throws InterruptedException {
+		tbBreakdownPo.addRow();
+	}
+
+	@Then("Verify Row added")
+	public void verify_row_added() throws InterruptedException {
+		assertTrue(tbBreakdownPo.verifyRowAdded());
 	}
 
 	@When("Verify Delete Row section")
-	public void verify_delete_row_section() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	public void verify_delete_row_section() throws InterruptedException {
+		assertTrue(tbBreakdownPo.deleteAddedRow());
 	}
 }

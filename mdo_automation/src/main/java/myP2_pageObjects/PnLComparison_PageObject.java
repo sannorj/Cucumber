@@ -103,13 +103,13 @@ public class PnLComparison_PageObject {
 	@FindBy(xpath = "//div[@role='row'][@aria-selected='false']")
 	List<WebElement> listStaticValues;
 
-	@FindBy(xpath = "//tr[@data-el='Occupancy']/td[3]")
+	@FindBy(xpath = "(//div[@data-field='column_2'])[4]//div")
 	WebElement cellOccupancy;
 
-	@FindBy(xpath = "//tr[@data-el='Rooms sold']/td[3]")
+	@FindBy(xpath = "(//div[@data-field='column_2'])[3]//div")
 	WebElement cellCRoomSold;
 
-	@FindBy(xpath = "//tr[@data-el='Rooms available']/td[3]")
+	@FindBy(xpath = "(//div[@data-field='column_2'])[2]//div")
 	WebElement cellRoomsAvailable;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV90']/td[3]")
@@ -529,22 +529,54 @@ public class PnLComparison_PageObject {
 
 	}
 
-	public boolean verifyOwnersViewSection() {
+	public void occupancyCalFunc() {
 
-		ExpectedConditions.visibilityOf(listSection.get(1));
-		for (int x = 0; x < listStaticValues.size(); x++) {
-			/* split and ready the data from property file */
-			String[] a = configReader.getProp("Owner_Section").split(",");
-			for (int i = 0; i < a.length; i++) {
-				String expected = a[i];
-				String actual = listSection.get(x).getText();
-				if (actual.contains(expected)) {
-					flag = true;
-				} else {
-					flag = false;
-				}
-			}
+		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellCRoomSold));
+		double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
+
+		WebElement RoomsAvailable = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellRoomsAvailable));
+		double RoomsAvailableValue = Double.parseDouble(RoomsAvailable.getText().replaceAll(",", ""));
+
+		/* Calculate the Occupancy value */
+		double x = RoomSoldValue / RoomsAvailableValue * 100;
+		roundOffOcc = Math.round(x * 100.0) / 100.0;
+
+	}
+
+	public boolean verifyOccCalculationFunc() {
+
+		WebElement OccValue = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(cellOccupancy));
+		double Occupancy = Double.parseDouble(OccValue.getText().replace("%", ""));
+
+		/* Verify the calculated and captured values are same. */
+		if (Occupancy == roundOffOcc) {
+			return true;
+		} else {
+			return false;
 		}
-		return flag;
+	}
+	
+	public void adrCalFunc() { //xpath changes and pending
+
+		WebElement TotalRoomsRevenue = new WebDriverWait(driver, Duration.ofSeconds(100)).until(ExpectedConditions.visibilityOf(cellTotalRoomsRevenue));
+		double TotalRoomsRevenueValue = Double.parseDouble(TotalRoomsRevenue.getText().replaceAll(",", "").replaceAll("\\$", ""));
+
+		WebElement RoomSold = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellCRoomSold));
+		double RoomSoldValue = Double.parseDouble(RoomSold.getText().replaceAll(",", ""));
+
+		double x = TotalRoomsRevenueValue / RoomSoldValue;
+		roundOffAdr = Math.round(x * 100.0) / 100.0;
+
+	}
+
+	public boolean verifyAdrCalculationFunc() { //xpath changes and pending
+
+		WebElement adr = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(cellAdr));
+		double adrValue = Double.parseDouble(adr.getText().replace(",", "").replaceAll("\\$", ""));
+		if (roundOffAdr == adrValue) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

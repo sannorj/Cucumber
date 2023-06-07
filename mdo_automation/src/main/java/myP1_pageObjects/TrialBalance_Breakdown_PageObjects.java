@@ -98,7 +98,7 @@ public class TrialBalance_Breakdown_PageObjects {
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@id='ddlHotels']//option")));
 		drpHotel.selectByVisibleText(hotel);
 
-		System.out.println("testttt= "+hotel+"---"+period);
+		System.out.println("hotel and period= "+hotel+"---"+period);
 		
 		Select drpPeriod = new Select(periodDropdown);
 		WebElement waitPeriodLoad = new WebDriverWait(driver, Duration.ofSeconds(100))
@@ -141,10 +141,9 @@ public class TrialBalance_Breakdown_PageObjects {
 				WebElement DescriptionHeaderCol = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[contains(@class,'Data')]["+row+"]/td["+descriptionHColPos+"]")));
 				String typeCurrentVal=TypeHeaderCol.getText();
-				System.out.println("============="+typeCurrentVal);
+				System.out.println("type current value=="+typeCurrentVal);
 				String descriptionCurrentVal=DescriptionHeaderCol.getText();
 				if(typeCurrentVal != "" && typeCurrentVal != "---") {
-					System.out.println("--------"+typeCurrentVal);
 					if(descriptionCurrentVal.contains(typeCurrentVal)) {
 						isColumnsTypeEqual = true; 
 					}else {
@@ -178,7 +177,7 @@ public class TrialBalance_Breakdown_PageObjects {
 				WebElement DisplayDescriptionHeaderCol = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[contains(@class,'Data')]["+row+"]/td["+displayDiscriptionHColPos+"]")));
 				String typeCurrentVal=TypeHeaderCol.getText();
-				System.out.println("**************** "+typeCurrentVal);
+				System.out.println("Type current value=** "+typeCurrentVal);
 				String displayDescriptionCurrentVal=DisplayDescriptionHeaderCol.getText();
 				if(typeCurrentVal != "" && typeCurrentVal != "---") {
 					System.out.println("typeCurrentVal--------"+typeCurrentVal);
@@ -208,7 +207,7 @@ public class TrialBalance_Breakdown_PageObjects {
 		hasAmountBtn.click();
 		System.out.println("hasAmountBtn clicked");
 		updateBtn.click();
-		System.out.println("hasAmountBtn clicked");
+		System.out.println("updateBtn clicked");
 		Thread.sleep(3000);
 		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
@@ -235,7 +234,7 @@ public class TrialBalance_Breakdown_PageObjects {
 						Float Amount = Float.parseFloat(AmountCurrentVal);
 						System.out.println("current amount="+Amount);
 						if(Amount==0) {
-							System.out.println("amount zerooooo");
+							System.out.println("amount zero");
 							isColumnsAmountNotZero=false;
 						}
 					}
@@ -260,7 +259,7 @@ public class TrialBalance_Breakdown_PageObjects {
 		hasAmountBtn.click();
 		System.out.println("hasAmountBtn clicked");
 		updateBtn.click();
-		System.out.println("hasAmountBtn clicked");
+		System.out.println("updateBtn clicked");
 		Thread.sleep(3000);
 		Boolean waitToLoadTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
@@ -348,11 +347,10 @@ public class TrialBalance_Breakdown_PageObjects {
 					String AmountCurrentVal=AmountHeaderCol.getText().replaceAll(",", "");
 					System.out.println("Stat current Value====="+AmountCurrentVal);
 					if(!AmountCurrentVal.equals("---")) {
-						System.out.println("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+statHColPos+"]");
 						Float Amount = Float.parseFloat(AmountCurrentVal);
 						System.out.println("Stat amount="+Amount);
 						if(Amount==0) {
-							System.out.println("Stat value zerooooo");
+							System.out.println("Stat value zero");
 							isColumnsAmountNotZero=false;
 						}
 					}
@@ -401,10 +399,9 @@ public class TrialBalance_Breakdown_PageObjects {
 							.visibilityOfElementLocated(By.xpath("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+GLCodeHColPos+"]")));
 					String AmountCurrentVal=AmountHeaderCol.getText();
 					if(!AmountCurrentVal.equals("---")) {
-						System.out.println("//div[@id='tblTBContainer']//table/tbody/tr[not(contains(@class,'hidden'))]["+row+"]/td["+GLCodeHColPos+"]");
 						System.out.println("Stat amount="+AmountCurrentVal);
 						if(AmountCurrentVal=="000000") {
-							System.out.println("Stat value zerooooo");
+							System.out.println("Stat value zero");
 							isColumnsAmountNotZero=false;
 						}
 					}
@@ -422,7 +419,7 @@ public class TrialBalance_Breakdown_PageObjects {
 		System.out.println("table loaded");
 		WebElement editIcon = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//div[@id='tblTBContainer']//table/tbody/tr[contains(@class,'Data') and not(contains(@class,'SuspenseData')) and not(contains(@class,'IgnoreData'))]/td/a/i[@class='fa fa-pencil'])[1]")));
-//		editIcon.click();
+
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].scrollIntoView();", editIcon);
@@ -536,12 +533,6 @@ public class TrialBalance_Breakdown_PageObjects {
 		}
 		
 		List<WebElement> GLCodeList = driver.findElements(By.xpath("//table//select[@name='GLCode']//option"));
-//		for (int i = 0; i < GLCodeList.size(); i++) {
-//			if (GLCodeList.get(i).getText().equalsIgnoreCase("Stat")) {
-//				System.out.println("GLCode list item ===" + GLCodeList.get(i).getText());
-//				GLCodeList.get(i).click();
-//			}
-//		}
 		GLCodeList.get(1).click();
 		WebElement saveBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//td//a[@id='btnSaveTB']")));

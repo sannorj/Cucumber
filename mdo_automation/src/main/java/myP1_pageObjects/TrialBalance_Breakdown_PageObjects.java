@@ -573,7 +573,17 @@ public class TrialBalance_Breakdown_PageObjects {
 		Thread.sleep(3000);
 		WebElement deleteBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//tr//td[text()='test description']//following::td/a[@title='Delete'])[1]")));
-		deleteBtn.click();
+		try {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", deleteBtn);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", deleteBtn);
+		} catch (Exception e) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].scrollIntoView();", deleteBtn);
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", deleteBtn);
+		}
 		
 		Thread.sleep(1500);
 		WebElement deleteModelYesBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
@@ -584,5 +594,22 @@ public class TrialBalance_Breakdown_PageObjects {
 		Boolean waitdeleteTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
 		return true;
+	}
+
+	public boolean verifyRowDeleted() throws InterruptedException {
+		Thread.sleep(3000);
+		updateBtn.click();
+		Thread.sleep(3000);
+		Boolean waitdeleteTblData = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[@class='ajax-loader-full-screen' and @style='display: block;']")));
+		int isRowAvailable =driver.findElements(By.xpath("//tr//td[text()='test description']")).size();
+		if(isRowAvailable>0) {
+			System.out.println("newly added not deleted!");
+			return false;
+		}
+		else {
+			System.out.println("newly added is already deleted!");
+			return true;
+		}
 	}
 }

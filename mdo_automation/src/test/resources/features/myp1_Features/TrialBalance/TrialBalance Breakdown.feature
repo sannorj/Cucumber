@@ -30,9 +30,10 @@ Feature: TrialBalance Breakdown Functionality
     Then Verify close model option
     
     Scenario: Verify Add and Delete row section functionality
-    And Verify Add Row section
-    Then Verify Row added
-    When Verify Delete Row section
+    Given Verify Add Row section
+    And Verify Row added
+    When Delete added Row
+    Then Verify row deleted
     
     
     

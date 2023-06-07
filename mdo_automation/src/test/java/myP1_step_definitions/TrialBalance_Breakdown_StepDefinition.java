@@ -71,18 +71,23 @@ public class TrialBalance_Breakdown_StepDefinition {
 		assertTrue(tbBreakdownPo.closeModel());
 	}
 
-	@And("Verify Add Row section")
+	@Given("Verify Add Row section")
 	public void verify_add_row_section() throws InterruptedException {
 		tbBreakdownPo.addRow();
 	}
 
-	@Then("Verify Row added")
+	@And("Verify Row added")
 	public void verify_row_added() throws InterruptedException {
 		assertTrue(tbBreakdownPo.verifyRowAdded());
 	}
 
-	@When("Verify Delete Row section")
-	public void verify_delete_row_section() throws InterruptedException {
+	@When("Delete added Row")
+	public void delete_added_row() throws InterruptedException {
 		assertTrue(tbBreakdownPo.deleteAddedRow());
+	}
+
+	@Then("Verify row deleted")
+	public void verify_row_deleted() throws InterruptedException {
+		assertTrue(tbBreakdownPo.verifyRowDeleted());
 	}
 }

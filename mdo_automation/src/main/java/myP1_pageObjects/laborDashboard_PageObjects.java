@@ -93,13 +93,10 @@ public class laborDashboard_PageObjects {
 		System.out.println("panelLst.size()==="+panelLst.size());
 		for (int i = 0; i < panelLst.size(); i++) {
 			int val = i + 1;
-//			JavascriptExecutor js = (JavascriptExecutor) driver;
 			WebElement cardMinimize = new WebDriverWait(driver, Duration.ofSeconds(700))
 					.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions']//a[contains(@class,'panel-action panel-action-toggle')])["
 									+ val + "]")));
-//			js.executeScript("arguments[0].scrollIntoView();", cardMinimize);
-//			Thread.sleep(3000);
 			System.out.println("(//header[@class='panel-heading portlet-handler']//div[@class='panel-actions'])["+ val + "]");
 			try {
 				JavascriptExecutor executor = (JavascriptExecutor) driver;

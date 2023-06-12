@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @arDashChartVisibility @pasindu
+@myP2_Regression @arDashChartVisibility @pasindu 
 
 Feature: AR Aging Dashboard - Chart Visibility Checking Functionality 
 

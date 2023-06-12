@@ -6,7 +6,6 @@ import factory.DriverFactory;
 import io.cucumber.java.en.*;
 import myP2_pageObjects.AR_Dashboard_Chart_visibility_PageObject;
 
-
 public class AR_Dashboard_Chart_visibility_StepDefinition {
 	
 	AR_Dashboard_Chart_visibility_PageObject ARdashboardCV = new AR_Dashboard_Chart_visibility_PageObject(DriverFactory.getDriver());

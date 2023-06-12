@@ -229,5 +229,4 @@ public class AR_Dashboard_Chart_visibility_PageObject {
 
 	}
 	
-	
 }

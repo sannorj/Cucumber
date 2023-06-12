@@ -32,7 +32,7 @@ public class dbTest_PageObject {
 		try {
 
 			String query = "SELECT sum_amount FROM calculation_mdo_gl_code_actual where hotel_id = '" + hotelId
-					+ "' and date = '" + date + "' and mdo_gl_code ='" + glCode + "' and hre_type_id ='" + hre + "' ";
+					+ "' and date = '" + date + "' and mdo_gl_code ='" + glCode + "' and hre_type_id ='" + hre + "' AND removed_at is NULL ";
 			System.out.println("Query : " + query);
 			st = DBConnection.getConnection().createStatement();
 			rs = st.executeQuery(query);

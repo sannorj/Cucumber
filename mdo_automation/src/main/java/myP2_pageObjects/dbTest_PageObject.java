@@ -31,8 +31,7 @@ public class dbTest_PageObject {
 	public void selectActualData(String table, String glCode, String date, String hotelId, String hre) {
 		try {
 
-			String query = "SELECT sum_amount FROM calculation_mdo_gl_code_actual where hotel_id = '" + hotelId
-					+ "' and date = '" + date + "' and mdo_gl_code ='" + glCode + "' and hre_type_id ='" + hre + "' AND removed_at is NULL ";
+			String query = "SELECT sum_amount FROM  "+ table + " where hotel_id = '" + hotelId+ "' and date = '" + date + "' and mdo_gl_code ='" + glCode + "' and hre_type_id ='" + hre + "' AND removed_at is NULL ";
 			System.out.println("Query : " + query);
 			st = DBConnection.getConnection().createStatement();
 			rs = st.executeQuery(query);
@@ -49,11 +48,10 @@ public class dbTest_PageObject {
 		}
 	}
 
-	public void selectBaseData(String table, String kpi, String date, String hotelId, String hre) {
+	public void selectBaseData(String basetable, String kpi, String date, String hotelId, String hre) {
 		try {
 
-			String query = "SELECT amount_current FROM calculation_kpi_actual_periods_2021 where hotel_id = '" + hotelId
-					+ "' and date = '" + date + "'  and kpi_name ='" + kpi + "' and hre_type_id ='" + hre + "' ";
+			String query = "SELECT amount_current FROM " + basetable + " where hotel_id = '" + hotelId+ "' and date = '" + date + "'  and kpi_name ='" + kpi + "' and hre_type_id ='" + hre + "' ";
 			System.out.println("Query : " + query);
 			st = DBConnection.getConnection().createStatement();
 			rs = st.executeQuery(query);
@@ -74,9 +72,9 @@ public class dbTest_PageObject {
 		boolean result = false;
 
 		System.out.println("==============================");
-		System.out.println("= Actual Data Value  : " + Actual + " =");
+		System.out.println("= Actual Data Value  : " + Actual);
 		System.out.println("==============================");
-		System.out.println("= Base Data Value    : " + Base + " =");
+		System.out.println("= Base Data Value    : " + Base );
 		System.out.println("==============================");
 
 		if (Double.parseDouble(Actual) == Double.parseDouble(Base)) {

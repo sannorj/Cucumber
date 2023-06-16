@@ -5,10 +5,8 @@ import static org.junit.Assert.assertTrue;
 import dbConnection.DBConnection;
 import factory.DriverFactory;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import myP2_pageObjects.GL_Hierarchy_Mapping_PageObject;
 import myP2_pageObjects.dbTest_PageObject;
 
 public class dbTest_StepDefinition {

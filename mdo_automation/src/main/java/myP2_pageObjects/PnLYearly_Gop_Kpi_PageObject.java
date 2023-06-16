@@ -429,12 +429,8 @@ public class PnLYearly_Gop_Kpi_PageObject {
 		if (gopKpiElem2 > 0) {
 			
 			System.out.println("GOP Margin, value can not be visible in P&L Property Comparison Report... <<< Fail >>>");
-			
 			flag = false;
 		}
-		
 		return flag;
-		
 	}
-
 }

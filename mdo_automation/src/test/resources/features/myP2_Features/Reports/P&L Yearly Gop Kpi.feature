@@ -1,5 +1,5 @@
-#Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnLYearly
+#Author: pasindu@mydigitaloffice.ca
+@myP2_Regression @pnlYearlyGopKpi @pasindu
 
 
 Feature: P&L Yearly - GOP KPI are not displayed for P&L Monthly & P&L Comparison reports

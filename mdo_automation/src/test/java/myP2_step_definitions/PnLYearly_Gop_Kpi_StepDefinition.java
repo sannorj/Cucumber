@@ -3,10 +3,7 @@ package myP2_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import myP2_pageObjects.PnLYearly_Gop_Kpi_PageObject;
 
 public class PnLYearly_Gop_Kpi_StepDefinition {
@@ -42,5 +39,6 @@ public class PnLYearly_Gop_Kpi_StepDefinition {
 	public void confirm_if_the_sections_gop_flow_thru_prior_year_actuals_gop_margin_sections_are_not_visible_in_the_PnL_Property_Comparison_report() throws InterruptedException {
 		assertTrue(pnlYearlyGopKpi.verifyPnlPCheader());
 	}
+	
 	
 }

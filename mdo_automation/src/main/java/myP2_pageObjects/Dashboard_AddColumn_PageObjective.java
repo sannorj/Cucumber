@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.github.dockerjava.api.model.Config;
 
 import utils.ConfigReader;
 import utils.ConstantsReader;
@@ -89,20 +88,15 @@ public class Dashboard_AddColumn_PageObjective {
 
 	public boolean navigateToAddColumn() throws InterruptedException {
 
-		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnEditColumn));
+		WebElement btnEdit = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(btnEditColumn));
+        btnEdit.click();
 
-		btnEdit.click();
-
-		WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(btnAddColumn));
+		WebElement btnAdd = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(btnAddColumn));
 
 		btnAdd.click();
 		Thread.sleep(2500);
 
-		WebElement lblAdd = new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.visibilityOf(lblAddColumn));
-
+		WebElement lblAdd = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(lblAddColumn));
 		return lblAdd.isDisplayed();
 	}
 

@@ -16,6 +16,11 @@ public class PnLYearlyMainHeaderTitle_StepDefinition {
 	public void I_select_the_group(String string, String year) throws InterruptedException {
 		pnlYearly.selectDropdownParameters(string, year);
 	}
+	
+	@Then("User select the Column1 dropdown parameters {string} and year {string}")
+	public void I_select_the_group_AF(String string, String year) throws InterruptedException {
+		pnlYearly.selectDropdownParametersForActualForecast(string, year);
+	}
 
 	@Then("User click the apply button and load the report")
 	public void User_click_the_apply_button_and_load_the_report() throws InterruptedException {

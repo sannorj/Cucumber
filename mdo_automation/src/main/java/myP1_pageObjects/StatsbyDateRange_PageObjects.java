@@ -37,10 +37,10 @@ public class StatsbyDateRange_PageObjects {
 	@FindBy(xpath = "//ul[@id='select2-results-1']//li//div")
 	List<WebElement> lstDropDowHotel;
 	
-	@FindBy(xpath = "//table/thead/tr/th")
+	@FindBy(xpath = "//table[@id='datatable-ajax']/thead/tr/th")
 	List<WebElement> lstHeaders;
 	
-	@FindBy(xpath = "//table/tbody/tr")
+	@FindBy(xpath = "//table[@id='datatable-ajax']/tbody/tr")
 	List<WebElement> lstRows;
 	
 	@FindBy(xpath = "//input[@id='txtStartDate']")
@@ -179,15 +179,19 @@ public class StatsbyDateRange_PageObjects {
 		String VisibleValue = df.format(currentTotalView);
 		System.out.println("calculated averge value= "+ActualValue);
 		System.out.println("Current view averge value= "+VisibleValue);
-		if(ActualValue!=VisibleValue) {
+		if (ActualValue.equals(VisibleValue)) {
+			return true;
+		}else {
 			System.out.println("Occ average value isn't correct");
 			return false;
-		}else {
-			return true;
 		}
 	}
 
 	public boolean calculateAdrAvgOfRows() {
+		DecimalFormat df = new DecimalFormat("0.00");
+		df.setGroupingUsed(true);
+		df.setGroupingSize(3);
+		df.setMaximumFractionDigits(2);
 		int rowId=0;
 		for (int i = 0; i < lstHeaders.size(); i++) {
 			if (lstHeaders.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("StatbyDR_ADR_Val"))) {
@@ -209,13 +213,133 @@ public class StatsbyDateRange_PageObjects {
 		String currentTotalValue = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//table/tbody/tr[last()]/td["+rowId+"]"))).getText();
 		float currentTotalView=Float.parseFloat(currentTotalValue);
-		System.out.println("calculated averge value= "+avgRowTotal);
-		System.out.println("Current view averge value= "+currentTotalView);
-		if(currentTotalView!=avgRowTotal) {
+		String ActualValue = df.format(avgRowTotal);
+		String VisibleValue = df.format(currentTotalView);
+		System.out.println("calculated averge value= "+ActualValue);
+		System.out.println("Current view averge value= "+VisibleValue);
+		if (ActualValue.equals(VisibleValue)) {
+			return true;
+		}else {
 			System.out.println("ADR average value isn't correct");
 			return false;
-		}else {
+		}
+	}
+
+	public boolean calculateRevPARAvgOfRows() throws InterruptedException {
+		DecimalFormat df = new DecimalFormat("0.00");
+		df.setGroupingUsed(true);
+		df.setGroupingSize(3);
+		df.setMaximumFractionDigits(2);
+		int rowId=0;
+		for (int i = 0; i < lstHeaders.size(); i++) {
+			if (lstHeaders.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("StatbyDR_RevPAR_Val"))) {
+				rowId=i+1;
+			}
+		}
+		int rowList=lstRows.size();
+		float SumofAllRows=0;
+		System.out.println("rowList="+rowList);
+		Thread.sleep(4000);
+		int rows=rowList-1;
+		for (int i = 0; i < rows; i++) {
+			int row=i+1;
+			String tableLoadView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table/tbody/tr["+row+"]/td["+rowId+"]"))).getText();
+			System.out.println(i+"RevPAR =="+tableLoadView);
+			SumofAllRows=SumofAllRows+ Float.parseFloat(tableLoadView);
+		}
+		float avgRowTotal=SumofAllRows/rows;
+		System.out.println("Average of all RevPAR rows="+avgRowTotal);
+		String currentTotalValue = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table/tbody/tr[last()]/td["+rowId+"]"))).getText();
+		float currentTotalView=Float.parseFloat(currentTotalValue);
+		String ActualValue = df.format(avgRowTotal);
+		String VisibleValue = df.format(currentTotalView);
+		System.out.println("calculated averge value= "+ActualValue);
+		System.out.println("Current view averge value= "+VisibleValue);
+		if (ActualValue.equals(VisibleValue)) {
 			return true;
+		}else {
+			System.out.println("RevPAR average value isn't correct");
+			return false;
+		}
+	}
+
+	public boolean calculateRoomRevenueTotalOfRows() throws InterruptedException {
+		DecimalFormat df = new DecimalFormat("0.00");
+		df.setGroupingUsed(true);
+		df.setGroupingSize(3);
+		df.setMaximumFractionDigits(2);
+		int rowId=0;
+		for (int i = 0; i < lstHeaders.size(); i++) {
+			if (lstHeaders.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("StatbyDR_RoomRevenue_Val"))) {
+				rowId=i+1;
+			}
+		}
+		int rowList=lstRows.size();
+		float SumofAllRows=0;
+		System.out.println("rowList="+rowList);
+		Thread.sleep(4000);
+		int rows=rowList-1;
+		for (int i = 0; i < rows; i++) {
+			int row=i+1;
+			String tableLoadView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table/tbody/tr["+row+"]/td["+rowId+"]"))).getText();
+			System.out.println(i+" Room Revenue =="+tableLoadView);
+			SumofAllRows=SumofAllRows+ Float.parseFloat(tableLoadView);
+		}
+		System.out.println("Sum of all Room Revenue rows="+SumofAllRows);
+		String currentTotalValue = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table/tbody/tr[last()]/td["+rowId+"]"))).getText();
+		float currentTotalView=Float.parseFloat(currentTotalValue);
+		String ActualValue = df.format(SumofAllRows);
+		String VisibleValue = df.format(currentTotalView);
+		System.out.println("calculated total value= "+ActualValue);
+		System.out.println("Current view total value= "+VisibleValue);
+		if (ActualValue.equals(VisibleValue)) {
+			return true;
+		}else {
+			System.out.println("Room Revenue Total value isn't correct");
+			return false;
+		}
+	}
+
+	public boolean calculateRoomSoldTotalOfRows() throws InterruptedException {
+		DecimalFormat df = new DecimalFormat("0.00");
+		df.setGroupingUsed(true);
+		df.setGroupingSize(3);
+		df.setMaximumFractionDigits(2);
+		int rowId=0;
+		for (int i = 0; i < lstHeaders.size(); i++) {
+			if (lstHeaders.get(i).getText().equalsIgnoreCase(configReader.getMYP1Prop("StatbyDR_RoomSold_Val"))) {
+				rowId=i+1;
+			}
+		}
+		int rowList=lstRows.size();
+		float SumofAllRows=0;
+		System.out.println("rowList="+rowList);
+		Thread.sleep(4000);
+		int rows=rowList-1;
+		for (int i = 0; i < rows; i++) {
+			int row=i+1;
+			String tableLoadView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table/tbody/tr["+row+"]/td["+rowId+"]"))).getText();
+			System.out.println(i+" Room Sold =="+tableLoadView);
+			SumofAllRows=SumofAllRows+ Float.parseFloat(tableLoadView);
+		}
+		System.out.println("Sum of all Room Sold rows="+SumofAllRows);
+		String currentTotalValue = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//table/tbody/tr[last()]/td["+rowId+"]"))).getText();
+		float currentTotalView=Float.parseFloat(currentTotalValue);
+		String ActualValue = df.format(SumofAllRows);
+		String VisibleValue = df.format(currentTotalView);
+		System.out.println("calculated total value= "+ActualValue);
+		System.out.println("Current view total value= "+VisibleValue);
+		if (ActualValue.equals(VisibleValue)) {
+			return true;
+		}else {
+			System.out.println("Room Sold Total value isn't correct");
+			return false;
 		}
 	}
 }

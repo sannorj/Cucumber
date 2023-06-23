@@ -40,20 +40,18 @@ StatsbyDateRange_PageObjects StatbyDRPo = new StatsbyDateRange_PageObjects(Drive
 	}
 	
 	@Given("Verify RevPAR total values show the average of all rows")
-	public void verify_rev_par_total_values_show_the_average_of_all_rows() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void verify_rev_par_total_values_show_the_average_of_all_rows() throws InterruptedException {
+		assertTrue(StatbyDRPo.calculateRevPARAvgOfRows());
 	}
 	
 	@When("Verify Room Revenue values show total values of all the rows")
-	public void verify_room_revenue_values_show_total_values_of_all_the_rows() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void verify_room_revenue_values_show_total_values_of_all_the_rows() throws InterruptedException {
+		assertTrue(StatbyDRPo.calculateRoomRevenueTotalOfRows());
 	}
 	
 	@When("Verify Room Sold values show total values of all the rows")
-	public void verify_room_sold_values_show_total_values_of_all_the_rows() {
-//		StatbyDRPo.calculateTotalOfRows();
+	public void verify_room_sold_values_show_total_values_of_all_the_rows() throws InterruptedException {
+		assertTrue(StatbyDRPo.calculateRoomSoldTotalOfRows());
 	}
 
 }

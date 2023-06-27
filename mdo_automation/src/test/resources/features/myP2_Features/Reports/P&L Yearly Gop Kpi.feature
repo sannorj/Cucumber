@@ -1,7 +1,6 @@
 #Author: pasindu@mydigitaloffice.ca
 @myP2_Regression @pnlYearlyGopKpi @pasindu
 
-
 Feature: P&L Yearly - GOP KPI are not displayed for P&L Monthly & P&L Comparison reports
 
   Background: Navigate to P&L Yearly page and verify functionality  

@@ -166,24 +166,24 @@ public class AR_Dashboard_Chart_visibility_PageObject {
 		
 		Thread.sleep(2000);
 		
-		try {
-			if (totIntegerValue > 0) {
+		
+		if (totIntegerValue > 0) {
 			
-				flag = true;
+			flag = true;
 				
-				Thread.sleep(3000);
+			Thread.sleep(3000);
 			
-				WebElement graphThirdValue = new WebDriverWait(driver, Duration.ofSeconds(250))
+			WebElement graphThirdValue = new WebDriverWait(driver, Duration.ofSeconds(250))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//div[text()='" + configReader.getProp("AR_Aging_Widget_chart") + "']/ancestor::div[@data-el='chartCard']//*[local-name()='svg' and @role='group']//*[local-name()='tspan'])[3]")));
 			
-				graphThirdValue.isDisplayed();
+			graphThirdValue.isDisplayed();
 				
-				OrginalGraphStringValue = graphThirdValue.getText();
+			OrginalGraphStringValue = graphThirdValue.getText();
 			
-				Thread.sleep(3000);
+			Thread.sleep(3000);
 				
-				try {
-					if (OrginalTotStringValue.equalsIgnoreCase(OrginalGraphStringValue)) {
+				
+				if (OrginalTotStringValue.equalsIgnoreCase(OrginalGraphStringValue)) {
 						
 						Thread.sleep(3000);
 					
@@ -191,42 +191,29 @@ public class AR_Dashboard_Chart_visibility_PageObject {
 					
 						System.out.println("Total value greater than zero and equal to the Graph value       <<<--//// Pass ////-->>>");
 
-					}
-					else {
+				}
+				else {
 					
 						flag = false;
 						System.out.println("Total value greater than zero and NOT equal to the Graph value       <<<--//// Fail ////-->>>");
-					}
-					
-				}catch (Exception e) {
-					flag = false;
-				
-					e.printStackTrace();
 				}
-				
 			
-			}
-			else{
+		}
+		else{
 			
-				Thread.sleep(3000);
+			Thread.sleep(3000);
 			
-				WebElement graphNoData = new WebDriverWait(driver, Duration.ofSeconds(100))
+			WebElement graphNoData = new WebDriverWait(driver, Duration.ofSeconds(100))
 					.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='" + configReader.getProp("AR_Aging_Widget_chart") + "']/ancestor::div[@data-el='chartCard']//div[@data-el='noDataToShow']")));
 			
-				graphNoData.isDisplayed();
+			graphNoData.isDisplayed();
 			
-				System.out.println("Total less than or equal to zero and displaying NO DATA messege in dashboard widget.");
+			System.out.println("Total less than or equal to zero and displaying NO DATA messege in dashboard widget.");
 			
-			}
-		
-		}catch (Exception e) {
-			flag = false;
-			
-			e.printStackTrace();
 		}
-		return flag;
 		
-
+		return flag;
+	
 	}
 	
 }

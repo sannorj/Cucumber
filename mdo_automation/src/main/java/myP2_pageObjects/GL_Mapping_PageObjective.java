@@ -13,6 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.ConstantsReader;
 import utils.ElementUtils;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class GL_Mapping_PageObjective {
 	
 	private WebDriver driver;	
@@ -197,8 +200,9 @@ public class GL_Mapping_PageObjective {
 		
 		WebElement saveB = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(saveButton));
 		saveB.click();
-		Thread.sleep(7500);		
 		
+		Thread.sleep(7500);		
+		ElementUtils.waitForElementContentToDisplay(glMappingPage, 25);
 	}
 	
 	

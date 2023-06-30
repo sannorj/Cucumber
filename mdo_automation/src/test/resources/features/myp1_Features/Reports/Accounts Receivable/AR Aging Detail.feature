@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression @StatsbyDR
+@myP1_Regression @ARAgingDetail
 Feature: AR Aging Detail functionality
 
  		Background: Verify AR Aging Detail Page Navigation

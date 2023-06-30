@@ -24,5 +24,6 @@ Feature: Stats by Date Range functionality
     When Verify Room Revenue values show total values of all the rows
     When Verify Room Sold values show total values of all the rows
     
+    
     #Scenario: Verify Property dashboard page table data compare with stats by date range table data
     

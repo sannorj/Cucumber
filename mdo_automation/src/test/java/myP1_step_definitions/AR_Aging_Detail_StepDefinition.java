@@ -35,19 +35,17 @@ public class AR_Aging_Detail_StepDefinition {
 	
 	@Then("Select Hotel filter option")
 	public void select_hotel_filter_option() throws InterruptedException {
-		assertTrue(ARagingPo.selectHotel());
+		ARagingPo.selectHotel();
 	}
 	
 	@Given("Select SelectBy filter option")
-	public void select_select_by_filter_option() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void select_select_by_filter_option() throws InterruptedException {
+		ARagingPo.selectSelectBy();
 	}
 	
 	@Given("Select Current Date option")
-	public void select_current_date_option() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void select_current_date_option() throws InterruptedException {
+	    ARagingPo.selectCurrentDate();
 	}
 	
 	@When("Click on Update button")

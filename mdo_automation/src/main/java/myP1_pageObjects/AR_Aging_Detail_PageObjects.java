@@ -123,6 +123,7 @@ public class AR_Aging_Detail_PageObjects {
 			int col=i+1;
 			System.out.println(lstTotalColValues.get(i));
 			String currentTotVal=lstTotalColValues.get(i).getText();
+			System.out.println("*****************==="+currentTotVal);
 			float currentTotalvalue=Float.parseFloat(currentTotVal);
 			System.out.println("current total value of "+col+" column==== "+currentTotVal);
 			

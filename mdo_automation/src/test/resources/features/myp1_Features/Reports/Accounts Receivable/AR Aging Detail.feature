@@ -17,7 +17,7 @@ Feature: AR Aging Detail Page functionality
     When Click on Update button 
     Then Calculate each column total and verify each total values
     #And Calculate each raw total and verify each total values
-    #
+    
     #Scenario: Verify Add Comment Functionality
     #Then Select Hotel filter option
     #Given Select SelectBy filter option

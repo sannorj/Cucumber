@@ -14,8 +14,8 @@ Feature: AR Aging Detail Page functionality
     Then Select Hotel filter option
     Given Select SelectBy filter option
     And Select Current Date option
-    #When Click on Update button 
-    #Then Calculate each column total and each verify total values
+    When Click on Update button 
+    Then Calculate each column total and verify each total values
     #And Calculate each raw total and verify each total values
     #
     #Scenario: Verify Add Comment Functionality

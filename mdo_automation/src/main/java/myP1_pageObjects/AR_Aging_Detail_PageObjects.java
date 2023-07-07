@@ -1,9 +1,11 @@
 package myP1_pageObjects;
 
+import java.text.DecimalFormat;
 import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +41,15 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@id='txtDate']")
 	WebElement currentDate;
 
+	@FindBy(xpath = "//input[@value='Update']")
+	WebElement updateBtn;
+
+	@FindBy(xpath = "//div[@id='datatable-araging-container']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
+	List<WebElement> lstTotalColValues;
+
+	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollBody']//tbody//tr")
+	List<WebElement> lstRaws;
+
 	public void clickOnLink(String LinkName) throws InterruptedException {
 		navigationLink.click();
 		WebElement LinkNameView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
@@ -56,6 +67,7 @@ public class AR_Aging_Detail_PageObjects {
 	public void selectHotel() throws InterruptedException {
 		WebElement waitLoadHotelList = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//a//span[@id='select2-chosen-1']")));
+		Thread.sleep(3000);
 		hotelNameSelect.click();
 		Thread.sleep(3000);
 		try {
@@ -88,6 +100,52 @@ public class AR_Aging_Detail_PageObjects {
 		currentDate.sendKeys(Keys.DELETE);
 		currentDate.sendKeys(configReader.getMYP1Prop("AR_Aging_Detail_Date"));
 		Thread.sleep(3000);
+	}
+
+	public void clickUpdate() throws InterruptedException {
+		Thread.sleep(3000);	
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", updateBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", updateBtn);
+		}
+		Thread.sleep(5000);	
+	}
+
+	public void calculateColTot() {
+		
+		DecimalFormat df = new DecimalFormat("0.00");
+		Boolean valueisEqual=true;
+		
+		for (int i = 0; i < lstTotalColValues.size(); i++) {
+			int col=i+1;
+			System.out.println(lstTotalColValues.get(i));
+			String currentTotVal=lstTotalColValues.get(i).getText();
+			float currentTotalvalue=Float.parseFloat(currentTotVal);
+			System.out.println("current total value of "+col+" column==== "+currentTotVal);
+			
+			float calculatedTotalVal=0;
+			for (int q = 0; q < lstRaws.size(); q++) {
+				int raw=q+1;
+				String currentVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+						.visibilityOfElementLocated(By.xpath("//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollBody']//tbody//tr["+raw+"]//td[contains(@class,'right')]["+col+"]"))).getText();
+				float currentCellvalue=Float.parseFloat(currentVal);
+				calculatedTotalVal=calculatedTotalVal+currentCellvalue;
+				System.out.println("current cell value of "+raw+" raw = "+currentVal);
+			}
+			String calculatedTotalValue = df.format(calculatedTotalVal);
+			System.out.println("calculated total value===="+calculatedTotalValue);
+			System.out.println("");
+			System.out.println("=============================");
+			if(currentTotVal.equals(calculatedTotalValue)) {
+				valueisEqual=true;	
+			}else {
+				valueisEqual=false;
+			}
+		}
+		
 	}
 
 }

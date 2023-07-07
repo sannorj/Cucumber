@@ -49,15 +49,13 @@ public class AR_Aging_Detail_StepDefinition {
 	}
 	
 	@When("Click on Update button")
-	public void click_on_update_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void click_on_update_button() throws InterruptedException {
+	    ARagingPo.clickUpdate();
 	}
 	
-	@Then("Calculate each column total and each verify total values")
-	public void calculate_each_column_total_and_each_verify_total_values() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("Calculate each column total and verify each total values")
+	public void calculate_each_column_total_and_verify_each_total_values() {
+		ARagingPo.calculateColTot();
 	}
 	
 	@Then("Calculate each raw total and verify each total values")

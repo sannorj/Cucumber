@@ -188,4 +188,5 @@ public class Dashboard_WidgetsCalculator_StepDefinition {
 		assertTrue(widgetsCalculator.selectLastYearDateRevPAR()); 
 	}
 	
+	
 }

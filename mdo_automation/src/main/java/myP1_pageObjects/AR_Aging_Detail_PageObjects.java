@@ -44,7 +44,7 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@value='Update']")
 	WebElement updateBtn;
 
-	@FindBy(xpath = "//div[@id='datatable-araging-container']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
+	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
 	List<WebElement> lstTotalColValues;
 
 	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollBody']//tbody//tr")

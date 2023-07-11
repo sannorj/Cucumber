@@ -66,7 +66,7 @@ public class AR_Aging_Detail_PageObjects {
 
 	public void selectHotel() throws InterruptedException {
 		WebElement waitLoadHotelList = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//a//span[@id='select2-chosen-1']")));
+				.visibilityOfElementLocated(By.xpath("//a//span[text()=' Sleep Inn & Suites Lakeside']")));
 		Thread.sleep(3000);
 		hotelNameSelect.click();
 		Thread.sleep(3000);
@@ -116,13 +116,13 @@ public class AR_Aging_Detail_PageObjects {
 
 	public void calculateColTot() {
 		
-		DecimalFormat df = new DecimalFormat("0.00");
+		DecimalFormat df = new DecimalFormat("0.0");
 		Boolean valueisEqual=true;
 		
 		for (int i = 0; i < lstTotalColValues.size(); i++) {
 			int col=i+1;
 			System.out.println(lstTotalColValues.get(i));
-			String currentTotVal=lstTotalColValues.get(i).getText();
+			String currentTotVal=lstTotalColValues.get(i).getText().replaceAll(",", "");
 			System.out.println("*****************==="+currentTotVal);
 			float currentTotalvalue=Float.parseFloat(currentTotVal);
 			System.out.println("current total value of "+col+" column==== "+currentTotVal);
@@ -132,7 +132,7 @@ public class AR_Aging_Detail_PageObjects {
 				int raw=q+1;
 				String currentVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 						.visibilityOfElementLocated(By.xpath("//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollBody']//tbody//tr["+raw+"]//td[contains(@class,'right')]["+col+"]"))).getText();
-				float currentCellvalue=Float.parseFloat(currentVal);
+				float currentCellvalue=Float.parseFloat(currentVal.replaceAll(",", ""));
 				calculatedTotalVal=calculatedTotalVal+currentCellvalue;
 				System.out.println("current cell value of "+raw+" raw = "+currentVal);
 			}
@@ -141,11 +141,17 @@ public class AR_Aging_Detail_PageObjects {
 			System.out.println("");
 			System.out.println("=============================");
 			if(currentTotVal.equals(calculatedTotalValue)) {
+				System.out.println("trueee");
 				valueisEqual=true;	
 			}else {
+				System.out.println("falseee");
 				valueisEqual=false;
 			}
 		}
+		
+	}
+
+	public void calculateRawAgeTot() {
 		
 	}
 

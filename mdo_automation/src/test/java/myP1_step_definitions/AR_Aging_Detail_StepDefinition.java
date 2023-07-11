@@ -3,6 +3,7 @@ package myP1_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,7 +59,12 @@ public class AR_Aging_Detail_StepDefinition {
 		ARagingPo.calculateColTot();
 	}
 	
-	@Then("Calculate each raw total and verify each total values")
+	@And("Calculate each age raw total and verify each age total values")
+	public void calculate_each_age_raw_total_and_verify_each_age_total_values() {
+		ARagingPo.calculateRawAgeTot();
+	}
+	
+	@And("Calculate each raw total and verify each total values")
 	public void calculate_each_raw_total_and_verify_each_total_values() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();

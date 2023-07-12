@@ -2,6 +2,7 @@ package myP1_pageObjects;
 
 import java.text.DecimalFormat;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -114,9 +115,9 @@ public class AR_Aging_Detail_PageObjects {
 		Thread.sleep(5000);	
 	}
 
-	public void calculateColTot() {
+	public boolean calculateColTot() {
 		
-		DecimalFormat df = new DecimalFormat("0.0");
+		DecimalFormat df = new DecimalFormat("0");
 		Boolean valueisEqual=true;
 		
 		for (int i = 0; i < lstTotalColValues.size(); i++) {
@@ -142,17 +143,90 @@ public class AR_Aging_Detail_PageObjects {
 			System.out.println("=============================");
 			if(currentTotVal.equals(calculatedTotalValue)) {
 				System.out.println("trueee");
-				valueisEqual=true;	
 			}else {
 				System.out.println("falseee");
 				valueisEqual=false;
 			}
 		}
+		return valueisEqual;
 		
 	}
 
-	public void calculateRawAgeTot() {
+	public boolean calculateRawAgeTot() {
+
+		DecimalFormat df = new DecimalFormat("0");
+		Boolean valueisEqual=true;
 		
+		for (int i = 0; i < lstRaws.size(); i++) {
+			int raw=i+1;
+			String currentTotalVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='Total'])["+raw+"]"))).getText();
+			float currentTotalvalue=Float.parseFloat(currentTotalVal);
+			System.out.println("current total value of "+raw+" raw==== "+currentTotalVal);
+			
+			float calculatedTot=0;
+			List<WebElement> currentVals =  driver.findElements(By.xpath("//table[@id='datatable-ajax-3']//tbody/tr["+raw+"]/td[contains(@data-label,'Due_')]"));
+			for (int q = 0; q < currentVals.size(); q++) {
+				int col=q+1;
+				String currentVal=currentVals.get(q).getText().replaceAll(",", "");
+				System.out.println(col+" col=== "+currentVal);
+				float currentrawTotalvalue=Float.parseFloat(currentVal);
+				calculatedTot=calculatedTot+currentrawTotalvalue;
+			}
+			String calculatedTotalValue = df.format(calculatedTot);
+			System.out.println("Total calculated val === "+calculatedTotalValue);
+			if(currentTotalVal.equals(calculatedTotalValue)) {
+				System.out.println("trueee");
+			}else {
+				System.out.println("falseee");
+				valueisEqual=false;
+			}
+			System.out.println("=============================");
+			System.out.println("");
+		}
+		return valueisEqual;
+	}
+
+	public boolean calculateTotalAR() {
+
+		DecimalFormat df = new DecimalFormat("0");
+		Boolean valueisEqual=true;
+		
+		for (int i = 0; i < lstRaws.size(); i++) {
+			int raw=i+1;
+			String currentTotalARVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='TotalAR'])["+raw+"]"))).getText().replaceAll(",", "");
+			float currentTotalARvalue=Float.parseFloat(currentTotalARVal);
+			System.out.println("current total AR value of "+raw+" raw==== "+currentTotalARVal);
+			
+			float calculatedTot=0;
+			String TotalValue =  new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table[@id='datatable-ajax-3']//tbody/tr["+raw+"]/td[@data-label='Total']"))).getText().replaceAll(",", "");
+			
+			String HouseledgerValue =  new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table[@id='datatable-ajax-3']//tbody/tr["+raw+"]/td[@data-label='Houseledger']"))).getText().replaceAll(",", "");
+			
+			String AdvDepositValue =  new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("//table[@id='datatable-ajax-3']//tbody/tr["+raw+"]/td[@data-label='AdvDeposit']"))).getText().replaceAll(",", "");
+			
+			float currentTotalValue=Float.parseFloat(TotalValue);
+			float currentHouseledgerValue=Float.parseFloat(HouseledgerValue);
+			float currentAdvDepositValue=Float.parseFloat(AdvDepositValue);
+			float calculatedTotAR=currentTotalValue+currentHouseledgerValue+currentAdvDepositValue;
+			
+			String calculatedTotalARValue = df.format(calculatedTotAR);
+			System.out.println("Total calculated AR val === "+calculatedTotalARValue);
+			
+			if(currentTotalARVal.equals(calculatedTotalARValue)) {
+				System.out.println("trueee");
+			}else {
+				System.out.println("falseee");
+				valueisEqual=false;
+			}
+			System.out.println("=============================");
+			System.out.println("");
+		}
+		return valueisEqual;
 	}
 
 }

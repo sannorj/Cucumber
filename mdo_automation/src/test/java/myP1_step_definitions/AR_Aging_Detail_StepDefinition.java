@@ -56,24 +56,22 @@ public class AR_Aging_Detail_StepDefinition {
 	
 	@Then("Calculate each column total and verify each total values")
 	public void calculate_each_column_total_and_verify_each_total_values() {
-		ARagingPo.calculateColTot();
+		assertTrue(ARagingPo.calculateColTot());
 	}
 	
 	@And("Calculate each age raw total and verify each age total values")
 	public void calculate_each_age_raw_total_and_verify_each_age_total_values() {
-		ARagingPo.calculateRawAgeTot();
+		assertTrue(ARagingPo.calculateRawAgeTot());
 	}
 	
-	@And("Calculate each raw total and verify each total values")
-	public void calculate_each_raw_total_and_verify_each_total_values() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@And("Calculate each raw total and verify each total AR values")
+	public void calculate_each_raw_total_and_verify_each_total_ar_values() {
+		assertTrue(ARagingPo.calculateTotalAR());
 	}
 	
 	@Then("Verify Add Comment button and select option")
 	public void verify_add_comment_button_and_select_option() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+//		assertTrue(ARagingPo.calculateRawAgeTot());
 	}
 	
 	@Then("Verify Close button")

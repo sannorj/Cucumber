@@ -45,6 +45,9 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@value='Update']")
 	WebElement updateBtn;
 
+	@FindBy(xpath = "//input[@value='Add Comment']")
+	WebElement addCommentBtn;
+
 	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
 	List<WebElement> lstTotalColValues;
 
@@ -234,8 +237,30 @@ public class AR_Aging_Detail_PageObjects {
 		return valueisEqual;
 	}
 
-	public void clickAddComment() {
-		// TODO Auto-generated method stub
+//	public void clickAddComment() throws InterruptedException {
+//		Thread.sleep(3000);
+//		addCommentBtn.click();
+//		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+//				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
+//	}
+
+	public boolean verifySelectOption() throws InterruptedException {
+		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
+		
+		WebElement waitLoadSelectHotels = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' ')]")));
+				
+		waitLoadSelectHotels.click();
+		Thread.sleep(1500);
+		int selectHotelListItm = driver.findElements(By.xpath("//div[@id='select2-drop']//ul[@class='select2-results']//li//div")).size();
+
+		if (selectHotelListItm < 2) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			return false;
+		}else {
+			return true;
+		}
 		
 	}
 

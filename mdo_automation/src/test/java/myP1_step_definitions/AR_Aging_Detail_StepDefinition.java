@@ -3,6 +3,7 @@ package myP1_step_definitions;
 import static org.junit.Assert.assertTrue;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -49,27 +50,33 @@ public class AR_Aging_Detail_StepDefinition {
 	}
 	
 	@When("Click on Update button")
-	public void click_on_update_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void click_on_update_button() throws InterruptedException {
+	    ARagingPo.clickUpdate();
 	}
 	
-	@Then("Calculate each column total and each verify total values")
-	public void calculate_each_column_total_and_each_verify_total_values() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("Calculate each column total and verify each total values")
+	public void calculate_each_column_total_and_verify_each_total_values() {
+		assertTrue(ARagingPo.calculateColTot());
 	}
 	
-	@Then("Calculate each raw total and verify each total values")
-	public void calculate_each_raw_total_and_verify_each_total_values() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@And("Calculate each age raw total and verify each age total values")
+	public void calculate_each_age_raw_total_and_verify_each_age_total_values() {
+		assertTrue(ARagingPo.calculateRawAgeTot());
+	}
+	
+	@And("Calculate each raw total and verify each total AR values")
+	public void calculate_each_raw_total_and_verify_each_total_ar_values() {
+		assertTrue(ARagingPo.calculateTotalAR());
+	}
+	
+	@And("Click on Add Comment button")
+	public void click_on_add_comment_button() {
+		ARagingPo.clickAddComment();
 	}
 	
 	@Then("Verify Add Comment button and select option")
 	public void verify_add_comment_button_and_select_option() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+//		assertTrue(ARagingPo.calculateRawAgeTot());
 	}
 	
 	@Then("Verify Close button")

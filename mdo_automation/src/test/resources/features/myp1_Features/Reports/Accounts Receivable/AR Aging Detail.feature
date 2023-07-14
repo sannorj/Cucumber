@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP1_Regression @ARAgingDetail
+@myP1_Regression @ARAgingDetailPg
 Feature: AR Aging Detail Page functionality
 
  		Background: Verify AR Aging Detail Page Navigation main Functionality
@@ -14,15 +14,17 @@ Feature: AR Aging Detail Page functionality
     Then Select Hotel filter option
     Given Select SelectBy filter option
     And Select Current Date option
-    #When Click on Update button 
-    #Then Calculate each column total and each verify total values
-    #And Calculate each raw total and verify each total values
-    #
+    When Click on Update button 
+    Then Calculate each column total and verify each total values
+    And Calculate each age raw total and verify each age total values
+    And Calculate each raw total and verify each total AR values
+    
     #Scenario: Verify Add Comment Functionality
     #Then Select Hotel filter option
     #Given Select SelectBy filter option
     #And Select Current Date option
     #When Click on Update button 
+    #And Click on Add Comment button
     #Then Verify Add Comment button and select option
     #And Verify Close button
     #When Verify View Past comments link and navigate to page

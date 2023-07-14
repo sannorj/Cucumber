@@ -69,6 +69,11 @@ public class AR_Aging_Detail_StepDefinition {
 		assertTrue(ARagingPo.calculateTotalAR());
 	}
 	
+	@And("Click on Add Comment button")
+	public void click_on_add_comment_button() {
+		ARagingPo.clickAddComment();
+	}
+	
 	@Then("Verify Add Comment button and select option")
 	public void verify_add_comment_button_and_select_option() {
 //		assertTrue(ARagingPo.calculateRawAgeTot());

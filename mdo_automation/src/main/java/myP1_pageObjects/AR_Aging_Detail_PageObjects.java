@@ -139,7 +139,7 @@ public class AR_Aging_Detail_PageObjects {
 			String calculatedTotalValue = df.format(calculatedTotalVal);
 			System.out.println("calculated total value===="+calculatedTotalValue);
 			System.out.println("");
-			String currentTotValString = df.format(currentTotVal);
+			String currentTotValString = df.format(currentTotalvalue);
 			System.out.println("current total value of "+col+" column==== "+currentTotValString);
 			System.out.println("=============================");
 			if(currentTotValString.equals(calculatedTotalValue)) {
@@ -177,7 +177,7 @@ public class AR_Aging_Detail_PageObjects {
 			String calculatedTotalValue = df.format(calculatedTot);
 			System.out.println("Total calculated val === "+calculatedTotalValue);
 
-			String currentTotalValString = df.format(currentTotalVal);
+			String currentTotalValString = df.format(currentTotalvalue);
 			System.out.println("current total value of "+raw+" raw==== "+currentTotalValString);
 			if(currentTotalValString.equals(calculatedTotalValue)) {
 				System.out.println("trueee");
@@ -219,7 +219,7 @@ public class AR_Aging_Detail_PageObjects {
 			
 			String calculatedTotalARValue = df.format(calculatedTotAR);
 			System.out.println("Total calculated AR val === "+calculatedTotalARValue);
-			String currentTotalARValString = df.format(currentTotalARVal);
+			String currentTotalARValString = df.format(currentTotalARvalue);
 			System.out.println("current total AR value of "+raw+" raw==== "+currentTotalARVal);
 			
 			if(currentTotalARValString.equals(calculatedTotalARValue)) {
@@ -232,6 +232,11 @@ public class AR_Aging_Detail_PageObjects {
 			System.out.println("");
 		}
 		return valueisEqual;
+	}
+
+	public void clickAddComment() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

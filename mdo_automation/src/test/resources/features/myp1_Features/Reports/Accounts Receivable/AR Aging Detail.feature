@@ -24,6 +24,7 @@ Feature: AR Aging Detail Page functionality
     #Given Select SelectBy filter option
     #And Select Current Date option
     #When Click on Update button 
+    #And Click on Add Comment button
     #Then Verify Add Comment button and select option
     #And Verify Close button
     #When Verify View Past comments link and navigate to page

@@ -126,7 +126,6 @@ public class AR_Aging_Detail_PageObjects {
 			String currentTotVal=lstTotalColValues.get(i).getText().replaceAll(",", "");
 			System.out.println("*****************==="+currentTotVal);
 			float currentTotalvalue=Float.parseFloat(currentTotVal);
-			System.out.println("current total value of "+col+" column==== "+currentTotVal);
 			
 			float calculatedTotalVal=0;
 			for (int q = 0; q < lstRaws.size(); q++) {
@@ -140,8 +139,10 @@ public class AR_Aging_Detail_PageObjects {
 			String calculatedTotalValue = df.format(calculatedTotalVal);
 			System.out.println("calculated total value===="+calculatedTotalValue);
 			System.out.println("");
+			String currentTotValString = df.format(currentTotVal);
+			System.out.println("current total value of "+col+" column==== "+currentTotValString);
 			System.out.println("=============================");
-			if(currentTotVal.equals(calculatedTotalValue)) {
+			if(currentTotValString.equals(calculatedTotalValue)) {
 				System.out.println("trueee");
 			}else {
 				System.out.println("falseee");
@@ -175,7 +176,10 @@ public class AR_Aging_Detail_PageObjects {
 			}
 			String calculatedTotalValue = df.format(calculatedTot);
 			System.out.println("Total calculated val === "+calculatedTotalValue);
-			if(currentTotalVal.equals(calculatedTotalValue)) {
+
+			String currentTotalValString = df.format(currentTotalVal);
+			System.out.println("current total value of "+raw+" raw==== "+currentTotalValString);
+			if(currentTotalValString.equals(calculatedTotalValue)) {
 				System.out.println("trueee");
 			}else {
 				System.out.println("falseee");
@@ -197,7 +201,6 @@ public class AR_Aging_Detail_PageObjects {
 			String currentTotalARVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='TotalAR'])["+raw+"]"))).getText().replaceAll(",", "");
 			float currentTotalARvalue=Float.parseFloat(currentTotalARVal);
-			System.out.println("current total AR value of "+raw+" raw==== "+currentTotalARVal);
 			
 			float calculatedTot=0;
 			String TotalValue =  new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
@@ -216,8 +219,10 @@ public class AR_Aging_Detail_PageObjects {
 			
 			String calculatedTotalARValue = df.format(calculatedTotAR);
 			System.out.println("Total calculated AR val === "+calculatedTotalARValue);
+			String currentTotalARValString = df.format(currentTotalARVal);
+			System.out.println("current total AR value of "+raw+" raw==== "+currentTotalARVal);
 			
-			if(currentTotalARVal.equals(calculatedTotalARValue)) {
+			if(currentTotalARValString.equals(calculatedTotalARValue)) {
 				System.out.println("trueee");
 			}else {
 				System.out.println("falseee");

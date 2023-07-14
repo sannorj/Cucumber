@@ -12,7 +12,7 @@ Feature: AR Aging Detail Page functionality
     
   	Scenario: Verify calculated total of all raws Functionality
     Then Select Hotel filter option
-    Given Select SelectBy filter optionr
+    Given Select SelectBy filter option
     And Select Current Date option
     When Click on Update button 
     Then Calculate each column total and verify each total values

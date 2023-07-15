@@ -261,5 +261,4 @@ public class Smoke_Tests_PageObject {
 	}
 
 	
-
 }

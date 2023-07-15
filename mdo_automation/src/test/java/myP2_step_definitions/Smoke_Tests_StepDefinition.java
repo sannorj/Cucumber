@@ -58,5 +58,4 @@ public class Smoke_Tests_StepDefinition {
 		smokeTests.verifyFilterOpt(); 
 	}
 	
-	
 }

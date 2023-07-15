@@ -101,7 +101,6 @@ Background: Login to MYP2 application
     Then user click cancel button
     Then user click Filter option button and verify it
   
-  
   #Scenario: Verify whether Static section loading in the PnL Monthly page
     #Then Page should load the defualt static section in the PnL Monthly page
   #

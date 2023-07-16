@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca 
-@myP2_Regression @DashBoardDropdown
+@myP2_Regression 
 Feature: Primary Dashboard - Automate Group and Property validation feature
 
 	Background: Navigate to primary dashboard

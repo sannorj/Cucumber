@@ -164,7 +164,7 @@ public class AR_Aging_Detail_PageObjects {
 		for (int i = 0; i < lstRaws.size(); i++) {
 			int raw=i+1;
 			String currentTotalVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='Total'])["+raw+"]"))).getText();
+					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='Total'])["+raw+"]"))).getText().replaceAll(",", "");
 			float currentTotalvalue=Float.parseFloat(currentTotalVal);
 			System.out.println("current total value of "+raw+" raw==== "+currentTotalVal);
 			
@@ -249,7 +249,7 @@ public class AR_Aging_Detail_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
 		
 		WebElement waitLoadSelectHotels = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' ')]")));
+				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' ')]")));////////////////
 				
 		waitLoadSelectHotels.click();
 		Thread.sleep(1500);

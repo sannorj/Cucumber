@@ -48,6 +48,9 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@value='Add Comment']")
 	WebElement addCommentBtn;
 
+	@FindBy(xpath = "//input[@placeholder='Search']")
+	WebElement searchTxt;
+
 	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
 	List<WebElement> lstTotalColValues;
 
@@ -249,7 +252,7 @@ public class AR_Aging_Detail_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
 		
 		WebElement waitLoadSelectHotels = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' ')]")));////////////////
+				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' Sleep Inn & Suites Lakeside')]")));
 				
 		waitLoadSelectHotels.click();
 		Thread.sleep(1500);
@@ -262,6 +265,52 @@ public class AR_Aging_Detail_PageObjects {
 			return true;
 		}
 		
+	}
+
+	public void closeBtn() throws InterruptedException {
+		WebElement closeBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//button[text()='Close']")));
+		closeBtn.click();
+		Thread.sleep(1500);
+	}
+
+	public void viewPastComments() {
+		WebElement PastCommentsLink = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//a[text()='View Past Comments']")));
+		PastCommentsLink.click();
+		WebElement waitLoadViewComments = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//h2[text()='View Comments']")));
+	}
+
+	public void SendSearchVal(String searchVal) throws InterruptedException {
+		WebElement tableRawVisible = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("(//div[@class='dataTables_scrollBody']/table/tbody/tr)[1]")));
+		searchTxt.click();
+		searchTxt.sendKeys(Keys.CONTROL + "a");
+		searchTxt.sendKeys(Keys.DELETE);
+		searchTxt.sendKeys(searchVal);
+		Thread.sleep(1500);
+	}
+
+	public boolean verifySearchValInRaws(String searchVal) {
+		
+		Boolean valueisEqual=true;
+		
+		for (int i = 0; i < lstRaws.size(); i++) {
+			int raw=i+1;
+			String currentVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='HotelName']/a[contains(text(),'"+searchVal+"')])["+raw+"]"))).getText();
+			
+			if(searchVal.equals(currentVal)) {
+				System.out.println("current hotel name "+currentVal+" contains "+searchVal);
+			}else {
+				System.out.println("current hotel name "+currentVal+" is not contains "+searchVal);
+				valueisEqual=false;
+			}
+			System.out.println("=============================");
+			System.out.println("");
+		}
+		return valueisEqual;
 	}
 
 }

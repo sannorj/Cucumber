@@ -80,15 +80,23 @@ public class AR_Aging_Detail_StepDefinition {
 	}
 	
 	@Then("Verify Close button")
-	public void verify_close_button() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void verify_close_button() throws InterruptedException {
+		ARagingPo.closeBtn();
 	}
 	
 	@When("Verify View Past comments link and navigate to page")
 	public void verify_view_past_comments_link_and_navigate_to_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    ARagingPo.viewPastComments();
+	}
+	
+	@Then("Add {string} to search box")
+	public void add_to_search_box(String string) throws InterruptedException {
+		 ARagingPo.SendSearchVal(string);
+	}
+
+	@And("Search {string} in Hotel name List")
+	public void search_in_hotel_name_list(String string) {
+		assertTrue(ARagingPo.verifySearchValInRaws(string));
 	}
 
 }

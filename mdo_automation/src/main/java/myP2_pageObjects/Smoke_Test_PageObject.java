@@ -271,7 +271,7 @@ Thread.sleep(2000);
 
 public boolean parameterselection2 () throws InterruptedException {
 	
-	/* Select the appropriate Property value from the drop-down menu. */
+	/* Select the appropriate Property value from the drop-down menu */
 	WebElement drpprop1 = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drppropd));
 	drpprop1.click();
 

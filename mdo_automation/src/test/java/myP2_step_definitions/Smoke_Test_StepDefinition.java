@@ -26,7 +26,6 @@ public class Smoke_Test_StepDefinition {
 	@Then("click on STR Report")
 	public void click_on_STR_Report() {
 		smoketestv.strreportselet();
-
 	}
 
 	@When("select Report and date from the relevant dropdowns")

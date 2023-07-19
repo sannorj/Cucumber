@@ -1,5 +1,5 @@
 #Author: udarsha@mydigitaloffice.ca
-@smoke_myp2
+@smokee_myp2
 
 	Feature: Smoke Test validation for myP2
 

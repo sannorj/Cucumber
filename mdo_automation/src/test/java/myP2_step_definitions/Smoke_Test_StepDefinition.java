@@ -23,6 +23,11 @@ public class Smoke_Test_StepDefinition {
 		smoketestv.ijmappingselect();
 	}
 	
+	@Given("I navigate to Account Management page")
+	public void I_navigate_to_Account_Management_page() throws InterruptedException {
+		smoketestv.accmangmentselect();
+	}
+	
 	@Then("click on STR Report")
 	public void click_on_STR_Report() {
 		smoketestv.strreportselet();
@@ -99,5 +104,13 @@ public class Smoke_Test_StepDefinition {
 	public void IJ_mapping_report_should_be_generated_without_errors() throws InterruptedException {
 		 assertTrue(smoketestv.clickingoandverifying18());
 	}
+	@Then("Account Management report should be generated without errors")
+	public void Account_Management_report_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying19());
+	}
 
+	@Then("Account Sales Managers should be generated without errors")
+	public void Account_Sales_Managers_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying20());
+	}
 }

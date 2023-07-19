@@ -8,6 +8,7 @@ import java.util.List;
 import javax.xml.xpath.XPath;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.By.ById;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -60,6 +61,9 @@ public class Smoke_Test_PageObject {
 	@FindBy(xpath = "//div[text()='30/60/90 Rolling Month']//ancestor::li")
 	WebElement menuRollingMonth;
 	
+	@FindBy(xpath = "//a[text()='Account Management']//ancestor::li")
+	WebElement AccountManagementmenu;
+	
 	@FindBy(xpath = "//h1[text()='30/60/90 Rolling Month Report']")
 	WebElement hlRollingMonthReport;
 	
@@ -74,6 +78,42 @@ public class Smoke_Test_PageObject {
 	
 	@FindBy(xpath = "//input[@name='hotelId']")
 	WebElement drppropd;
+	
+	@FindBy(xpath = "//input[@name='porfolio']")
+	WebElement groupdrp;
+	
+	@FindBy(xpath = "//tr//th//span[text()='Property']")
+	WebElement getproperty;
+	
+	@FindBy(xpath = "//tr//th//span[text()='Account Name']")
+	WebElement actname;
+	
+	@FindBy(xpath = "//tr//th//span[text()='Week 1']")
+	WebElement weeklbl;
+	
+	@FindBy(xpath = "//tr//th//span[text()='Date']")
+	WebElement Datelbl;
+	
+	@FindBy(xpath = "//tr//th//span[text()='Source Account']")
+	WebElement sourceacclbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='GL Code']")
+	WebElement glcodelbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='MDO GL Code']")
+	WebElement mdoglcodelbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='Description']")
+	WebElement descrplbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='Report Name']")
+	WebElement reprtnmelbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th//span[text()='Account Name']")
+	WebElement actnamelbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='First Name']")
+	WebElement firstnamelbl;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -172,6 +212,12 @@ public void ijmappingselect() {
 	
 	WebElement ijmappingele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ijmappingpage));
 	ijmappingele.click();
+	}
+
+public void accmangmentselect() {
+	
+	WebElement accmangmentele = new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(AccountManagementmenu));
+	accmangmentele.click();
 	}
 
 public boolean parameterselection1 () throws InterruptedException {
@@ -458,10 +504,9 @@ Thread.sleep(2000);
 		return flag;
 
 	}
-	
 	public void clickingGobtn() throws InterruptedException {
 		
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		WebElement gobtn = new WebDriverWait(driver, Duration.ofSeconds(100))
 		.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button']//span[text()='Go']")));
 		gobtn.click();
@@ -471,11 +516,10 @@ Thread.sleep(2000);
 		
 	public boolean clickingoandverifying() throws InterruptedException {
 		
-		Thread.sleep(12000);
-		Thread.sleep(12000);
-		String actuall = driver.findElement(By.xpath("//tr//th//span[text()='Property']")).getText();
-		String expectedd = "Property";
-		if (actuall.contains(expectedd)) {
+		ElementUtils.waitForElementToDisplay(getproperty, 40);
+		String actual = getproperty.getText();
+		String expected = "Property";
+		if (actual.contains(expected)) {
 					flag = true;
 				} else {
 					flag = false;
@@ -488,9 +532,8 @@ Thread.sleep(2000);
 
 public boolean clickingoandverifying1 () throws InterruptedException {
 		
-		Thread.sleep(12000);
-		Thread.sleep(8000);
-		String actual = driver.findElement(By.xpath("//tr//th//span[text()='Account Name']")).getText();
+		ElementUtils.waitForElementToDisplay(actname, 40);
+		String actual = actname.getText();
 		String expected = "Account Name";
 		if (actual.contains(expected)) {
 					flag = true;
@@ -505,9 +548,8 @@ public boolean clickingoandverifying1 () throws InterruptedException {
 
 public boolean clickingoandverifying11 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//tr//th//span[text()='Week 1']")).getText();
+	ElementUtils.waitForElementToDisplay(weeklbl, 40);
+	String actual = weeklbl.getText();
 	String expected = "Week 1";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -522,9 +564,8 @@ public boolean clickingoandverifying11 () throws InterruptedException {
 
 public boolean clickingoandverifying12 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//tr//th//span[text()='Date']")).getText();
+	ElementUtils.waitForElementToDisplay(Datelbl, 40);
+	String actual = Datelbl.getText();
 	String expected = "Date";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -539,9 +580,8 @@ public boolean clickingoandverifying12 () throws InterruptedException {
 
 public boolean clickingoandverifying13 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//tr//th//span[text()='Source Account']")).getText();
+	ElementUtils.waitForElementToDisplay(sourceacclbl, 40);
+	String actual = sourceacclbl.getText();
 	String expected = "Source Account";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -556,9 +596,8 @@ public boolean clickingoandverifying13 () throws InterruptedException {
 
 public boolean clickingoandverifying14 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//tr//th//span[text()='Source Account']")).getText();
+	ElementUtils.waitForElementToDisplay(sourceacclbl, 40);
+	String actual = sourceacclbl.getText();
 	String expected = "Source Account";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -573,9 +612,8 @@ public boolean clickingoandverifying14 () throws InterruptedException {
 
 public boolean clickingoandverifying15 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//table//thead//tr//th[text()='GL Code']")).getText();
+	ElementUtils.waitForElementToDisplay(glcodelbl, 40);
+	String actual = glcodelbl.getText();
 	String expected = "GL Code";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -590,9 +628,8 @@ public boolean clickingoandverifying15 () throws InterruptedException {
 
 public boolean clickingoandverifying16 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//table//thead//tr//th[text()='MDO GL Code']")).getText();
+	ElementUtils.waitForElementToDisplay(mdoglcodelbl, 40);
+	String actual = mdoglcodelbl.getText();
 	String expected = "MDO GL Code";
 	if (actual.contains(expected)) {
 				flag = true;
@@ -607,9 +644,8 @@ public boolean clickingoandverifying16 () throws InterruptedException {
 
 public boolean clickingoandverifying17 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//table//thead//tr//th[text()='Description']")).getText();
+	ElementUtils.waitForElementToDisplay(descrplbl, 40);
+	String actual = descrplbl.getText();
 	String expected = "Description";
 			if (actual.contains(expected)) {
 				flag = true;
@@ -624,10 +660,40 @@ public boolean clickingoandverifying17 () throws InterruptedException {
 
 public boolean clickingoandverifying18 () throws InterruptedException {
 	
-	Thread.sleep(12000);
-	Thread.sleep(8000);
-	String actual = driver.findElement(By.xpath("//table//thead//tr//th[text()='Report Name']")).getText();
+	ElementUtils.waitForElementToDisplay(reprtnmelbl, 40);
+	String actual = reprtnmelbl.getText();
 	String expected = "Report Name";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+
+public boolean clickingoandverifying19 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(actnamelbl, 40);
+	String actual = actnamelbl.getText();
+	String expected = "Account Name";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+public boolean clickingoandverifying20 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(firstnamelbl, 40);
+	String actual = firstnamelbl.getText();
+	String expected = "First Name";
 			if (actual.contains(expected)) {
 				flag = true;
 			} else {

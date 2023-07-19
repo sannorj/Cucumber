@@ -1,4 +1,5 @@
 #Author: udarsha@mydigitaloffice.ca
+@smoke_myp2
 
 	Feature: Smoke Test validation for myP2
 
@@ -17,10 +18,10 @@
    
    Scenario: Smoke test for AR Report
    And I am expand the Account Recievable option under Reports section in Side Menu
-  Then I am navigate to AR Property page
-  When I select the property and Date
-  And I select the date from picker
-  Then I am loading ar property report with Go button
+   Then I am navigate to AR Property page
+   When I select the property and Date
+   And I select the date from picker
+   Then I am loading ar property report with Go button
    Then AR report should be generated without errors
    
    Scenario: Smoke test for STR Report

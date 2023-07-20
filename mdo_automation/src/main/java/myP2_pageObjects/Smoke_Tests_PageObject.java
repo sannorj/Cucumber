@@ -23,12 +23,14 @@ import utils.ElementUtils;
 public class Smoke_Tests_PageObject {
 
 	private WebDriver driver;
+	ArrayList<String> propertyList = new ArrayList<>();
 	private ConstantsReader configReader = new ConstantsReader();
 	boolean flag;
 
 	public Smoke_Tests_PageObject(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+		flag = false;
 		
 	}
 	
@@ -88,6 +90,51 @@ public class Smoke_Tests_PageObject {
 	
 	@FindBy(xpath = "//div[text()='Filters']")
 	WebElement verifyFilterHeader;
+	
+	@FindBy(xpath = "//tbody//tr[1]//td[1]")
+	WebElement txtRowField;
+
+	@FindBy(xpath = "//div[@data-el='appName']")
+	WebElement header;
+
+	@FindBy(xpath = "//input[@name='hotelId']")
+	WebElement dropDownProperty;
+
+	@FindBy(xpath = "//div[@role='listbox']//li")
+	List<WebElement> lstDropDowProperty;
+
+	@FindBy(xpath = "//input[@name='period']")
+	WebElement dropDownPeriod;
+
+	@FindBy(xpath = "//div[@role='listbox']//li")
+	List<WebElement> lstDropDownPeriod;
+
+	@FindBy(xpath = "//input[@name='mdoGlCodeBreakdownReportId']")
+	WebElement dropDownCategory;
+
+	@FindBy(xpath = "//div[@role='listbox']//li")
+	List<WebElement> lstDropDownCategory;
+
+	@FindBy(xpath = "//div/label[text() = 'Date'] //following-sibling::div//button[@type='button']")
+	WebElement btnDatePicker;
+
+	@FindBy(xpath = "//div[@role='dialog']")
+	WebElement divCalender;
+
+	@FindBy(xpath = "//div[@role='presentation']//button[contains(@aria-label, 'calendar view is open, switch to year view')]")
+	WebElement btnExpandYear;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Previous month']")
+	WebElement btnPreviousMonth;
+
+	@FindBy(xpath = "//div[contains(@class, 'MuiPickersArrowSwitcher')]//button[@title='Next month']")
+	WebElement btnNextMonth;
+
+	@FindBy(xpath = "//button//span[text()='Go']")
+	WebElement btnGo;
+	
+	@FindBy(xpath = "//div//label[text() = 'Date'] /following-sibling::div//input")
+	WebElement txtDate;
 	
 	
 	public void verifyPrimaryDashHeader() throws InterruptedException {
@@ -260,5 +307,120 @@ public class Smoke_Tests_PageObject {
 		
 	}
 
+	public void loadingReportsWithInParameters() throws InterruptedException {
+		try {
+			Thread.sleep(3000);
+		
+			WebElement drpProperty = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(dropDownProperty));
+			drpProperty.click();
+		
+				for (int i = 0; i < lstDropDowProperty.size(); i++) {
+					if (lstDropDowProperty.get(i).getText().equalsIgnoreCase(configReader.getProp("revePropertySelect"))) {
+						lstDropDowProperty.get(i).click();
+
+						}
+				}
+			Thread.sleep(3000);
+
+				selectDate();
+		
+			Thread.sleep(3000);
+		
+		} catch (Exception e) {
+
+		e.printStackTrace();
+		}
+		
+	}
+	
+	public int getMonth() {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH);
+		return month + 1;
+	}
+	
+	public boolean selectDate() throws InterruptedException {
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("reveNewDate").split("/");
+		txtDate.click();
+		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+			Thread.sleep(2500);
+			WebElement pickYear = driver.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"+ dateForPicker[2] + "')]"));
+
+			pickYear.click();
+			Thread.sleep(2500);
+
+			int monthInnum = getMonth();
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				flag = true;
+			}
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(btnNextMonth));
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();				
+				flag = true;
+			}
+		} else {
+			flag = false;
+		}
+		return flag;
+	}
+	
+	public void validateOkCancelandClick() {
+		int btnStatus = driver.findElements(By.xpath("//button[text()='OK']")).size();
+
+		if (btnStatus > 0) {
+			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			btnOk.click();
+		}
+
+	}
+
+	public void loadReveRepo() throws InterruptedException {
+
+		Thread.sleep(3000);
+		
+		btnGo.click();
+
+		Thread.sleep(3000);
+		WebElement txtProperty = new WebDriverWait(driver, Duration.ofSeconds(40)).until(ExpectedConditions.visibilityOf(txtRowField));
+		txtProperty.isDisplayed();
+	}
 	
 }

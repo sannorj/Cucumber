@@ -91,7 +91,7 @@ Background: Login to MYP2 application
   Scenario: Verify whether Static section loading in the Revenue Breakdown Report page
     And I am expand the Revenue Breakdwon option under Reports section in Side Menu
     Then I am navigate to Revenue Breakdown page
-    And I am Loading the Revenue Breakdown Report with GO button
+    And I am Loading the Revenue Breakdown Report with GO button for smoke testing
   
   Scenario: Verify whether Static section loading in the GL Mapping page
     Then I am expand the configuration options in Side Menu

@@ -58,4 +58,10 @@ public class Smoke_Tests_StepDefinition {
 		smokeTests.verifyFilterOpt(); 
 	}
 	
+	@And("I am Loading the Revenue Breakdown Report with GO button for smoke testing")
+	public void I_am_Loading_the_Revenue_Breakdown_Report_with_GO_button_for_smoke_testing() throws InterruptedException {
+		smokeTests.loadingReportsWithInParameters();
+		smokeTests.loadReveRepo();
+	}
+	
 }

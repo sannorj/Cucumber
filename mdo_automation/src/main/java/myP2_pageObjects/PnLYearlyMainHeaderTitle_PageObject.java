@@ -273,7 +273,11 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 	}
 
 	public void changeTheView(String view) throws InterruptedException {
-		dropDownView.click();
+		
+		WebElement drpView = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(dropDownView));
+		
+		drpView.click();
 
 		Thread.sleep(5000);
 

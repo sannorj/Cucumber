@@ -3,10 +3,10 @@
 
 	Feature: Smoke Test validation for myP2
 
-   Background: Comment smoke test by login into the application
-   Given I am login to the myp2 site
-   And System navigate to the home page
-   And Select the organization as "HighGate Hotels"
+    Background: Comment smoke test by login into the application
+       Given I am login to the myp2 site
+       And System navigate to the home page
+       And Select the organization as "HighGate Hotels"
     
   	Scenario: Smoke test for AR Dashboard
   	   And I am expand the Account Recievable option under Reports section in Side Menu
@@ -65,7 +65,17 @@
          Then I am expand the configuration options in Side Menu
          Then I am navigate to GL Mapping page
          Then GL mapping report should be generated without errors
-      
+         And navigate to Add GL Code page
+         Then GL code page should be generated without errors
+         And click Cancel button
+         Then GL mapping report should be generated without errors
+         And navigate to Copy page
+         Then Copy page should be generated without errors
+         And click Cancel button
+         Then GL mapping report should be generated without errors
+         And navigate to Import page
+         Then Import page should be generated without errors
+         
       Scenario: Smoke test for GL  Hierarchy report
          And I am expand the configuration options in Side Menu
          And I am navigate to GL Hierarchy page
@@ -91,3 +101,35 @@
 				 And I am expand the configuration option
     		 Then I am navigate to Sales Managers page
          Then Account Sales Managers should be generated without errors
+         
+       Scenario: Smoke test for all P&L report pages
+				 And I am expand the P&L Statement option under Reports section in Side Menu
+    		 And go to the P&L Monthly page 
+    		 And select a Group and a date from the relevant dropdown fields
+    		 And click the GO button
+    		 Then PnL pages should be generated without errors
+    		 And I am expand the P&L Statement option under Reports section in Side Menu
+    		 Then I am navigate to P&L Yearly page
+    		 And click the GO button
+    		 Then PnL pages should be generated without errors
+    		 And I am expand the P&L Statement option under Reports section in Side Menu
+    		 And go to the P&L Property Comparison
+    		 And click the GO button
+    		 Then PnL comp should be generated without errors
+    And Select the organization as "Insignia Hospitality Group"
+    		 When User clicks on Profit & Loss Unmapped option button
+    		 And User navigates to Profit & Loss Unmapped page
+    		 And click the GO button
+				 And confirm if data is generated for the selected parameters without any errors being prompted
+
+			Scenario: Smoke test for Pickup report
+          Then I am expand the pickUp report option under Reports section in Side Menu
+    			And I am navigate to pickUp report page
+    			And click the GO button
+    			Then pickup report should be generated without errors
+    			
+    	Scenario: Smoke test for Guest Ledger report
+          And go to the Guest Ledger
+    			And Select the organization as "Marriott"
+    			And Select the Group
+    			Then Guest Ledger should be generated without errors

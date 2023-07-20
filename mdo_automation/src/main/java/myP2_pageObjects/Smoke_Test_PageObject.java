@@ -73,6 +73,9 @@ public class Smoke_Test_PageObject {
 	@FindBy(xpath = "//input[@name='portfolio']")
 	WebElement drpgroup;
 	
+	@FindBy(xpath = "//input[@name='portfolio-group']")
+	WebElement newdrpgroup;
+	
 	@FindBy(xpath = "//input[@name='hotelIds']")
 	WebElement drpprope;
 	
@@ -114,6 +117,27 @@ public class Smoke_Test_PageObject {
 	
 	@FindBy(xpath = "//table//thead//tr//th[text()='First Name']")
 	WebElement firstnamelbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th[text()='Daily Activity']")
+	WebElement dailyactlbl;
+	
+	@FindBy(xpath = "//table//thead//tr//th//span[text()='MARSHA-Cd']")
+	WebElement MARSHAlbl;
+	
+	@FindBy(xpath = "//tbody//tr//td//div[text()='ADR']")
+	WebElement ADRlbl;
+	
+	@FindBy(xpath = "//div//span[text()='ADR']")
+	WebElement ADRlbl2;
+	
+	@FindBy(xpath = "//div//label[text()='GL Code']")
+	WebElement GLCodelbl;
+	
+	@FindBy(xpath = "//div//label[text()='Copy From']")
+	WebElement copyfrmlbl;
+	
+	@FindBy(xpath = "//div//p[text()='FILE UPLOADER']")
+	WebElement fileuploadlbl;
 	
 	@FindBy(xpath = "//label[text()='Date']//parent::div//input")
 	WebElement txtDate;
@@ -504,6 +528,101 @@ Thread.sleep(2000);
 		return flag;
 
 	}
+	
+public boolean newparameterselection() throws InterruptedException {
+		
+		/* Select the appropriate Property value from the drop-down menu. */
+		WebElement newgroupele = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(newdrpgroup));
+		newgroupele.click();
+	
+	Thread.sleep(2000);
+		
+		ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+		for (int i = 0; i < listDrpValueSize.size(); i++) {
+			if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("PnL_groups"))) {
+				listDrpValueSize.get(i).click();
+			}
+		}
+		
+		Thread.sleep(4000);
+		boolean flag = false;
+		String[] dateForPicker = configReader.getProp("revenueDate").split("/");
+		txtDate.click();
+		int btnDatePickforLocal = driver
+				.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
+
+		if (btnDatePickforLocal > 0) {
+			btnDatePicker.click();
+		}
+
+		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();
+
+		if (status == 1) {
+
+			WebElement expandYear = new WebDriverWait(driver, Duration.ofSeconds(50))
+					.until(ExpectedConditions.visibilityOf(btnExpandYear));
+			expandYear.click();
+			Thread.sleep(5000);
+
+			WebElement pickYear = driver
+					.findElement(By.xpath("//div[contains(@class, 'PrivatePickersYear')]//button [contains(text(), '"
+							+ dateForPicker[2] + "')]"));
+
+			pickYear.click();
+			Thread.sleep(2500);
+			int monthInnum = getMonth();
+			int monthDiff = monthInnum - Integer.parseInt(dateForPicker[0]);
+
+			if (monthDiff > 0) {
+				for (int i = 0; i < monthDiff; i++) {
+					WebElement btnPrevious = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnPreviousMonth));
+
+					btnPrevious.click();
+					Thread.sleep(1500);
+
+				}
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+				flag = true;
+			}
+
+			else if (monthDiff < 0) {
+				for (int i = 0; i > monthDiff; i--) {
+					WebElement btnNext = new WebDriverWait(driver, Duration.ofSeconds(10))
+							.until(ExpectedConditions.visibilityOf(btnNextMonth));
+
+					btnNext.click();
+					Thread.sleep(1500);
+				}
+
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+			else {
+				WebElement btnDate = driver
+						.findElement(By.xpath(" //div[@role='row']//button[text() = '" + dateForPicker[1] + "']"));
+				btnDate.click();
+				validateOkCancelandClick();
+
+				flag = true;
+			}
+
+		} else {
+			flag = false;
+		}
+		
+
+		return flag;
+
+	}
 	public void clickingGobtn() throws InterruptedException {
 		
 		Thread.sleep(5000);
@@ -513,6 +632,43 @@ Thread.sleep(2000);
 		Thread.sleep(2000);
 		  
 	}
+	
+public void addglcodebtn() throws InterruptedException {
+		
+		WebElement addcdebtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+		.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-el='buttonAdd']")));
+		addcdebtn.click();
+		Thread.sleep(2000);
+		  
+	}
+
+public void clickcopybtn() throws InterruptedException {
+	
+	WebElement copybtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+	.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-el='buttonCopy']")));
+	copybtn.click();
+	Thread.sleep(2000);
+	  
+}
+
+public void clickimportbtn() throws InterruptedException {
+	
+	WebElement importbtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+	.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@title='Import']")));
+	importbtn.click();
+	Thread.sleep(2000);
+	  
+}
+
+public void clickcancel() throws InterruptedException {
+	
+	WebElement cancelbtn = new WebDriverWait(driver, Duration.ofSeconds(100))
+	.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-el='buttonCancel']")));
+	cancelbtn.click();
+	Thread.sleep(2000);
+	  
+}
+
 		
 	public boolean clickingoandverifying() throws InterruptedException {
 		
@@ -704,7 +860,109 @@ public boolean clickingoandverifying20 () throws InterruptedException {
 	
 	return flag;
 }
-	}
+public boolean clickingoandverifying21 () throws InterruptedException {
 	
+	ElementUtils.waitForElementToDisplay(ADRlbl, 40);
+	String actual = ADRlbl.getText();
+	String expected = "ADR";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
 
+	
+	return flag;
+}
+public boolean clickingoandverifying22 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(ADRlbl2, 40);
+	String actual = ADRlbl2.getText();
+	String expected = "ADR";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
 
+	
+	return flag;
+}
+public boolean clickingoandverifying23 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(GLCodelbl, 40);
+	String actual = GLCodelbl.getText();
+	String expected = "GL Code";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+public boolean clickingoandverifying24 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(copyfrmlbl, 40);
+	String actual = copyfrmlbl.getText();
+	String expected = "Copy From";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+public boolean clickingoandverifying25 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(fileuploadlbl, 40);
+	String actual = fileuploadlbl.getText();
+	String expected = "FILE UPLOADER";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+public boolean clickingoandverifying26 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(dailyactlbl, 40);
+	String actual = dailyactlbl.getText();
+	String expected = "Daily Activity";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	
+	return flag;
+}
+
+public boolean clickingoandverifying27 () throws InterruptedException {
+	
+	ElementUtils.waitForElementToDisplay(MARSHAlbl, 40);
+	String actual = MARSHAlbl.getText();
+	String expected = "MARSHA-Cd";
+			if (actual.contains(expected)) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		
+
+	return flag;
+}
+	}

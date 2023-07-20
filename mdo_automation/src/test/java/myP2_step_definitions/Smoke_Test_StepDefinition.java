@@ -28,6 +28,7 @@ public class Smoke_Test_StepDefinition {
 		smoketestv.accmangmentselect();
 	}
 	
+	
 	@Then("click on STR Report")
 	public void click_on_STR_Report() {
 		smoketestv.strreportselet();
@@ -36,6 +37,12 @@ public class Smoke_Test_StepDefinition {
 	@When("select Report and date from the relevant dropdowns")
 	public void select_report_and_date_from_the_relevant_dropdowns() throws InterruptedException {
 		smoketestv.parameterselection1();
+
+	}
+	
+	@When("select a Group and a date from the relevant dropdown fields")
+	public void select_a_Group_and_a_date_from_the_relevant_dropdown_fields() throws InterruptedException {
+		smoketestv.newparameterselection();
 
 	}
 	
@@ -67,6 +74,29 @@ public class Smoke_Test_StepDefinition {
 	@When("click the GO button")
 	public void click_the_go_button() throws InterruptedException {
 		smoketestv.clickingGobtn();
+	  
+	}
+	
+	@When("navigate to Add GL Code page")
+	public void navigate_to_Add_GL_Code_page() throws InterruptedException {
+		smoketestv.addglcodebtn();
+	  
+	}
+	@When("navigate to Import page")
+	public void navigate_to_Import_page() throws InterruptedException {
+		smoketestv.clickimportbtn();
+	  
+	}
+	
+	@When("navigate to Copy page")
+	public void navigate_to_Copy_page() throws InterruptedException {
+		smoketestv.clickcopybtn();
+	  
+	}
+	
+	@When("click Cancel button")
+	public void click_Cancel_button() throws InterruptedException {
+		smoketestv.clickcancel();
 	  
 	}
 
@@ -112,5 +142,33 @@ public class Smoke_Test_StepDefinition {
 	@Then("Account Sales Managers should be generated without errors")
 	public void Account_Sales_Managers_should_be_generated_without_errors() throws InterruptedException {
 		 assertTrue(smoketestv.clickingoandverifying20());
+	}
+	@Then("PnL pages should be generated without errors")
+	public void PnL_pages_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying21());
+	}
+	@Then("PnL comp should be generated without errors")
+	public void PnL_comp_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying22());
+	}
+	@Then("GL code page should be generated without errors")
+	public void GL_code_page_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying23());
+	}
+	@Then("Copy page should be generated without errors")
+	public void Copy_page_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying24());
+	}
+	@Then("Import page should be generated without errors")
+	public void Import_page_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying25());
+	}
+	@Then("pickup report should be generated without errors")
+	public void pickup_report_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying26());
+	}
+	@Then("Guest Ledger should be generated without errors")
+	public void Guest_Ledger_should_be_generated_without_errors() throws InterruptedException {
+		 assertTrue(smoketestv.clickingoandverifying27());
 	}
 }

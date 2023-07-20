@@ -273,10 +273,10 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 	}
 
 	public void changeTheView(String view) throws InterruptedException {
-		
+
 		WebElement drpView = new WebDriverWait(driver, Duration.ofSeconds(50))
 				.until(ExpectedConditions.visibilityOf(dropDownView));
-		
+
 		drpView.click();
 
 		Thread.sleep(5000);
@@ -289,6 +289,19 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 				}
 			}
 		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < lstDropDownView.size(); i++) {
+				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
+					lstDropDownView.get(i).click();
+
+				}
+			}
+
+		}
+
+		catch (IndexOutOfBoundsException e) {
+			
+			drpView.click();
+			
 			for (int i = 0; i < lstDropDownView.size(); i++) {
 				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
 					lstDropDownView.get(i).click();

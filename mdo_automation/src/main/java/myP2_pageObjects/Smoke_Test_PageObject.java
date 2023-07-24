@@ -160,6 +160,9 @@ public class Smoke_Test_PageObject {
 	@FindBy(xpath = "//input[@name='keyword']")
 	WebElement txtSearch;
 	
+	@FindBy(xpath = "//button[@type='button']//span[text()='Go']")
+	WebElement Gobutton;
+	
 	@FindBy(xpath = "//*[@id='root']//table/tbody/tr/td[1]/div/div/div/div/div")
 	List <WebElement> lstRows;
 	
@@ -625,10 +628,8 @@ public boolean newparameterselection() throws InterruptedException {
 	}
 	public void clickingGobtn() throws InterruptedException {
 		
-		Thread.sleep(5000);
-		WebElement gobtn = new WebDriverWait(driver, Duration.ofSeconds(100))
-		.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button']//span[text()='Go']")));
-		gobtn.click();
+		ElementUtils.waitForElementToDisplay(Gobutton, 100);
+		Gobutton.click();
 		Thread.sleep(2000);
 		  
 	}

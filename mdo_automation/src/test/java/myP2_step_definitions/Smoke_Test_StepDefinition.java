@@ -167,8 +167,8 @@ public class Smoke_Test_StepDefinition {
 	public void pickup_report_should_be_generated_without_errors() throws InterruptedException {
 		 assertTrue(smoketestv.clickingoandverifying26());
 	}
-	@Then("Guest Ledger should be generated without errors")
-	public void Guest_Ledger_should_be_generated_without_errors() throws InterruptedException {
+	@Then("Guest Ledger should be generated without error")
+	public void Guest_Ledger_should_be_generated_without_error() throws InterruptedException {
 		 assertTrue(smoketestv.clickingoandverifying27());
 	}
 }

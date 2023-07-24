@@ -132,4 +132,4 @@
           And go to the Guest Ledger
     			And Select the organization as "Marriott"
     			And Select the Group
-    			Then Guest Ledger should be generated without errors
+    			Then Guest Ledger should be generated without error

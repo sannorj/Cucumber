@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnLYearly
+@myP2_Regression  @myP2_Smoke @PnLYearlyFix
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 

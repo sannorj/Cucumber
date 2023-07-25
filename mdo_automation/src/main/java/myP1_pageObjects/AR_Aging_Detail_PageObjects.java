@@ -48,7 +48,7 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@value='Add Comment']")
 	WebElement addCommentBtn;
 
-	@FindBy(xpath = "//input[@placeholder='Search']")
+	@FindBy(xpath = "//div[contains(@id,'datatable-araging-container') and not(contains(@style,'visibility: hidden;'))]//input[@placeholder='Search']")
 	WebElement searchTxt;
 
 	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
@@ -76,6 +76,11 @@ public class AR_Aging_Detail_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//a//span[text()=' Sleep Inn & Suites Lakeside']")));
 		Thread.sleep(3000);
 		hotelNameSelect.click();
+		WebElement hotelnameInput = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='select2-drop']//input")));
+		hotelnameInput.sendKeys(Keys.CONTROL + "a");
+		hotelnameInput.sendKeys(Keys.DELETE);
+		hotelnameInput.sendKeys(configReader.getMYP1Prop("AR_Aging_Detail_Hotel"));
 		Thread.sleep(3000);
 		try {
 			for (int i = 0; i < lstDropDowHotel.size(); i++) {
@@ -110,7 +115,7 @@ public class AR_Aging_Detail_PageObjects {
 	}
 
 	public void clickUpdate() throws InterruptedException {
-		Thread.sleep(3000);	
+		Thread.sleep(5000);	
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", updateBtn);
@@ -240,13 +245,6 @@ public class AR_Aging_Detail_PageObjects {
 		return valueisEqual;
 	}
 
-//	public void clickAddComment() throws InterruptedException {
-//		Thread.sleep(3000);
-//		addCommentBtn.click();
-//		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-//				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
-//	}
-
 	public boolean verifySelectOption() throws InterruptedException {
 		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
@@ -283,13 +281,17 @@ public class AR_Aging_Detail_PageObjects {
 	}
 
 	public void SendSearchVal(String searchVal) throws InterruptedException {
-		WebElement tableRawVisible = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("(//div[@class='dataTables_scrollBody']/table/tbody/tr)[1]")));
-		searchTxt.click();
-		searchTxt.sendKeys(Keys.CONTROL + "a");
-		searchTxt.sendKeys(Keys.DELETE);
-		searchTxt.sendKeys(searchVal);
-		Thread.sleep(1500);
+		try {
+			searchTxt.sendKeys(Keys.CONTROL + "a");
+			searchTxt.sendKeys(Keys.DELETE);
+			searchTxt.sendKeys(searchVal);
+			Thread.sleep(1500);
+		} catch (Exception e) {
+			searchTxt.sendKeys(Keys.CONTROL + "a");
+			searchTxt.sendKeys(Keys.DELETE);
+			searchTxt.sendKeys(searchVal);
+			Thread.sleep(1500);
+		}
 	}
 
 	public boolean verifySearchValInRaws(String searchVal) {
@@ -301,14 +303,13 @@ public class AR_Aging_Detail_PageObjects {
 			String currentVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='HotelName']/a[contains(text(),'"+searchVal+"')])["+raw+"]"))).getText();
 			
-			if(searchVal.equals(currentVal)) {
+			if(currentVal.contains(searchVal)) {
 				System.out.println("current hotel name "+currentVal+" contains "+searchVal);
 			}else {
 				System.out.println("current hotel name "+currentVal+" is not contains "+searchVal);
 				valueisEqual=false;
 			}
 			System.out.println("=============================");
-			System.out.println("");
 		}
 		return valueisEqual;
 	}

@@ -37,3 +37,4 @@ Feature: AR Aging Detail Page functionality
     When Click on Update button 
     Then Add "Hampton" to search box
     And Search "Hampton" in Hotel name List
+    

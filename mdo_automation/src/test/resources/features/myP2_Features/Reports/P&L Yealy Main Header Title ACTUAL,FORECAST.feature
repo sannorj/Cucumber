@@ -18,17 +18,11 @@ Feature: P&L Yearly -  Main Header Title Verification For Column 1 Data Set Mode
     And I am Loading the PnLYearly Report with GO button
     And I am verify the report header for "ACTUAL/FORECAST" and "3/1/2023"
     When I change the view "Operator's View"
-    When User clicks on edit column option
-    Then User select the Column1 dropdown parameters "ACTUAL/FORECAST" and year "3/1/2023"
     And I am Loading the PnLYearly Report with GO button
     And I am verify the report header for "ACTUAL/FORECAST" and "3/1/2023"
     When I change the view "GOP KPI View"
-    When User clicks on edit column option
-    Then User select the Column1 dropdown parameters "ACTUAL/FORECAST" and year "3/01/2023"
     And I am Loading the PnLYearly Report with GO button
     And I am verify the report header for "ACTUAL/FORECAST" and "3/1/2023"
     When I change the view "Room Revenue Detail"
-    When User clicks on edit column option
-    Then User select the Column1 dropdown parameters "ACTUAL/FORECAST" and year "3/1/2023"
     And I am Loading the PnLYearly Report with GO button
     And I am verify the report header for "ACTUAL/FORECAST" and "3/1/2023"

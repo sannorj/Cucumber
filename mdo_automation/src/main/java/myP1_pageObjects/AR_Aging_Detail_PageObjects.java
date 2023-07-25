@@ -250,7 +250,7 @@ public class AR_Aging_Detail_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
 		
 		WebElement waitLoadSelectHotels = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' Sleep Inn & Suites Lakeside')]")));
+				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span")));
 				
 		waitLoadSelectHotels.click();
 		Thread.sleep(1500);

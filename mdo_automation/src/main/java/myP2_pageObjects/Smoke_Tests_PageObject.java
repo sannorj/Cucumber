@@ -23,7 +23,6 @@ import utils.ElementUtils;
 public class Smoke_Tests_PageObject {
 
 	private WebDriver driver;
-	ArrayList<String> propertyList = new ArrayList<>();
 	private ConstantsReader configReader = new ConstantsReader();
 	boolean flag;
 

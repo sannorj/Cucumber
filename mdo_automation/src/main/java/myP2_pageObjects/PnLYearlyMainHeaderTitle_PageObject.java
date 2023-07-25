@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -183,10 +184,19 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 
 		Thread.sleep(2500);
 
-		for (int i = 0; i < lstDropDownGroup.size(); i++) {
-			if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
-				lstDropDownGroup.get(i).click();
+		try {
+			for (int i = 0; i < lstDropDownGroup.size(); i++) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
+					lstDropDownGroup.get(i).click();
 
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < lstDropDownGroup.size(); i++) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
+					lstDropDownGroup.get(i).click();
+
+				}
 			}
 		}
 
@@ -204,10 +214,31 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 
 			Thread.sleep(2500);
 
-			for (int i = 0; i < lstDropDownGroup.size(); i++) {
-				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(year)) {
-					lstDropDownGroup.get(i).click();
+			try {
+				for (int i = 0; i < lstDropDownGroup.size(); i++) {
+					if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(year)) {
+						lstDropDownGroup.get(i).click();
 
+					}
+				}
+			} catch (StaleElementReferenceException e) {
+				for (int i = 0; i < lstDropDownGroup.size(); i++) {
+					if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(year)) {
+						lstDropDownGroup.get(i).click();
+
+					}
+				}
+			}
+			
+			catch (IndexOutOfBoundsException e) {
+				
+				drpYear.click();
+				
+				for (int i = 0; i < lstDropDownGroup.size(); i++) {
+					if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(year)) {
+						lstDropDownGroup.get(i).click();
+
+					}
 				}
 			}
 
@@ -254,16 +285,43 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 	}
 
 	public void changeTheView(String view) throws InterruptedException {
-		dropDownView.click();
+
+		WebElement drpView = new WebDriverWait(driver, Duration.ofSeconds(50))
+				.until(ExpectedConditions.visibilityOf(dropDownView));
+
+		drpView.click();
 
 		Thread.sleep(5000);
 
-		for (int i = 0; i < lstDropDownView.size(); i++) {
-			if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
-				lstDropDownView.get(i).click();
+		try {
+			for (int i = 0; i < lstDropDownView.size(); i++) {
+				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
+					lstDropDownView.get(i).click();
 
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < lstDropDownView.size(); i++) {
+				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
+					lstDropDownView.get(i).click();
+
+				}
+			}
+
+		}
+
+		catch (IndexOutOfBoundsException e) {
+			
+			drpView.click();
+			
+			for (int i = 0; i < lstDropDownView.size(); i++) {
+				if (lstDropDownView.get(i).getText().equalsIgnoreCase(view)) {
+					lstDropDownView.get(i).click();
+
+				}
 			}
 		}
+
 		Thread.sleep(4500);
 	}
 
@@ -281,10 +339,19 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 
 		Thread.sleep(2500);
 
-		for (int i = 0; i < lstDropDownGroup.size(); i++) {
-			if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
-				lstDropDownGroup.get(i).click();
+		try {
+			for (int i = 0; i < lstDropDownGroup.size(); i++) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
+					lstDropDownGroup.get(i).click();
 
+				}
+			}
+		} catch (StaleElementReferenceException e) {
+			for (int i = 0; i < lstDropDownGroup.size(); i++) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(column1)) {
+					lstDropDownGroup.get(i).click();
+
+				}
 			}
 		}
 

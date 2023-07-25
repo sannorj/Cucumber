@@ -80,15 +80,19 @@ public class GL_Hierarchy_Mapping_PageObject {
 		for (int x = 0; x < listStaticValues.size(); x++) {
 			/* split and ready the data from property file */
 			String[] a = configReader.getProp("GL_Map_MDO_Codes").split(",");
-			for (int i = 0; i < a.length; i++) {
-				String expected = a[i];
+			
+				String expected = a[x];
 				String actual = listSection.get(x).getText();
+				
+				System.out.println("Ex :"+expected+" AC :"+actual);
+				
 				if (actual.contains(expected)) {
 					flag = true;
 				} else {
 					flag = false;
+					break;
 				}
-			}
+			
 		}
 		return flag;
 	}

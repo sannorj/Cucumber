@@ -268,7 +268,13 @@ public class AR_Aging_Detail_PageObjects {
 	public void closeBtn() throws InterruptedException {
 		WebElement closeBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//button[text()='Close']")));
-		closeBtn.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", closeBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", closeBtn);
+		}
 		Thread.sleep(1500);
 	}
 

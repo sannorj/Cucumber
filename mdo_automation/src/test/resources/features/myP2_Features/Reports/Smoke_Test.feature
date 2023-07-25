@@ -122,7 +122,7 @@
     		 And click the GO button
 				 And confirm if data is generated for the selected parameters without any errors being prompted
 
-			Scenario: Smoke test for Pickup report
+			Scenario: Smoke test for PickUp report
           Then I am expand the pickUp report option under Reports section in Side Menu
     			And I am navigate to pickUp report page
     			And click the GO button

@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @dbTestKPI
+@dbTestKPI
 
 Feature: Compare the Rooms Sold and Rooms Available Data's with PnL Yearly
 

@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression1
+
 
    Feature: Verify GSS Medalia Set Priority Feature (Disabled in UAT & PROD)
 

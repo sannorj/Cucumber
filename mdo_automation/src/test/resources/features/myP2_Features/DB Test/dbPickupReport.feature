@@ -1,8 +1,6 @@
 #Author: sannorja@mydigitaloffice.ca
  @dbTest
 
-
-
 Feature: Compare the value between pickup report UI with source tables in DB 
 
  Scenario Outline:: Compare the value between pickup report UI with source tables in DB 

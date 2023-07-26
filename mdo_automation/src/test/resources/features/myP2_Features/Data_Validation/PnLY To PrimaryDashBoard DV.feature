@@ -1,5 +1,5 @@
 	#Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @kpiDataValidation
+@myP2_Regression
  
  Feature: Data Validation Between P&L Yearly To Primary DashBoard
  

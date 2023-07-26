@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @FinalFix
+@myP2_Regression
 
     Feature: Pickup report - ON THE BOOKS and ACTUAL Date Validation 
 

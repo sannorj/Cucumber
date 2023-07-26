@@ -1,5 +1,5 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @306090RollingTest
+@myP2_Regression @myP2_Smoke
 Feature: Report 306090 data validation Functionality 
 
   Scenario Outline: Verifying whether the previously selected dropdowns are carried forward to the 30/60/90 report

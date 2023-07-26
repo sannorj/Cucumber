@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnL
+@myP2_Regression
 
 Feature: P&L Yearly - TTM Forcast Functionalty 
 

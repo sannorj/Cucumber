@@ -347,6 +347,7 @@ public class PnLMonthly_PageObject {
 		double revParValue = Double.parseDouble(revPar.getText().replace(",", "").replaceAll("\\$", ""));
 
 		/* Verify the calculated and captured values are same. */
+		System.out.println("====roundOffrevPar==="+roundOffrevPar+"=====roundOffrevPar==="+roundOffrevPar);
 		if (roundOffrevPar == revParValue) {
 			return true;
 		} else {

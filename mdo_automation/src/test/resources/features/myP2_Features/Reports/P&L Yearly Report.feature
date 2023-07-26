@@ -15,7 +15,8 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
     When User clicks on edit column option 
     Then Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL/FORECAST
     And  Year  dropdown should contain the current year at the top and the past four years in descending order
-
+    
+ @sanity_myp2
 	Scenario: Validation of P&L Yearly Static section KPI
     Given I am login to the myp2 site
     And System navigate to the home page

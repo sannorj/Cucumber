@@ -254,12 +254,21 @@ public class AR_Aging_Detail_PageObjects {
 				
 		waitLoadSelectHotels.click();
 		Thread.sleep(1500);
-		int selectHotelListItm = driver.findElements(By.xpath("//div[@id='select2-drop']//ul[@class='select2-results']//li//div")).size();
+
+		List<WebElement> selectHotelListItms=driver.findElements(By.xpath("//div[@id='select2-drop']//ul[@class='select2-results']//li//div"));
+		int selectHotelListItm = selectHotelListItms.size();
+		selectHotelListItms.get(1).click();
+		Thread.sleep(1500);
+
+		WebElement waitLoadSelectHotel = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[text()='Select Hotel']")));
 
 		if (selectHotelListItm < 2) {
 			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			waitLoadSelectHotels.click();
 			return false;
 		}else {
+			waitLoadSelectHotels.click();
 			return true;
 		}
 		

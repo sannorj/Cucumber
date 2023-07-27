@@ -298,8 +298,18 @@ public class AR_Aging_Detail_PageObjects {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", PastCommentsLink);
 		}
+		String currentTab = driver.getWindowHandle();
+		for (String tab : driver.getWindowHandles()) {
+		    if (!tab.equals(currentTab)) {
+		        driver.switchTo().window(tab); 
+		    }       
+		}
+
 		WebElement waitLoadViewComments = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//h2[text()='View Comments']")));
+		boolean isViewCommentPage = waitLoadViewComments.isDisplayed();
+		System.out.println("View Comments Page is displayed: " + isViewCommentPage);
+		
 	}
 
 	public void SendSearchVal(String searchVal) throws InterruptedException {

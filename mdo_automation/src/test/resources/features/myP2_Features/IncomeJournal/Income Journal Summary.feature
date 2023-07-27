@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke
+@myP2_Regression
 
 Feature: Income Journal Summary  - Add New Row Feature
 
@@ -16,6 +16,7 @@ Feature: Income Journal Summary  - Add New Row Feature
     And User fills up all required fields and click on save button. 
     Then The newly added Income Journal Summary  should be visible on the home page. 
 
+ @myP2_Smoke
   Scenario Outline: Verify Summary page Element visibility and filter functionality
 	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 	  And Click on the Menu bar

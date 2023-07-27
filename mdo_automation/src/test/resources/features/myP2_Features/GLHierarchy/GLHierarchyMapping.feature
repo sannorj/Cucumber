@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @GLValidationHMG
+@myP2_Regression
 
 Feature: GL Hierarchy - hmg gl code  mapping validation
 

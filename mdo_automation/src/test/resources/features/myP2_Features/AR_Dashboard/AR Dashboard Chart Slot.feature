@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @arChart @arChartDash
+@myP2_Regression
 
 Feature: AR Aging Dashboard - Chart Slot Validation
 

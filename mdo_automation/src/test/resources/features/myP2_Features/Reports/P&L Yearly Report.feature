@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression  @myP2_Smoke @PnLYearlyFix
+@myP2_Regression
 
 Feature: P&L Yearly - View Feature Validation and Static Calculation
 
@@ -15,14 +15,15 @@ Feature: P&L Yearly - View Feature Validation and Static Calculation
     When User clicks on edit column option 
     Then Custom column1 dropdown should contains ACTUAL , BUDGET , FORECAST , ACTUAL/FORECAST
     And  Year  dropdown should contain the current year at the top and the past four years in descending order
-
+    
+ @sanity_myp2
 	Scenario: Validation of P&L Yearly Static section KPI
     Given I am login to the myp2 site
     And System navigate to the home page
-    And Select the organization as "Beck Legacy Group" 
+    And Select the organization as "HighGate Hotels" 
     And I am expand the P&L Statement option under Reports section in Side Menu
     Then I am navigate to P&L Yearly page
-    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
+    And I select the group "01. Highgate - US" , property "Alohilani Resort Waikiki Beach" , year "2022" , view "Owner's View"
   
     When I am Loading the PnLYearly Report with GO button
     Then Page should load the defualt static section 

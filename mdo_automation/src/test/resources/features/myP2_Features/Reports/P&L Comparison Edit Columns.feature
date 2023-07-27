@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression1
+@myP2_Regression
 
 Feature:  P&L Comparison Report - Edit Column functionality  
 

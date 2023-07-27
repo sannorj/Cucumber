@@ -1,5 +1,6 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myp2Regression
+@myP2_Regression
+
 Feature: AR Mapping Functionality 
 
   Background: Navigate to AR Mapping and verify functionality  

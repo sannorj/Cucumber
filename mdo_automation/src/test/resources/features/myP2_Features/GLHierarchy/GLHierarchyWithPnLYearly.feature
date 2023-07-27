@@ -1,5 +1,6 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @GLValidation
+@myP2_Regression
+
 Feature: GL Hierarchy Toggle button Validation With PnL Yearly
 
 	Background: Navigate to P&L Yearly report

@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @TrendDashToggle
+@myP2_Regression
 
 Feature: Trend Dashboard Toggle Widgets
 

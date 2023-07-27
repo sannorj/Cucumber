@@ -290,7 +290,14 @@ public class AR_Aging_Detail_PageObjects {
 	public void viewPastComments() {
 		WebElement PastCommentsLink = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//a[text()='View Past Comments']")));
-		PastCommentsLink.click();
+//		PastCommentsLink.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PastCommentsLink);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PastCommentsLink);
+		}
 		WebElement waitLoadViewComments = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//h2[text()='View Comments']")));
 	}

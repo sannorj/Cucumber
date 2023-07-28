@@ -74,7 +74,13 @@ public class propertyDashboard_AddComment_PageObjects {
 	public void clickAddComment() throws InterruptedException {
 		WebElement waittoBtnAddComment = new WebDriverWait(driver, Duration.ofSeconds(700))
 				.until(ExpectedConditions.visibilityOf(btnAddComment));
-		waittoBtnAddComment.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", waittoBtnAddComment);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", waittoBtnAddComment);
+		}
 	}
 
 	public boolean verifyCommentPopup() {

@@ -9,9 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utils.ConfigReader;
-import utils.ElementUtils;
+
 
 public class Login_PageObject {
 	private WebDriver driver;
@@ -22,9 +21,10 @@ public class Login_PageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//img[contains(@src,'/logo.png')]")
-	WebElement logo;
 
+	@FindBy(xpath = "(//img[contains(@class,'companyLogo')])[1]")
+	WebElement logo;
+	
 	@FindBy(xpath = "//input[@id='email']")
 	WebElement username;
 

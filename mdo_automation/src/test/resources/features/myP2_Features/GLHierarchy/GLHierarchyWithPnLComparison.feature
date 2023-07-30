@@ -1,12 +1,14 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression1
+
+
 Feature: GL Hierarchy Toggle button Validation With PnL Comparison
 
 	Background: Navigate to P&L Property Comparison report
     Given I am login to the myp2 site
     And System navigate to the home page
     And Select the organization as "Beck Legacy Group"
-    
+  
+   @myP2_Regression
    Scenario: Verify the All on Modal Function
     And I am expand the P&L Statement option under Reports section in Side Menu
     And go to the P&L Property Comparison

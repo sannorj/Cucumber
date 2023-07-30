@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @arDashboardLinkProp @pasindu
+@myP2_Regression
 
 Feature: AR Aging Dashboard - Outstanding validation Functionality 
 

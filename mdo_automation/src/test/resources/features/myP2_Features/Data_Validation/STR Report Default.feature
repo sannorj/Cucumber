@@ -1,5 +1,6 @@
 #Author: madushika@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @StrReport
+@myP2_Regression @myP2_Smoke
+
 Feature: STR Report data validation Functionality 
 
   Scenario Outline: Verify STR Report Page data change according to selected options and tabs in data validation functionality

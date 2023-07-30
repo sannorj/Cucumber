@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression @pickupReportEdit
+@myP2_Regression
 
 Feature: Pickup report - Edit Column Validation 
 

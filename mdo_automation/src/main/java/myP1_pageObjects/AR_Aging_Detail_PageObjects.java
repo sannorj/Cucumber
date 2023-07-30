@@ -48,6 +48,9 @@ public class AR_Aging_Detail_PageObjects {
 	@FindBy(xpath = "//input[@value='Add Comment']")
 	WebElement addCommentBtn;
 
+	@FindBy(xpath = "//div[contains(@id,'datatable-araging-container') and not(contains(@style,'visibility: hidden;'))]//input[@placeholder='Search']")
+	WebElement searchTxt;
+
 	@FindBy(xpath = "//div[@id='datatable-araging-containerForCompanyPortfolio']//div[@class='dataTables_scrollFoot']//tfoot//td[contains(@class,'right')]")
 	List<WebElement> lstTotalColValues;
 
@@ -73,6 +76,11 @@ public class AR_Aging_Detail_PageObjects {
 				.visibilityOfElementLocated(By.xpath("//a//span[text()=' Sleep Inn & Suites Lakeside']")));
 		Thread.sleep(3000);
 		hotelNameSelect.click();
+		WebElement hotelnameInput = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='select2-drop']//input")));
+		hotelnameInput.sendKeys(Keys.CONTROL + "a");
+		hotelnameInput.sendKeys(Keys.DELETE);
+		hotelnameInput.sendKeys(configReader.getMYP1Prop("AR_Aging_Detail_Hotel"));
 		Thread.sleep(3000);
 		try {
 			for (int i = 0; i < lstDropDowHotel.size(); i++) {
@@ -107,7 +115,7 @@ public class AR_Aging_Detail_PageObjects {
 	}
 
 	public void clickUpdate() throws InterruptedException {
-		Thread.sleep(3000);	
+		Thread.sleep(5000);	
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", updateBtn);
@@ -237,31 +245,105 @@ public class AR_Aging_Detail_PageObjects {
 		return valueisEqual;
 	}
 
-//	public void clickAddComment() throws InterruptedException {
-//		Thread.sleep(3000);
-//		addCommentBtn.click();
-//		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-//				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
-//	}
-
 	public boolean verifySelectOption() throws InterruptedException {
 		WebElement addCommentModalView = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//h4[text()='Add Comments']")));
 		
 		WebElement waitLoadSelectHotels = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span[contains(text(),' ')]")));////////////////
+				.visibilityOfElementLocated(By.xpath("//div[@id='s2id_ddlHotelsComments']//a/span")));
 				
 		waitLoadSelectHotels.click();
 		Thread.sleep(1500);
-		int selectHotelListItm = driver.findElements(By.xpath("//div[@id='select2-drop']//ul[@class='select2-results']//li//div")).size();
+
+		List<WebElement> selectHotelListItms=driver.findElements(By.xpath("//div[@id='select2-drop']//ul[@class='select2-results']//li//div"));
+		int selectHotelListItm = selectHotelListItms.size();
+		selectHotelListItms.get(0).click();
+		Thread.sleep(1500);
+
+		WebElement waitLoadSelectHotel = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[text()='Select Hotel']")));
 
 		if (selectHotelListItm < 2) {
-			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+//			WebElement btnOk = driver.findElement(By.xpath("//button[text()='OK']"));
+			waitLoadSelectHotels.click();
 			return false;
 		}else {
+			waitLoadSelectHotels.click();
 			return true;
 		}
 		
+	}
+
+	public void closeBtn() throws InterruptedException {
+		WebElement closeBtn = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//button[text()='Close']")));
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", closeBtn);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", closeBtn);
+		}
+		Thread.sleep(1500);
+	}
+
+	public void viewPastComments() {
+		WebElement PastCommentsLink = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//div[@id='addCommentModal']//a[text()='View Past Comments']")));
+//		PastCommentsLink.click();
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PastCommentsLink);
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", PastCommentsLink);
+		}
+		String currentTab = driver.getWindowHandle();
+		for (String tab : driver.getWindowHandles()) {
+		    if (!tab.equals(currentTab)) {
+		        driver.switchTo().window(tab); 
+		    }       
+		}
+
+		WebElement waitLoadViewComments = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//h2[text()='View Comments']")));
+		boolean isViewCommentPage = waitLoadViewComments.isDisplayed();
+		System.out.println("View Comments Page is displayed: " + isViewCommentPage);
+		
+	}
+
+	public void SendSearchVal(String searchVal) throws InterruptedException {
+		try {
+			searchTxt.sendKeys(Keys.CONTROL + "a");
+			searchTxt.sendKeys(Keys.DELETE);
+			searchTxt.sendKeys(searchVal);
+			Thread.sleep(1500);
+		} catch (Exception e) {
+			searchTxt.sendKeys(Keys.CONTROL + "a");
+			searchTxt.sendKeys(Keys.DELETE);
+			searchTxt.sendKeys(searchVal);
+			Thread.sleep(1500);
+		}
+	}
+
+	public boolean verifySearchValInRaws(String searchVal) {
+		
+		Boolean valueisEqual=true;
+		
+		for (int i = 0; i < lstRaws.size(); i++) {
+			int raw=i+1;
+			String currentVal = new WebDriverWait(driver, Duration.ofSeconds(700)).until(ExpectedConditions
+					.visibilityOfElementLocated(By.xpath("(//table[@id='datatable-ajax-3']//tbody/tr/td[@data-label='HotelName']/a[contains(text(),'"+searchVal+"')])["+raw+"]"))).getText();
+			
+			if(currentVal.contains(searchVal)) {
+				System.out.println("current hotel name "+currentVal+" contains "+searchVal);
+			}else {
+				System.out.println("current hotel name "+currentVal+" is not contains "+searchVal);
+				valueisEqual=false;
+			}
+			System.out.println("=============================");
+		}
+		return valueisEqual;
 	}
 
 }

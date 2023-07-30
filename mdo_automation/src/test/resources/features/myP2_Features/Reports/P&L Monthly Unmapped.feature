@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @pnlMonthlyUnmapped @pasindu
+@myP2_Regression
 
 Feature: P&L Monthly - Unmapped
 

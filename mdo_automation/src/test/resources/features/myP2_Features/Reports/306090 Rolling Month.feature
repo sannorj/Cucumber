@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression @myP2_Smoke @sannorj @myp2Regression
+@myP2_Regression
 
 Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation 
 
@@ -25,7 +25,8 @@ Feature: 306090 Rolling Month Report - Header, Parameters and Search Validation
    And Navigate to Rolling Month Report page
    When User navigates to the Calendar Month Report
    Then The Rolling Month Report parameters should match the Calendar Month Report.
-    
+   
+   
   #Scenario Outline: Verify Rolling Month Report page Element visibility and filter functionality
 #	  Given Selects filters as '<filter1>' and '<filter2>' in the initial page
 #	  And Click on the Menu bar

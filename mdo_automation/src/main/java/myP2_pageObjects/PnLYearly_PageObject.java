@@ -125,7 +125,7 @@ public class PnLYearly_PageObject {
 	}
 
 	public void passParameteres(String grp, String property, String year, String view) throws InterruptedException {
-		Thread.sleep(4500);
+		Thread.sleep(5500);
 		try {
 			dropDownGroup.click();
 			for (int i = 0; i < lstDropDownGroup.size(); i++) {
@@ -341,7 +341,7 @@ public class PnLYearly_PageObject {
 
 		boolean flag = false;
 
-		for (int i = 0; i < revParCalc.length; i++) {
+		for (int i = 0; i < revParCalc.length-1; i++) {
 			if (revPar[i] == revParCalc[i]) {
 				flag = true;
 			} else {

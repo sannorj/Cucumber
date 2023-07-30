@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression1
+@myP2_Regression
 
    Feature: KPI Library Add - Eidt - Delete functionality
 

@@ -266,7 +266,7 @@ public class AR_Mapping_PageObjective {
 			WebElement e = driver.findElement(By.xpath("//div[text()='" + mulAccountList.get(i)
 					+ "']//ancestor::td//preceding-sibling::td[@index='0']//input"));
 			e.click();
-			Thread.sleep(6000);
+			Thread.sleep(7500);
 			System.out.println("clicked bullet icon: " + mulAccountList.get(i));
 		}
 		buttonMapTo.click();
@@ -284,7 +284,7 @@ public class AR_Mapping_PageObjective {
 	}
 
 	public boolean verifyAccountsChanged() throws InterruptedException {
-		Thread.sleep(10000);
+		Thread.sleep(12000);
 		boolean flag = true;
 		for (int i = 0; i < mulAccountList.size(); i++) {
 

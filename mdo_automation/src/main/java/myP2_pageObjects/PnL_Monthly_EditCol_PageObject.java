@@ -152,7 +152,7 @@ public class PnL_Monthly_EditCol_PageObject {
 		ElementUtils.waitForElementToHide(lblEdit, 100);
 		Thread.sleep(4500);
 		for (int i =0; i < mainHeader.size(); i++) {
-			Thread.sleep(1500);
+			Thread.sleep(3000);
 			Headers.add(mainHeader.get(i).getText());
 		}
 		

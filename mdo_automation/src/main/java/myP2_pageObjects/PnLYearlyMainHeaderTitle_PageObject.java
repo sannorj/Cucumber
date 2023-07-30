@@ -199,6 +199,18 @@ public class PnLYearlyMainHeaderTitle_PageObject {
 				}
 			}
 		}
+		
+		catch (IndexOutOfBoundsException e) {
+			
+			drpColumn.click();
+			
+			for (int i = 0; i < lstDropDownGroup.size(); i++) {
+				if (lstDropDownGroup.get(i).getText().equalsIgnoreCase(year)) {
+					lstDropDownGroup.get(i).click();
+
+				}
+			}
+		}
 
 		Thread.sleep(2500);
 

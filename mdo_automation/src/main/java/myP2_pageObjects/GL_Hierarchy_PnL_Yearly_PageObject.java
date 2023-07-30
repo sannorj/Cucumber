@@ -219,11 +219,17 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 		System.out.print("AA" + txtCapturedValue + " BB" + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
-			btnTopCapturedValueToggle.click();
+			WebElement btnTopCapturedValueToggleEle = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnTopCapturedValueToggle));
+			
+			btnTopCapturedValueToggleEle.click();
 
-			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
+			ElementUtils.waitForElementToDisplay(confirmTurnOff, 150);
 
-			btnConfirm.click();
+			WebElement btnConfirmEle = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnConfirm));
+			
+			btnConfirmEle.click();
 
 			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));

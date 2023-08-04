@@ -272,11 +272,18 @@ public class GLHierarchy_PageObject {
 		System.out.println("AA " + txtCapturedValue + " BB " + capturedModal);
 		if (capturedModal.equalsIgnoreCase(txtCapturedValue)) {
 
-			btnTopCapturedValueToggle.click();
+			
+			WebElement btnTopCapturedValueToggleEle = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnTopCapturedValueToggle));
+			
+			btnTopCapturedValueToggleEle.click();
 
 			ElementUtils.waitForElementToDisplay(confirmTurnOff, 100);
 
-			btnConfirm.click();
+			WebElement btnConfirmEle = new WebDriverWait(driver, Duration.ofSeconds(25))
+					.until(ExpectedConditions.visibilityOf(btnConfirm));
+			
+			btnConfirmEle.click();
 
 			WebElement lblSuccessmsg = new WebDriverWait(driver, Duration.ofSeconds(25))
 					.until(ExpectedConditions.visibilityOf(lblTurnOffMessage));

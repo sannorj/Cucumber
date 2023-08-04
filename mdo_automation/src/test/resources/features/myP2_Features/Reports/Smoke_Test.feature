@@ -1,5 +1,5 @@
 #Author: udarsha@mydigitaloffice.ca
-@smoke_myp2 @sanity_myp2
+@smoke_myp2 @sanity_myp2 @myP2_Regression
 
 	Feature: Smoke Test validation for myP2
 

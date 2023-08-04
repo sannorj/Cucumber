@@ -114,6 +114,9 @@ public class PickUpReport_TotalComparison_PageObject {
 
 	@FindBy(xpath = "//div//label[text() = 'End Date'] //following-sibling::div//button")
 	WebElement btnEndDatePicker;
+	
+	@FindBy(xpath = "//span[text()='Totals']")
+	WebElement pickupHeader;
 
 	public int getMonth() {
 		Date date = new Date();
@@ -456,6 +459,11 @@ public class PickUpReport_TotalComparison_PageObject {
 
 			Thread.sleep(5000);
 
+			WebElement pickupHeaderEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(pickupHeader));
+			pickupHeaderEle.isDisplayed();
+			
+			Thread.sleep(5000);
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -475,6 +483,11 @@ public class PickUpReport_TotalComparison_PageObject {
 
 			Thread.sleep(5000);
 
+			WebElement pickupHeaderEle = new WebDriverWait(driver, Duration.ofSeconds(25)).until(ExpectedConditions.visibilityOf(pickupHeader));
+			pickupHeaderEle.isDisplayed();
+			
+			Thread.sleep(5000);
+			
 		} catch (Exception e) {
 
 			e.printStackTrace();

@@ -21,6 +21,7 @@ Feature: P&L Property Comparison - View Feature Validation and Static Calculatio
   Scenario: Verify the View Feature and Static Calculation 
     Then Page should load the defualt static section in PnL Comparison
 
+@sana
   Scenario: Verify that the occupancy calculations are correct 
     When ROOMS SOLD divided by ROOMS AVAILABLE in PnL Comparison
     Then Calculated value should be match with OCCUPANCY in PnL Comparison

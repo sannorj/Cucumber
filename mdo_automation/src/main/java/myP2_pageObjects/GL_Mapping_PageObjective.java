@@ -116,8 +116,6 @@ public class GL_Mapping_PageObjective {
 	
 	public void selectingSingleProperty() throws InterruptedException {
 		
-		
-		
 		Thread.sleep(5000);
 		
 		WebElement elelblGLCode = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(lblGLCode));
@@ -134,8 +132,14 @@ public class GL_Mapping_PageObjective {
 				}
 			}
 		}
-
 		
+		Thread.sleep(3000);
+
+		WebElement elelblGLCodeHeader = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(lblGLCode));
+		elelblGLCodeHeader.isDisplayed();
+		
+		Thread.sleep(3000);
+
 	}
 	
 	public boolean clickAddButt() throws InterruptedException {

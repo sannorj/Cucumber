@@ -1,7 +1,7 @@
 #Author: pasindu@mydigitaloffice.ca
-@myP2_Regression @AllSmokeTests @pasindu
+@smoke_myp2 @sanity
 
-Feature: Smoke testing for all the pages
+Feature: Smoke testing for all the pages - Insignia Hospitality Group
 
 Background: Login to MYP2 application
   Given I am login to the myp2 site

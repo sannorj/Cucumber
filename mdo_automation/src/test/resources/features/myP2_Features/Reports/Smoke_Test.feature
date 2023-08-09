@@ -1,7 +1,7 @@
 #Author: udarsha@mydigitaloffice.ca
 @smoke_myp2 @sanity_myp2 @myP2_Regression
 
-	Feature: Smoke Test validation for myP2
+	Feature: Smoke Test validation for myP2  - HighGate Hotels
 
     Background: Comment smoke test by login into the application
        Given I am login to the myp2 site

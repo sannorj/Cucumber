@@ -12,19 +12,19 @@ public class dbTest_StepDefinition {
 	DBConnection dbConnection = new DBConnection();
 	
 
-	@When("I retrieve the actual data list from {string} for {string} {string} {string} {string} {string}")
-	public void i_retrieve_the_actual_data_list_from_for(String table, String mdoglcode, String from_date, String to_date, String hotelid, String hre_type_id) {
-	    db.selectTblValues(table,mdoglcode,from_date,to_date,hotelid,hre_type_id);
+	@When("I have a myp1 databse connection")
+	public void I_have_a_myp1_databse_connection() throws Exception {
+		DBConnection.getmyp1Connection();
+	}
+	
+	@When("I retrieve the actual data list from the database and csv reports then compare it and add the values to an Excel sheet")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_csv_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
+	    db.selectTblValues();
 	}
 
-	@Then("I retrieve the sample report file data")
-	public void i_retrieve_the_sample_report_file_data() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
 
-	@And("I compare the database value with report values")
-	public void i_compare_the_database_value_with_report_values() {
+	@When("I retrieve the actual data list from the database and excel reports then compare it and add the values to an Excel sheet")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_excel_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}

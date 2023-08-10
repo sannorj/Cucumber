@@ -66,7 +66,7 @@ public class GL_Hierarchy_PnL_Yearly_PageObject {
 	@FindBy(xpath = "//tr[@data-el='RMREV50']//button")
 	WebElement glRoomRevenueBeofreOther;
 
-	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//input[@type='checkbox']")
+	@FindBy(xpath = "//tr[@data-el='RMREV50']//td[4]//label[@data-el='switchLabel']//span[@data-el = 'switch']")
 	WebElement btnTopCapturedValueToggle;
 
 	@FindBy(xpath = "//tr[@data-el='RMREV10']//button")

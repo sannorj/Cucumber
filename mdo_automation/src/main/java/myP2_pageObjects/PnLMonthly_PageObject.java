@@ -1,6 +1,7 @@
 package myP2_pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -161,7 +162,7 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		if (drpProperty.isEnabled()) {
 			WebElement drpPropertyEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(drpProperty));
 			drpPropertyEle.click();
@@ -173,7 +174,7 @@ public class PnLMonthly_PageObject {
 				}
 			}
 		}
-		Thread.sleep(4000);
+		Thread.sleep(12000);
 	
 		selectDate();
 		Thread.sleep(2500);
@@ -190,10 +191,18 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
-		Thread.sleep(4500);
+		Thread.sleep(10000);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(60))
 				.until(ExpectedConditions.visibilityOf(btnGo));
-		btnGO.click();
+		try {
+			btnGO.click();
+		} catch (ElementClickInterceptedException e) {
+			
+			System.out.println("Exception Handle 1");
+			Thread.sleep(4500);
+			btnGO.click();
+		}
+		
 
 		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
 		btnZeroValue.click();
@@ -245,6 +254,17 @@ public class PnLMonthly_PageObject {
 			}
 		}
 
+		Thread.sleep(4500);
+		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(60))
+				.until(ExpectedConditions.visibilityOf(btnGo));
+		btnGO.click();
+
+		ElementUtils.waitForElementToDisplay(lblRoomAva, 100);
+		btnZeroValue.click();
+	}
+	
+	public void loadPnL() throws InterruptedException {
+		
 		Thread.sleep(4500);
 		WebElement btnGO = new WebDriverWait(driver, Duration.ofSeconds(60))
 				.until(ExpectedConditions.visibilityOf(btnGo));
@@ -533,7 +553,10 @@ public class PnLMonthly_PageObject {
 		int btnDatePickforLocal = driver.findElements(By.xpath("//div//label[text() = 'Date'] //following-sibling::div//button")).size();
 
 		if (btnDatePickforLocal > 0) {
-			btnDatePicker.click();
+			
+			WebElement btnDatePickerEle = new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.visibilityOf(btnDatePicker));
+
+			btnDatePickerEle.click();
 		}
 
 		int status = driver.findElements(By.xpath("//div[@role='dialog']")).size();

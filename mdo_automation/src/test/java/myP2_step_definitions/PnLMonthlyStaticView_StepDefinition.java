@@ -29,6 +29,11 @@ public class PnLMonthlyStaticView_StepDefinition {
 		pnlMonthly.selectParametersWithoutDate();
 	}
 	
+	@When("load the PnL Monthly With GO button")
+	public void load_the_PnL_Monthly_With_GO_button() throws InterruptedException {
+		pnlMonthly.loadPnL();
+	}
+	
 	@Then("Page should load the defualt static section")
 	public void page_should_load_the_defualt_static_section() throws InterruptedException {
 		assertTrue(pnlMonthly.verifyStaticSection());

@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @306090
 
 Feature: 306090 Calendar Month Report - Header, Parameters and Search Validation 
 

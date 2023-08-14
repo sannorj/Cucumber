@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca 
- @PrimaryDashBoard @PrimaryDashBoard
+ @myP2_Regression @PrimaryDashBoard
 
 Feature: Primary Dashboard - Custom Decimal Places Features
 

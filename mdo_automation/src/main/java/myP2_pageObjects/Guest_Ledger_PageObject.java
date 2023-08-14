@@ -43,8 +43,12 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'hotelGroupId')]")
 	WebElement drpGroup;
 	
-	@FindBy(xpath = "//ul[@role='listbox']//li")
+//	@FindBy(xpath = "//ul[@role='listbox']//li")
+//	List <WebElement> listDrpValueSize;
+	
+	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
+	
 	
 	@FindBy(xpath = "//div//li[@role='option']")
 	List <WebElement> listDrp2ValueSize;
@@ -300,6 +304,9 @@ public class Guest_Ledger_PageObject {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpOrg));
 			drpGroupEle.click();
+			
+			Thread.sleep(3000);
+			drpGroupEle.sendKeys(org);
 
 			Thread.sleep(5000);
 			for (int i = 0; i < listDrpValueSize.size(); i++) {

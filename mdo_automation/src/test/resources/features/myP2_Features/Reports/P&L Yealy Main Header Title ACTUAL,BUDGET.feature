@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @pnl
 
 Feature: P&L Yearly -  Main Header Title Verification For Column 1 Data Set Mode's (ACTUAL/BUDGET)
 

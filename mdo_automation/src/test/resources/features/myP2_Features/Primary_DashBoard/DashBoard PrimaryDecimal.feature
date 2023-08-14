@@ -1,5 +1,5 @@
 #Author: haniffa@mydigitaloffice.ca 
- @PrimaryDashBoard 
+ @PrimaryDashBoard @PrimaryDashBoard
 
 Feature: Primary Dashboard - Custom Decimal Places Features
 

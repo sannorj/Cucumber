@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Admin</Author>
+  <LastAuthor>Admin</LastAuthor>
+  <Created>2023-08-11T07:01:18Z</Created>
+  <Version>16.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>12105</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>32767</WindowTopX>
+  <WindowTopY>32767</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="test">
+  <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">mdo_gl_code</Data></Cell>
+    <Cell><Data ss:Type="String">hotel_id</Data></Cell>
+    <Cell><Data ss:Type="String">hre_type_id</Data></Cell>
+    <Cell><Data ss:Type="String">sum_amount</Data></Cell>
+    <Cell><Data ss:Type="String">sum_amount_adjustment</Data></Cell>
+    <Cell><Data ss:Type="String">sum_total</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">26de6b0b-d781-96dd-0a13-2316922f88a0</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">45340.900099999999</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">45340.900099999999</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">dce6d833-77f6-289c-c9fa-4f52459d0373</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">45014.470399999998</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">45014.470399999998</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">d0561005-7161-0065-98e8-c0ba6162e5c6</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">52359.7503</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">52359.7503</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">f164b497-7dca-32e7-8b9e-e104a60a6e68</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">62112.668799999999</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">62112.668799999999</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">4355e20e-e825-cc43-3d16-34db082ac0eb</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">70826.589399999997</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">70826.589399999997</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">690ecc87-32c2-c9cf-a165-fe70dc4ec3eb</Data></Cell>
+    <Cell><Data ss:Type="String">RMREV90</Data></Cell>
+    <Cell><Data ss:Type="Number">832</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue</Data></Cell>
+    <Cell><Data ss:Type="Number">71562.160600000003</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">71562.160600000003</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

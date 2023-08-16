@@ -19,14 +19,17 @@ public class dbTest_StepDefinition {
 	
 	@When("I retrieve the actual data list from the database and csv reports then compare it and add the values to an Excel sheet")
 	public void i_retrieve_the_actual_data_list_from_the_database_and_csv_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
-	    db.selectTblValues();
+	    db.compareCSVReportData();
 	}
-
 
 	@When("I retrieve the actual data list from the database and excel reports then compare it and add the values to an Excel sheet")
 	public void i_retrieve_the_actual_data_list_from_the_database_and_excel_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	    db.compareExcelReportData();
+	}
+
+	@When("I retrieve the actual data list from the database and xml reports then compare it and add the values to an Excel sheet")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_xml_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
+	    db.compareXmlReportData();
 	}
 
 }

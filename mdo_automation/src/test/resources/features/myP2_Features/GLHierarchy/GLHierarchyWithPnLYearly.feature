@@ -9,10 +9,6 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
     Then Select the organization as "Beck Legacy Group"
     
 	Scenario: Verify the All on Modal Function
-    When I am expand the P&L Statement option under Reports section in Side Menu
-    Then I am navigate to P&L Yearly page
-    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
-    And I am Loading the PnLYearly Report with GO button
     Given I am expand the configuration options in Side Menu
 		Then I am navigate to GL Hierarchy page
 		And Click the All On button
@@ -29,7 +25,6 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
  		When Verify the captured top modal in PnL Yearly with GL hierarchy and turn off the modal
  		Then I am expand the P&L Statement option under Reports section in Side Menu
  		And I am navigate to P&L Yearly page
-    When I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     Then I am Loading the PnLYearly Report with GO button
     And Verify the top child modal is not visible in the Pnl Yearly report
     
@@ -44,15 +39,10 @@ Feature: GL Hierarchy Toggle button Validation With PnL Yearly
  		When Verify the captured parent modal in PnL Yearly with GL hierarchy and turn off the modal
  		Then I am expand the P&L Statement option under Reports section in Side Menu
  		And I am navigate to P&L Yearly page
-    When I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
     Then I am Loading the PnLYearly Report with GO button
     And Verify the parent modal is not visible in the Pnl Yearly report
     
    Scenario: Verify the All on Modal Function
-    When I am expand the P&L Statement option under Reports section in Side Menu
-    Then I am navigate to P&L Yearly page
-    And I select the group "All groups" , property "Days Inn & Suites Page Lake Powell" , year "2020" , view "Owner's View"
-    And I am Loading the PnLYearly Report with GO button
     Given I am expand the configuration options in Side Menu
 		Then I am navigate to GL Hierarchy page
 		And Click the All On button

@@ -1,5 +1,5 @@
 #Author: pasindu@mydigitaloffice.ca
-@smoke_myp2 @sanity @myP2_Regression
+
 
 Feature: Smoke testing for all the pages - Insignia Hospitality Group
 

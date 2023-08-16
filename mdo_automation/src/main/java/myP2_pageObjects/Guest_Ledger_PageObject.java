@@ -43,8 +43,12 @@ public class Guest_Ledger_PageObject {
 	@FindBy(xpath = "//div/input[contains(@name, 'hotelGroupId')]")
 	WebElement drpGroup;
 	
+//	@FindBy(xpath = "//ul[@role='listbox']//li")
+//	List <WebElement> listDrpValueSize;
+	
 	@FindBy(xpath = "//div[@role='listbox']//li")
 	List <WebElement> listDrpValueSize;
+	
 	
 	@FindBy(xpath = "//div//li[@role='option']")
 	List <WebElement> listDrp2ValueSize;
@@ -300,6 +304,9 @@ public class Guest_Ledger_PageObject {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpOrg));
 			drpGroupEle.click();
+			
+			Thread.sleep(3000);
+			drpGroupEle.sendKeys(org);
 
 			Thread.sleep(5000);
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
@@ -317,14 +324,15 @@ public class Guest_Ledger_PageObject {
 	
 	public void selectParametersFunc() throws InterruptedException {
 
-		ElementUtils.waitForElementToDisplay(lblMARSHA, 100);
-
+		Thread.sleep(2500);
+		
 		if (drpGroup.isEnabled()) {
 			/* Select the appropriate Group value from the drop-down menu. */
 			WebElement drpGroupEle = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(drpGroup));
 			drpGroupEle.click();
 
-			ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+			//ExpectedConditions.visibilityOf(listDrpValueSize.get(0));
+			
 			for (int i = 0; i < listDrpValueSize.size(); i++) {
 				if (listDrpValueSize.get(i).getText().equalsIgnoreCase(configReader.getProp("Ledger_Group"))) {
 					listDrpValueSize.get(i).click();
@@ -368,9 +376,10 @@ public class Guest_Ledger_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
+		Thread.sleep(5000);
 
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -383,6 +392,7 @@ public class Guest_Ledger_PageObject {
 				flag = true;
 			} else {
 				flag = false;
+				break;
 			}
 		}
 		return flag;
@@ -408,9 +418,9 @@ public class Guest_Ledger_PageObject {
 				listDrpValueSize.get(i).click();
 			}
 		}
-
+		Thread.sleep(5000);
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -423,6 +433,7 @@ public class Guest_Ledger_PageObject {
 				flag = true;
 			} else {
 				flag = false;
+				break;
 			}
 		}
 		return flag;
@@ -450,9 +461,9 @@ public class Guest_Ledger_PageObject {
 				Thread.sleep(1500);
 			}
 		}
-
+		Thread.sleep(5000);
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -461,7 +472,7 @@ public class Guest_Ledger_PageObject {
 		boolean flag = true;
 		for (int x = 0; x < listGroup.size(); x++) {
 			String value = listGroup.get(x).getText();
-			if (value.equals(configReader.getProp("Ledger_FGroup")) || value.equals("")) {
+			if (value.equalsIgnoreCase(configReader.getProp("Ledger_FGroup")) || value.equals("")) {
 				flag = true;
 			} else {
 				flag = false;
@@ -490,9 +501,9 @@ public class Guest_Ledger_PageObject {
 				listDrp2ValueSize.get(i).click();
 			}
 		}
-
+		Thread.sleep(5000);
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -501,7 +512,7 @@ public class Guest_Ledger_PageObject {
 		boolean flag = true;
 		for (int x = 0; x < listDB.size(); x++) {
 			String value = listDB.get(x).getText();
-			if (value.equals(configReader.getProp("Ledger_DB")) || value.equals("")) {
+			if (value.equalsIgnoreCase(configReader.getProp("Ledger_DB")) || value.equals("")) {
 				flag = true;
 			} else {
 				flag = false;
@@ -533,7 +544,7 @@ public class Guest_Ledger_PageObject {
 
 		Thread.sleep(6000);
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -542,7 +553,7 @@ public class Guest_Ledger_PageObject {
 		boolean flag = true;
 		for (int x = 0; x < listST.size(); x++) {
 			String value = listST.get(x).getText();
-			if (value.equals(configReader.getProp("Ledger_ST")) || value.equals("")) {
+			if (value.equalsIgnoreCase(configReader.getProp("Ledger_ST")) || value.equals("")) {
 				flag = true;
 			} else {
 				flag = false;
@@ -572,9 +583,9 @@ public class Guest_Ledger_PageObject {
 				listDrp2ValueSize.get(i).click();
 			}
 		}
-
+		Thread.sleep(5000);
 		btnApply.click();
-		ElementUtils.waitForElementToHide(lblFilters, 100);
+		ElementUtils.waitForElementToHide(lblMARSHA, 100);
 
 	}
 	
@@ -606,7 +617,7 @@ public class Guest_Ledger_PageObject {
 //		drpFilterArrivalDateEle.click();
 		
 		drpFilterArrivalDate.sendKeys(configReader.getProp("Ledger_ArrDate"));
-
+		Thread.sleep(5000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 
@@ -640,6 +651,7 @@ public class Guest_Ledger_PageObject {
 //		drpFilterDepartureDateEle.click();
 
 		drpFilterDepartureDate.sendKeys(configReader.getProp("Ledger_Depdate")); 
+		Thread.sleep(5000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 
@@ -680,7 +692,7 @@ public class Guest_Ledger_PageObject {
 		}
 		txtOutstandingAmount.click();
 		txtOutstandingAmount.sendKeys(configReader.getProp("Ledger_OutStanding"));
-
+		Thread.sleep(5000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 
@@ -723,7 +735,7 @@ public class Guest_Ledger_PageObject {
 		}
 		txtlimit.click();
 		txtlimit.sendKeys(configReader.getProp("Ledger_Limit"));
-
+		Thread.sleep(5000);
 		btnApply.click();
 		ElementUtils.waitForElementToHide(lblFilters, 100);
 

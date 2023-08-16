@@ -1,5 +1,5 @@
 #Author: sannorj@mydigitaloffice.ca
-@myP2_Regression
+@myP2_Regression @pnl
 
 Feature: P&L - Suppress Zero Values
 

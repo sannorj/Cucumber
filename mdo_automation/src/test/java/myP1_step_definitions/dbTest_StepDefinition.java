@@ -21,15 +21,34 @@ public class dbTest_StepDefinition {
 	public void i_retrieve_the_actual_data_list_from_the_database_and_csv_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
 	    db.compareCSVReportData();
 	}
+	
+	@When("I retrieve the actual data list from the database and csv reports then compare it and add the values to an Excel sheet row wise")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_csv_reports_then_compare_it_and_add_the_values_to_an_excel_sheet_row_wise() {
+	    db.compareCSVReportDataRowWise();
+	}
+	
 
+	
 	@When("I retrieve the actual data list from the database and excel reports then compare it and add the values to an Excel sheet")
 	public void i_retrieve_the_actual_data_list_from_the_database_and_excel_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
 	    db.compareExcelReportData();
 	}
 
+	@When("I retrieve the actual data list from the database and excel reports then compare it and add the values to an Excel sheet row wise")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_excel_reports_then_compare_it_and_add_the_values_to_an_excel_sheet_row_wise() {
+	    db.compareExcelReportDataRowWise();
+	}
+	
+	
+
 	@When("I retrieve the actual data list from the database and xml reports then compare it and add the values to an Excel sheet")
 	public void i_retrieve_the_actual_data_list_from_the_database_and_xml_reports_then_compare_it_and_add_the_values_to_an_excel_sheet() {
 	    db.compareXmlReportData();
+	}
+
+	@When("I retrieve the actual data list from the database and xml reports then compare it and add the values to an Excel sheet row wise")
+	public void i_retrieve_the_actual_data_list_from_the_database_and_xml_reports_then_compare_it_and_add_the_values_to_an_excel_sheet_row_wise() {
+	    db.compareXmlReportDataRowWise();
 	}
 
 }

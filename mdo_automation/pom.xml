@@ -12,6 +12,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<java.version>17</java.version>
+		<arrow.version>9.0.0</arrow.version>  <!-- snowflake -->
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -26,16 +27,12 @@
 		
 <!-- snowwwflakeeeeeeeee-->
 <dependency>
-        	 <groupId>net.snowflake</groupId>
-    		<artifactId>snowflake-jdbc</artifactId>
-   			 <version>3.12.9</version>
-    	</dependency>
+            <groupId>net.snowflake</groupId>
+            <artifactId>snowflake-jdbc</artifactId>
+            <version>3.9.0</version>
+        </dependency>
 
-  
 <!-- snowwwflakeeeeeeeee-->		
-	
-	
-	
 	
 		
 		<dependency>
@@ -107,20 +104,9 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>5.2.3</version>
 		</dependency>
-
-
-
 	</dependencies>
 	<build>
 		<plugins>
-			
-		
-			
-			
-			
-			
-			
-			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

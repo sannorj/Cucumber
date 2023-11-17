@@ -1,6 +1,9 @@
 package myP2_pageObjects;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,7 +72,7 @@ public class dbTest_SnowFlake_PageObject {
 	    try {
 	        System.setProperty("net.snowflake.client.log.loggerImpl", "net.snowflake.client.jdbc.internal.apache.log4j.Logger");
 
-	        String query = "SELECT sum(amount) FROM " + table +
+	        String query = "SELECT sum(amount) AS SUM_AMOUNT FROM " + table +
 	                " WHERE COMPANY_CODE = '" + companyCode + "'" +
 	                " AND post_date BETWEEN '" + startDate + "' AND '" + endDate + "'" +
 	                " AND trans_type = '" + transType + "'";
@@ -87,10 +90,19 @@ public class dbTest_SnowFlake_PageObject {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+	
+
+	}
+
 	}
 
 
 	
-}
+	    
+	
+
+
+	
+
 
 	

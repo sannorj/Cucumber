@@ -20,11 +20,7 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.11.0</version>
-		</dependency>
-	
-	
-	
-		
+		</dependency>			
 <!-- snowwwflakeeeeeeeee-->
 <dependency>
             <groupId>net.snowflake</groupId>
@@ -32,15 +28,12 @@
             <version>3.9.0</version>
         </dependency>
 
-<!-- snowwwflakeeeeeeeee-->		
-	
-		
+<!-- snowwwflakeeeeeeeee-->				
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.11.0</version>
-		</dependency>
-		
+		</dependency>		
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>

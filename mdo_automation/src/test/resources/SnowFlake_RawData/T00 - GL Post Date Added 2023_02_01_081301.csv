@@ -1,0 +1,4 @@
+CompanyCode,CompanyName,PropertyCode,PropertyName,BatchID,BatchType,TransType,VendorID,InvoiceNo,InvoiceDate,GLAccount,PostDate,Description,Reference,Amount
+368,368 Pan American Venture Fund LLC,   ,,2022-08-0061,PWBT,C,,,,1060.000,2022-08-22,,Check Batch 8/22/22  #368 taxes,32016.95
+368,368 Pan American Venture Fund LLC,   ,,2022-08-0061,PWBT,D,,,,4020.000,2022-08-22,,Check Batch 8/22/22  #368 taxes,32016.95
+

@@ -2,8 +2,6 @@ package SnowFlake_pageObects;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,6 +25,8 @@ public class TBL_M3_CSV_pageObject {
 	private Statement st;
 	private ResultSet rs;
 	int  noOfCOUNT;
+	double sum_amount;
+	 double totalAmount = 0.0;
     List<String> dataList = new ArrayList<>();
     List<String> CSVdataList = new ArrayList<>();
     int rowCount ,CSVrowCount  = 0;
@@ -36,9 +36,9 @@ public class TBL_M3_CSV_pageObject {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void readCSVFileFunc() {
+	public void readCSVFileFunc(String path) {
 
-		  String csvFilePath = "src/test/resources/SnowFlake_RawData/T00 - GL Post Date Added 2023_02_01_081301.csv";
+		  String csvFilePath = path;
 		   try (
 		            FileReader reader = new FileReader(csvFilePath);
 		            CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
@@ -81,11 +81,6 @@ public class TBL_M3_CSV_pageObject {
 			                    CSVdataList.add(csvColumn14 = csvColumn14.trim().isEmpty() ? "null" : csvColumn14);
 			                    CSVdataList.add(csvColumn15= csvColumn15.trim().isEmpty() ? "null" : csvColumn15);
 			                    
-                 
-		                    
-		          
-		    	        	System.out.println("=============CSVdataList============"+CSVdataList);
-		    	        	
 		    	        	
 		                    CSVdataList.add(csvColumn1);
 
@@ -101,7 +96,7 @@ public class TBL_M3_CSV_pageObject {
 	}
 	
 	
-	public void readDBdataFunc() throws SQLException, Exception {
+	public void readDBdataFunc(String fileName) throws SQLException, Exception {
 		
 
 		
@@ -114,9 +109,17 @@ public class TBL_M3_CSV_pageObject {
 		 		+ "company_name = '"+csvColumn2+"' and\n"
 		 		+ "batch_id = '"+csvColumn5+"' and \n"
 		 		+ "GL_ACCOUNT = "+csvColumn11+" and \n"
-		 		+ "FILE_NAME LIKE '%T00%'";
+		 		+ "FILE_NAME LIKE '"+fileName+"'";
 		 
-		 System.out.println("Query : " + query);
+		   System.out.println("================================================================================================================================================================");
+		   System.out.println("*                                                                                                                                                              *");
+		   System.out.println("*                                                                                                                                                              *");
+	   	   System.out.println("Query : " + query);
+	   	   System.out.println("*                                                                                                                                                              *");
+	   	   System.out.println("*                                                                                                                                                              *");
+	   	   System.out.println("=================================================================================================================================================================");
+	   	  
+	   	  
 		 st = SnowFlakeDBConnection.getConnection().createStatement();
 	        rs = st.executeQuery(query);
 
@@ -154,12 +157,7 @@ public class TBL_M3_CSV_pageObject {
 	        	dataList.add(actualDataSet13 = actualDataSet13== null ? "null" : actualDataSet13 );
 	        	dataList.add(actualDataSet14 = actualDataSet14== null ? "null" : actualDataSet14 );
 	        	dataList.add(actualDataSet15 = actualDataSet15== null ? "null" : actualDataSet15 );
-	        	
-	        	
-	        			
-	        			
-	        	System.out.println("=============dataList============"+dataList);
-	           
+	        	          
 	        }
 		}catch (Exception e) {
 	        e.printStackTrace();
@@ -174,10 +172,8 @@ public class TBL_M3_CSV_pageObject {
 		
 		for (int i = 0 ; i<dataList.size() ; i++) {
 			if(CSVdataList.get(i).contains(dataList.get(i))) {
-				System.out.println("=======CSVdataList.get(i)======"+CSVdataList.get(i)+"======dataList.get(i)============"+dataList.get(i));
 				results= true;
 			}else {
-				System.out.println("=======CSVdataList.get(i)======"+CSVdataList.get(i)+"======dataList.get(i)============"+dataList.get(i));
 				results = false;
 				break;
 			}
@@ -188,9 +184,9 @@ public class TBL_M3_CSV_pageObject {
 	
 	
 	
-     public void countCSVRowFunc() {
+     public void countCSVRowFunc(String path) {
 		
-		String csvFilePath = "src/test/resources/SnowFlake_RawData/T00 - GL Post Date Added 2023_02_01_081301.csv";
+		String csvFilePath = path;
 		
 		
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
@@ -212,14 +208,20 @@ public class TBL_M3_CSV_pageObject {
      
      
      
-     public void countDBRowFunc() throws SQLException, Exception {
+     public void countDBRowFunc(String fileName) throws SQLException, Exception {
  		
     	 String query = "\n"
  		 		+ "SELECT count(GL_ACCOUNT) AS COUNT\n"
  		 		+ "FROM RAW.GL.TBL_M3_CSV WHERE\n"
- 		 		+ "FILE_NAME LIKE '%T00%'";
+ 		 		+ "FILE_NAME LIKE '"+fileName+"'";
     	 
-    	  System.out.println("Query : " + query);
+       System.out.println("================================================================================================================================================================");
+	   System.out.println("*                                                                                                                                                              *");
+	   System.out.println("*                                                                                                                                                              *");
+   	   System.out.println("Query : " + query);
+   	   System.out.println("*                                                                                                                                                              *");
+   	   System.out.println("*                                                                                                                                                              *");
+   	  System.out.println("=================================================================================================================================================================");
  		 
  		 st = SnowFlakeDBConnection.getConnection().createStatement();
  	        rs = st.executeQuery(query);
@@ -247,7 +249,80 @@ public class TBL_M3_CSV_pageObject {
      
      
      
+     public void readCSVSumAmoutFunc(String path) {
+    	 
+    	 String csvFilePath =path;
+    	   
+
+    	    try (
+    	        FileReader reader = new FileReader(csvFilePath);
+    	        CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
+    	    ) {
+    	        // Iterate through CSV records
+    	        for (CSVRecord csvRecord : csvParser) {
+    	            // Ignore the first row (header)
+    	            if (csvRecord.getRecordNumber() > 0) {
+    	                // ... (Your existing code for reading other columns)
+    	                // Read and accumulate the "Amount" column value
+    	                String amountStr = csvRecord.get("Amount");
+    	                double amount = amountStr.trim().isEmpty() ? 0.0 : Double.parseDouble(amountStr);
+    	                totalAmount += amount;
+    	                
+    	                // ... (Your existing code for populating CSVdataList)
+    	            }
+    	        }
+
+    	        // Print the total sum of "Amount" column values
+    	        System.out.println("Total Amount: " + totalAmount);
+
+    	    } catch (Exception e) {
+    	        e.printStackTrace();
+    	    }
+    	 
+     }
      
+     
+     
+     public void readDBSumAmoutFunc(String fileName) throws SQLException, Exception {
+    	 
+    	 String query = "select sum(amount) as SUM_AMOUNT\n"
+    	 		+ "from RAW.GL.TBL_M3_CSV\n"
+    	 		+ "where FILE_NAME like  '"+fileName+"' ";
+     	
+    	  System.out.println("================================================================================================================================================================");
+	        System.out.println("*                                                                                                                                                            *");
+	        System.out.println("*                                                                                                                                                            *");
+     	    System.out.println("Query : " + query);
+     	    System.out.println("*                                                                                                                                                            *");
+     	    System.out.println("*                                                                                                                                                            *");
+     	  System.out.println("================================================================================================================================================================");
+     	  
+     	  
+  		 st = SnowFlakeDBConnection.getConnection().createStatement();
+  	        rs = st.executeQuery(query);
+
+  	        while (rs.next()) {
+  	         
+  	            sum_amount = rs.getDouble("SUM_AMOUNT");
+  	            
+  	           System.out.println("DB SUM Amount : " +sum_amount);
+  	        }
+  		
+    	 
+     }
+     
+     
+     
+ public boolean verifySumAmountOfCSVdbFunc() {
+    	 
+    	 if(sum_amount==totalAmount)
+    	 {
+    		 return true;
+    	 }else {
+    		 return false;
+    	 }
+    	 
+     }
      
      
      

@@ -17,7 +17,7 @@ Feature: Compare M3 CSV data with TBL_M3_CSV table
      And gets the count of TBL_M3_CSV table data where file name equals to '%T00 - GL Post Date Added 2023_02_01_081301.csv%'
      Then compare both CSV and database table counts to ensure they are equal
      
-
+#need to check null value whether its  0 or null
   Scenario: Compare Sum of Amounts from CSV and Database
     Given the application establishes the Snowflake connection to the database
     When calculate the sum of amounts from the CSV file at given path 'src/test/resources/SnowFlake_RawData/T00 - GL Post Date Added 2023_02_01_081301.csv'

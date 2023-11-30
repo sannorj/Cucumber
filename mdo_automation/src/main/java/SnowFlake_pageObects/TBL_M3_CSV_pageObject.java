@@ -169,6 +169,7 @@ public class TBL_M3_CSV_pageObject {
 	public boolean verifyCSVdbFunc() {
 		
 		boolean results = false;
+		System.out.println("============================"+dataList.size());		
 		
 		for (int i = 0 ; i<dataList.size() ; i++) {
 			if(CSVdataList.get(i).contains(dataList.get(i))) {

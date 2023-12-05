@@ -1,0 +1,10 @@
+CompanyCode,CompanyName,PropertyCode,PropertyName,BatchID,BatchType,TransType,VendorID,InvoiceNo,InvoiceDate,GLAccount,PostDate,Description,Reference,Amount
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,D,,,,11250,2022-08-03,,From DRR for 6/3/2023,1330
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,D,,,,11000,2022-08-03,,From DRR for 6/3/2023,1500
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,11000,2022-08-03,,From DRR for 6/3/2023,110
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,23000,2022-08-03,,From DRR for 6/3/2023,200
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,23000,2022-08-03,,From DRR for 6/3/2023,550
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,40000,2022-08-03,,From DRR for 6/3/2023,600
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,40050,2022-08-03,,From DRR for 6/3/2023,600
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,40150,2022-08-03,,From DRR for 6/3/2023,330
+987,1th Avenue Hotel Operations 987,123,Everly Renaissance 123 ,2023-06-0078,JEDR,C,,,,40225,2022-08-03,,From DRR for 6/3/2023,440

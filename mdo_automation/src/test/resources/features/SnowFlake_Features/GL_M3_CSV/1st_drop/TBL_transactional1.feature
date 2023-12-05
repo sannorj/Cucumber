@@ -20,3 +20,6 @@ Feature: Data Comparison Between TBL_M3_CSV and tbl_transactional
     And reads the Company_Code and Property Code from TBL_M3_CSV table where file name equals to '%T00 - GL Post Date Added 2023_02_01_081301.csv%'
     And gets the organization code from the file name where file name equals to 'T00 - GL Post Date Added 2023_02_01_081301.csv'
     Then the Hotel code in tbl_transactional table should display the correct combination of organization + company code + property code
+
+
+     

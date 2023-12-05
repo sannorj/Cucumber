@@ -110,7 +110,13 @@ public class TBL_transactional_pageObject {
 	        	          
 	        }
 
-	    String readTBL_transactionalFunc_query2 = "select post_date , account_code from fact.gl.tbl_transactional where hotel_code = '"+hotelCode+"' and post_date = '"+actualDataSet12+"'";
+//	    String readTBL_transactionalFunc_query2 = "select post_date , account_code from fact.gl.tbl_transactional where hotel_code = '"+hotelCode+"' and post_date = '"+actualDataSet12+"'";
+	        
+	        
+	        String readTBL_transactionalFunc_query2 =   "SELECT post_date , account_code FROM fact.gl.tbl_transactional WHERE account_code IN "
+	        													               + "(SELECT gl_account FROM RAW.GL.TBL_M3_CSV WHERE FILE_NAME LIKE '"+fileNameGloble+"')\n"
+	        											+ "AND hotel_code = '"+hotelCode+"' AND POST_DATE = '"+actualDataSet12+"'";
+	        
 	    System.out.println("================================================================================================================================================================");
 		   System.out.println("*                                                                                                                                                              *");
 		   System.out.println("*                                                                                                                                                              *");
@@ -140,10 +146,8 @@ public class TBL_transactional_pageObject {
 
 	    for (int i =0 ; i < array1.size(); i++) {
 	        if (Arrays.toString(array1.get(i)).equals(Arrays.toString(array2.get(i)))) {
-		        System.out.println("Arrays are equal");
 		        flag= true;
 		    } else {
-		        System.out.println("Arrays are not equal");
 		        flag= false;
 		    }
 	    }

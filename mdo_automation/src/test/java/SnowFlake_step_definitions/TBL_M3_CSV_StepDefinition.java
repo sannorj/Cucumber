@@ -76,4 +76,39 @@ public class TBL_M3_CSV_StepDefinition {
 		assertTrue(m3.verifySumAmountOfCSVdbFunc());
 	}
 	
+	
+	// 4 ============================================================================================================//	
+	
+	@Given("read the  all M3 CSV file is available at given path {string}")
+	public void read_the_all_m3_csv_file_is_available_at_given_path(String string) {
+	   m3.readAllCSVFileFunc(string);
+	}
+
+	@Given("read the all data from  TBL_M3_CSV table in the database where file name equals to {string}")
+	public void read_the_all_data_from_tbl_m3_csv_table_in_the_database_where_file_name_equals_to(String string) throws SQLException, Exception {
+		m3.readAllDBdataFunc(string);
+	}
+
+	@Then("compare the data in the M3 CSV file with the data in the TBL_M3_CSV table")
+	public void compare_the_data_in_the_m3_csv_file_with_the_data_in_the_tbl_m3_csv_table() throws SQLException, Exception {
+		assertTrue(m3.compareData());
+	}
+	
+	
+	
+//	@Given("read the Count of file name that have same COMPANY_CODE, PROPERTY_CODE, BATCH_ID, POST_DATE in TBL_M3_CSV Table")
+//	public void read_the_count_of_file_name_that_have_same_company_code_property_code_batch_id_post_date() throws SQLException, Exception {
+//		m3.fileCountFunc();
+//	}
+//
+//	@Then("the TBL_M£ table should not have duplicate entries")
+//	public void the_tbl_m£_table_should_not_have_duplicate_entries() {
+//		assertTrue(m3.verifyduplicateCountFunc());
+//	}
+
+	
+	@Given("gets the count of M3 CSV file at given path equals to {string}")
+	public void gets_the_count_of_m3_csv_file_at_given_path_equals_to(String string) {
+		m3.countCSVRowFunc_2(string);
+	}
 }

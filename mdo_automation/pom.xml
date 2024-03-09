@@ -21,14 +21,14 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.11.0</version>
 		</dependency>			
-<!-- snowwwflakeeeeeeeee-->
+<!-- snowwwflake-->
 <dependency>
             <groupId>net.snowflake</groupId>
             <artifactId>snowflake-jdbc</artifactId>
             <version>3.9.0</version>
         </dependency>
 
-<!-- snowwwflakeeeeeeeee-->				
+<!-- snowwwflake-->				
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
